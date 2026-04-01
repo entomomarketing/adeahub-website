@@ -779,12 +779,10 @@
 
             <!-- Left: Copy -->
             <div class="flex-1 text-white reveal">
-                <span class="inline-block text-sm font-bold tracking-wider uppercase mb-4" style="color:#FAC515;">Ask AH Insights AI</span>
+                <span class="inline-block text-sm font-bold tracking-wider mb-4" style="color:#FAC515;">Ask AH Insights AI</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-5">Ask any question.<br>Get an answer in seconds.</h2>
-                <p class="text-lg leading-relaxed mb-6" style="color:rgba(255,255,255,0.82);">AH Insights AI lets your clinical and operational teams query data in plain English. No SQL. No waiting for a report. Just ask — and get a clear, data-backed answer instantly.</p>
+                <p class="text-lg leading-relaxed mb-6" style="color:rgba(255,255,255,0.82);">AH Insights AI lets your clinical, operational and decision making teams query data in plain English and get a clear, data-backed answer instantly.</p>
                 <ul class="space-y-3 text-base" style="color:rgba(255,255,255,0.82);">
-                    <li class="flex items-start gap-3"><span style="color:#FAC515;font-size:18px;line-height:1.4;">✓</span> Query clinical, operational, and financial data with one question</li>
-                    <li class="flex items-start gap-3"><span style="color:#FAC515;font-size:18px;line-height:1.4;">✓</span> Drill down by department, facility, date range, or patient cohort</li>
                     <li class="flex items-start gap-3"><span style="color:#FAC515;font-size:18px;line-height:1.4;">✓</span> Powered by your live data — not static reports</li>
                 </ul>
             </div>
@@ -845,7 +843,7 @@
                             </div>
                             <div class="adea-user-row" id="adea-user" style="display:none;">
                                 <div class="adea-user-bubble">
-                                    <span id="adea-bubble-text">What is the average pharmacy wait time for patients who arrived in the morning vs the afternoon?</span>
+                                    <span id="adea-bubble-text">What could be the expected average length of stay for Cardiology patients next month?</span>
                                     <span class="adea-ts" id="adea-ts">12:30 PM</span>
                                 </div>
                             </div>
@@ -856,10 +854,10 @@
                                 <div class="adea-ai-bubble">
                                     <div class="adea-badge">
                                         <div class="adea-badge-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 8V3l5 5h-5zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h3v2H8V9z"/></svg></div>
-                                        <div class="adea-badge-text"><strong>Avg wait time.csv</strong><span style="font-size:10px;color:#8B93A1;">23 B · Done</span></div>
+                                        <div class="adea-badge-text"><strong>Avg stay length.csv</strong><span style="font-size:10px;color:#8B93A1;">23 B · Done</span></div>
                                     </div>
-                                    <div>The average pharmacy wait time for morning arrivals is <span class="adea-ans-bold adea-ans-blue">2 hrs 16 mins</span> and afternoon arrivals is <span class="adea-ans-bold adea-ans-blue">1 hr 49 mins</span>.</div>
-                                    <div class="adea-follow">Do you want me to break this down by speciality, hospital, or month?</div>
+                                    <div>The predicted average length of stay for <span class="adea-ans-bold adea-ans-blue">Cardiology</span> patients next month is <span class="adea-ans-bold adea-ans-blue">5 days</span>.</div>
+                                    <div class="adea-follow">Do you want me to further break this down by hospital, care team or any other parameter?</div>
                                 </div>
                             </div>
                         </div>
@@ -882,7 +880,7 @@
 
                 <script>
                 (function() {
-                    const Q = "What is the average pharmacy wait time for patients who arrived in the morning vs the afternoon?";
+                    const Q = "What could be the expected average length of stay for Cardiology patients next month?";
                     const SPEED=18, PAUSE=600, PROC=2800, AI_WAIT=1600, LOOP=4500;
                     const msgs=document.getElementById('adea-msgs');
                     const ph=document.getElementById('adea-ph');
