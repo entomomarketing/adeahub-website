@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers | adeahub - Powering Modern Healthcare</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        adeahub: {
+                            blue: '#6396F1',
+                            yellow: '#F2C747',
+                            gray: '#4B5563',
+                            lightbg: '#6396F1'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Carousel Styles */
+        .carousel-container { overflow: hidden; position: relative; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); width: 200%; }
+        .carousel-slide { width: 50%; flex-shrink: 0; }
+        /* Architecture Stack Hover */
+        .arch-layer { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .arch-layer:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px -10px rgba(99,150,241,0.3); }
+        /* Marquee */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 40s linear infinite; }
+        .marquee-container:hover .animate-marquee { animation-play-state: paused; }
+        /* Continuous Card Scroll Animation */
+        @keyframes scroll-cards {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+        .animate-scroll-cards {
+            display: flex;
+            width: max-content;
+            animation: scroll-cards 60s linear infinite;
+        }
+        .animate-scroll-cards:hover {
+            animation-play-state: paused;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        /* Fade-in animation */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+        /* Tab active states */
+        .tab-btn.active { background-color: #6396F1; color: white; }
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+    
+        /* ── Navbar dropdown hover ───────────────────────────── */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown-menu:hover { display: block !important; }
+        .nav-dropdown-menu {
+            animation: dropIn 0.18s ease forwards;
+        }
+        @keyframes dropIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ───── BASE ───── */
+        :root {
+            --blue: #6396F1;
+            --yellow: #F2C747;
+            --blue-pale: #EEF4FF;
+            --shadow-blue: rgba(99,150,241,0.15);
+        }
+
+        /* ───── SCROLL REVEAL ───── */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        .reveal-d1 { transition-delay: 0.10s; }
+        .reveal-d2 { transition-delay: 0.20s; }
+        .reveal-d3 { transition-delay: 0.30s; }
+        .reveal-d4 { transition-delay: 0.40s; }
+        .reveal-d5 { transition-delay: 0.50s; }
+
+        /* ───── NAVBAR ───── */
+        .nav-scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.07) !important; }
+
+        /* ───── HERO ───── */
+        .hero-bg {
+            background:
+                radial-gradient(ellipse 75% 65% at 90% 40%, rgba(99,150,241,0.10) 0%, transparent 68%),
+                radial-gradient(ellipse 55% 55% at 8%  80%, rgba(99,150,241,0.07) 0%, transparent 62%),
+                radial-gradient(ellipse 40% 40% at 50% 5%,  rgba(242,199,71,0.06)  0%, transparent 60%),
+                #F8FAFC;
+        }
+        .dot-grid {
+            background-image: radial-gradient(circle, rgba(99,150,241,0.11) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        /* Badge pulse */
+        @keyframes badgePulse {
+            0%,100% { box-shadow: 0 0 0 0   rgba(99,150,241,0.30); }
+            50%      { box-shadow: 0 0 0 7px rgba(99,150,241,0);    }
+        }
+        .hero-badge { animation: badgePulse 2.8s ease-in-out infinite; }
+
+        /* Concentric circles */
+        @keyframes rotateSlow    { to { transform: rotate(360deg);  } }
+        @keyframes rotateReverse { to { transform: rotate(-360deg); } }
+        .circle-ring-1 { animation: rotateSlow    28s linear infinite; transform-origin: center; }
+        .circle-ring-2 { animation: rotateReverse 20s linear infinite; transform-origin: center; }
+
+        /* CTA button glow */
+        @keyframes btnGlow {
+            0%,100% { box-shadow: 0 8px 28px rgba(99,150,241,0.38); }
+            50%      { box-shadow: 0 8px 44px rgba(99,150,241,0.58); }
+        }
+        .btn-glow { animation: btnGlow 2.4s ease-in-out infinite; }
+        .btn-glow:hover {
+            animation: none;
+            box-shadow: 0 12px 40px rgba(99,150,241,0.55);
+            transform: translateY(-2px);
+            transition: all 0.25s ease;
+        }
+        /* Shimmer sweep on hover */
+        .btn-shimmer { position: relative; overflow: hidden; }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute; top: 0; left: -100%;
+            width: 55%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+        }
+        .btn-shimmer:hover::after { left: 160%; transition: left 0.55s ease; }
+
+        /* Hero mini trusted strip */
+        .hero-logo-strip img { filter: grayscale(100%) opacity(0.5); transition: filter 0.3s, opacity 0.3s; }
+        .hero-logo-strip img:hover { filter: grayscale(0%) opacity(1); }
+
+        /* ───── SECTION LABEL ───── */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #6396F1; margin-bottom: 14px;
+        }
+        .section-label::before {
+            content: ''; display: block;
+            width: 22px; height: 2px;
+            background: #6396F1; border-radius: 2px;
+        }
+
+        /* ───── GRADIENT TEXT ───── */
+        .gradient-text {
+            background: linear-gradient(135deg, #6396F1 0%, #3B82F6 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        /* ───── TRUST / COMPLIANCE PILLS ───── */
+        .compliance-pill {
+            background: white; border: 1px solid rgba(99,150,241,0.14);
+            border-radius: 9999px; padding: 7px 18px;
+            font-size: 0.72rem; font-weight: 700; color: #4B5563;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            display: inline-flex; align-items: center; gap: 6px;
+            transition: all 0.22s; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .compliance-pill:hover {
+            background: var(--blue-pale); border-color: rgba(99,150,241,0.35);
+            color: #6396F1; box-shadow: 0 4px 16px rgba(99,150,241,0.10);
+        }
+
+        /* ───── STAT NUMBERS ───── */
+        .stat-block { position: relative; }
+        .stat-num {
+            font-variant-numeric: tabular-nums;
+            background: linear-gradient(135deg, #6396F1 0%, #5280d9 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .stat-block::after {
+            content: ''; position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 2px; background: linear-gradient(90deg, transparent, rgba(99,150,241,0.15), transparent);
+        }
+
+        /* ───── AWARD CARDS ───── */
+        .award-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .award-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px -5px rgba(0,0,0,0.09); }
+
+        /* ───── SOLUTION CARDS ───── */
+        .solution-card {
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+            border-top: 3px solid transparent;
+            border-radius: 24px;
+        }
+        .solution-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 24px 56px -12px rgba(99,150,241,0.18);
+            border-top-color: #6396F1;
+        }
+        .solution-card .icon-wrap { transition: transform 0.28s ease, background 0.28s ease; }
+        .solution-card:hover .icon-wrap { background: rgba(99,150,241,0.12) !important; transform: scale(1.1); }
+        .solution-arrow { transition: transform 0.22s ease; }
+        .solution-card:hover .solution-arrow { transform: translateX(5px); }
+
+        /* ───── ARCHITECTURE LAYERS ───── */
+        .arch-layer { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .arch-layer:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px -10px rgba(99,150,241,0.3); }
+        @keyframes platformPulse {
+            0%,100% { box-shadow: 0 4px 24px rgba(99,150,241,0.30); }
+            50%      { box-shadow: 0 4px 40px rgba(99,150,241,0.50); }
+        }
+        .platform-core { animation: platformPulse 2.6s ease-in-out infinite; }
+
+        /* ───── OUTCOME CARDS ───── */
+        .outcome-card { transition: transform 0.28s ease, box-shadow 0.28s ease; position: relative; overflow: hidden; }
+        .outcome-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, #6396F1, #60a5fa);
+            transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease;
+        }
+        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(99,150,241,0.15); }
+        .outcome-card:hover::before { transform: scaleX(1); }
+
+        /* ───── CTA SECTION ───── */
+        .cta-mesh {
+            background:
+                radial-gradient(ellipse 70% 80% at 20% 50%, rgba(99,150,241,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 60% at 80% 30%, rgba(99,150,241,0.09) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 50% at 60% 90%, rgba(242,199,71,0.07) 0%, transparent 55%),
+                linear-gradient(135deg, #EEF4FF 0%, #F8FAFC 50%, #F0F7FF 100%);
+        }
+
+        /* ───── TESTIMONIAL ───── */
+        .testimonial-bg {
+            background: #6396F1;
+            position: relative; overflow: hidden;
+        }
+        .testimonial-bg::before {
+            content: ''; position: absolute; top: -70px; right: -70px;
+            width: 300px; height: 300px; border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .testimonial-bg::after {
+            content: ''; position: absolute; bottom: -90px; left: -50px;
+            width: 250px; height: 250px; border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+
+        /* ───── MARQUEE ───── */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 40s linear infinite; }
+        .marquee-container:hover .animate-marquee { animation-play-state: paused; }
+
+        /* ───── CARD SCROLL ───── */
+        @keyframes scroll-cards { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-scroll-cards { display: flex; width: max-content; animation: scroll-cards 60s linear infinite; }
+        .animate-scroll-cards:hover { animation-play-state: paused; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* ───── TAB ACTIVE ───── */
+        .tab-btn.active { background-color: #6396F1; color: white; }
+
+        /* ───── FLOATING BLOBS (hero decoration) ───── */
+        @keyframes floatBlob {
+            0%,100% { transform: translateY(0) scale(1); }
+            50%      { transform: translateY(-18px) scale(1.04); }
+        }
+        .blob-float-1 { animation: floatBlob 9s ease-in-out infinite; }
+        .blob-float-2 { animation: floatBlob 12s ease-in-out infinite 2.5s; }
+    
+        /* ═══════════════════════════════════════════════════════
+       ADEAHUB REDESIGN OVERRIDES
+       ═══════════════════════════════════════════════════════ */
+    :root {
+        --blue: #6396F1;
+        --yellow: #F2C747;
+        --blue-pale: rgba(99,150,241,0.10);
+        --shadow-blue: rgba(99,150,241,0.15);
+    }
+
+    /* Gradient text → solid blue */
+    .gradient-text {
+        background: none !important;
+        -webkit-text-fill-color: #6396F1 !important;
+        color: #6396F1 !important;
+    }
+
+    /* Stat numbers → solid blue */
+    .stat-num {
+        background: none !important;
+        -webkit-text-fill-color: #6396F1 !important;
+        color: #6396F1 !important;
+    }
+
+    /* Section labels → blue on white; yellow on blue bg (overridden below) */
+    .section-label { color: #6396F1 !important; }
+    .section-label::before { background: #6396F1 !important; }
+
+    /* Tab active */
+    .tab-btn.active { background-color: #6396F1 !important; }
+
+    /* Solution card hover border */
+    .solution-card:hover { border-top-color: #6396F1 !important; }
+
+    /* Outcome card top bar */
+    .outcome-card::before { background: #6396F1 !important; }
+
+    /* ── ALL BLUE SECTION BACKGROUNDS → solid #6396F1 ── */
+    .hero-bg { background: #6396F1 !important; }
+    .cta-mesh { background: #6396F1 !important; }
+    .testimonial-bg { background: #6396F1 !important; }
+    section.bg-adeahub-lightbg,
+    header.bg-adeahub-lightbg { background-color: #6396F1 !important; }
+    section.bg-adeahub-blue { background-color: #6396F1 !important; }
+    #cta { background: #6396F1 !important; border-top-color: #5280d9 !important; }
+
+    /* ── ANIMATED ORB BACKGROUNDS on all blue sections ── */
+    .hero-bg,
+    .cta-mesh,
+    .testimonial-bg,
+    section.bg-adeahub-lightbg,
+    section.bg-adeahub-blue,
+    header.bg-adeahub-lightbg,
+    #cta {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Orb pseudo-elements shared across all blue sections */
+    .hero-bg::before, .cta-mesh::before, .testimonial-bg::before,
+    section.bg-adeahub-lightbg::before, section.bg-adeahub-blue::before,
+    header.bg-adeahub-lightbg::before, #cta::before,
+    .hero-bg::after, .cta-mesh::after, .testimonial-bg::after,
+    section.bg-adeahub-lightbg::after, section.bg-adeahub-blue::after,
+    header.bg-adeahub-lightbg::after, #cta::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        background: rgba(255,255,255,0.9);
+    }
+
+    /* Large orb — top-left */
+    .hero-bg::before, .cta-mesh::before, .testimonial-bg::before,
+    section.bg-adeahub-lightbg::before, section.bg-adeahub-blue::before,
+    header.bg-adeahub-lightbg::before, #cta::before {
+        width: 520px; height: 520px;
+        top: -180px; left: -120px;
+        animation: floatOrb1 14s ease-in-out infinite;
+        filter: blur(2px);
+        opacity: 0.08;
+    }
+    /* Smaller orb — bottom-right */
+    .hero-bg::after, .cta-mesh::after, .testimonial-bg::after,
+    section.bg-adeahub-lightbg::after, section.bg-adeahub-blue::after,
+    header.bg-adeahub-lightbg::after, #cta::after {
+        width: 340px; height: 340px;
+        bottom: -100px; right: -80px;
+        animation: floatOrb2 18s ease-in-out infinite;
+        filter: blur(1px);
+        opacity: 0.05;
+    }
+
+    /* Stagger animation delays for visual variety */
+    .cta-mesh::before, section.bg-adeahub-lightbg::before { animation-delay: -3s; }
+    .cta-mesh::after,  section.bg-adeahub-lightbg::after  { animation-delay: -7s; }
+    .testimonial-bg::before, section.bg-adeahub-blue::before { animation-delay: -6s; }
+    .testimonial-bg::after,  section.bg-adeahub-blue::after  { animation-delay: -2s; }
+    #cta::before { animation-delay: -9s; }
+    #cta::after  { animation-delay: -4s; }
+
+    @keyframes floatOrb1 {
+        0%,100% { transform: translate(0, 0) scale(1); }
+        33%     { transform: translate(30px, 25px) scale(1.06); }
+        66%     { transform: translate(-20px, 40px) scale(0.94); }
+    }
+    @keyframes floatOrb2 {
+        0%,100% { transform: translate(0, 0) scale(1); }
+        40%     { transform: translate(-35px, -20px) scale(1.08); }
+        70%     { transform: translate(25px, 30px) scale(0.92); }
+    }
+
+    /* Dot-grid overlay on all blue sections */
+    .hero-bg, .cta-mesh, .testimonial-bg,
+    section.bg-adeahub-lightbg, section.bg-adeahub-blue,
+    header.bg-adeahub-lightbg, #cta {
+        background-image:
+            radial-gradient(circle, rgba(255,255,255,0.10) 1px, transparent 1px) !important;
+        background-size: 36px 36px !important;
+        background-position: 0 0 !important;
+    }
+
+    /* All child content must sit above pseudo-elements */
+    .hero-bg > *:not(.absolute), .cta-mesh > *:not(.absolute), .testimonial-bg > *:not(.absolute),
+    section.bg-adeahub-lightbg > *:not(.absolute), section.bg-adeahub-blue > *:not(.absolute),
+    header.bg-adeahub-lightbg > *:not(.absolute), #cta > *:not(.absolute) {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ── TEXT COLORS ON BLUE BACKGROUNDS ── */
+
+    /* hero-bg / header.bg-adeahub-lightbg */
+    .hero-bg h1, .hero-bg h2, .hero-bg h3, .hero-bg p, .hero-bg li,
+    header.bg-adeahub-lightbg h1, header.bg-adeahub-lightbg h2,
+    header.bg-adeahub-lightbg h3, header.bg-adeahub-lightbg p,
+    header.bg-adeahub-lightbg li { color: white !important; }
+
+    header .text-adeahub-yellow,
+    header span[class*="yellow"],
+    .hero-bg .text-adeahub-yellow { color: #F2C747 !important; }
+
+    /* section.bg-adeahub-lightbg */
+    section.bg-adeahub-lightbg h2,
+    section.bg-adeahub-lightbg h3,
+    section.bg-adeahub-lightbg h4 { color: white !important; }
+
+    section.bg-adeahub-lightbg p,
+    section.bg-adeahub-lightbg li,
+    section.bg-adeahub-lightbg .text-gray-500,
+    section.bg-adeahub-lightbg .text-gray-600,
+    section.bg-adeahub-lightbg .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+
+    section.bg-adeahub-lightbg .text-gray-900,
+    section.bg-adeahub-lightbg .text-gray-800 { color: white !important; }
+
+    section.bg-adeahub-lightbg .section-label { color: #F2C747 !important; }
+    section.bg-adeahub-lightbg .section-label::before { background: #F2C747 !important; }
+    section.bg-adeahub-lightbg span.text-sm.font-bold,
+    section.bg-adeahub-lightbg .font-bold.tracking-wider,
+    section.bg-adeahub-lightbg .tracking-widest { color: #F2C747 !important; }
+
+    /* section.bg-adeahub-blue */
+    section.bg-adeahub-blue h2,
+    section.bg-adeahub-blue h3,
+    section.bg-adeahub-blue h4 { color: white !important; }
+
+    section.bg-adeahub-blue p,
+    section.bg-adeahub-blue li,
+    section.bg-adeahub-blue .text-gray-500,
+    section.bg-adeahub-blue .text-gray-600,
+    section.bg-adeahub-blue .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+
+    section.bg-adeahub-blue .text-gray-900,
+    section.bg-adeahub-blue .text-gray-800 { color: white !important; }
+
+    section.bg-adeahub-blue .section-label { color: #F2C747 !important; }
+    section.bg-adeahub-blue .section-label::before { background: #F2C747 !important; }
+    section.bg-adeahub-blue span.text-sm.font-bold,
+    section.bg-adeahub-blue .font-bold.tracking-wider,
+    section.bg-adeahub-blue .tracking-widest { color: #F2C747 !important; }
+
+    /* cta-mesh */
+    .cta-mesh h2, .cta-mesh h3, .cta-mesh p,
+    .cta-mesh li { color: white !important; }
+    .cta-mesh .text-gray-500, .cta-mesh .text-gray-600,
+    .cta-mesh .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+    .cta-mesh .section-label { color: #F2C747 !important; }
+    .cta-mesh .section-label::before { background: #F2C747 !important; }
+
+    /* testimonial-bg */
+    .testimonial-bg h2, .testimonial-bg h3, .testimonial-bg p,
+    .testimonial-bg li { color: white !important; }
+    .testimonial-bg .text-gray-500, .testimonial-bg .text-gray-600,
+    .testimonial-bg .text-gray-700 { color: rgba(255,255,255,0.75) !important; }
+
+    /* #cta section */
+    #cta h2, #cta h3, #cta h4 { color: white !important; }
+    #cta p, #cta li { color: rgba(255,255,255,0.80) !important; }
+    #cta span.text-sm.font-bold,
+    #cta span.tracking-wider { color: #F2C747 !important; }
+    #cta .text-gray-500, #cta .text-gray-600 { color: rgba(255,255,255,0.75) !important; }
+    #cta .text-adeahub-blue { color: #F2C747 !important; }
+
+    /* White cards inside blue sections: restore normal text colors */
+    section.bg-adeahub-lightbg .bg-white h3,
+    section.bg-adeahub-lightbg .bg-white h4,
+    section.bg-adeahub-blue .bg-white h3,
+    section.bg-adeahub-blue .bg-white h4 { color: #111827 !important; }
+
+    section.bg-adeahub-lightbg .bg-white p,
+    section.bg-adeahub-lightbg .bg-white span,
+    section.bg-adeahub-lightbg .bg-white li,
+    section.bg-adeahub-blue .bg-white p,
+    section.bg-adeahub-blue .bg-white span,
+    section.bg-adeahub-blue .bg-white li { color: #4B5563 !important; }
+
+    /* ── BUTTONS on blue backgrounds → Yellow with black text ── */
+    section.bg-adeahub-lightbg .btn-glow,
+    section.bg-adeahub-blue .btn-glow,
+    .cta-mesh .btn-glow,
+    .hero-bg .btn-glow,
+    #cta .btn-glow {
+        background: #F2C747 !important;
+        color: #1a1a2e !important;
+        border-color: #F2C747 !important;
+    }
+
+    section.bg-adeahub-lightbg a[class*="bg-adeahub-blue"],
+    section.bg-adeahub-blue a[class*="bg-adeahub-blue"],
+    .cta-mesh a[class*="bg-adeahub-blue"],
+    #cta a[class*="bg-adeahub-blue"] {
+        background: #F2C747 !important;
+        color: #1a1a2e !important;
+    }
+
+    /* Remove decorative blue blobs that look odd on blue bg */
+    .bg-blue-100\/40, .bg-blue-100 { opacity: 0.08 !important; }
+
+    /* ── SOLUTION CARD 3D TILT + GLOW CSS ── */
+    .solution-card {
+        transition: transform 0.12s ease, box-shadow 0.2s ease;
+        will-change: transform;
+        transform-style: preserve-3d;
+        cursor: default;
+    }
+    .solution-card .card-glow-layer {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+    }
+    .solution-card:hover .card-glow-layer { opacity: 1; }
+    .solution-card > *:not(.card-glow-layer) { position: relative; z-index: 1; }
+
+
+
+    
+        /* ── Mega menu product cards ── */
+        .mega-card { display:flex; align-items:flex-start; gap:13px; padding:14px 16px; border-radius:12px; text-decoration:none; color:inherit; transition:background 0.15s; }
+        .mega-card:hover { background:#f0f6ff; }
+        .mega-card:hover .mega-icon { background:#dbeafe; }
+        .mega-icon { width:40px; height:40px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s; }
+        .mega-icon svg { width:18px; height:18px; color:#0D6EFD; }
+        .mega-name { font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:2px; }
+        .mega-tag { font-size:0.7rem; color:#6b7280; font-weight:500; margin-bottom:3px; }
+        .mega-desc { font-size:0.68rem; color:#9ca3af; line-height:1.4; }
+        </style>
+
+</head>
+<body class="bg-white text-gray-700">
+
+    <!-- Unified Navbar -->
+    <nav id="main-nav" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-shadow duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex flex-col hover:opacity-90 transition shrink-0">
+                <img src="AdeaHub Logo-Default.png" alt="adeahub logo" class="h-10 object-contain object-left mb-1">
+                <span class="text-[0.65rem] font-medium text-gray-500 tracking-widest leading-none pl-1">Powering Modern Healthcare</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+                <!-- Solutions Dropdown -->
+                <div class="nav-dropdown relative">
+                    <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
+                        Solutions
+                        <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="left:-150px;width:740px;">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                        <!-- Mega header -->
+                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#6396F1;border-radius:2px;"></span>adeahub products</span>
+                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <!-- 2-col product grid -->
+                        <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px;">
+                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
+                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
+                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
+                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
+                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#f5f3ff;"><svg fill="none" stroke="#7c3aed" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name" style="color:#7c3aed;">WorkWise <span style="font-size:0.62rem;background:#f5f3ff;color:#7c3aed;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
+                        </div>
+                        <!-- Footer -->
+                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Platform -->
+                <a href="adeahub_platform.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Platform</a>
+
+                <!-- Resources Dropdown -->
+                <div class="nav-dropdown relative">
+                    <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
+                        Resources
+                        <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="right:0;width:460px;">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                        <!-- Mega header -->
+                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#6396F1;border-radius:2px;"></span>Resources</span>
+                        </div>
+                        <!-- Single-column items -->
+                        <div style="padding:8px;">
+                            <a href="newsroom.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg></span><div><p class="mega-name">Newsroom</p><p class="mega-tag">Press releases &amp; company announcements</p></div></a>
+                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="customers.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg></span><div><p class="mega-name">Customers</p><p class="mega-tag">Case studies &amp; client outcomes</p></div></a>
+                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="Blogs.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span><div><p class="mega-name">Blog</p><p class="mega-tag">Insights, perspectives &amp; best practices</p></div></a>
+                        </div>
+                        <!-- Footer -->
+                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- About Us -->
+                <a href="about_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">About Us</a>
+
+                <!-- Contact Us -->
+                <a href="contact_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Contact Us</a>
+
+                <!-- CTA Button -->
+                <a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full hover:opacity-90 transition-colors font-semibold text-sm whitespace-nowrap" style="background:#F2C747;">Talk to us</a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-600 transition-colors p-1" aria-label="Toggle menu">
+                <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4">
+            <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pb-2">Solutions</p>
+            <a href="adeahub_engage.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Engage</a>
+            <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub providers</a>
+            <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub connect</a>
+            <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub insight</a>
+            <a href="workwise.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <a href="adeahub_platform.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pt-1 pb-2">Resources</p>
+            <a href="newsroom.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Newsroom</a>
+            <a href="customers.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Customers</a>
+            <a href="Blogs.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Blog</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <a href="about_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a>
+            <div class="pt-3 pb-1">
+                <a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F2C747;">Talk to us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <section class="pt-20 pb-16 bg-white text-center relative overflow-hidden">
+        <div class="dot-grid absolute inset-0 pointer-events-none opacity-60" aria-hidden="true"></div>
+        <div class="blob-float-1 absolute left-[5%] top-[15%] w-72 h-72 rounded-full bg-blue-100/40 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
+        <div class="blob-float-2 absolute right-[8%] bottom-[10%] w-56 h-56 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
+        <div class="max-w-4xl mx-auto px-6 md:px-12 space-y-6">
+            <span class="inline-block text-sm font-bold text-gray-500 tracking-wider bg-gray-100 px-4 py-1.5 rounded-full">
+                Customer stories &nbsp;·&nbsp; Verified outcomes &nbsp;·&nbsp; Real impact
+            </span>
+            <h1 class="text-5xl md:text-6xl font-bold text-adeahub-blue leading-tight tracking-tight">
+                Healthcare organisations around the world choose adeahub to deliver care at scale.
+            </h1>
+            <p class="text-xl text-gray-600 font-medium leading-relaxed max-w-3xl mx-auto">
+                From national digital health programmes serving millions to multi-facility hospital networks across Asia and the Middle East, our customers are proving that modern software and measurable patient outcomes belong together.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+                <a href="#demo" class="bg-adeahub-yellow btn-glow btn-shimmer text-gray-900 text-center px-8 py-3.5 rounded-full font-semibold hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30 w-full sm:w-auto">
+                    Request a Demo
+                </a>
+                <a href="#case-studies" class="text-adeahub-blue font-semibold hover:text-blue-800 transition flex items-center justify-center gap-2 px-8 py-3.5 w-full sm:w-auto">
+                    See All Case Studies <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- SECTION: Scrolling Case Studies (Injected) -->
+    <section class="py-16 bg-white overflow-hidden border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 mb-8">
+            <h3 class="text-sm font-bold text-gray-400 tracking-widest text-center">Trusted by leading hospitals and healthcare systems worldwide</h3>
+        </div>
+        
+        <div class="relative w-full flex overflow-hidden hide-scrollbar">
+            <div class="animate-scroll-cards flex pb-4">
+                
+                <!-- Track 1 -->
+                <!-- Track 1 -->
+                <!-- Card 1: MoH Malaysia -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/moh-malaysia.jpg" alt="MoH Malaysia" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/my.png" alt="Malaysia flag" class="w-4 rounded-sm object-cover"> Malaysia
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/moh-malaysia.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MoH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Ministry of Health Malaysia</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Managing 145 hospitals and 500 clinics to drive nationwide healthcare digital transformation.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers established an interoperability platform paving the way for a Nationwide EHR.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: MMS -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/mms.jpg" alt="MMS Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/sa.png" alt="Saudi Arabia flag" class="w-4 rounded-sm object-cover"> Saudi Arabia
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/mms.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MMS</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Mouwasat Medical Services</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Founded in 1975, MMS is a major provider of private healthcare services across the region.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers 12.x deployment supported centralized electronic health records and care continuity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Medanta -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/medanta.jpg" alt="Medanta Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/in.png" alt="India flag" class="w-4 rounded-sm object-cover"> India
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/medanta.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MED</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Medanta, The Medicity</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">One of India's largest multi super-specialty institutes providing world-class medical care.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers integrated clinical and financial delivery, enhancing operational efficiencies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Brunei -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/brunei.jpg" alt="Brunei Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/bn.png" alt="Brunei flag" class="w-4 rounded-sm object-cover"> Brunei
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/brunei.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MoH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Ministry of Health Brunei</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Network of 4 main hospitals and 60+ health centers serving the public.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>"One-Patient – One Record" system eliminated duplicate investigations and wait times.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Ain Al Khaleej -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/ain-al-khaleej.jpg" alt="Ain Al Khaleej Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/ae.png" alt="UAE flag" class="w-4 rounded-sm object-cover"> UAE
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/ain.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>AAKH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Ain Al Khaleej Hospital</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">A world-class, 100+ bed tertiary care hospital offering specialized medical care in Al Ain.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Achieved HIMSS EMRAM Stage 6 certification with adeahub providers for total paperless operations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: KDAH -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/kdah.jpg" alt="KDAH Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/in.png" alt="India flag" class="w-4 rounded-sm object-cover"> India
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/kdah.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>KDAH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Kokilaben Dhirubhai Ambani</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Premier NABH-accredited quaternary care facilities known for medical tourism.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Unified EMR via central database enabled seamless care continuity across locations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: UHI Egypt -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/uhi-egypt.jpg" alt="UHI Egypt Facility" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/eg.png" alt="Egypt flag" class="w-4 rounded-sm object-cover"> Egypt
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/uhi.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>UHI</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Universal Health Insurance</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Government initiative introducing universal healthcare across hundreds of facilities.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>DC4H and adeahub providers established a Nationwide Integrated Care Record and Lifetime Health Record.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Sikarin -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/sikarin.jpg" alt="Sikarin Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/th.png" alt="Thailand flag" class="w-4 rounded-sm object-cover"> Thailand
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/sikarin.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>SKN</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Sikarin Hospitals</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Group of premium, JCI-accredited hospitals offering international standard health services.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Fully localized adeahub providers streamlined operations and optimized resource utilization.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9: KAUH -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/kauh.jpg" alt="KAUH Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/jo.png" alt="Jordan flag" class="w-4 rounded-sm object-cover"> Jordan
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/kauh.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>KAUH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">King Abdullah Univ. Hospital</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Prestigious 680-bed teaching hospital acting as a main regional referral center.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Achieved paperless operations and enhanced clinician collaboration via adeahub providers & Healthplug.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10: Siriraj -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/siriraj.jpg" alt="Siriraj Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/th.png" alt="Thailand flag" class="w-4 rounded-sm object-cover"> Thailand
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/siriraj.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>SRJ</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Siriraj Hospital</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">2500+ bed facility affiliated with Mahidol University, one of the largest teaching hospitals in Asia.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers seamlessly integrated with national databases to manage massive patient volumes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 11: MoD Oman -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/mod-oman.jpg" alt="MoD Oman Facility" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/om.png" alt="Oman flag" class="w-4 rounded-sm object-cover"> Oman
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/mod-oman.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MoD</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Ministry of Defense Oman</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Operates 4 hospitals and 12 primary health clinics for defense personnel and dependents.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Customized adeahub providers provides enterprise-wide MPI for seamless inter-facility referrals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 12: RHH Kuwait -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/rhh.jpg" alt="RHH Kuwait Care" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/kw.png" alt="Kuwait flag" class="w-4 rounded-sm object-cover"> Kuwait
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/rhh.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>RHH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">The Royale Home Health</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Provides high-quality, holistic clinical home care and luxurious hospitality services.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Next-Gen Enterprise Mobility enabled over 20 specialists to coordinate remote care.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 13: Nahdi -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/nahdi.jpg" alt="Nahdi Clinic" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/sa.png" alt="Saudi Arabia flag" class="w-4 rounded-sm object-cover"> Saudi Arabia
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/nahdi.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>NMC</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Nahdi Medical Company</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Leading retail pharmacy chain expanding into community care with state-of-the-art clinics.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers and Healthplug Mobility established an enterprise-wide master patient index.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ======================================================== -->
+                <!-- Track 2 (Duplicated exactly for seamless CSS scroll loop) -->
+                <!-- ======================================================== -->
+
+
+                <!-- Card 1: MoH Malaysia -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/moh-malaysia.jpg" alt="MoH Malaysia" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/my.png" alt="Malaysia flag" class="w-4 rounded-sm object-cover"> Malaysia
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/moh-malaysia.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MoH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Ministry of Health Malaysia</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Managing 145 hospitals and 500 clinics to drive nationwide healthcare digital transformation.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers established an interoperability platform paving the way for a Nationwide EHR.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: MMS -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/mms.jpg" alt="MMS Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/sa.png" alt="Saudi Arabia flag" class="w-4 rounded-sm object-cover"> Saudi Arabia
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/mms.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MMS</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Mouwasat Medical Services</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Founded in 1975, MMS is a major provider of private healthcare services across the region.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers 12.x deployment supported centralized electronic health records and care continuity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Medanta -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/medanta.jpg" alt="Medanta Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/in.png" alt="India flag" class="w-4 rounded-sm object-cover"> India
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/medanta.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MED</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Medanta, The Medicity</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">One of India's largest multi super-specialty institutes providing world-class medical care.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers integrated clinical and financial delivery, enhancing operational efficiencies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Brunei -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/brunei.jpg" alt="Brunei Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/bn.png" alt="Brunei flag" class="w-4 rounded-sm object-cover"> Brunei
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/brunei.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MoH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Ministry of Health Brunei</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Network of 4 main hospitals and 60+ health centers serving the public.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>"One-Patient – One Record" system eliminated duplicate investigations and wait times.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Ain Al Khaleej -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/ain-al-khaleej.jpg" alt="Ain Al Khaleej Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/ae.png" alt="UAE flag" class="w-4 rounded-sm object-cover"> UAE
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/ain.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>AAKH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Ain Al Khaleej Hospital</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">A world-class, 100+ bed tertiary care hospital offering specialized medical care in Al Ain.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Achieved HIMSS EMRAM Stage 6 certification with adeahub providers for total paperless operations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: KDAH -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/kdah.jpg" alt="KDAH Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/in.png" alt="India flag" class="w-4 rounded-sm object-cover"> India
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/kdah.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>KDAH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Kokilaben Dhirubhai Ambani</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Premier NABH-accredited quaternary care facilities known for medical tourism.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Unified EMR via central database enabled seamless care continuity across locations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: UHI Egypt -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/uhi-egypt.jpg" alt="UHI Egypt Facility" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/eg.png" alt="Egypt flag" class="w-4 rounded-sm object-cover"> Egypt
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/uhi.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>UHI</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Universal Health Insurance</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Government initiative introducing universal healthcare across hundreds of facilities.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>DC4H and adeahub providers established a Nationwide Integrated Care Record and Lifetime Health Record.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Sikarin -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/sikarin.jpg" alt="Sikarin Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/th.png" alt="Thailand flag" class="w-4 rounded-sm object-cover"> Thailand
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/sikarin.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>SKN</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Sikarin Hospitals</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Group of premium, JCI-accredited hospitals offering international standard health services.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Fully localized adeahub providers streamlined operations and optimized resource utilization.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9: KAUH -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/kauh.jpg" alt="KAUH Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/jo.png" alt="Jordan flag" class="w-4 rounded-sm object-cover"> Jordan
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/kauh.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>KAUH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">King Abdullah Univ. Hospital</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Prestigious 680-bed teaching hospital acting as a main regional referral center.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Achieved paperless operations and enhanced clinician collaboration via adeahub providers & Healthplug.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10: Siriraj -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/siriraj.jpg" alt="Siriraj Hospital" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/th.png" alt="Thailand flag" class="w-4 rounded-sm object-cover"> Thailand
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/siriraj.png" alt="" class="w-full h-full object-contain p-1" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>SRJ</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Siriraj Hospital</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">2500+ bed facility affiliated with Mahidol University, one of the largest teaching hospitals in Asia.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers seamlessly integrated with national databases to manage massive patient volumes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 11: MoD Oman -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/mod-oman.jpg" alt="MoD Oman Facility" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/om.png" alt="Oman flag" class="w-4 rounded-sm object-cover"> Oman
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/mod-oman.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>MoD</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Ministry of Defense Oman</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Operates 4 hospitals and 12 primary health clinics for defense personnel and dependents.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Customized adeahub providers provides enterprise-wide MPI for seamless inter-facility referrals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 12: RHH Kuwait -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/rhh.jpg" alt="RHH Kuwait Care" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/kw.png" alt="Kuwait flag" class="w-4 rounded-sm object-cover"> Kuwait
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/rhh.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>RHH</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">The Royale Home Health</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Provides high-quality, holistic clinical home care and luxurious hospitality services.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>Next-Gen Enterprise Mobility enabled over 20 specialists to coordinate remote care.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 13: Nahdi -->
+                <div class="w-[320px] h-[320px] bg-white rounded-2xl shadow-soft hover:shadow-lg transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative">
+                    <div class="h-28 w-full bg-gray-100 relative overflow-hidden shrink-0">
+                        <img src="Images/Hospitals/nahdi.jpg" alt="Nahdi Clinic" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur shadow-sm text-xs font-bold px-2 py-1 rounded text-gray-700 flex items-center gap-1.5">
+                            <img src="https://flagcdn.com/w20/sa.png" alt="Saudi Arabia flag" class="w-4 rounded-sm object-cover"> Saudi Arabia
+                        </div>
+                    </div>
+                    <div class="absolute top-20 left-4 w-12 h-12 bg-white rounded-xl shadow-md p-1 border border-gray-100 flex items-center justify-center z-10 overflow-hidden">
+                        <img src="Images/logos/nahdi.png" alt="" class="w-full h-full object-contain" onerror="this.parentElement.innerHTML='<span class=\'font-bold text-gray-400 text-xs\'>NMC</span>'">
+                    </div>
+                    <div class="p-5 pt-7 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg text-gray-900 leading-tight mb-1">Nahdi Medical Company</h4>
+                            <p class="text-xs text-gray-500 mb-3 line-clamp-2">Leading retail pharmacy chain expanding into community care with state-of-the-art clinics.</p>
+                        </div>
+                        <div class="bg-blue-50/50 p-2.5 rounded-lg border border-blue-100/50">
+                            <p class="text-xs text-adeahub-blue font-medium leading-snug line-clamp-3">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 inline mr-1 -mt-0.5"></i>adeahub providers and Healthplug Mobility established an enterprise-wide master patient index.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            
+            <!-- Optional fade gradients on the sides to blend seamlessly -->
+            <div class="absolute top-0 left-0 w-16 h-full bg-gradient-to-r from-white to-transparent pointer-events-none z-20"></div>
+            <div class="absolute top-0 right-0 w-16 h-full bg-gradient-to-l from-white to-transparent pointer-events-none z-20"></div>
+        </div>
+    </section>
+
+
+    <!-- SECTION 2: AGGREGATE IMPACT METRICS -->
+    <section class="py-16 bg-adeahub-lightestblue">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <p class="text-center text-lg md:text-xl font-medium text-gray-600 mb-10">
+                adeahub is deployed across some of the world's most demanding healthcare environments.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Metric 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-card border-b-4 border-adeahub-yellow text-center flex flex-col justify-center min-h-[160px]">
+                    <div class="text-4xl md:text-5xl font-extrabold text-adeahub-blue mb-3">450+</div>
+                    <div class="text-gray-600 font-medium leading-snug">Healthcare facilities powered by adeahub providers</div>
+                </div>
+                
+                <!-- Metric 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-card border-b-4 border-adeahub-yellow text-center flex flex-col justify-center min-h-[160px]">
+                    <div class="text-4xl md:text-5xl font-extrabold text-adeahub-blue mb-3">30,000+</div>
+                    <div class="text-gray-600 font-medium leading-snug">Active users across live deployments</div>
+                </div>
+
+                <!-- Metric 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-card border-b-4 border-adeahub-yellow text-center flex flex-col justify-center min-h-[160px]">
+                    <div class="text-4xl md:text-5xl font-extrabold text-adeahub-blue mb-3">5M+</div>
+                    <div class="text-gray-600 font-medium leading-snug">Patient beneficiaries served through adeahub platforms</div>
+                </div>
+
+                <!-- Metric 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-card border-b-4 border-adeahub-yellow text-center flex flex-col justify-center min-h-[160px]">
+                    <div class="text-4xl md:text-5xl font-extrabold text-adeahub-blue mb-3">3</div>
+                    <div class="text-gray-600 font-medium leading-snug">Regions. One consistent clinical standard.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: FEATURED CASE STUDIES -->
+    <section id="case-studies" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue mb-2">Stories That Speak for Themselves</h2>
+                    <p class="text-gray-500">Discover how healthcare organisations are transforming with adeahub.</p>
+                </div>
+                
+                <!-- Filter Tabs (Phase 2 functionality layout) -->
+                <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2 md:pb-0">
+                    <button class="px-5 py-2 bg-adeahub-blue text-white text-sm font-semibold rounded-full whitespace-nowrap shadow-sm">All Stories</button>
+                    <button class="px-5 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm font-semibold rounded-full whitespace-nowrap transition">By Solution</button>
+                    <button class="px-5 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm font-semibold rounded-full whitespace-nowrap transition">By Region</button>
+                    <button class="px-5 py-2 bg-gray-100 text-gray-600 hover:bg-gray-200 text-sm font-semibold rounded-full whitespace-nowrap transition">Care Setting</button>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                
+                <!-- CASE STUDY 1: UHIA Egypt -->
+                <div class="bg-white rounded-3xl shadow-card border border-gray-100 overflow-hidden flex flex-col lg:flex-row hover:shadow-lg transition-shadow duration-300">
+                    <!-- Left Column: Snapshot -->
+                    <div class="bg-white p-8 lg:p-10 lg:w-1/3 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col">
+                        <div class="text-sm font-bold text-gray-400 tracking-widest mb-6">National Programme</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Universal Health Insurance Authority (UHIA)</h3>
+                        <div class="flex items-center gap-2 mb-8 text-gray-600 font-medium">
+                            <img src="https://flagcdn.com/w20/eg.png" alt="Egypt" class="w-5 rounded-sm" onerror="this.style.display='none'"> Egypt
+                        </div>
+                        
+                        <div class="space-y-4 text-sm mt-auto">
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Type</div>
+                                <div class="font-medium text-gray-900">National Health Authority</div>
+                            </div>
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Scale</div>
+                                <div class="font-medium text-gray-900">350 facilities · 6 governorates · 5M+ beneficiaries</div>
+                            </div>
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Solutions Used</div>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="bg-blue-100 text-adeahub-blue px-2.5 py-1 rounded font-bold text-xs">adeahub providers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Column: Narrative -->
+                    <div class="p-8 lg:p-10 lg:w-2/3 flex flex-col">
+                        <h4 class="text-2xl md:text-3xl font-bold text-adeahub-blue mb-6 leading-tight">Digital transformation at national scale: 350 facilities, 5 million patients, zero paper.</h4>
+                        
+                        <div class="space-y-5 text-gray-600 flex-grow">
+                            <p><span class="font-bold text-gray-900">Challenge:</span> Egypt's UHIA needed to unify clinical records across 350 healthcare facilities in 6 governorates — eliminating paper workflows and enabling continuity of care for over 5 million insured beneficiaries.</p>
+                            <p><span class="font-bold text-gray-900">Solution:</span> adeahub providers delivered a single-instance EMR across all facilities, with standards-based integrations to lab, radiology, and payor systems. Online appointment booking, digital order entry, and medications management were deployed across the full network.</p>
+                            <p><span class="font-bold text-gray-900">Result:</span> Complete paperless transformation across 6 governorates. Over 5 million patients now have a unified electronic medical record. Internal and external referrals are fully digital.</p>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                            <div class="text-sm">
+                                <span class="text-gray-500 font-medium">Powered by:</span>
+                                <span class="font-bold text-gray-800 ml-1">adeahub providers</span>
+                            </div>
+                            <a href="#" class="text-adeahub-blue font-bold hover:text-blue-800 flex items-center gap-2 group whitespace-nowrap">
+                                Read Full Story <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CASE STUDY 2: KDAH India -->
+                <div class="bg-white rounded-3xl shadow-card border border-gray-100 overflow-hidden flex flex-col lg:flex-row hover:shadow-lg transition-shadow duration-300">
+                    <!-- Left Column: Snapshot -->
+                    <div class="bg-white p-8 lg:p-10 lg:w-1/3 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col">
+                        <div class="text-sm font-bold text-gray-400 tracking-widest mb-6">Multi-Facility Hospital Network</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Kokilaben Dhirubhai Ambani Hospital (KDAH)</h3>
+                        <div class="flex items-center gap-2 mb-8 text-gray-600 font-medium">
+                            <img src="https://flagcdn.com/w20/in.png" alt="India" class="w-5 rounded-sm" onerror="this.style.display='none'"> India
+                        </div>
+                        
+                        <div class="space-y-4 text-sm mt-auto">
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Type</div>
+                                <div class="font-medium text-gray-900">Tertiary Care Hospital Group</div>
+                            </div>
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Scale</div>
+                                <div class="font-medium text-gray-900">3 hospitals · 1,250 beds · Andheri, Navi Mumbai & Indore</div>
+                            </div>
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Solutions Used</div>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="bg-blue-100 text-adeahub-blue px-2.5 py-1 rounded font-bold text-xs">adeahub providers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Column: Narrative -->
+                    <div class="p-8 lg:p-10 lg:w-2/3 flex flex-col">
+                        <h4 class="text-2xl md:text-3xl font-bold text-adeahub-blue mb-6 leading-tight">Three hospitals. One unified patient record. Continuous care across Mumbai and Indore.</h4>
+                        
+                        <div class="space-y-5 text-gray-600 flex-grow">
+                            <p><span class="font-bold text-gray-900">Challenge:</span> KDAH needed a single platform to manage clinical and administrative operations across three hospitals — including two NABH-accredited Mumbai campuses — serving high patient volumes across diverse specialties while supporting medical tourism.</p>
+                            <p><span class="font-bold text-gray-900">Solution:</span> adeahub providers was deployed as a central single-database system, giving all three hospitals access to a unified Master Patient Index and continuous electronic medical record. The platform integrates with PACS, 50+ lab analysers, SAP ERP, and a video conferencing appointment system.</p>
+                            <p><span class="font-bold text-gray-900">Result:</span> Active and uninterrupted since 2011, with contract renewals secured through 2027. Clinicians across all three facilities operate from one connected system, with no data silos between campuses.</p>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                            <div class="text-sm">
+                                <span class="text-gray-500 font-medium">Powered by:</span>
+                                <span class="font-bold text-gray-800 ml-1">adeahub providers</span>
+                            </div>
+                            <a href="#" class="text-adeahub-blue font-bold hover:text-blue-800 flex items-center gap-2 group whitespace-nowrap">
+                                Read Full Story <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CASE STUDY 3: MoH Malaysia -->
+                <div class="bg-white rounded-3xl shadow-card border border-gray-100 overflow-hidden flex flex-col lg:flex-row hover:shadow-lg transition-shadow duration-300">
+                    <!-- Left Column: Snapshot -->
+                    <div class="bg-white p-8 lg:p-10 lg:w-1/3 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col">
+                        <div class="text-sm font-bold text-gray-400 tracking-widest mb-6">National Ministry of Health Programme</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Ministry of Health Malaysia</h3>
+                        <div class="flex items-center gap-2 mb-8 text-gray-600 font-medium">
+                            <img src="https://flagcdn.com/w20/my.png" alt="Malaysia" class="w-5 rounded-sm" onerror="this.style.display='none'"> Malaysia
+                        </div>
+                        
+                        <div class="space-y-4 text-sm mt-auto">
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Type</div>
+                                <div class="font-medium text-gray-900">National Ministry of Health</div>
+                            </div>
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Scale</div>
+                                <div class="font-medium text-gray-900">10+ hospitals · 100 to 1,200 beds per site · Nationwide</div>
+                            </div>
+                            <div>
+                                <div class="text-gray-400 font-semibold mb-1">Solutions Used</div>
+                                <div class="flex gap-2 flex-wrap">
+                                    <span class="bg-blue-100 text-adeahub-blue px-2.5 py-1 rounded font-bold text-xs">adeahub providers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Column: Narrative -->
+                    <div class="p-8 lg:p-10 lg:w-2/3 flex flex-col">
+                        <h4 class="text-2xl md:text-3xl font-bold text-adeahub-blue mb-6 leading-tight">A scalable national HIS — from community hospitals to 1,200-bed tertiary centres.</h4>
+                        
+                        <div class="space-y-5 text-gray-600 flex-grow">
+                            <p><span class="font-bold text-gray-900">Challenge:</span> Malaysia's Ministry of Health required a single, scalable hospital information system deployable across facilities of widely varying sizes — from basic community hospitals to large tertiary hospitals — with a roadmap toward a nationwide electronic health record.</p>
+                            <p><span class="font-bold text-gray-900">Solution:</span> adeahub providers was deployed across multiple hospital tiers, each configured to the right module depth. The platform spans appointment scheduling, inpatient and outpatient management, clinical documentation, pharmacy, lab, radiology, and integration to national health information systems including MyHIX.</p>
+                            <p><span class="font-bold text-gray-900">Result:</span> adeahub now powers MoH Malaysia's hospital network across multiple states, with the most recent deployments at Serdang (1,200 beds) and Sungai Buloh (1,200 beds) going live in 2023–24. The programme supports Malaysia's long-term ambition for a nationally connected health record.</p>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                            <div class="text-sm">
+                                <span class="text-gray-500 font-medium">Powered by:</span>
+                                <span class="font-bold text-gray-800 ml-1">adeahub providers</span>
+                            </div>
+                            <a href="#" class="text-adeahub-blue font-bold hover:text-blue-800 flex items-center gap-2 group whitespace-nowrap">
+                                Read Full Story <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: TESTIMONIAL QUOTES -->
+    <section class="py-24 bg-adeahub-lightestblue">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue text-center mb-16">From the People Who Know Best</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft flex flex-col justify-between relative border border-gray-100">
+                    <div>
+                        <div class="text-adeahub-yellow text-6xl font-serif leading-none h-8 mb-4">"</div>
+                        <p class="italic text-gray-700 text-lg leading-relaxed mb-8">
+                            adeahub gave us a single system of record across three hospitals. Our clinicians can see the complete patient picture from day one — and that directly improves clinical decisions.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-gray-100">
+                        <!-- Headshot Placeholder: Organization Logo Fallback -->
+                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 border border-gray-200">
+                            <i data-lucide="building-2" class="w-6 h-6 text-gray-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-adeahub-blue font-bold">[Name Placeholder]</div>
+                            <div class="text-sm text-gray-500 font-medium">Chief Medical Information Officer</div>
+                            <div class="text-xs text-gray-400 mt-0.5">Kokilaben Dhirubhai Ambani Hospital</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft flex flex-col justify-between relative border border-gray-100">
+                    <div>
+                        <div class="text-adeahub-yellow text-6xl font-serif leading-none h-8 mb-4">"</div>
+                        <p class="italic text-gray-700 text-lg leading-relaxed mb-8">
+                            The interoperability with our existing lab and radiology infrastructure was seamless. We were live in weeks, not months. That mattered to our teams on the ground.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-gray-100">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 border border-gray-200">
+                            <i data-lucide="building-2" class="w-6 h-6 text-gray-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-adeahub-blue font-bold">[Name Placeholder]</div>
+                            <div class="text-sm text-gray-500 font-medium">Chief Information Officer</div>
+                            <div class="text-xs text-gray-400 mt-0.5">Ministry of Health Malaysia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft flex flex-col justify-between relative border border-gray-100">
+                    <div>
+                        <div class="text-adeahub-yellow text-6xl font-serif leading-none h-8 mb-4">"</div>
+                        <p class="italic text-gray-700 text-lg leading-relaxed mb-8">
+                            Serving five million beneficiaries required a platform that could scale without breaking. adeahub gave us that reliability from day one across all six governorates.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-gray-100">
+                        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 border border-gray-200">
+                            <i data-lucide="building-2" class="w-6 h-6 text-gray-400"></i>
+                        </div>
+                        <div>
+                            <div class="text-adeahub-blue font-bold">[Name Placeholder]</div>
+                            <div class="text-sm text-gray-500 font-medium">Director, Digital Health Transformation</div>
+                            <div class="text-xs text-gray-400 mt-0.5">Universal Health Insurance Authority (UHIA), Egypt</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: LOGO WALL -->
+    <section class="py-20 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 mb-8">
+            <h3 class="text-center text-xl font-bold text-gray-400 tracking-widest">Trusted by Leading Healthcare Organisations</h3>
+        </div>
+        <div class="relative w-full flex overflow-hidden mb-16 py-4 border-y border-gray-200 bg-white/50 marquee-container">
+                <div class="flex w-max animate-marquee">
+                    <!-- First set -->
+                    <div class="flex shrink-0 items-center gap-16 px-8">
+                        <img src="Images/Clients_logos/mms.png" alt="Mouwasat Medical Services" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/king-abdulah.png" alt="King Abdullah University Hospital" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/KDAH.png" alt="KDAH India" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/al-khaleej.png" alt="Ain Al Khaleej Hospital" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/Royal-Home.png" alt="Royal Home Health Kuwait" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/MOH-Malaysia.png" alt="Ministry of Health Malaysia" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/universal-health.png" alt="Universal Health Insurance Authority" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/Bru-hims.png" alt="Brunei HIMS" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/MOD.jpg" alt="Ministry of Defence" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/Medanta.jpg" alt="Medanta" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/nahdi.png" alt="Nahdi" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/sikarin.png" alt="Sikarin Hospital" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/siriraj-hostpital.png" alt="Siriraj Hospital" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/brunei-shell.jpg" alt="Brunei Shell" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                    </div>
+                    <!-- Duplicate for seamless scroll -->
+                    <div class="flex shrink-0 items-center gap-16 px-8">
+                        <img src="Images/Clients_logos/mms.png" alt="Mouwasat Medical Services" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/king-abdulah.png" alt="King Abdullah University Hospital" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/KDAH.png" alt="KDAH India" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/al-khaleej.png" alt="Ain Al Khaleej Hospital" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/Royal-Home.png" alt="Royal Home Health Kuwait" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/MOH-Malaysia.png" alt="Ministry of Health Malaysia" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/universal-health.png" alt="Universal Health Insurance Authority" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/Bru-hims.png" alt="Brunei HIMS" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/MOD.jpg" alt="Ministry of Defence" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/Medanta.jpg" alt="Medanta" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/nahdi.png" alt="Nahdi" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/sikarin.png" alt="Sikarin Hospital" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/siriraj-hostpital.png" alt="Siriraj Hospital" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                        <img src="Images/Clients_logos/brunei-shell.jpg" alt="Brunei Shell" class="h-10 max-w-[140px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 shrink-0">
+                    </div>
+                </div>
+                <!-- Gradients for fade effect -->
+                <div class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-adeahub-lightbg to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-adeahub-lightbg to-transparent z-10 pointer-events-none"></div>
+            </div>
+    </section>
+
+    <!-- SECTION 6: FINAL CTA -->
+    <section id="demo" class="py-24 bg-adeahub-blue text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Ready to see what adeahub can do for your organisation?</h2>
+            <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                Talk to our team about your specific care setting, patient volumes, and interoperability requirements. We will show you how adeahub fits.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <!-- Primary Button -->
+                <button class="bg-adeahub-yellow btn-glow btn-shimmer text-gray-900 text-lg px-10 py-4 rounded-full font-bold hover:bg-yellow-400 transition shadow-xl shadow-yellow-500/20 w-full sm:w-auto">
+                    Request a Demo
+                </button>
+            </div>
+            
+            <div class="mt-8">
+                <a href="#" class="text-white font-medium underline hover:text-blue-100 underline-offset-4">
+                    Download Our Outcomes Report
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background:#ffffff; border-top: 1px solid #e5e7eb;">
+
+    <!-- Main footer body -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 pt-14 pb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+
+            <!-- Col 1: Brand (spans 2 cols on large) -->
+            <div class="lg:col-span-2 space-y-5">
+                <a href="index.html">
+                    <img src="Images/adeahub-logo-footer.png" alt="adeahub" class="h-9 object-contain object-left">
+                </a>
+                <p style="color:#6b7280; font-size:0.875rem; line-height:1.75; max-width:320px;">
+                    Modern software to deliver personalised healthcare at scale.
+                </p>
+                <!-- Social links -->
+                <div style="display:flex; gap:10px; padding-top:2px;">
+                    <a href="https://www.linkedin.com/company/adeahub" target="_blank" rel="noopener"
+                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
+                        <svg width="15" height="15" fill="#4b5563" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="mailto:hello@adeahub.com"
+                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
+                        <svg width="15" height="15" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Products -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Products</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Engage</a></li>
+                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Care</a></li>
+                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Connect</a></li>
+                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Insights</a></li>
+                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Company</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
+                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
+                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
+                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
+                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
+                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Get in Touch -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Get in touch</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li>
+                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            hello@adeahub.com
+                        </a>
+                    </li>
+                    <li style="font-size:0.875rem;color:#9ca3af;display:flex;align-items:center;gap:8px;">
+                        <svg width="14" height="14" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Kuala Lumpur, Malaysia
+                    </li>
+                    <li style="padding-top:6px;">
+                        <a href="request_demo.html"
+                           style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#FAC515;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
+                           onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                            Request a demo
+                            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div style="border-top:1px solid #f3f4f6;">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-5" style="text-align:center;">
+            <p style="font-size:0.78rem;color:#9ca3af;">&copy; 2026 adeahub. All rights reserved.</p>
+        </div>
+    </div>
+
+</footer>
+
+    <!-- Scripts for Functionality -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+
+    <script>
+        // Mobile menu toggle
+        (function() {
+            var btn  = document.getElementById('mobile-menu-btn');
+            var menu = document.getElementById('mobile-menu');
+            var ham  = document.getElementById('hamburger-icon');
+            var cls  = document.getElementById('close-icon');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    var open = !menu.classList.contains('hidden');
+                    menu.classList.toggle('hidden', open);
+                    ham.classList.toggle('hidden', !open);
+                    cls.classList.toggle('hidden', open);
+                });
+            }
+        })();
+    </script>
+
+<!-- Navbar scroll shadow -->
+<script>
+(function() {
+    var nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 10) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    }, { passive: true });
+})();
+</script>
+
+<!-- Scroll-reveal (IntersectionObserver) -->
+<script>
+(function() {
+    var targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    if (!window.IntersectionObserver) {
+        targets.forEach(function(el) { el.classList.add('visible'); });
+        return;
+    }
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+<!-- Animated number counters -->
+<script>
+(function() {
+    function formatNum(n, suffix) {
+        if (suffix.indexOf('M+') !== -1) return n + 'M+';
+        if (n >= 1000) return n.toLocaleString() + '+';
+        return n + suffix;
+    }
+    function animateCounter(el) {
+        var target = parseInt(el.dataset.target, 10);
+        var suffix = el.dataset.suffix || '';
+        var start = 0;
+        var duration = 1600;
+        var startTime = null;
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.round(eased * target);
+            el.textContent = formatNum(current, suffix);
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = formatNum(target, suffix);
+        }
+        requestAnimationFrame(step);
+    }
+    var counters = document.querySelectorAll('.counter');
+    if (!window.IntersectionObserver) { return; }
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el) { obs.observe(el); });
+})();
+</script>
+
+<script>
+/* ── SOLUTION CARD 3D TILT + CURSOR GLOW ── */
+(function () {
+    function initCards() {
+        const cards = document.querySelectorAll('.solution-card');
+        cards.forEach(card => {
+            if (!card.querySelector('.card-glow-layer')) {
+                const glow = document.createElement('div');
+                glow.className = 'card-glow-layer';
+                card.insertBefore(glow, card.firstChild);
+            }
+            card.style.position = 'relative';
+            card.addEventListener('mousemove', function (e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width  / 2;
+                const cy = rect.height / 2;
+                const tiltY =  ((x - cx) / cx) * 6;
+                const tiltX = -((y - cy) / cy) * 6;
+                card.style.transform =
+                    `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.018)`;
+                card.style.boxShadow =
+                    `0 28px 56px -8px rgba(99,150,241,0.22), 0 8px 20px -4px rgba(99,150,241,0.14)`;
+                const glow = card.querySelector('.card-glow-layer');
+                if (glow) {
+                    glow.style.background =
+                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(99,150,241,0.13) 0%, transparent 70%)`;
+                }
+            });
+            card.addEventListener('mouseleave', function () {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+                const glow = card.querySelector('.card-glow-layer');
+                if (glow) glow.style.background = '';
+            });
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCards);
+    } else {
+        initCards();
+    }
+})();
+</script>
+
+</body>
+</html>

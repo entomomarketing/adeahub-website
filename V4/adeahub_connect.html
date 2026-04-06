@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AH Connect — Health Data Integration Platform | adeahub</title>
+    <meta name="description" content="321 facilities. One integrated data layer. AH Connect is a FHIR-native health data integration platform connecting diverse systems across national and enterprise healthcare networks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: { adeahub: { blue: '#6396F1', yellow: '#F2C747', gray: '#4B5563', lightbg: '#6396F1' } },
+                    boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.08)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root { --blue: #6396F1; --yellow: #F2C747; --blue-pale: #EEF4FF; }
+        body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        .reveal-d1 { transition-delay: 0.10s; }
+        .reveal-d2 { transition-delay: 0.20s; }
+        .reveal-d3 { transition-delay: 0.30s; }
+        .reveal-d4 { transition-delay: 0.40s; }
+        .nav-scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.07) !important; }
+        .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown-menu:hover { display: block !important; }
+        .nav-dropdown-menu { animation: dropIn 0.18s ease forwards; }
+        @keyframes dropIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes btnGlow { 0%,100% { box-shadow: 0 8px 28px rgba(99,150,241,0.38); } 50% { box-shadow: 0 8px 44px rgba(99,150,241,0.58); } }
+        .btn-glow { animation: btnGlow 2.4s ease-in-out infinite; }
+        .btn-glow:hover { animation: none; box-shadow: 0 12px 40px rgba(99,150,241,0.55); transform: translateY(-2px); transition: all 0.25s ease; }
+        .btn-shimmer { position: relative; overflow: hidden; }
+        .btn-shimmer::after { content: ''; position: absolute; top: 0; left: -100%; width: 55%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); }
+        .btn-shimmer:hover::after { left: 160%; transition: left 0.55s ease; }
+        .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; color: #6396F1; margin-bottom: 14px; }
+        .section-label::before { content: ''; display: block; width: 22px; height: 2px; background: #6396F1; border-radius: 2px; }
+        .hero-bg { background: radial-gradient(ellipse 75% 65% at 90% 40%, rgba(99,150,241,0.10) 0%, transparent 68%), radial-gradient(ellipse 55% 55% at 8% 80%, rgba(99,150,241,0.07) 0%, transparent 62%), radial-gradient(ellipse 40% 40% at 50% 5%, rgba(242,199,71,0.06) 0%, transparent 60%), #F8FAFC; }
+        .dot-grid { background-image: radial-gradient(circle, rgba(99,150,241,0.11) 1px, transparent 1px); background-size: 28px 28px; }
+        @keyframes badgePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(99,150,241,0.30); } 50% { box-shadow: 0 0 0 7px rgba(99,150,241,0); } }
+        .hero-badge { animation: badgePulse 2.8s ease-in-out infinite; }
+        @keyframes floatBlob { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-18px) scale(1.04); } }
+        .blob-float-1 { animation: floatBlob 9s ease-in-out infinite; }
+        .blob-float-2 { animation: floatBlob 12s ease-in-out infinite 2.5s; }
+        .outcome-card { transition: transform 0.28s ease, box-shadow 0.28s ease; position: relative; overflow: hidden; }
+        .outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #6396F1, #60a5fa); transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease; }
+        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(99,150,241,0.15); }
+        .outcome-card:hover::before { transform: scaleX(1); }
+        .gradient-text { background: linear-gradient(135deg, #6396F1 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .cap-card { border-top: 3px solid transparent; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; border-radius: 20px; }
+        .cap-card:hover { border-top-color: #6396F1; transform: translateY(-4px); box-shadow: 0 14px 36px -8px rgba(99,150,241,0.14); }
+        @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .metric-card { animation: countUp 0.6s ease forwards; }
+        .proof-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .proof-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px -8px rgba(99,150,241,0.12); }
+
+        /* Hero graphic animations */
+        @keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        .animate-float { animation: heroFloat 4s ease-in-out infinite; }
+        .animate-float-delayed { animation: heroFloat 4s ease-in-out infinite 1.5s; }
+        .float-slow { animation: heroFloat 6s ease-in-out infinite; }
+        .float-fast { animation: heroFloat 3s ease-in-out infinite 0.5s; }
+        .shadow-float { box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .system-node { transition: all 0.3s; }
+        .system-node:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(99,150,241,0.15); }
+        @keyframes flowDot { 0%{transform:translate(0,0);opacity:1} 80%{opacity:1} 100%{transform:translate(var(--tx),var(--ty));opacity:0} }
+        .animate-flow-1 { animation: flowDot 2s linear infinite; }
+        .animate-flow-2 { animation: flowDot 2s linear infinite 0.7s; }
+        .animate-flow-3 { animation: flowDot 2s linear infinite 1.4s; }
+    
+        /* ═══════════════════════════════════════════════════════
+       ADEAHUB REDESIGN OVERRIDES
+       ═══════════════════════════════════════════════════════ */
+    :root {
+        --blue: #6396F1;
+        --yellow: #F2C747;
+        --blue-pale: rgba(99,150,241,0.10);
+        --shadow-blue: rgba(99,150,241,0.15);
+    }
+
+    /* Gradient text → solid blue */
+    .gradient-text {
+        background: none !important;
+        -webkit-text-fill-color: #6396F1 !important;
+        color: #6396F1 !important;
+    }
+
+    /* Stat numbers → solid blue */
+    .stat-num {
+        background: none !important;
+        -webkit-text-fill-color: #6396F1 !important;
+        color: #6396F1 !important;
+    }
+
+    /* Section labels → blue on white; yellow on blue bg (overridden below) */
+    .section-label { color: #6396F1 !important; }
+    .section-label::before { background: #6396F1 !important; }
+
+    /* Tab active */
+    .tab-btn.active { background-color: #6396F1 !important; }
+
+    /* Solution card hover border */
+    .solution-card:hover { border-top-color: #6396F1 !important; }
+
+    /* Outcome card top bar */
+    .outcome-card::before { background: #6396F1 !important; }
+
+    /* ── ALL BLUE SECTION BACKGROUNDS → solid #6396F1 ── */
+    .hero-bg { background: #6396F1 !important; }
+    .cta-mesh { background: #6396F1 !important; }
+    .testimonial-bg { background: #6396F1 !important; }
+    section.bg-adeahub-lightbg,
+    header.bg-adeahub-lightbg { background-color: #6396F1 !important; }
+    section.bg-adeahub-blue { background-color: #6396F1 !important; }
+    #cta { background: #6396F1 !important; border-top-color: #5280d9 !important; }
+
+    /* ── ANIMATED ORB BACKGROUNDS on all blue sections ── */
+    .hero-bg,
+    .cta-mesh,
+    .testimonial-bg,
+    section.bg-adeahub-lightbg,
+    section.bg-adeahub-blue,
+    header.bg-adeahub-lightbg,
+    #cta {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Orb pseudo-elements shared across all blue sections */
+    .hero-bg::before, .cta-mesh::before, .testimonial-bg::before,
+    section.bg-adeahub-lightbg::before, section.bg-adeahub-blue::before,
+    header.bg-adeahub-lightbg::before, #cta::before,
+    .hero-bg::after, .cta-mesh::after, .testimonial-bg::after,
+    section.bg-adeahub-lightbg::after, section.bg-adeahub-blue::after,
+    header.bg-adeahub-lightbg::after, #cta::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        background: rgba(255,255,255,0.9);
+    }
+
+    /* Large orb — top-left */
+    .hero-bg::before, .cta-mesh::before, .testimonial-bg::before,
+    section.bg-adeahub-lightbg::before, section.bg-adeahub-blue::before,
+    header.bg-adeahub-lightbg::before, #cta::before {
+        width: 520px; height: 520px;
+        top: -180px; left: -120px;
+        animation: floatOrb1 14s ease-in-out infinite;
+        filter: blur(2px);
+        opacity: 0.08;
+    }
+    /* Smaller orb — bottom-right */
+    .hero-bg::after, .cta-mesh::after, .testimonial-bg::after,
+    section.bg-adeahub-lightbg::after, section.bg-adeahub-blue::after,
+    header.bg-adeahub-lightbg::after, #cta::after {
+        width: 340px; height: 340px;
+        bottom: -100px; right: -80px;
+        animation: floatOrb2 18s ease-in-out infinite;
+        filter: blur(1px);
+        opacity: 0.05;
+    }
+
+    /* Stagger animation delays for visual variety */
+    .cta-mesh::before, section.bg-adeahub-lightbg::before { animation-delay: -3s; }
+    .cta-mesh::after,  section.bg-adeahub-lightbg::after  { animation-delay: -7s; }
+    .testimonial-bg::before, section.bg-adeahub-blue::before { animation-delay: -6s; }
+    .testimonial-bg::after,  section.bg-adeahub-blue::after  { animation-delay: -2s; }
+    #cta::before { animation-delay: -9s; }
+    #cta::after  { animation-delay: -4s; }
+
+    @keyframes floatOrb1 {
+        0%,100% { transform: translate(0, 0) scale(1); }
+        33%     { transform: translate(30px, 25px) scale(1.06); }
+        66%     { transform: translate(-20px, 40px) scale(0.94); }
+    }
+    @keyframes floatOrb2 {
+        0%,100% { transform: translate(0, 0) scale(1); }
+        40%     { transform: translate(-35px, -20px) scale(1.08); }
+        70%     { transform: translate(25px, 30px) scale(0.92); }
+    }
+
+    /* Dot-grid overlay on all blue sections */
+    .hero-bg, .cta-mesh, .testimonial-bg,
+    section.bg-adeahub-lightbg, section.bg-adeahub-blue,
+    header.bg-adeahub-lightbg, #cta {
+        background-image:
+            radial-gradient(circle, rgba(255,255,255,0.10) 1px, transparent 1px) !important;
+        background-size: 36px 36px !important;
+        background-position: 0 0 !important;
+    }
+
+    /* All child content must sit above pseudo-elements */
+    .hero-bg > *:not(.absolute), .cta-mesh > *:not(.absolute), .testimonial-bg > *:not(.absolute),
+    section.bg-adeahub-lightbg > *:not(.absolute), section.bg-adeahub-blue > *:not(.absolute),
+    header.bg-adeahub-lightbg > *:not(.absolute), #cta > *:not(.absolute) {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ── TEXT COLORS ON BLUE BACKGROUNDS ── */
+
+    /* hero-bg / header.bg-adeahub-lightbg */
+    .hero-bg h1, .hero-bg h2, .hero-bg h3, .hero-bg p, .hero-bg li,
+    header.bg-adeahub-lightbg h1, header.bg-adeahub-lightbg h2,
+    header.bg-adeahub-lightbg h3, header.bg-adeahub-lightbg p,
+    header.bg-adeahub-lightbg li { color: white !important; }
+
+    header .text-adeahub-yellow,
+    header span[class*="yellow"],
+    .hero-bg .text-adeahub-yellow { color: #F2C747 !important; }
+
+    /* section.bg-adeahub-lightbg */
+    section.bg-adeahub-lightbg h2,
+    section.bg-adeahub-lightbg h3,
+    section.bg-adeahub-lightbg h4 { color: white !important; }
+
+    section.bg-adeahub-lightbg p,
+    section.bg-adeahub-lightbg li,
+    section.bg-adeahub-lightbg .text-gray-500,
+    section.bg-adeahub-lightbg .text-gray-600,
+    section.bg-adeahub-lightbg .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+
+    section.bg-adeahub-lightbg .text-gray-900,
+    section.bg-adeahub-lightbg .text-gray-800 { color: white !important; }
+
+    section.bg-adeahub-lightbg .section-label { color: #F2C747 !important; }
+    section.bg-adeahub-lightbg .section-label::before { background: #F2C747 !important; }
+    section.bg-adeahub-lightbg span.text-sm.font-bold,
+    section.bg-adeahub-lightbg .font-bold.tracking-wider,
+    section.bg-adeahub-lightbg .tracking-widest { color: #F2C747 !important; }
+
+    /* section.bg-adeahub-blue */
+    section.bg-adeahub-blue h2,
+    section.bg-adeahub-blue h3,
+    section.bg-adeahub-blue h4 { color: white !important; }
+
+    section.bg-adeahub-blue p,
+    section.bg-adeahub-blue li,
+    section.bg-adeahub-blue .text-gray-500,
+    section.bg-adeahub-blue .text-gray-600,
+    section.bg-adeahub-blue .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+
+    section.bg-adeahub-blue .text-gray-900,
+    section.bg-adeahub-blue .text-gray-800 { color: white !important; }
+
+    section.bg-adeahub-blue .section-label { color: #F2C747 !important; }
+    section.bg-adeahub-blue .section-label::before { background: #F2C747 !important; }
+    section.bg-adeahub-blue span.text-sm.font-bold,
+    section.bg-adeahub-blue .font-bold.tracking-wider,
+    section.bg-adeahub-blue .tracking-widest { color: #F2C747 !important; }
+
+    /* cta-mesh */
+    .cta-mesh h2, .cta-mesh h3, .cta-mesh p,
+    .cta-mesh li { color: white !important; }
+    .cta-mesh .text-gray-500, .cta-mesh .text-gray-600,
+    .cta-mesh .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+    .cta-mesh .section-label { color: #F2C747 !important; }
+    .cta-mesh .section-label::before { background: #F2C747 !important; }
+
+    /* testimonial-bg */
+    .testimonial-bg h2, .testimonial-bg h3, .testimonial-bg p,
+    .testimonial-bg li { color: white !important; }
+    .testimonial-bg .text-gray-500, .testimonial-bg .text-gray-600,
+    .testimonial-bg .text-gray-700 { color: rgba(255,255,255,0.75) !important; }
+
+    /* #cta section */
+    #cta h2, #cta h3, #cta h4 { color: white !important; }
+    #cta p, #cta li { color: rgba(255,255,255,0.80) !important; }
+    #cta span.text-sm.font-bold,
+    #cta span.tracking-wider { color: #F2C747 !important; }
+    #cta .text-gray-500, #cta .text-gray-600 { color: rgba(255,255,255,0.75) !important; }
+    #cta .text-adeahub-blue { color: #F2C747 !important; }
+
+    /* White cards inside blue sections: restore normal text colors */
+    section.bg-adeahub-lightbg .bg-white h3,
+    section.bg-adeahub-lightbg .bg-white h4,
+    section.bg-adeahub-blue .bg-white h3,
+    section.bg-adeahub-blue .bg-white h4 { color: #111827 !important; }
+
+    section.bg-adeahub-lightbg .bg-white p,
+    section.bg-adeahub-lightbg .bg-white span,
+    section.bg-adeahub-lightbg .bg-white li,
+    section.bg-adeahub-blue .bg-white p,
+    section.bg-adeahub-blue .bg-white span,
+    section.bg-adeahub-blue .bg-white li { color: #4B5563 !important; }
+
+    /* ── BUTTONS on blue backgrounds → Yellow with black text ── */
+    section.bg-adeahub-lightbg .btn-glow,
+    section.bg-adeahub-blue .btn-glow,
+    .cta-mesh .btn-glow,
+    .hero-bg .btn-glow,
+    #cta .btn-glow {
+        background: #F2C747 !important;
+        color: #1a1a2e !important;
+        border-color: #F2C747 !important;
+    }
+
+    section.bg-adeahub-lightbg a[class*="bg-adeahub-blue"],
+    section.bg-adeahub-blue a[class*="bg-adeahub-blue"],
+    .cta-mesh a[class*="bg-adeahub-blue"],
+    #cta a[class*="bg-adeahub-blue"] {
+        background: #F2C747 !important;
+        color: #1a1a2e !important;
+    }
+
+    /* Remove decorative blue blobs that look odd on blue bg */
+    .bg-blue-100\/40, .bg-blue-100 { opacity: 0.08 !important; }
+
+    /* ── SOLUTION CARD 3D TILT + GLOW CSS ── */
+    .solution-card {
+        transition: transform 0.12s ease, box-shadow 0.2s ease;
+        will-change: transform;
+        transform-style: preserve-3d;
+        cursor: default;
+    }
+    .solution-card .card-glow-layer {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+    }
+    .solution-card:hover .card-glow-layer { opacity: 1; }
+    .solution-card > *:not(.card-glow-layer) { position: relative; z-index: 1; }
+
+
+
+    
+    /* ── Hero graphic preservation: keep text readable inside white-bg cards ── */
+    .hero-bg .bg-white, .hero-bg .bg-white *,
+    .hero-bg .bg-gray-50, .hero-bg .bg-gray-50 *,
+    .hero-bg .outcome-card, .hero-bg .outcome-card *,
+    .hero-bg .system-node, .hero-bg .system-node *,
+    .hero-bg .phone-frame, .hero-bg .phone-frame *,
+    .hero-bg [class*="rounded"] .bg-white *,
+    .hero-bg .rounded-xl *, .hero-bg .rounded-2xl *, .hero-bg .rounded-3xl * {
+        color: inherit !important;
+    }
+    /* Specific overrides for dark text inside graphic cards */
+    .hero-bg .bg-white p, .hero-bg .bg-white span, .hero-bg .bg-white div,
+    .hero-bg .bg-white h1, .hero-bg .bg-white h2, .hero-bg .bg-white h3,
+    .hero-bg .bg-white h4, .hero-bg .bg-white label, .hero-bg .bg-white li {
+        color: #111827 !important;
+    }
+    .hero-bg .bg-gray-50 p, .hero-bg .bg-gray-50 span, .hero-bg .bg-gray-50 div,
+    .hero-bg .bg-gray-50 h1, .hero-bg .bg-gray-50 h2, .hero-bg .bg-gray-50 h3 {
+        color: #374151 !important;
+    }
+    .hero-bg .outcome-card p, .hero-bg .outcome-card span, .hero-bg .outcome-card div,
+    .hero-bg .outcome-card h1, .hero-bg .outcome-card h2, .hero-bg .outcome-card h3 {
+        color: #111827 !important;
+    }
+    .hero-bg .system-node p, .hero-bg .system-node span, .hero-bg .system-node div {
+        color: #111827 !important;
+    }
+    .hero-bg .phone-frame p, .hero-bg .phone-frame span, .hero-bg .phone-frame div {
+        color: #111827 !important;
+    }
+    /* Preserve colored text in graphic badges / status pills */
+    .hero-bg .bg-green-50, .hero-bg .bg-green-50 *, .hero-bg .text-green-600 { color: #16a34a !important; }
+    .hero-bg .bg-blue-50,  .hero-bg .bg-blue-50 *,  .hero-bg .text-blue-600  { color: #2563eb !important; }
+    .hero-bg .bg-red-50,   .hero-bg .bg-red-50 *,   .hero-bg .text-red-600   { color: #dc2626 !important; }
+    .hero-bg .bg-yellow-50,.hero-bg .bg-yellow-50 *,.hero-bg .text-yellow-600 { color: #d97706 !important; }
+    .hero-bg .bg-purple-50,.hero-bg .bg-purple-50 *,.hero-bg .text-purple-600 { color: #9333ea !important; }
+    .hero-bg .text-gray-400 { color: #9ca3af !important; }
+    .hero-bg .text-gray-500 { color: #6b7280 !important; }
+    .hero-bg .text-gray-600 { color: #4b5563 !important; }
+    .hero-bg .text-gray-700 { color: #374151 !important; }
+    .hero-bg .text-gray-800 { color: #1f2937 !important; }
+    .hero-bg .text-gray-900 { color: #111827 !important; }
+
+    
+        /* ── Mega menu product cards ── */
+        .mega-card { display:flex; align-items:flex-start; gap:13px; padding:14px 16px; border-radius:12px; text-decoration:none; color:inherit; transition:background 0.15s; }
+        .mega-card:hover { background:#f0f6ff; }
+        .mega-card:hover .mega-icon { background:#dbeafe; }
+        .mega-icon { width:40px; height:40px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s; }
+        .mega-icon svg { width:18px; height:18px; color:#0D6EFD; }
+        .mega-name { font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:2px; }
+        .mega-tag { font-size:0.7rem; color:#6b7280; font-weight:500; margin-bottom:3px; }
+        .mega-desc { font-size:0.68rem; color:#9ca3af; line-height:1.4; }
+        </style>
+</head>
+<body class="bg-white text-gray-700">
+
+<!-- NAVBAR -->
+<nav id="main-nav" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex flex-col hover:opacity-90 transition shrink-0">
+            <img src="AdeaHub Logo-Default.png" alt="adeahub logo" class="h-10 object-contain object-left mb-1">
+            <span class="text-[0.65rem] font-medium text-gray-500 tracking-widest leading-none pl-1">Powering modern healthcare</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+            <div class="nav-dropdown relative">
+                <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">Products <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+                <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="left:-150px;width:740px;">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                        <!-- Mega header -->
+                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#6396F1;border-radius:2px;"></span>adeahub products</span>
+                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <!-- 2-col product grid -->
+                        <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px;">
+                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
+                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
+                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
+                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
+                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#f5f3ff;"><svg fill="none" stroke="#7c3aed" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name" style="color:#7c3aed;">WorkWise <span style="font-size:0.62rem;background:#f5f3ff;color:#7c3aed;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
+                        </div>
+                        <!-- Footer -->
+                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="adeahub_platform.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Platform</a>
+            <div class="nav-dropdown relative">
+                <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">Resources <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+                <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="right:0;width:460px;">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                        <!-- Mega header -->
+                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#6396F1;border-radius:2px;"></span>Resources</span>
+                        </div>
+                        <!-- Single-column items -->
+                        <div style="padding:8px;">
+                            <a href="newsroom.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg></span><div><p class="mega-name">Newsroom</p><p class="mega-tag">Press releases &amp; company announcements</p></div></a>
+                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="customers.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg></span><div><p class="mega-name">Customers</p><p class="mega-tag">Case studies &amp; client outcomes</p></div></a>
+                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="Blogs.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span><div><p class="mega-name">Blog</p><p class="mega-tag">Insights, perspectives &amp; best practices</p></div></a>
+                        </div>
+                        <!-- Footer -->
+                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="about_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">About Us</a>
+                <!-- Contact Us -->
+                <a href="contact_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Contact Us</a>
+<a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full hover:opacity-90 transition-colors font-semibold text-sm whitespace-nowrap" style="background:#F2C747;">Talk to us</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-600 transition-colors p-1" aria-label="Toggle menu">
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4">
+        <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pb-2">Products</p>
+        <a href="adeahub_engage.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Engage</a>
+        <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Care</a>
+        <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Connect</a>
+        <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Insights</a>
+        <a href="workwise.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <a href="adeahub_platform.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pt-1 pb-2">Resources</p>
+        <a href="newsroom.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Newsroom</a>
+        <a href="customers.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Customers</a>
+        <a href="Blogs.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Blog</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <a href="about_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a><div class="pt-3 pb-1"><a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F2C747;">Talk to us</a></div>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1: HERO
+═══════════════════════════════════════════════════ -->
+<header class="hero-bg pt-20 pb-28 overflow-hidden relative">
+    <div class="dot-grid absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"></div>
+    <div class="blob-float-1 absolute left-[5%] top-[20%] w-80 h-80 rounded-full bg-blue-100/40 blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="blob-float-2 absolute right-[5%] bottom-[10%] w-60 h-60 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="z-10">
+        <div class="flex items-center gap-3 mb-8 reveal">
+            <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-adeahub-blue text-xs font-bold px-4 py-2 rounded-full tracking-wider">
+                <span class="w-2 h-2 bg-adeahub-blue rounded-full hero-badge inline-block"></span>
+                Health data integration and interoperability platform
+            </span>
+        </div>
+        <div class="max-w-4xl mb-6 reveal reveal-d1">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
+                <span class="text-2xl md:text-3xl font-bold block mb-4 tracking-normal" style="color:white!important">AH Connect</span>
+                <span style="color:#F2C747!important;font-weight:inherit">Integrated, interoperable</span><br>
+                <span style="color:white!important">health data flows in </span><span style="color:#F2C747!important;font-weight:inherit">hundreds of facilities</span><br>
+                <span style="color:white!important">running on </span><span style="color:#F2C747!important;font-weight:inherit">AH Connect</span>
+            </h1>
+        </div>
+        <p class="text-xl md:text-2xl max-w-2xl leading-relaxed mb-10 reveal reveal-d2" style="color:white!important">
+            AH Connect is a FHIR-native health data ingestion, indexing, and integration platform — connecting hospitals, clinics, devices, and government systems into a single, unified patient record.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mb-14 reveal reveal-d3">
+            <a href="contact_us.html" class="bg-adeahub-blue text-white text-center px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/30 btn-glow btn-shimmer text-base">Talk to us</a>
+        </div>
+        <div class="reveal reveal-d4">
+            <p class="text-sm font-bold tracking-widest mb-5" style="color:white!important">Trusted by leading health systems</p>
+            <div class="flex flex-wrap items-center gap-3 md:gap-5">
+                <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
+                    <span class="text-xl">🇪🇬</span>
+                    <span class="text-sm font-semibold text-gray-700">Egypt Universal Health Insurance</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
+                    <span class="text-xl">🇲🇾</span>
+                    <span class="text-sm font-semibold text-gray-700">Malaysia Ministry of Health</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
+                    <i data-lucide="globe-2" class="w-4 h-4 text-adeahub-blue"></i>
+                    <span class="text-sm font-semibold text-gray-700">FHIR R4 Native</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
+                    <i data-lucide="zap" class="w-4 h-4 text-adeahub-yellow"></i>
+                    <span class="text-sm font-semibold text-gray-700">40+ connector protocols</span>
+                </div>
+            </div>
+        </div>
+            </div>
+            <!-- Hero Visual: Data Flow Architecture -->
+            <div class="relative h-[450px] w-full flex items-center justify-center">
+                <div class="absolute inset-0 bg-blue-50 rounded-full blur-3xl opacity-70"></div>
+                <!-- Central Hub -->
+                <div class="relative z-20 w-40 h-40 bg-white rounded-3xl shadow-xl border-2 border-adeahub-blue flex flex-col items-center justify-center text-center p-4 outcome-card">
+                    <i data-lucide="network" class="w-10 h-10 text-adeahub-blue mb-2"></i>
+                    <span class="font-bold text-gray-900 text-sm leading-tight">AH<br>Connect</span>
+                </div>
+                <!-- Top Left: EMR -->
+                <div class="absolute top-10 left-10 system-node w-32 bg-white rounded-xl shadow-md border border-gray-100 p-3 flex items-center gap-3 z-20">
+                    <div class="bg-blue-50 p-2 rounded-lg text-adeahub-blue"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+                    <span class="text-xs font-bold text-gray-700">EMR System</span>
+                </div>
+                <svg class="absolute top-[80px] left-[100px] w-[120px] h-[100px] z-10" style="overflow: visible;">
+                    <path d="M 0,0 L 120,100" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+                    <circle cx="0" cy="0" r="4" fill="#6396F1" class="animate-flow-1" style="--tx: 120px; --ty: 100px;" />
+                </svg>
+                <!-- Top Right: Lab -->
+                <div class="absolute top-10 right-10 system-node w-32 bg-white rounded-xl shadow-md border border-gray-100 p-3 flex items-center gap-3 z-20">
+                    <div class="bg-blue-50 p-2 rounded-lg text-adeahub-blue"><i data-lucide="microscope" class="w-5 h-5"></i></div>
+                    <span class="text-xs font-bold text-gray-700">Lab &amp; LIS</span>
+                </div>
+                <svg class="absolute top-[80px] right-[160px] w-[120px] h-[100px] z-10" style="overflow: visible;">
+                    <path d="M 120,0 L 0,100" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+                    <circle cx="120" cy="0" r="4" fill="#6396F1" class="animate-flow-2" style="--tx: -120px; --ty: 100px;" />
+                </svg>
+                <!-- Bottom Left: Pharmacy -->
+                <div class="absolute bottom-10 left-10 system-node w-32 bg-white rounded-xl shadow-md border border-gray-100 p-3 flex items-center gap-3 z-20">
+                    <div class="bg-blue-50 p-2 rounded-lg text-adeahub-blue"><i data-lucide="pill" class="w-5 h-5"></i></div>
+                    <span class="text-xs font-bold text-gray-700">Pharmacy</span>
+                </div>
+                <svg class="absolute bottom-[100px] left-[100px] w-[120px] h-[100px] z-10" style="overflow: visible;">
+                    <path d="M 0,100 L 120,0" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+                    <circle cx="0" cy="100" r="4" fill="#6396F1" class="animate-flow-3" style="--tx: 120px; --ty: -100px;" />
+                </svg>
+                <!-- Bottom Right: Registry -->
+                <div class="absolute bottom-10 right-10 system-node w-40 bg-white rounded-xl shadow-md border border-gray-100 p-3 flex items-center gap-3 z-20">
+                    <div class="bg-blue-50 p-2 rounded-lg text-adeahub-blue"><i data-lucide="database" class="w-5 h-5"></i></div>
+                    <span class="text-xs font-bold text-gray-700">National Registry</span>
+                </div>
+                <svg class="absolute bottom-[100px] right-[160px] w-[120px] h-[100px] z-10" style="overflow: visible;">
+                    <path d="M 120,100 L 0,0" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4" fill="none" />
+                    <circle cx="120" cy="100" r="4" fill="#6396F1" class="animate-flow-1" style="--tx: -120px; --ty: -100px;" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2: TRANSFORMATION STORY
+═══════════════════════════════════════════════════ -->
+<section id="case-study" class="py-24 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-16 reveal">
+            <span class="section-label">Proven at national scale</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">The integration backbone of a nation's universal health insurance programme</h2>
+        </div>
+        <div class="bg-gradient-to-br from-gray-50 to-blue-50/40 border border-gray-100 rounded-3xl overflow-hidden shadow-soft reveal">
+            <div class="bg-white border-b border-gray-100 px-10 py-8 flex flex-col md:flex-row md:items-center gap-6">
+                <div class="flex items-center gap-4">
+                    <span class="text-5xl">🇪🇬</span>
+                    <div>
+                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-1">Case Study</p>
+                        <h3 class="text-2xl font-bold text-gray-900">Egypt Universal Health Insurance</h3>
+                        <p class="text-adeahub-blue font-semibold mt-0.5">National HIE &amp; Digital Care Platform — DC4H</p>
+                    </div>
+                </div>
+                <div class="md:ml-auto">
+                    <span class="inline-flex items-center gap-2 bg-blue-50 text-adeahub-blue font-bold text-sm px-5 py-2.5 rounded-full border border-blue-100">
+                        <i data-lucide="globe-2" class="w-4 h-4"></i>
+                        National-scale HIE deployment
+                    </span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                <div class="p-10 md:p-12 border-b lg:border-b-0 lg:border-r border-gray-100">
+                    <div class="space-y-8">
+                        <div>
+                            <span class="text-xs font-bold tracking-widest text-red-500 mb-2 block">The challenge</span>
+                            <p class="text-gray-700 leading-relaxed">Egypt's Universal Health Insurance programme required a single, unified digital health infrastructure connecting 321 facilities across 6 governorates — integrating disparate hospitals, clinics, labs, and pharmacies into a coherent care record for every enrolled citizen. Without a robust integration layer, patient data would remain siloed and the programme's clinical and financial objectives could not be met.</p>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold tracking-widest text-adeahub-blue mb-2 block">What we did</span>
+                            <p class="text-gray-700 leading-relaxed">adeahub deployed AH Connect as the DC4H (Digital Care for Health) integration backbone — delivering a full Health Information Exchange (HIE), FHIR server, API connector layer, Integrated Care Record, and BI Analytics workbench. Working alongside Vodafone Egypt under a landmark national contract, the platform connected every facility into a single, queryable patient record — regardless of the underlying system at each site.</p>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold tracking-widest text-green-600 mb-2 block">The impact</span>
+                            <div class="grid grid-cols-2 gap-4 mt-4">
+                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
+                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">321</p>
+                                    <p class="text-sm text-gray-500 font-medium">Facilities connected</p>
+                                </div>
+                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
+                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">6</p>
+                                    <p class="text-sm text-gray-500 font-medium">Governorates covered</p>
+                                </div>
+                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
+                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">HIE</p>
+                                    <p class="text-sm text-gray-500 font-medium">Full health information exchange deployed</p>
+                                </div>
+                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
+                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">1</p>
+                                    <p class="text-sm text-gray-500 font-medium">Integrated care record per patient</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="customers.html" class="mt-8 inline-flex items-center gap-2 text-adeahub-blue font-bold hover:text-blue-800 group">Read the Full Case Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+                </div>
+                <div class="p-10 md:p-12 flex flex-col justify-between gap-8">
+                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-4">Programme components</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="bg-blue-50 p-2 rounded-lg shrink-0"><i data-lucide="server" class="w-5 h-5 text-adeahub-blue"></i></div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm">FHIR Server &amp; Health Information Exchange</p>
+                                    <p class="text-xs text-gray-500">Centralised FHIR R4 repository holding the integrated care record for all enrolled patients, queryable across all connected facilities</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="bg-green-50 p-2 rounded-lg shrink-0"><i data-lucide="git-branch" class="w-5 h-5 text-green-600"></i></div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm">API Connector &amp; Integration Engine</p>
+                                    <p class="text-xs text-gray-500">Bidirectional data flows between 321 facilities using multiple protocols — normalising disparate data into a unified clinical record</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="bg-yellow-50 p-2 rounded-lg shrink-0"><i data-lucide="bar-chart-2" class="w-5 h-5 text-adeahub-yellow"></i></div>
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm">BI Analytics Workbench</p>
+                                    <p class="text-xs text-gray-500">Population-level KPI dashboards and geo-spatial analytics enabling programme management and public health monitoring across all governorates</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-adeahub-blue rounded-2xl p-8 text-white relative overflow-hidden">
+                        <i data-lucide="quote" class="absolute top-6 left-6 w-20 h-20 text-blue-500 opacity-30"></i>
+                        <div class="relative z-10">
+                            <p class="text-base font-medium leading-relaxed italic mb-6 text-blue-50">"A customer testimonial will appear here once stakeholder approval is obtained. The DC4H programme represents one of the most ambitious national health integration deployments in the region."</p>
+                            <div>
+                                <p class="font-bold text-white text-sm">[Stakeholder Name]</p>
+                                <p class="text-blue-200 text-xs">[Title] · Egypt Universal Health Insurance Authority</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3: THE VISION
+═══════════════════════════════════════════════════ -->
+<section class="py-24 bg-adeahub-lightbg border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal-left">
+                <span class="section-label">The vision</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
+                    Every system connected. Every patient record complete.
+                </h2>
+                <div class="space-y-5 text-lg text-gray-600 leading-relaxed">
+                    <p>Healthcare networks are built on dozens of disparate systems — each one designed without knowledge of the others. The result is fragmented patient data, duplicated records, and clinicians making decisions without the full picture.</p>
+                    <p>AH Connect changes that. It sits at the centre of your health network as <strong class="text-gray-800">a universal data layer</strong> — translating, normalising, and routing clinical data between any system, in any format, across any geography.</p>
+                    <p>Whether you're connecting two departments in a single hospital or integrating hundreds of facilities into a national Health Information Exchange, AH Connect provides the same robust, standards-based integration architecture.</p>
+                </div>
+                <div class="mt-10 flex items-center gap-4 p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="bg-blue-50 p-3 rounded-xl text-adeahub-blue shrink-0">
+                        <i data-lucide="git-merge" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-900">FHIR R4 native. 40+ protocols supported.</p>
+                        <p class="text-sm text-gray-500 mt-0.5">Connect any system — HL7, FHIR, REST, database, file-based — without custom development.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-right flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-lg">
+                    <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-40 transform scale-110"></div>
+                    <div class="relative z-10 bg-white rounded-2xl shadow-2xl border border-gray-200 p-6">
+                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-4">AH Connect — Integration flow</p>
+                        <!-- Integration diagram -->
+                        <div class="space-y-3">
+                            <!-- Source systems row -->
+                            <div class="grid grid-cols-4 gap-2">
+                                <div class="bg-gray-50 rounded-xl p-3 border border-gray-100 text-center">
+                                    <i data-lucide="monitor" class="w-4 h-4 text-adeahub-blue mx-auto mb-1"></i>
+                                    <p class="text-[10px] font-bold text-gray-700">HIS</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-3 border border-gray-100 text-center">
+                                    <i data-lucide="microscope" class="w-4 h-4 text-green-600 mx-auto mb-1"></i>
+                                    <p class="text-[10px] font-bold text-gray-700">LIS</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-3 border border-gray-100 text-center">
+                                    <i data-lucide="scan" class="w-4 h-4 text-purple-600 mx-auto mb-1"></i>
+                                    <p class="text-[10px] font-bold text-gray-700">PACS</p>
+                                </div>
+                                <div class="bg-gray-50 rounded-xl p-3 border border-gray-100 text-center">
+                                    <i data-lucide="pill" class="w-4 h-4 text-orange-500 mx-auto mb-1"></i>
+                                    <p class="text-[10px] font-bold text-gray-700">Pharmacy</p>
+                                </div>
+                            </div>
+                            <!-- Arrow down -->
+                            <div class="flex justify-center"><i data-lucide="chevrons-down" class="w-5 h-5 text-adeahub-blue"></i></div>
+                            <!-- Integration engine -->
+                            <div class="bg-adeahub-blue rounded-xl p-4 text-white text-center">
+                                <p class="text-xs font-extrabold tracking-wider mb-1">AH Connect Integration Engine</p>
+                                <div class="flex justify-center gap-3 text-blue-200 text-[10px] font-medium">
+                                    <span>HL7</span><span>·</span><span>FHIR R4</span><span>·</span><span>REST</span><span>·</span><span>JDBC</span><span>·</span><span>SFTP</span>
+                                </div>
+                            </div>
+                            <!-- Arrow down -->
+                            <div class="flex justify-center"><i data-lucide="chevrons-down" class="w-5 h-5 text-adeahub-blue"></i></div>
+                            <!-- Output systems row -->
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="bg-blue-50 rounded-xl p-3 border border-blue-100 text-center">
+                                    <i data-lucide="server" class="w-4 h-4 text-adeahub-blue mx-auto mb-1"></i>
+                                    <p class="text-[10px] font-bold text-adeahub-blue">FHIR Server / HIE</p>
+                                </div>
+                                <div class="bg-blue-50 rounded-xl p-3 border border-blue-100 text-center">
+                                    <i data-lucide="user-check" class="w-4 h-4 text-adeahub-blue mx-auto mb-1"></i>
+                                    <p class="text-[10px] font-bold text-adeahub-blue">EMPI</p>
+                                </div>
+                                <div class="bg-blue-50 rounded-xl p-3 border border-blue-100 text-center">
+                                    <i data-lucide="bar-chart-2" class="w-4 h-4 text-adeahub-blue mx-auto mb-1"></i>
+                                    <p class="text-[10px] font-bold text-adeahub-blue">Analytics</p>
+                                </div>
+                            </div>
+                            <div class="bg-green-50 rounded-xl p-3 border border-green-100 text-center">
+                                <p class="text-xs font-bold text-green-700">Integrated Care Record — one patient, one record</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 4: CAPABILITY OVERVIEW
+═══════════════════════════════════════════════════ -->
+<section class="py-24 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-16 reveal">
+            <span class="section-label">What it covers</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Six integration components. One coherent health data layer.</h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto">AH Connect provides every component needed to connect, normalise, and govern health data across your entire network.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d1">
+                <div class="bg-blue-50 w-12 h-12 rounded-2xl flex items-center justify-center text-adeahub-blue mb-5"><i data-lucide="server" class="w-6 h-6"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">FHIR Server</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">A fully compliant FHIR R4 repository — the single source of truth for your population's health records. Queryable by any authorised system or application, in real time.</p>
+            </div>
+            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d2">
+                <div class="bg-green-50 w-12 h-12 rounded-2xl flex items-center justify-center text-green-600 mb-5"><i data-lucide="git-branch" class="w-6 h-6"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Integration Engine</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Bidirectional data routing between any combination of systems using 40+ connector protocols — HL7, FHIR, REST, JDBC, Cassandra, MongoDB, FTP/SFTP, JMS, and TCP/IP. Handles CSV, XML, JSON, EDI, and binary formats natively.</p>
+            </div>
+            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d3">
+                <div class="bg-purple-50 w-12 h-12 rounded-2xl flex items-center justify-center text-purple-600 mb-5"><i data-lucide="user-check" class="w-6 h-6"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Enterprise Master Patient Index (EMPI)</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Intelligent patient matching across all connected systems — resolving duplicate identities and ensuring every record links to a single, verified patient identity across your network.</p>
+            </div>
+            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d1">
+                <div class="bg-sky-50 w-12 h-12 rounded-2xl flex items-center justify-center text-sky-600 mb-5"><i data-lucide="code-2" class="w-6 h-6"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">API Gateway</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">A secure, managed API layer exposing your health data to authorised third-party applications, patient apps, and government systems — with full access control, rate limiting, and audit logging.</p>
+            </div>
+            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d2">
+                <div class="bg-yellow-50 w-12 h-12 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-5"><i data-lucide="bar-chart-2" class="w-6 h-6"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Analytics Workbench</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Pre-built KPI dashboards and geo-spatial visualisation tools drawing from the integrated data lake — enabling operational and population health reporting across your entire network from day one.</p>
+            </div>
+            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d3">
+                <div class="bg-red-50 w-12 h-12 rounded-2xl flex items-center justify-center text-red-500 mb-5"><i data-lucide="file-check-2" class="w-6 h-6"></i></div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Integrated Care Record</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">A longitudinal, patient-centric view of every clinical event across all connected facilities — giving clinicians a complete picture regardless of where the patient was seen or which system documented the encounter.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 5: NUMBERS THAT MATTER
+═══════════════════════════════════════════════════ -->
+<section class="py-20 bg-adeahub-blue">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-12 reveal">
+            <p class="text-blue-200 text-sm font-bold tracking-widest mb-2">Scale &amp; reach</p>
+            <h2 class="text-3xl font-bold text-white">The numbers that define AH Connect</h2>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d1">
+                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2"><span class="counter" data-target="321" data-suffix="">321</span></p>
+                <p class="text-blue-200 text-sm font-medium">Facilities connected in Egypt UHI</p>
+            </div>
+            <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d2">
+                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2"><span class="counter" data-target="40" data-suffix="+">40+</span></p>
+                <p class="text-blue-200 text-sm font-medium">Connector protocols supported</p>
+            </div>
+            <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d3">
+                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2"><span class="counter" data-target="200" data-suffix="M+">200M+</span></p>
+                <p class="text-blue-200 text-sm font-medium">Patient records in the platform</p>
+            </div>
+            <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d4">
+                <p class="text-5xl md:text-6xl font-extrabold text-adeahub-yellow mb-2">FHIR R4</p>
+                <p class="text-blue-200 text-sm font-medium">Native interoperability standard</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 6: WHO IT'S FOR
+═══════════════════════════════════════════════════ -->
+<section class="py-24 bg-white border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-16 reveal">
+            <span class="section-label">Who it's for</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Every stakeholder. One platform. Clear value.</h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto mt-4">AH Connect delivers clear, distinct value to clinical, technology, and operational leaders across your organisation.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="outcome-card bg-white p-10 rounded-3xl border border-gray-100 flex flex-col h-full reveal reveal-d1">
+                <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-blue mb-6"><i data-lucide="stethoscope" class="w-7 h-7"></i></div>
+                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">CMO · CMIO · Clinical Director</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">For Clinical Leaders</h3>
+                <p class="text-gray-600 leading-relaxed flex-grow">Your clinicians see the complete patient record — regardless of which system captured the data or which facility provided the care. AH Connect eliminates the gaps between systems that lead to repeated tests, delayed diagnoses, and avoidable medication errors.</p>
+            </div>
+            <div class="outcome-card bg-white p-10 rounded-3xl border border-gray-100 flex flex-col h-full reveal reveal-d2">
+                <div class="bg-gray-100 w-14 h-14 rounded-2xl flex items-center justify-center text-gray-700 mb-6"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
+                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">CIO · CTO · VP Applications</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">For IT Leaders</h3>
+                <p class="text-gray-600 leading-relaxed flex-grow">AH Connect connects your existing systems without replacing them. Its support for 40+ connector protocols — including JDBC, Cassandra, MongoDB, FTP/SFTP, HL7, and REST — means you integrate at the data layer, not through costly system replacement. Standards-based from the ground up: FHIR R4, HL7 v2/v3, and open APIs.</p>
+            </div>
+            <div class="outcome-card bg-white p-10 rounded-3xl border border-gray-100 flex flex-col h-full reveal reveal-d3">
+                <div class="bg-yellow-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-6"><i data-lucide="bar-chart-3" class="w-7 h-7"></i></div>
+                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">CFO · VP Operations · Government CIO</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">For Administrators &amp; Policy Leaders</h3>
+                <p class="text-gray-600 leading-relaxed flex-grow">A unified patient record reduces duplicate testing, improves care coordination, and gives programme managers real-time visibility across every facility in the network. The Analytics Workbench turns connected data into actionable intelligence for operational and public health decision-making.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 7: PROOF POINTS
+═══════════════════════════════════════════════════ -->
+<section class="py-24 bg-adeahub-lightbg border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center mb-16 reveal">
+            <span class="section-label">Breadth of deployment</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">From hospital networks to national health information exchanges</h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto mt-4">AH Connect has been deployed at every scale of health system complexity — from enterprise hospital groups through to national programme infrastructure.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d1">
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="text-3xl">🇪🇬</span>
+                    <div><p class="font-bold text-gray-900 text-sm">Egypt</p><p class="text-xs text-gray-500">Universal Health Insurance</p></div>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">DC4H national HIE connecting 321 facilities across 6 governorates — FHIR server, integration engine, EMPI, API gateway, integrated care record, and BI analytics all deployed as a single coherent platform.</p>
+                <span class="inline-block bg-blue-50 text-adeahub-blue text-xs font-bold px-3 py-1 rounded-full">National HIE</span>
+            </div>
+            <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d2">
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="text-3xl">🇲🇾</span>
+                    <div><p class="font-bold text-gray-900 text-sm">Malaysia</p><p class="text-xs text-gray-500">Ministry of Health</p></div>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Integration backbone connecting the national patient health platform (MySejahtera) to the full network of 8,000+ public health facilities — enabling real-time appointment booking, health records access, and care navigation at national scale.</p>
+                <span class="inline-block bg-green-50 text-green-700 text-xs font-bold px-3 py-1 rounded-full">8,000+ facilities</span>
+            </div>
+            <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d3">
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="text-3xl">🏥</span>
+                    <div><p class="font-bold text-gray-900 text-sm">Hospital Networks</p><p class="text-xs text-gray-500">Enterprise integrations</p></div>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">AH Connect deployed within multi-site hospital groups to unify HIS, LIS, PACS, pharmacy, and billing systems — eliminating information silos and enabling group-wide patient record access for clinical staff.</p>
+                <span class="inline-block bg-yellow-50 text-yellow-700 text-xs font-bold px-3 py-1 rounded-full">Enterprise integration</span>
+            </div>
+            <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d4">
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="text-3xl">🌐</span>
+                    <div><p class="font-bold text-gray-900 text-sm">Third-Party Applications</p><p class="text-xs text-gray-500">API gateway deployments</p></div>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">AH Connect's API gateway enables health systems to safely expose clinical data to authorised patient apps, telehealth providers, and government registries — with full access control and comprehensive audit trails.</p>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1 rounded-full">Open API platform</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 8: TECHNICAL FOUNDATION
+═══════════════════════════════════════════════════ -->
+<section class="py-20 bg-white border-t border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 text-center reveal">
+        <span class="section-label">Technical foundation</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-12">Any system. Any format. Any scale — on a single, standards-based integration platform.</h2>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-12">
+            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
+                <span class="font-bold text-adeahub-blue text-lg mb-1">FHIR R4</span>
+                <span class="text-[10px] font-bold tracking-wider text-gray-500">Native standard</span>
+            </div>
+            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
+                <span class="font-bold text-adeahub-blue text-lg mb-1">HL7</span>
+                <span class="text-[10px] font-bold tracking-wider text-gray-500">v2 &amp; v3</span>
+            </div>
+            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
+                <span class="font-bold text-gray-700 text-sm mb-0.5">REST / JSON</span>
+                <span class="text-[10px] font-bold tracking-wider text-gray-500">Open APIs</span>
+            </div>
+            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
+                <span class="font-bold text-gray-700 text-sm mb-0.5">JDBC / MongoDB</span>
+                <span class="text-[10px] font-bold tracking-wider text-gray-500">Database listeners</span>
+            </div>
+            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
+                <span class="font-bold text-gray-700 text-sm mb-0.5">FTP / SFTP</span>
+                <span class="text-[10px] font-bold tracking-wider text-gray-500">File transfer</span>
+            </div>
+            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
+                <i data-lucide="shield" class="text-green-600 w-5 h-5 mb-1"></i>
+                <span class="font-bold text-gray-700 text-sm mb-0.5">Zero Trust</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Security</span>
+            </div>
+        </div>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            AH Connect supports inbound data from any healthcare source — database listeners for JDBC, Cassandra, and MongoDB; file listeners for FTP/SFTP; messaging listeners for HL7, HTTP/HTTPS, JMS, and TCP/IP. Outbound data is delivered in any required format: CSV, XML, HL7, FHIR R4, JSON, EDI, or binary. The result is a single integration platform capable of connecting any combination of systems, at any scale.
+        </p>
+        <a href="adeahub_insights.html" class="inline-flex items-center gap-2 mt-6 text-adeahub-blue font-bold hover:text-blue-800 group">
+            See how AH Connect powers AH Insights <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 9: FINAL CTA
+═══════════════════════════════════════════════════ -->
+<section id="cta" class="py-24 bg-adeahub-blue border-t border-blue-600 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" aria-hidden="true">
+        <div class="absolute w-96 h-96 bg-white rounded-full blur-3xl -top-20 -left-20"></div>
+        <div class="absolute w-96 h-96 bg-white rounded-full blur-3xl -bottom-20 -right-20"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
+        <p class="text-blue-200 text-sm font-bold tracking-widest mb-4">Start the conversation</p>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+            Connect your health systems and unlock a complete patient record — across every facility.
+        </h2>
+        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+            Our integration team will assess your current landscape and show you exactly how AH Connect bridges your systems — without replacing what you have.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="contact_us.html" class="bg-adeahub-yellow text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-400 transition-all duration-200 shadow-lg btn-glow btn-shimmer inline-flex items-center gap-2">Talk to us <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#ffffff; border-top: 1px solid #e5e7eb;">
+
+    <!-- Main footer body -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 pt-14 pb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+
+            <!-- Col 1: Brand (spans 2 cols on large) -->
+            <div class="lg:col-span-2 space-y-5">
+                <a href="index.html">
+                    <img src="Images/adeahub-logo-footer.png" alt="adeahub" class="h-9 object-contain object-left">
+                </a>
+                <p style="color:#6b7280; font-size:0.875rem; line-height:1.75; max-width:320px;">
+                    Modern software to deliver personalised healthcare at scale.
+                </p>
+                <!-- Social links -->
+                <div style="display:flex; gap:10px; padding-top:2px;">
+                    <a href="https://www.linkedin.com/company/adeahub" target="_blank" rel="noopener"
+                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
+                        <svg width="15" height="15" fill="#4b5563" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="mailto:hello@adeahub.com"
+                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
+                        <svg width="15" height="15" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Products -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Products</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Engage</a></li>
+                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Care</a></li>
+                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Connect</a></li>
+                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Insights</a></li>
+                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Company</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
+                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
+                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
+                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
+                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
+                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Get in Touch -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Get in touch</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li>
+                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            hello@adeahub.com
+                        </a>
+                    </li>
+                    <li style="font-size:0.875rem;color:#9ca3af;display:flex;align-items:center;gap:8px;">
+                        <svg width="14" height="14" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Kuala Lumpur, Malaysia
+                    </li>
+                    <li style="padding-top:6px;">
+                        <a href="request_demo.html"
+                           style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#FAC515;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
+                           onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                            Request a demo
+                            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div style="border-top:1px solid #f3f4f6;">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-5" style="text-align:center;">
+            <p style="font-size:0.78rem;color:#9ca3af;">&copy; 2026 adeahub. All rights reserved.</p>
+        </div>
+    </div>
+
+</footer>
+
+<!-- SCRIPTS -->
+<script>lucide.createIcons();</script>
+<script>
+(function() {
+    var btn = document.getElementById('mobile-menu-btn'); var menu = document.getElementById('mobile-menu'); var ham = document.getElementById('hamburger-icon'); var cls = document.getElementById('close-icon');
+    if (btn) { btn.addEventListener('click', function() { var open = !menu.classList.contains('hidden'); menu.classList.toggle('hidden', open); ham.classList.toggle('hidden', !open); cls.classList.toggle('hidden', open); }); }
+})();
+</script>
+<script>
+(function() {
+    var nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', function() { if (window.scrollY > 10) { nav.classList.add('nav-scrolled'); } else { nav.classList.remove('nav-scrolled'); } }, { passive: true });
+})();
+</script>
+<script>
+(function() {
+    var targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    if (!window.IntersectionObserver) { targets.forEach(function(el) { el.classList.add('visible'); }); return; }
+    var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+<script>
+(function() {
+    function formatNum(n, suffix) { if (suffix && suffix.indexOf('M') > -1) return n + suffix; if (n >= 1000) return n.toLocaleString() + (suffix || '+'); return n + (suffix || ''); }
+    function animateCounter(el) {
+        var target = parseInt(el.dataset.target, 10); var suffix = el.dataset.suffix || ''; var duration = 1600; var startTime = null;
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1); var eased = 1 - Math.pow(1 - progress, 3); var current = Math.round(eased * target);
+            el.textContent = formatNum(current, suffix);
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = target >= 1000 && suffix.indexOf('M') === -1 ? target.toLocaleString() + (suffix || '') : target + (suffix || '');
+        }
+        requestAnimationFrame(step);
+    }
+    var counters = document.querySelectorAll('.counter');
+    if (!window.IntersectionObserver) { return; }
+    var obs = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { animateCounter(entry.target); obs.unobserve(entry.target); } }); }, { threshold: 0.5 });
+    counters.forEach(function(el) { obs.observe(el); });
+})();
+</script>
+
+
+<script>
+/* ── SOLUTION CARD 3D TILT + CURSOR GLOW ── */
+(function () {
+    function initCards() {
+        const cards = document.querySelectorAll('.solution-card');
+        cards.forEach(card => {
+            if (!card.querySelector('.card-glow-layer')) {
+                const glow = document.createElement('div');
+                glow.className = 'card-glow-layer';
+                card.insertBefore(glow, card.firstChild);
+            }
+            card.style.position = 'relative';
+            card.addEventListener('mousemove', function (e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width  / 2;
+                const cy = rect.height / 2;
+                const tiltY =  ((x - cx) / cx) * 6;
+                const tiltX = -((y - cy) / cy) * 6;
+                card.style.transform =
+                    `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.018)`;
+                card.style.boxShadow =
+                    `0 28px 56px -8px rgba(99,150,241,0.22), 0 8px 20px -4px rgba(99,150,241,0.14)`;
+                const glow = card.querySelector('.card-glow-layer');
+                if (glow) {
+                    glow.style.background =
+                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(99,150,241,0.13) 0%, transparent 70%)`;
+                }
+            });
+            card.addEventListener('mouseleave', function () {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+                const glow = card.querySelector('.card-glow-layer');
+                if (glow) glow.style.background = '';
+            });
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCards);
+    } else {
+        initCards();
+    }
+})();
+</script>
+
+</body>
+</html>
