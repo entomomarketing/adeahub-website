@@ -1748,28 +1748,25 @@
     ];
 
     function buildCard(c) {
-        return '<div class="bg-white rounded-3xl shadow-soft hover:shadow-xl transition border border-gray-100 flex flex-col overflow-hidden mx-5 shrink-0 group relative" style="width:560px;height:620px;transition:box-shadow 0.3s,transform 0.3s;" onmouseenter="this.style.transform=\'translateY(-6px)\'" onmouseleave="this.style.transform=\'\'">' +
-            // Image area increased to 280px
+        return '<div class="bg-white rounded-3xl shadow-soft hover:shadow-xl transition border border-gray-100 flex flex-col overflow-hidden mx-5 shrink-0 group relative" style="width:560px;height:560px;transition:box-shadow 0.3s,transform 0.3s;" onmouseenter="this.style.transform=\'translateY(-6px)\'" onmouseleave="this.style.transform=\'\'">' +
+            // Image: scale(1.05) at rest so even smaller images fill edge-to-edge; hover scale(1.12)
             '<div class="w-full bg-gray-100 relative overflow-hidden shrink-0" style="height:280px;">' +
-                '<img src="' + c.img + '" alt="' + c.name + '" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src=\'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=700&auto=format&fit=crop\'">' +
+                '<img src="' + c.img + '" alt="' + c.name + '" style="width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.05);transition:transform 0.7s ease;" onmouseenter="this.style.transform=\'scale(1.12)\'" onmouseleave="this.style.transform=\'scale(1.05)\'" onerror="this.src=\'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=700&auto=format&fit=crop\'">' +
                 '<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>' +
             '</div>' +
-            // Logo badge anchored 42px above image bottom (280 - 84/2 - 42 = 196)
+            // Logo badge: top = image height - half badge height - 4px overlap = 280 - 42 - 4 = 234
             '<div class="absolute bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center z-10 overflow-hidden" style="width:84px;height:84px;top:238px;left:28px;">' +
                 '<img src="' + c.logo + '" alt="" class="w-full h-full object-contain p-2" onerror="this.parentElement.innerHTML=\'<span style=\\\'font-weight:700;color:#9ca3af;font-size:1rem;\\\'>' + c.abbr + '</span>\'">' +
             '</div>' +
-            // Content: p-5 pt-7 → p-9 pt-14
-            '<div class="flex-grow flex flex-col justify-between" style="padding:28px;padding-top:56px;">' +
-                '<div>' +
-                    '<h4 class="font-bold text-gray-900 leading-tight" style="font-size:1.35rem;margin-bottom:8px;">' + c.name + '</h4>' +
-                    // Country pill moved here — below hospital name
-                    '<div class="flex items-center gap-2 mb-4" style="margin-bottom:14px;">' +
-                        '<img src="https://flagcdn.com/w20/' + c.code + '.png" alt="' + c.country + ' flag" style="width:20px;border-radius:3px;object-fit:cover;">' +
-                        '<span style="font-size:0.85rem;font-weight:600;color:#374151;">' + c.country + '</span>' +
-                    '</div>' +
-                    '<p class="text-gray-500 line-clamp-2" style="font-size:0.95rem;margin-bottom:0;">' + c.desc + '</p>' +
+            // Content area: flex-col, no justify-between — gap between desc and outcome is just margin-top:12px
+            '<div class="flex-grow flex flex-col" style="padding:28px;padding-top:52px;">' +
+                '<h4 class="font-bold text-gray-900 leading-tight" style="font-size:1.35rem;margin-bottom:8px;">' + c.name + '</h4>' +
+                '<div class="flex items-center gap-2" style="margin-bottom:12px;">' +
+                    '<img src="https://flagcdn.com/w20/' + c.code + '.png" alt="' + c.country + ' flag" style="width:20px;border-radius:3px;object-fit:cover;">' +
+                    '<span style="font-size:0.85rem;font-weight:600;color:#374151;">' + c.country + '</span>' +
                 '</div>' +
-                '<div class="rounded-xl border" style="background:rgba(239,246,255,0.7);border-color:rgba(191,219,254,0.6);padding:14px 16px;margin-top:20px;">' +
+                '<p class="text-gray-500 line-clamp-2" style="font-size:0.95rem;margin-bottom:12px;">' + c.desc + '</p>' +
+                '<div class="rounded-xl border" style="background:rgba(239,246,255,0.7);border-color:rgba(191,219,254,0.6);padding:14px 16px;">' +
                     '<p class="text-blue-600 font-medium leading-snug line-clamp-3" style="font-size:0.9rem;">' +
                         '<svg style="width:14px;height:14px;display:inline;margin-right:6px;margin-top:-2px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' +
                         c.outcome +
