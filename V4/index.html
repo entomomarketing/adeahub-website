@@ -1748,19 +1748,18 @@
     ];
 
     function buildCard(c) {
-        // Card: 320×320 scaled ×1.75 = 560×560
-        return '<div class="bg-white rounded-3xl shadow-soft hover:shadow-xl transition border border-gray-100 flex flex-col overflow-hidden mx-5 shrink-0 group relative" style="width:560px;height:560px;transition:box-shadow 0.3s,transform 0.3s;" onmouseenter="this.style.transform=\'translateY(-6px)\'" onmouseleave="this.style.transform=\'\'">' +
-            // Image area: h-28 (112px) × 1.75 = 196px
-            '<div class="w-full bg-gray-100 relative overflow-hidden shrink-0" style="height:196px;">' +
+        return '<div class="bg-white rounded-3xl shadow-soft hover:shadow-xl transition border border-gray-100 flex flex-col overflow-hidden mx-5 shrink-0 group relative" style="width:560px;height:620px;transition:box-shadow 0.3s,transform 0.3s;" onmouseenter="this.style.transform=\'translateY(-6px)\'" onmouseleave="this.style.transform=\'\'">' +
+            // Image area increased to 280px
+            '<div class="w-full bg-gray-100 relative overflow-hidden shrink-0" style="height:280px;">' +
                 '<img src="' + c.img + '" alt="' + c.name + '" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" onerror="this.src=\'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=700&auto=format&fit=crop\'">' +
                 '<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>' +
             '</div>' +
-            // Logo badge: w-12 h-12 (48px) × 1.75 = 84px; offset top-20 (80px) × 1.75 = 140px, left-4 (16px) × 1.75 = 28px
-            '<div class="absolute bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center z-10 overflow-hidden" style="width:84px;height:84px;top:154px;left:28px;">' +
+            // Logo badge anchored 42px above image bottom (280 - 84/2 - 42 = 196)
+            '<div class="absolute bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center z-10 overflow-hidden" style="width:84px;height:84px;top:238px;left:28px;">' +
                 '<img src="' + c.logo + '" alt="" class="w-full h-full object-contain p-2" onerror="this.parentElement.innerHTML=\'<span style=\\\'font-weight:700;color:#9ca3af;font-size:1rem;\\\'>' + c.abbr + '</span>\'">' +
             '</div>' +
             // Content: p-5 pt-7 → p-9 pt-14
-            '<div class="flex-grow flex flex-col justify-between" style="padding:36px 28px 28px 28px;padding-top:52px;">' +
+            '<div class="flex-grow flex flex-col justify-between" style="padding:28px;padding-top:56px;">' +
                 '<div>' +
                     '<h4 class="font-bold text-gray-900 leading-tight" style="font-size:1.35rem;margin-bottom:8px;">' + c.name + '</h4>' +
                     // Country pill moved here — below hospital name
