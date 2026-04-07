@@ -140,6 +140,34 @@
             background: var(--blue-pale); border-color: rgba(99,150,241,0.35);
             color: #6396F1; box-shadow: 0 4px 16px rgba(99,150,241,0.10);
         }
+        /* Trust-bar enlarged pills */
+        .trust-pill {
+            background: white;
+            border: 1.5px solid rgba(99,150,241,0.22);
+            border-radius: 9999px;
+            padding: 11px 26px;
+            font-size: 0.82rem; font-weight: 700; color: #1e3a5f;
+            letter-spacing: 0.04em; text-transform: uppercase;
+            display: inline-flex; align-items: center; gap: 9px;
+            transition: all 0.22s;
+            box-shadow: 0 2px 10px rgba(99,150,241,0.07);
+        }
+        .trust-pill:hover {
+            background: var(--blue-pale); border-color: rgba(99,150,241,0.45);
+            color: #6396F1; box-shadow: 0 6px 20px rgba(99,150,241,0.13);
+            transform: translateY(-1px);
+        }
+        .trust-pill .pill-icon {
+            width: 20px; height: 20px; flex-shrink: 0;
+        }
+        /* Award cards redesign */
+        .award-card-new {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .award-card-new:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px -6px rgba(0,0,0,0.10);
+        }
 
         /* ───── STAT NUMBERS ───── */
         .stat-block { position: relative; }
@@ -946,75 +974,86 @@
 <section class="py-16 bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
 
-        <!-- Compliance pills -->
-        <div class="reveal flex flex-wrap justify-center gap-3 md:gap-4 mb-16">
-            <span class="compliance-pill">
-                <svg class="w-3.5 h-3.5 text-adeahub-yellow" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                HIMSS Stage 7 Proven
-            </span>
-            <span class="compliance-pill">
-                <svg class="w-3.5 h-3.5 text-adeahub-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                FHIR Compliant
-            </span>
-            <span class="compliance-pill">
-                <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                HL7 Standards
-            </span>
-            <span class="compliance-pill">
-                <svg class="w-3.5 h-3.5 text-adeahub-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
-                WHO GDHCN Compatible
-            </span>
-        </div>
-
-        <!-- Metrics + Awards -->
+        <!-- Two-column layout: enlarged pills left, awards right -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            <!-- Key Metrics -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left">
-                <div class="stat-block pb-6 reveal reveal-d1 bg-white border border-gray-200 rounded-2xl p-5 overflow-visible">
-                    <div class="stat-num font-black mb-2 counter whitespace-nowrap" data-target="35" data-suffix="M+" style="font-size:clamp(1.25rem,2vw,2.25rem);line-height:1;">35M+</div>
-                    <div class="text-gray-700 font-semibold text-base mt-1">users on platform</div>
+            <!-- Pills + Metrics stacked on the left -->
+            <div class="reveal flex flex-col gap-10">
+
+                <!-- Enlarged Trust Pills -->
+                <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                    <span class="trust-pill">
+                        <svg class="pill-icon" style="color:#F2C747;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        HIMSS Stage 7 Proven
+                    </span>
+                    <span class="trust-pill">
+                        <svg class="pill-icon" style="color:#6396F1;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        FHIR Compliant
+                    </span>
+                    <span class="trust-pill">
+                        <svg class="pill-icon" style="color:#6b7280;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        HL7 Standards
+                    </span>
+                    <span class="trust-pill">
+                        <svg class="pill-icon" style="color:#6396F1;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+                        WHO GDHCN Compatible
+                    </span>
                 </div>
-                <div class="stat-block pb-6 reveal reveal-d2 bg-white border border-gray-200 rounded-2xl p-5 overflow-visible">
-                    <div class="stat-num font-black mb-2 counter whitespace-nowrap" data-target="500" data-suffix="+" style="font-size:clamp(1.25rem,2vw,2.25rem);line-height:1;">500+</div>
-                    <div class="text-gray-700 font-semibold text-base mt-1">health facilities</div>
+
+                <!-- Key Metrics row -->
+                <div class="grid grid-cols-3 gap-6">
+                    <div>
+                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#6396F1;font-variant-numeric:tabular-nums;">35M+</div>
+                        <div class="text-gray-500 font-medium mt-2" style="font-size:0.8rem;line-height:1.4;">users on<br>platform</div>
+                    </div>
+                    <div style="border-left:1.5px solid #e5e7eb;padding-left:1.5rem;">
+                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#6396F1;font-variant-numeric:tabular-nums;">3,200+</div>
+                        <div class="text-gray-500 font-medium mt-2" style="font-size:0.8rem;line-height:1.4;">health<br>facilities</div>
+                    </div>
+                    <div style="border-left:1.5px solid #e5e7eb;padding-left:1.5rem;">
+                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#6396F1;font-variant-numeric:tabular-nums;">200M+</div>
+                        <div class="text-gray-500 font-medium mt-2" style="font-size:0.8rem;line-height:1.4;">patient records<br>managed</div>
+                    </div>
                 </div>
-                <div class="stat-block pb-6 reveal reveal-d3 bg-white border border-gray-200 rounded-2xl p-5 overflow-visible">
-                    <div class="stat-num font-black mb-2 counter whitespace-nowrap" data-target="200" data-suffix="M+" style="font-size:clamp(1.25rem,2vw,2.25rem);line-height:1;">200M+</div>
-                    <div class="text-gray-700 font-semibold text-base mt-1">patient records managed</div>
-                </div>
+
             </div>
 
-            <!-- Awards -->
-            <div class="grid gap-5 border-l-0 lg:border-l lg:border-gray-200 lg:pl-12">
+            <!-- Awards — richer visual treatment -->
+            <div class="grid gap-4 border-l-0 lg:border-l lg:border-gray-100 lg:pl-12">
 
-                <div class="award-card flex gap-5 items-start bg-gradient-to-br from-yellow-50 to-white border border-yellow-100 rounded-2xl p-6 reveal reveal-d1 shadow-sm">
-                    <div class="bg-yellow-100 p-3.5 rounded-xl text-adeahub-yellow shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                <!-- Award 1: Data.ai #1 -->
+                <div class="award-card-new reveal reveal-d1 flex items-center rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,#fffbeb 0%,#fef9f0 60%,#fff 100%);border:1.5px solid #fde68a;padding:0;">
+                    <div class="shrink-0 flex flex-col items-center justify-center self-stretch" style="width:80px;background:linear-gradient(160deg,#F2C747 0%,#f59e0b 100%);">
+                        <svg style="width:26px;height:26px;color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+                        <span style="color:white;font-size:0.58rem;font-weight:800;letter-spacing:0.04em;margin-top:5px;text-align:center;line-height:1.3;">#1<br>WORLDWIDE</span>
                     </div>
-                    <div>
-                        <h4 class="font-extrabold text-gray-900 text-base">#1 COVID-19 App Worldwide</h4>
-                        <p class="text-sm text-gray-600 mt-1.5">Ranked #1 worldwide by Data.ai among all COVID-19 apps for install penetration and open rate, 2021.</p>
+                    <div style="padding:16px 18px;">
+                        <h4 class="font-extrabold text-gray-900" style="font-size:0.95rem;line-height:1.3;">#1 COVID-19 App Worldwide</h4>
+                        <p style="font-size:0.78rem;color:#6b7280;margin-top:4px;line-height:1.5;">Ranked #1 globally by Data.ai among all COVID-19 apps for install penetration and open rate, 2021.</p>
                     </div>
                 </div>
 
-                <div class="award-card flex gap-5 items-start bg-gradient-to-br from-yellow-50 to-white border border-yellow-100 rounded-2xl p-6 reveal reveal-d2 shadow-sm">
-                    <div class="bg-yellow-100 p-3.5 rounded-xl text-adeahub-yellow shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+                <!-- Award 2: Stevie Gold -->
+                <div class="award-card-new reveal reveal-d2 flex items-center rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,#fffbeb 0%,#fef9f0 60%,#fff 100%);border:1.5px solid #fde68a;padding:0;">
+                    <div class="shrink-0 flex flex-col items-center justify-center self-stretch" style="width:80px;background:linear-gradient(160deg,#d97706 0%,#92400e 100%);">
+                        <svg style="width:26px;height:26px;color:white;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.582 5.233 5.773.839-4.178 4.07.986 5.748L12 15.25l-5.163 2.64.986-5.748L3.645 8.072l5.773-.839L12 2z"/></svg>
+                        <span style="color:white;font-size:0.58rem;font-weight:800;letter-spacing:0.04em;margin-top:5px;text-align:center;line-height:1.3;">GOLD<br>STEVIE</span>
                     </div>
-                    <div>
-                        <h4 class="font-extrabold text-gray-900 text-base">Gold — Stevie Awards MENA</h4>
-                        <p class="text-sm text-gray-600 mt-1.5">Recognised for excellence in technology-driven healthcare innovation across the Middle East.</p>
+                    <div style="padding:16px 18px;">
+                        <h4 class="font-extrabold text-gray-900" style="font-size:0.95rem;line-height:1.3;">Gold — Stevie Awards MENA</h4>
+                        <p style="font-size:0.78rem;color:#6b7280;margin-top:4px;line-height:1.5;">Recognised for excellence in technology-driven healthcare innovation across the Middle East &amp; Africa.</p>
                     </div>
                 </div>
 
-                <div class="award-card flex gap-5 items-start bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-2xl p-6 reveal reveal-d3 shadow-sm">
-                    <div class="bg-blue-100 p-3.5 rounded-xl text-adeahub-blue shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                <!-- Award 3: Quality Service Asia -->
+                <div class="award-card-new reveal reveal-d3 flex items-center rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,#eff6ff 0%,#f0f7ff 60%,#fff 100%);border:1.5px solid #bfdbfe;padding:0;">
+                    <div class="shrink-0 flex flex-col items-center justify-center self-stretch" style="width:80px;background:linear-gradient(160deg,#6396F1 0%,#2365B1 100%);">
+                        <svg style="width:26px;height:26px;color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        <span style="color:white;font-size:0.58rem;font-weight:800;letter-spacing:0.04em;margin-top:5px;text-align:center;line-height:1.3;">QUALITY<br>AWARD</span>
                     </div>
-                    <div>
-                        <h4 class="font-extrabold text-gray-900 text-base">Quality Service Award Asia</h4>
-                        <p class="text-sm text-gray-600 mt-1.5">Awarded for outstanding service quality in digital health across the Asia-Pacific region.</p>
+                    <div style="padding:16px 18px;">
+                        <h4 class="font-extrabold text-gray-900" style="font-size:0.95rem;line-height:1.3;">Quality Service Award Asia</h4>
+                        <p style="font-size:0.78rem;color:#6b7280;margin-top:4px;line-height:1.5;">Awarded for outstanding service quality in digital health across Asia-Pacific.</p>
                     </div>
                 </div>
 
@@ -1748,27 +1787,27 @@
     ];
 
     function buildCard(c) {
-        return '<div class="bg-white rounded-3xl shadow-soft hover:shadow-xl transition border border-gray-100 flex flex-col overflow-hidden mx-5 shrink-0 group relative" style="width:560px;height:560px;transition:box-shadow 0.3s,transform 0.3s;" onmouseenter="this.style.transform=\'translateY(-6px)\'" onmouseleave="this.style.transform=\'\'">' +
+        return '<div class="bg-white rounded-3xl shadow-soft hover:shadow-xl transition border border-gray-100 flex flex-col overflow-hidden mx-4 shrink-0 group relative" style="width:448px;height:448px;transition:box-shadow 0.3s,transform 0.3s;" onmouseenter="this.style.transform=\'translateY(-5px)\'" onmouseleave="this.style.transform=\'\'">' +
             // Image: scale(1.05) at rest so even smaller images fill edge-to-edge; hover scale(1.12)
-            '<div class="w-full bg-gray-100 relative overflow-hidden shrink-0" style="height:280px;">' +
+            '<div class="w-full bg-gray-100 relative overflow-hidden shrink-0" style="height:224px;">' +
                 '<img src="' + c.img + '" alt="' + c.name + '" style="width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.05);transition:transform 0.7s ease;" onmouseenter="this.style.transform=\'scale(1.12)\'" onmouseleave="this.style.transform=\'scale(1.05)\'" onerror="this.src=\'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=700&auto=format&fit=crop\'">' +
                 '<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>' +
             '</div>' +
-            // Logo badge: top = image height - half badge height - 4px overlap = 280 - 42 - 4 = 234
-            '<div class="absolute bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center z-10 overflow-hidden" style="width:84px;height:84px;top:238px;left:28px;">' +
-                '<img src="' + c.logo + '" alt="" class="w-full h-full object-contain p-2" onerror="this.parentElement.innerHTML=\'<span style=\\\'font-weight:700;color:#9ca3af;font-size:1rem;\\\'>' + c.abbr + '</span>\'">' +
+            // Logo badge: scaled 20% — 84→67px, top 238→190px, left 28→22px
+            '<div class="absolute bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center z-10 overflow-hidden" style="width:67px;height:67px;top:190px;left:22px;">' +
+                '<img src="' + c.logo + '" alt="" class="w-full h-full object-contain p-2" onerror="this.parentElement.innerHTML=\'<span style=\\\'font-weight:700;color:#9ca3af;font-size:0.85rem;\\\'>' + c.abbr + '</span>\'">' +
             '</div>' +
-            // Content area: flex-col, no justify-between — gap between desc and outcome is just margin-top:12px
-            '<div class="flex-grow flex flex-col" style="padding:28px;padding-top:52px;">' +
-                '<h4 class="font-bold text-gray-900 leading-tight" style="font-size:1.35rem;margin-bottom:8px;">' + c.name + '</h4>' +
-                '<div class="flex items-center gap-2" style="margin-bottom:12px;">' +
-                    '<img src="https://flagcdn.com/w20/' + c.code + '.png" alt="' + c.country + ' flag" style="width:20px;border-radius:3px;object-fit:cover;">' +
-                    '<span style="font-size:0.85rem;font-weight:600;color:#374151;">' + c.country + '</span>' +
+            // Content area: flex-col, no justify-between — gap between desc and outcome is just margin-bottom
+            '<div class="flex-grow flex flex-col" style="padding:22px;padding-top:42px;">' +
+                '<h4 class="font-bold text-gray-900 leading-tight" style="font-size:1.08rem;margin-bottom:6px;">' + c.name + '</h4>' +
+                '<div class="flex items-center gap-2" style="margin-bottom:10px;">' +
+                    '<img src="https://flagcdn.com/w20/' + c.code + '.png" alt="' + c.country + ' flag" style="width:16px;border-radius:3px;object-fit:cover;">' +
+                    '<span style="font-size:0.68rem;font-weight:600;color:#374151;">' + c.country + '</span>' +
                 '</div>' +
-                '<p class="text-gray-500 line-clamp-2" style="font-size:0.95rem;margin-bottom:12px;">' + c.desc + '</p>' +
-                '<div class="rounded-xl border" style="background:rgba(239,246,255,0.7);border-color:rgba(191,219,254,0.6);padding:14px 16px;">' +
-                    '<p class="text-blue-600 font-medium leading-snug line-clamp-3" style="font-size:0.9rem;">' +
-                        '<svg style="width:14px;height:14px;display:inline;margin-right:6px;margin-top:-2px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' +
+                '<p class="text-gray-500 line-clamp-2" style="font-size:0.76rem;margin-bottom:10px;">' + c.desc + '</p>' +
+                '<div class="rounded-xl border" style="background:rgba(239,246,255,0.7);border-color:rgba(191,219,254,0.6);padding:11px 13px;">' +
+                    '<p class="text-blue-600 font-medium leading-snug line-clamp-3" style="font-size:0.72rem;">' +
+                        '<svg style="width:11px;height:11px;display:inline;margin-right:5px;margin-top:-2px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>' +
                         c.outcome +
                     '</p>' +
                 '</div>' +
