@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>adeahub Digital Health Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+/* Body is tall to give scroll distance; visual stage stays sticky */
+body {
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  color: #111;
+  height: 220vh;  /* scroll range — enough for smooth reveal without excessive scrolling */
+}
+
+/* Dot-grid wallpaper */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ═══════════════════════════════════════
+   STICKY STAGE
+═══════════════════════════════════════ */
+#stage {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Top label */
+#wordmark {
+  position: absolute;
+  top: 24px; left: 0; right: 0;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 500;
+  color: rgba(0,0,0,.28);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  pointer-events: none; z-index: 50;
+}
+
+/* Scroll hint */
+#scrollHint {
+  position: absolute;
+  bottom: 28px; left: 0; right: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  pointer-events: none; z-index: 50;
+  transition: opacity .5s ease;
+}
+#scrollHint span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(0,0,0,.3);
+}
+.chev {
+  width: 14px; height: 14px;
+  border-right: 1.5px solid rgba(0,0,0,.2);
+  border-bottom: 1.5px solid rgba(0,0,0,.2);
+  transform: rotate(45deg);
+  animation: chevBounce 1.8s ease-in-out infinite;
+}
+@keyframes chevBounce {
+  0%,100% { transform: rotate(45deg) translate(0,0); }
+  50%      { transform: rotate(45deg) translate(3px,3px); }
+}
+
+/* Canvas (hub + circles drawn here) */
+#cv {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 5;
+}
+
+/* ═══════════════════════════════════════
+   PRODUCT CARDS  (DOM layer)
+═══════════════════════════════════════ */
+.pcard {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.pcard.live { pointer-events: auto; }
+
+/* Label block — fixed height so all four align perfectly */
+.pc-label {
+  text-align: center;
+  width: 100%;
+}
+.pc-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px; font-weight: 800; letter-spacing: -.4px;
+  line-height: 1.15;
+  color: #111;
+  height: 26px; /* fixed — keeps headline row consistent */
+}
+/* "AH" prefix always in adeahub blue */
+.pc-name .ah { color: #0D6EFD; }
+/* rest of product name in near-black */
+.pc-name .rest { color: #111827; }
+
+.pc-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px; color: #6b7280;
+  margin-top: 6px; line-height: 1.45;
+  max-width: 320px; margin-left: auto; margin-right: auto;
+  font-weight: 400;
+  height: 42px; /* fixed — keeps subheadline row consistent */
+  overflow: hidden;
+}
+
+/* Mockup window — transparent bg, rounded corners + shadow */
+.pc-mockup {
+  border-radius: 12px; overflow: hidden;
+  background: #fff; position: relative;
+  flex-shrink: 0;
+  /* Shadow painted on a will-change layer so it doesn't flicker during float */
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,.18)) drop-shadow(0 1px 4px rgba(0,0,0,.10));
+}
+.pc-mockup iframe {
+  display: block; border: none; pointer-events: none;
+  transform-origin: top left;
+  border-radius: 12px;
+}
+
+/* Interconnection row — drawn on canvas now, no SVG needed */
+
+/* Idle float */
+@keyframes floatY {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <div id="wordmark">adeahub Digital Health Platform</div>
+  <canvas id="cv"></canvas>
+
+  <!-- AH Engage — BIGGER: 190×412 container, iframe 375×812, scale = 190/375 ≈ 0.507 -->
+  <div class="pcard" data-p="engage" id="pcEngage">
+    <div class="pc-label">
+      <div class="pc-name"><span class="ah">AH </span><span class="rest">Engage</span></div>
+      <div class="pc-desc">Personal Health App — digital front door for patient engagement</div>
+    </div>
+    <div class="pc-mockup" style="width:190px;height:412px;">
+      <iframe src="ah-engage-animated.html" style="width:375px;height:812px;transform:scale(0.507);"></iframe>
+    </div>
+  </div>
+
+  <!-- AH Care — BIGGER: 340×255 container, iframe 960×720, scale = 340/960 ≈ 0.354 -->
+  <div class="pcard" data-p="care" id="pcCare">
+    <div class="pc-label">
+      <div class="pc-name"><span class="ah">AH </span><span class="rest">Care</span></div>
+      <div class="pc-desc">Health Information System — complete clinical &amp; admin operations</div>
+    </div>
+    <div class="pc-mockup" style="width:340px;height:255px;">
+      <iframe src="ah-care-animated.html" style="width:960px;height:720px;transform:scale(0.354);"></iframe>
+    </div>
+  </div>
+
+  <!-- AH Connect — BIGGER: 340×255 container -->
+  <div class="pcard" data-p="connect" id="pcConnect">
+    <div class="pc-label">
+      <div class="pc-name"><span class="ah">AH </span><span class="rest">Connect</span></div>
+      <div class="pc-desc">Health Data Exchange — vendor-neutral FHIR interoperability</div>
+    </div>
+    <div class="pc-mockup" style="width:340px;height:255px;">
+      <iframe src="ah-connect-animated.html" style="width:960px;height:720px;transform:scale(0.354);"></iframe>
+    </div>
+  </div>
+
+  <!-- AH Insight — BIGGER: 340×255 container -->
+  <div class="pcard" data-p="insight" id="pcInsight">
+    <div class="pc-label">
+      <div class="pc-name"><span class="ah">AH </span><span class="rest">Insight</span></div>
+      <div class="pc-desc">Healthcare Intelligence &amp; Analytics — real-time AI-driven insights</div>
+    </div>
+    <div class="pc-mockup" style="width:340px;height:255px;">
+      <iframe src="ah-insights-animated.html" style="width:960px;height:720px;transform:scale(0.354);"></iframe>
+    </div>
+  </div>
+
+  <div id="scrollHint">
+    <span>Scroll to reveal</span>
+    <div class="chev"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+  ANIMATION DESIGN
+  ─────────────────
+  Scroll progress  p ∈ [0, 1]   (body 220vh, stage sticky)
+
+  Phase A  p: 0.00 → 0.08   Hub sits at centre, pulsing.
+  Phase B  p: 0.08 → 0.45   4 yellow circles split from hub and fly to slot X.
+  Phase C  p: 0.45 → 0.78   Each circle shrinks to a node dot below the
+                              subheadline while the DOM card fades in.
+  Phase D  p: 0.78 → 1.00   Cards + nodes fully visible, cards float idle.
+
+  The four yellow circles become the interconnect nodes — they travel
+  from their Phase-B slot position down to the node row Y, while
+  shrinking from PROD_R to NODE_R. A connecting line grows between
+  the first and last node as they settle.
+
+  Reversible: scroll back up retraces every phase.
+═══════════════════════════════════════════════════════════════════ */
+
+const canvas = document.getElementById('cv');
+const ctx    = canvas.getContext('2d');
+
+/* ── Products — all circles use adeahub yellow ── */
+const YELLOW = { color:'#FAC515', r:250, g:197, b:21 };
+const PRODS = [
+  { id:'pcEngage',  ...YELLOW },
+  { id:'pcCare',    ...YELLOW },
+  { id:'pcConnect', ...YELLOW },
+  { id:'pcInsight', ...YELLOW },
+];
+const cardEls = PRODS.map(p => document.getElementById(p.id));
+
+/* ── Viewport ── */
+let VW = 0, VH = 0;
+function resize() {
+  VW = canvas.width  = window.innerWidth;
+  VH = canvas.height = window.innerHeight;
+  positionCards();
+}
+
+/* Slot x for card i (4 equal columns) */
+function slotX(i) {
+  const pad  = Math.max(VW * 0.06, 40);
+  const span = VW - pad * 2;
+  return pad + (span / 4) * i + (span / 8);
+}
+function slotY() { return VH / 2; }
+
+/* ── Card DOM positioning ──
+   Label block: pc-name (26px) + margin-top 6px + pc-desc (42px) = 74px.
+   All card tops anchored at the same Y so headlines align.
+   We centre on slotY accounting for label + tallest mockup.       */
+const LABEL_H       = 74;   // pc-name 26px + gap 6px + pc-desc 42px
+const TALLEST_MOCK  = 412;  // AH Engage portrait mockup (tallest card)
+
+function positionCards() {
+  const cardTopY = slotY() - (LABEL_H + TALLEST_MOCK) / 2;
+
+  cardEls.forEach((el, i) => {
+    if (!el) return;
+    el.style.left       = slotX(i) + 'px';
+    el.style.top        = '0px';
+    el.style.marginLeft = (-el.offsetWidth / 2) + 'px';
+    el.style.marginTop  = cardTopY + 'px';
+  });
+}
+
+/* ── Node row Y — right below the subheadline, above the mockup ── */
+function nodeRowY() {
+  const cardTopY = slotY() - (LABEL_H + TALLEST_MOCK) / 2;
+  return cardTopY + LABEL_H + 10; // 10px gap below subheadline
+}
+
+/* ── Easing ── */
+function easeInOut3(t) { return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+function easeOut3(t)   { return 1 - Math.pow(1-t, 3); }
+function easeOut5(t)   { return 1 - Math.pow(1-t, 5); }
+function clamp(v,lo,hi){ return v<lo?lo:v>hi?hi:v; }
+function lerp(a,b,t)   { return a+(b-a)*t; }
+function norm(v,lo,hi) { return clamp((v-lo)/(hi-lo),0,1); }
+
+/* ── Damped spring ── */
+function springCurve(t, overshootFrac) {
+  if (t <= 0) return 0;
+  if (t >= 1) return 1;
+  if (t < 0.75) {
+    return easeOut3(t / 0.75) * (1 + overshootFrac);
+  } else if (t < 0.88) {
+    const u = (t - 0.75) / 0.13;
+    return (1 + overshootFrac) + u * overshootFrac;
+  } else {
+    const u = (t - 0.88) / 0.12;
+    const peak = 1 + 2 * overshootFrac;
+    return peak - easeOut5(u) * (peak - 1);
+  }
+}
+
+/* ── Hub drawing ── */
+let pulse = 0;
+function drawHub(cx, cy, R, alpha) {
+  if (alpha <= 0) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+
+  /* spinning dashed ring */
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(pulse * 0.35);
+  ctx.beginPath(); ctx.arc(0, 0, R+26, 0, Math.PI*2);
+  ctx.setLineDash([5,9]); ctx.strokeStyle='rgba(13,110,253,.22)';
+  ctx.lineWidth=1.2; ctx.stroke(); ctx.setLineDash([]);
+  ctx.restore();
+
+  /* pulsing rings */
+  const s1 = 0.5+0.5*Math.sin(pulse*1.1);
+  const s2 = 0.5+0.5*Math.sin(pulse*1.1+1.4);
+  [
+    { r: R+16+s1*5, a: 0.14+s1*0.16 },
+    { r: R+7 +s2*4, a: 0.22+s2*0.18 },
+  ].forEach(ring => {
+    ctx.beginPath(); ctx.arc(cx,cy,ring.r,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(13,110,253,${ring.a})`; ctx.lineWidth=1.5; ctx.stroke();
+  });
+
+  /* flat solid fill — adeahub blue */
+  ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.fillStyle='#0D6EFD'; ctx.fill();
+
+  /* text — clip to circle */
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, R - 6, 0, Math.PI*2); ctx.clip();
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillStyle='#fff';
+  ctx.font=`800 ${R*.22}px Outfit,sans-serif`; ctx.fillText('adeahub',cx,cy-R*.1);
+  ctx.fillStyle='rgba(255,255,255,.6)';
+  ctx.font=`500 ${R*.155}px Outfit,sans-serif`; ctx.fillText('Digital Health Platform',cx,cy+R*.18, R*1.7);
+  ctx.restore();
+
+  ctx.restore();
+}
+
+/* ── Product circle drawing ── */
+function drawProdCircle(cx, cy, R, alpha) {
+  if (alpha <= 0 || R <= 0) return;
+  ctx.save(); ctx.globalAlpha = alpha;
+  ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.fillStyle='#FAC515'; ctx.fill();
+  ctx.restore();
+}
+
+/* ── Expand ripple ── */
+function drawRipple(cx, cy, R0, prod, t) {
+  if (t <= 0) return;
+  for (let w = 0; w < 3; w++) {
+    const wt = clamp(t - w*0.12, 0, 1);
+    if (wt <= 0) continue;
+    const maxR = Math.max(VW, VH) * 0.55;
+    const r    = lerp(R0, maxR, easeOut5(wt));
+    const a    = (1 - easeOut3(wt)) * (0.35 - w*0.1);
+    if (a <= 0) continue;
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2);
+    ctx.strokeStyle = prod.color; ctx.lineWidth = lerp(3,.3,easeOut3(wt)); ctx.stroke();
+    ctx.restore();
+  }
+}
+
+/* ── Float idle state per card ── */
+const floatPhase = [0, 0.25, 0.5, 0.75].map(p => p * Math.PI * 2);
+
+/* ── Smooth scroll state ── */
+let targetP = 0;
+let smoothP = 0;
+const LERP_K = 0.042;
+
+window.addEventListener('scroll', () => {
+  const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+  targetP = scrollMax > 0 ? clamp(window.scrollY / scrollMax, 0, 1) : 0;
+}, { passive: true });
+
+/* ── Node radius ── */
+const NODE_R = 7;
+
+/* ── MAIN RENDER LOOP ── */
+let startTime = null;
+function render(ts) {
+  if (!startTime) startTime = ts;
+  pulse = (ts - startTime) / 1000;
+
+  ctx.clearRect(0,0,VW,VH);
+
+  smoothP += (targetP - smoothP) * LERP_K;
+  const p = smoothP;
+
+  /* Scroll hint */
+  document.getElementById('scrollHint').style.opacity = targetP < 0.04 ? '1' : '0';
+
+  const cx = VW / 2, cy = VH / 2;
+  const HUB_R  = Math.min(VW, VH) * 0.085;
+  const PROD_R = HUB_R * 0.58;
+
+  /* ── Phase A: hub idles        p: 0.00 → 0.08 ── */
+  const phaseA = norm(p, 0, 0.08);
+
+  /* ── Phase B: circles split    p: 0.08 → 0.45 ── */
+  const phaseB = norm(p, 0.08, 0.45);
+
+  /* ── Phase C: circles → nodes  p: 0.45 → 0.78 ── */
+  const phaseC = norm(p, 0.45, 0.78);
+
+  /* Hub alpha: full during A, fades out during early B */
+  const hubAlpha = clamp(1 - phaseB * 2.5, 0, 1);
+  drawHub(cx, cy, HUB_R, hubAlpha);
+
+  /* Node row target Y */
+  const nrY = nodeRowY();
+
+  /* ── PRODUCT CIRCLES / NODES + CARDS ── */
+  PRODS.forEach((prod, i) => {
+    const tx = slotX(i);
+    const ty = slotY();
+
+    /* Spring curve drives circle from hub-centre to slot X */
+    const sc = springCurve(phaseB, 0.07);
+    const safeSc = clamp(sc, 0, 1.07);
+
+    /* Phase B endpoint: circle at (slotX, slotY) */
+    const splitX = lerp(cx, tx, safeSc);
+    const splitY = lerp(cy, ty, safeSc);
+
+    /* Phase C: circle moves from (slotX, slotY) down to (slotX, nodeRowY)
+       and shrinks from PROD_R to NODE_R */
+    const settleT = easeOut3(phaseC);
+    const circX = phaseC > 0 ? lerp(tx, tx, settleT) : splitX;   // X stays at slotX
+    const circY = phaseC > 0 ? lerp(ty, nrY, settleT) : splitY;  // Y moves to nodeRowY
+    const circR = phaseC > 0 ? lerp(PROD_R, NODE_R, settleT) : PROD_R;
+
+    /* Circle alpha: fades in as split starts, stays visible as node */
+    const circAlpha = clamp(phaseB * 3, 0, 1);
+
+    /* Draw circle (which becomes the node) */
+    drawProdCircle(circX, circY, circR, circAlpha);
+
+    /* Draw ripple during early expand phase */
+    if (phaseC > 0 && phaseC < 0.5) {
+      drawRipple(tx, ty, PROD_R, prod, phaseC);
+    }
+
+    /* ── DOM card: fade + scale in during expand phase ── */
+    const el = cardEls[i];
+    if (!el) return;
+
+    const cardT = clamp(phaseC * 2 - 0.15, 0, 1);
+    const cardAlpha = easeOut3(cardT);
+    const cardScale = lerp(0.6, 1, easeOut5(cardT));
+
+    /* Float offset once fully revealed */
+    const floatAmp  = 3 * clamp((cardT - 0.85) / 0.15, 0, 1);
+    const floatOff  = floatAmp * Math.sin(pulse * 0.55 + floatPhase[i]);
+
+    el.style.opacity   = cardAlpha;
+    el.style.transform = `scale(${cardScale}) translateY(${floatOff / cardScale}px)`;
+    el.classList.toggle('live', cardT > 0.5);
+  });
+
+  /* ── Connecting line between nodes ── */
+  /* Draw when circles have started settling (phaseC > 0.2) */
+  if (phaseC > 0.2) {
+    const lineT = easeOut3(norm(phaseC, 0.2, 0.8));
+    const x1 = slotX(0);
+    const x4 = slotX(3);
+    /* Line grows from centre outward */
+    const midX = (x1 + x4) / 2;
+    const halfSpan = ((x4 - x1) / 2) * lineT;
+    const lineX1 = midX - halfSpan;
+    const lineX2 = midX + halfSpan;
+
+    ctx.save();
+    ctx.globalAlpha = 0.35 * lineT;
+    ctx.beginPath();
+    ctx.moveTo(lineX1, nrY);
+    ctx.lineTo(lineX2, nrY);
+    ctx.setLineDash([5, 5]);
+    ctx.strokeStyle = '#FAC515';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+  }
+
+  requestAnimationFrame(render);
+}
+
+/* ── Boot ── */
+window.addEventListener('load', () => {
+  resize();
+  requestAnimationFrame(render);
+});
+window.addEventListener('resize', resize);
+</script>
+</body>
+</html>
