@@ -499,7 +499,7 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 1: HERO
 ═══════════════════════════════════════════════════ -->
-<header class="hero-bg pt-20 pb-28 overflow-hidden relative">
+<header class="hero-bg pt-20 pb-28 relative" style="overflow:clip;">
     <div class="dot-grid absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"></div>
     <div class="blob-float-1 absolute left-[5%] top-[20%] w-80 h-80 rounded-full bg-blue-100/40 blur-3xl pointer-events-none" aria-hidden="true"></div>
     <div class="blob-float-2 absolute right-[5%] bottom-[10%] w-60 h-60 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
@@ -548,8 +548,8 @@
         </div>
             </div>
             <!-- Hero Visual: Animated Clinical Dashboard -->
-            <div class="relative w-full" style="height:500px;overflow:visible;">
-                <iframe src="ah-care-animated.html" style="position:absolute;top:0;right:-60px;width:960px;height:720px;border:none;overflow:hidden;transform:scale(0.65);transform-origin:top right;" scrolling="no" loading="lazy" title="AH Care animated preview"></iframe>
+            <div class="relative w-full" style="min-height:500px;">
+                <iframe src="ah-care-animated.html" style="position:absolute;top:-40px;right:-120px;width:960px;height:720px;border:none;overflow:hidden;transform:scale(0.75);transform-origin:top right;" scrolling="no" loading="lazy" title="AH Care animated preview"></iframe>
             </div>
         </div>
     </div>
