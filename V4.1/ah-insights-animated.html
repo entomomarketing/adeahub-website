@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AH Insights — adeahub Healthcare Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:'Inter',sans-serif;
+    background:transparent;
+    display:flex;justify-content:center;align-items:flex-start;
+    padding:0;
+  }
+
+  /* ─── 4:3 Shell ─── */
+  .shell{
+    width:960px;height:720px;
+    background:#F0F2F5;
+    border-radius:14px;overflow:hidden;
+    box-shadow:0 2px 6px rgba(0,0,0,.08),0 16px 48px rgba(0,0,0,.18);
+    display:flex;flex-direction:column;
+    opacity:0;animation:fade-in .5s ease .1s forwards;
+  }
+
+  /* ─── Top Nav ─── */
+  .topnav{
+    height:44px;background:#fff;border-bottom:1px solid #E2E8F0;
+    display:flex;align-items:center;padding:0 16px;gap:6px;flex-shrink:0;z-index:10;
+  }
+  .logo{display:flex;align-items:center;gap:6px;margin-right:18px;}
+  .logo-mark{width:24px;height:24px;background:linear-gradient(135deg,#5BA8E5,#3A7EBF);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+  .logo-mark svg{width:14px;height:14px;}
+  .logo-text{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#5BA8E5;}
+
+  .nav-tabs{display:flex;gap:2px;flex:1;}
+  .nav-tab{
+    padding:8px 12px;font-size:12px;font-weight:500;color:#6B7280;
+    border-radius:6px;cursor:pointer;white-space:nowrap;
+    font-family:'Inter',sans-serif;transition:all .15s;
+  }
+  .nav-tab:hover{background:#F5F7FA;color:#1A1D23;}
+  .nav-tab.active{background:#EEF4FF;color:#5BA8E5;font-weight:600;}
+  .nav-tab.ai{
+    background:linear-gradient(135deg,#EEF4FF,#E0ECFF);color:#5BA8E5;
+    border:1px solid #C7DEFF;font-weight:600;
+  }
+
+  .nav-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
+  .nav-right span{font-size:12px;color:#6B7280;cursor:pointer;}
+
+  /* ─── Title Bar ─── */
+  .title-bar{
+    padding:10px 18px;display:flex;align-items:center;gap:10px;background:#fff;
+    border-bottom:1px solid #E2E8F0;flex-shrink:0;
+  }
+  .page-title{
+    font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:#1A1D23;
+  }
+  .title-star{color:#F59E0B;font-size:14px;}
+  .title-badge{
+    display:inline-flex;align-items:center;gap:5px;
+    background:#F5F7FA;border:1px solid #E2E8F0;border-radius:14px;
+    padding:3px 10px 3px 6px;font-size:11px;color:#6B7280;
+  }
+  .badge-avatar{width:18px;height:18px;border-radius:50%;background:#E2E8F0;display:flex;align-items:center;justify-content:center;}
+  .badge-avatar svg{width:10px;height:10px;}
+  .title-time{font-size:11px;color:#9AA5B4;display:flex;align-items:center;gap:4px;}
+
+  /* ─── Content ─── */
+  .content{
+    flex:1;display:flex;overflow:hidden;
+  }
+
+  /* ─── Filter Panel ─── */
+  .filter-panel{
+    width:180px;flex-shrink:0;background:#fff;border-right:1px solid #E2E8F0;
+    padding:14px 12px;display:flex;flex-direction:column;gap:10px;
+    opacity:0;animation:fade-in .4s ease .5s forwards;
+  }
+  .filter-title{font-size:12px;font-weight:700;color:#1A1D23;}
+  .filter-label{font-size:10px;color:#6B7280;margin-bottom:3px;}
+  .filter-input{
+    font-size:10px;color:#1A1D23;background:#F5F7FA;border:1px solid #E2E8F0;
+    border-radius:6px;padding:6px 8px;width:100%;font-family:'Inter',sans-serif;
+  }
+  .filter-btn{
+    font-size:11px;font-weight:600;color:#fff;background:#5BA8E5;
+    border:none;border-radius:6px;padding:7px 0;text-align:center;cursor:pointer;
+    margin-top:4px;
+  }
+  .filter-clear{font-size:11px;color:#9AA5B4;text-align:center;cursor:pointer;}
+
+  /* ─── Dashboard Grid ─── */
+  .dashboard{
+    flex:1;overflow-y:auto;scrollbar-width:none;padding:14px;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .dashboard::-webkit-scrollbar{display:none;}
+
+  /* ── KPI Row ── */
+  .kpi-row{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+    opacity:0;transform:translateY(10px);animation:rise .4s ease .6s forwards;
+  }
+  .kpi-card{
+    background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;
+    position:relative;
+  }
+  .kpi-header{
+    display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;
+  }
+  .kpi-title{font-size:11px;font-weight:600;color:#4A5568;}
+  .kpi-icons{display:flex;gap:6px;align-items:center;}
+  .kpi-icon{width:14px;height:14px;cursor:pointer;}
+  .kpi-sub{font-size:10px;color:#9AA5B4;margin-bottom:10px;}
+  .kpi-number{
+    font-family:'Outfit',sans-serif;font-size:48px;font-weight:800;color:#1A1D23;
+    line-height:1;
+  }
+  .kpi-unit{
+    font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:#6B7280;
+    margin-top:2px;
+  }
+
+  /* ── Charts Row 1 ── */
+  .charts-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+    opacity:0;transform:translateY(10px);
+  }
+  .charts-row.row1{animation:rise .4s ease 1.2s forwards;}
+  .charts-row.row2{animation:rise .4s ease 1.8s forwards;}
+
+  .chart-card{
+    background:#fff;border:1px solid #E2E8F0;border-radius:12px;
+    padding:14px 16px;min-height:0;
+  }
+  .chart-header{
+    display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;
+  }
+  .chart-title{font-size:12px;font-weight:700;color:#1A1D23;}
+  .chart-icons{display:flex;gap:5px;align-items:center;}
+
+  .legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .legend-item{display:flex;align-items:center;gap:4px;font-size:10px;color:#6B7280;}
+  .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+  /* Donut */
+  .donut-wrap{
+    display:flex;align-items:center;justify-content:center;
+    height:160px;position:relative;
+  }
+  .donut-svg{width:150px;height:150px;}
+  .donut-center{
+    position:absolute;text-align:center;
+  }
+  .donut-center-label{font-size:9px;color:#9AA5B4;}
+  .donut-center-val{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#1A1D23;}
+
+  /* Donut animation */
+  .donut-ring{
+    fill:none;
+    stroke-linecap:round;
+    transform:rotate(-90deg);
+    transform-origin:center;
+  }
+  .donut-appt{
+    stroke:#3EC6CF;stroke-width:24;
+    stroke-dasharray:0 314;
+    animation:donut-fill-appt 1.2s ease 1.5s forwards;
+  }
+  .donut-walkin{
+    stroke:#A8E063;stroke-width:24;
+    stroke-dasharray:0 314;
+    animation:donut-fill-walkin 1s ease 1.8s forwards;
+  }
+  @keyframes donut-fill-appt{to{stroke-dasharray:298 314;}}
+  @keyframes donut-fill-walkin{to{stroke-dasharray:16 314;}}
+
+  /* Scatter chart */
+  .scatter-area{height:155px;position:relative;}
+  .scatter-svg{width:100%;height:100%;}
+  .scatter-dot{opacity:0;animation:pop-in .3s ease forwards;}
+
+  /* Bar chart */
+  .bar-area{height:155px;position:relative;}
+  .bar-svg{width:100%;height:100%;}
+  .bar-rect{transform-origin:bottom;transform:scaleY(0);animation:bar-grow .6s ease forwards;}
+  @keyframes bar-grow{to{transform:scaleY(1);}}
+
+  /* Line chart */
+  .line-area{height:155px;position:relative;}
+  .line-svg{width:100%;height:100%;}
+  .line-path{
+    stroke-dasharray:600;stroke-dashoffset:600;
+    animation:line-draw 2s ease 2.2s forwards;
+  }
+  @keyframes line-draw{to{stroke-dashoffset:0;}}
+
+  .tooltip-box{
+    position:absolute;top:20px;left:50%;transform:translateX(-50%);
+    background:#fff;border:1px solid #E2E8F0;border-radius:8px;
+    padding:6px 10px;box-shadow:0 4px 12px rgba(0,0,0,.1);
+    opacity:0;animation:fade-in .3s ease 3.2s forwards;
+    white-space:nowrap;
+  }
+  .tooltip-title{font-size:10px;font-weight:700;color:#1A1D23;}
+  .tooltip-val{font-size:10px;color:#6B7280;display:flex;align-items:center;gap:4px;}
+  .tooltip-dot{width:6px;height:6px;border-radius:50%;background:#3EC6CF;}
+
+  /* ── Shared Keyframes ── */
+  @keyframes fade-in{to{opacity:1;}}
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+  @keyframes pop-in{to{opacity:1;transform:scale(1);}}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ═══ TOP NAV ═══ -->
+  <div class="topnav">
+    <div class="nav-tabs">
+      <div class="nav-tab ai">Ask Adea AI</div>
+      <div class="nav-tab active">Dashboards</div>
+      <div class="nav-tab">Charts</div>
+      <div class="nav-tab">Datasets</div>
+      <div class="nav-tab">SQL</div>
+    </div>
+    <div class="nav-right">
+      <span>+ &nbsp;Settings</span>
+    </div>
+  </div>
+
+  <!-- ═══ TITLE BAR ═══ -->
+  <div class="title-bar">
+    <div class="page-title">AH Insights – Appointments</div>
+    <span class="title-star">★</span>
+    <div class="title-badge">
+      <div class="badge-avatar">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="8" r="4" fill="#9AA5B4"/>
+          <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" fill="#9AA5B4"/>
+        </svg>
+      </div>
+      Admin User
+    </div>
+    <div class="title-time">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      2 months ago
+    </div>
+  </div>
+
+  <!-- ═══ CONTENT ═══ -->
+  <div class="content">
+
+    <!-- Filter Panel -->
+    <div class="filter-panel">
+      <div class="filter-title">Filters</div>
+      <div>
+        <div class="filter-label">Appointment Date – From &amp; To</div>
+        <input class="filter-input" value="2024-01-01 ≤ col ≤ 2026-03" readonly/>
+      </div>
+      <button class="filter-btn">Apply Filters</button>
+      <div class="filter-clear">Clear all</div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+
+      <!-- ── KPI Cards ── -->
+      <div class="kpi-row">
+
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">Total Appointments</span>
+            <div class="kpi-icons">
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+          </div>
+          <div class="kpi-sub">Volume</div>
+          <div class="kpi-number" id="kpi1">0</div>
+          <div class="kpi-unit">Appointments</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">No-Show Volume</span>
+            <div class="kpi-icons">
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+          </div>
+          <div class="kpi-sub">Volume</div>
+          <div class="kpi-number" id="kpi2">0</div>
+          <div class="kpi-unit">Appointments</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">Appointment Cancellation</span>
+            <div class="kpi-icons">
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+          </div>
+          <div class="kpi-sub">Volume</div>
+          <div class="kpi-number" id="kpi3">0</div>
+          <div class="kpi-unit">Appointments</div>
+        </div>
+
+      </div>
+
+      <!-- ── Charts Row 1: Donut + Scatter ── -->
+      <div class="charts-row row1">
+
+        <!-- Donut: OP Visit Appointment vs Walk-In -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">OP Visit : Appointment vs Walk-In</div>
+            <div class="chart-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#3EC6CF;"></div>Appointment</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#A8E063;"></div>Walk-In</div>
+          </div>
+          <div class="donut-wrap">
+            <svg class="donut-svg" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#F0F2F5" stroke-width="24"/>
+              <circle class="donut-ring donut-appt" cx="60" cy="60" r="50"/>
+              <circle class="donut-ring donut-walkin" cx="60" cy="60" r="50"
+                      style="stroke-dashoffset:-298;"/>
+            </svg>
+            <div class="donut-center">
+              <div class="donut-center-label">Walk-In</div>
+              <div class="donut-center-val">2,815</div>
+              <div class="donut-center-label" style="margin-top:4px;">Appointment ↗</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scatter: Appt Status by Speciality -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Appt Status by Speciality</div>
+            <div class="chart-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#9AA5B4;"></div>CLOSED</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#22C55E;"></div>OPEN</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#F59E0B;"></div>CANCEL</div>
+          </div>
+          <div class="scatter-area">
+            <svg class="scatter-svg" viewBox="0 0 340 140">
+              <!-- Y axis lines -->
+              <line x1="30" y1="10" x2="330" y2="10" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="35" x2="330" y2="35" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="60" x2="330" y2="60" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="85" x2="330" y2="85" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="110" x2="330" y2="110" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="130" x2="330" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+              <!-- Y labels -->
+              <text x="24" y="14" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">21k</text>
+              <text x="24" y="39" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">16k</text>
+              <text x="24" y="64" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">12k</text>
+              <text x="24" y="89" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">6k</text>
+              <text x="24" y="114" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">2k</text>
+              <!-- X labels (specialities) -->
+              <text x="55"  y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Inter">CTC</text>
+              <text x="90"  y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Inter">GP</text>
+              <text x="125" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Inter">Gen Surg</text>
+              <text x="165" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Inter">Cardio</text>
+              <text x="200" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Inter">OB/GYN</text>
+              <text x="235" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Inter">ENT</text>
+              <text x="270" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Inter">Ortho</text>
+              <text x="305" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Inter">Paed</text>
+              <!-- Dots: CLOSED (grey) -->
+              <circle class="scatter-dot" cx="55"  cy="18"  r="4" fill="#C4C9D2" style="animation-delay:1.5s"/>
+              <circle class="scatter-dot" cx="90"  cy="30"  r="4" fill="#C4C9D2" style="animation-delay:1.55s"/>
+              <circle class="scatter-dot" cx="125" cy="40"  r="4" fill="#C4C9D2" style="animation-delay:1.6s"/>
+              <circle class="scatter-dot" cx="165" cy="55"  r="4" fill="#C4C9D2" style="animation-delay:1.65s"/>
+              <circle class="scatter-dot" cx="200" cy="62"  r="4" fill="#C4C9D2" style="animation-delay:1.7s"/>
+              <circle class="scatter-dot" cx="235" cy="75"  r="4" fill="#C4C9D2" style="animation-delay:1.75s"/>
+              <circle class="scatter-dot" cx="270" cy="85"  r="4" fill="#C4C9D2" style="animation-delay:1.8s"/>
+              <circle class="scatter-dot" cx="305" cy="95"  r="4" fill="#C4C9D2" style="animation-delay:1.85s"/>
+              <!-- Dots: OPEN (green) -->
+              <circle class="scatter-dot" cx="55"  cy="22"  r="3.5" fill="#22C55E" style="animation-delay:1.6s"/>
+              <circle class="scatter-dot" cx="90"  cy="36"  r="3.5" fill="#22C55E" style="animation-delay:1.65s"/>
+              <circle class="scatter-dot" cx="125" cy="52"  r="3.5" fill="#22C55E" style="animation-delay:1.7s"/>
+              <circle class="scatter-dot" cx="165" cy="65"  r="3.5" fill="#22C55E" style="animation-delay:1.75s"/>
+              <circle class="scatter-dot" cx="200" cy="72"  r="3.5" fill="#22C55E" style="animation-delay:1.8s"/>
+              <circle class="scatter-dot" cx="235" cy="80"  r="3.5" fill="#22C55E" style="animation-delay:1.85s"/>
+              <circle class="scatter-dot" cx="270" cy="92"  r="3.5" fill="#22C55E" style="animation-delay:1.9s"/>
+              <circle class="scatter-dot" cx="305" cy="100" r="3.5" fill="#22C55E" style="animation-delay:1.95s"/>
+              <!-- Dots: CANCEL (amber) -->
+              <circle class="scatter-dot" cx="55"  cy="100" r="3" fill="#F59E0B" style="animation-delay:1.7s"/>
+              <circle class="scatter-dot" cx="90"  cy="98"  r="3" fill="#F59E0B" style="animation-delay:1.75s"/>
+              <circle class="scatter-dot" cx="125" cy="96"  r="3" fill="#F59E0B" style="animation-delay:1.8s"/>
+              <circle class="scatter-dot" cx="165" cy="102" r="3" fill="#F59E0B" style="animation-delay:1.85s"/>
+              <circle class="scatter-dot" cx="200" cy="105" r="3" fill="#F59E0B" style="animation-delay:1.9s"/>
+              <circle class="scatter-dot" cx="235" cy="104" r="3" fill="#F59E0B" style="animation-delay:1.95s"/>
+              <circle class="scatter-dot" cx="270" cy="108" r="3" fill="#F59E0B" style="animation-delay:2.0s"/>
+              <circle class="scatter-dot" cx="305" cy="107" r="3" fill="#F59E0B" style="animation-delay:2.05s"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── Charts Row 2: Bar + Line ── -->
+      <div class="charts-row row2">
+
+        <!-- Bar: Appts by Speciality -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Appts by Speciality</div>
+            <div class="chart-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#3EC6CF;width:10px;height:10px;border-radius:2px;"></div>COUNT(APPT_ID)</div>
+          </div>
+          <div class="bar-area">
+            <svg class="bar-svg" viewBox="0 0 330 150">
+              <!-- Y grid -->
+              <line x1="35" y1="10" x2="320" y2="10" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="35" y1="40" x2="320" y2="40" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="35" y1="70" x2="320" y2="70" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="35" y1="100" x2="320" y2="100" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="35" y1="130" x2="320" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+              <!-- Y labels -->
+              <text x="30" y="14" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">80k</text>
+              <text x="30" y="44" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">60k</text>
+              <text x="30" y="74" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">40k</text>
+              <text x="30" y="104" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">20k</text>
+              <!-- X labels -->
+              <text x="65"  y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Inter">Anaesthesia</text>
+              <text x="125" y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Inter">Gen Surgery</text>
+              <text x="185" y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Inter">ORL (ENT)</text>
+              <text x="245" y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Inter">Paed Dent</text>
+              <text x="305" y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Inter">Urology</text>
+              <!-- Bars -->
+              <rect class="bar-rect" x="52"  y="108" width="26" height="22" rx="3" fill="#3EC6CF" style="animation-delay:2.0s"/>
+              <rect class="bar-rect" x="112" y="22"  width="26" height="108" rx="3" fill="#3EC6CF" style="animation-delay:2.1s"/>
+              <rect class="bar-rect" x="172" y="58"  width="26" height="72" rx="3" fill="#3EC6CF" style="animation-delay:2.2s"/>
+              <rect class="bar-rect" x="232" y="110" width="26" height="20" rx="3" fill="#3EC6CF" style="animation-delay:2.3s"/>
+              <rect class="bar-rect" x="292" y="114" width="26" height="16" rx="3" fill="#3EC6CF" style="animation-delay:2.4s"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Line: Appts by Week -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Appts by Week</div>
+            <div class="chart-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#3EC6CF;"></div>COUNT(APPT_ID)</div>
+          </div>
+          <div class="line-area">
+            <svg class="line-svg" viewBox="0 0 330 150">
+              <!-- Y grid -->
+              <line x1="30" y1="10" x2="320" y2="10" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="40" x2="320" y2="40" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="70" x2="320" y2="70" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="100" x2="320" y2="100" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="130" x2="320" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+              <!-- Y labels -->
+              <text x="25" y="14" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">21k</text>
+              <text x="25" y="44" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">15k</text>
+              <text x="25" y="74" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">9k</text>
+              <text x="25" y="104" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">3k</text>
+              <text x="25" y="132" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Inter">0</text>
+              <!-- X labels -->
+              <text x="50"  y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Inter">Oct</text>
+              <text x="100" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Inter">Nov</text>
+              <text x="150" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Inter">Dec</text>
+              <text x="200" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Inter">2025</text>
+              <text x="250" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Inter">Feb</text>
+              <text x="300" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Inter">Mar</text>
+              <!-- Line path -->
+              <polyline class="line-path" fill="none" stroke="#3EC6CF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"
+                points="
+                  40,38 55,42 70,36 85,100 100,38 115,42 130,40
+                  145,36 160,100 175,35 190,38 205,42 220,38
+                  235,100 250,34 265,38 280,40 295,35 310,38
+                "/>
+              <!-- Hover vertical line -->
+              <line x1="85" y1="15" x2="85" y2="130" stroke="#3EC6CF" stroke-width="1" stroke-dasharray="4 3" opacity="0" style="animation:fade-in .3s ease 3s forwards;"/>
+              <circle cx="85" cy="38" r="4" fill="#fff" stroke="#3EC6CF" stroke-width="2" opacity="0" style="animation:fade-in .3s ease 3.1s forwards;"/>
+            </svg>
+            <!-- Tooltip -->
+            <div class="tooltip-box" style="left:85px;top:5px;transform:translateX(-50%);">
+              <div class="tooltip-title">Mon Oct 14</div>
+              <div class="tooltip-val"><span class="tooltip-dot"></span> COUNT(APPT_ID) &nbsp;<strong>15.8k</strong></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end row2 -->
+
+    </div><!-- end dashboard -->
+  </div><!-- end content -->
+</div><!-- end shell -->
+
+<script>
+// Animated count-up for KPI numbers
+function countUp(id, finalText, delay, duration) {
+  var suffix = finalText.replace(/[0-9.]/g, '');
+  var num = parseFloat(finalText);
+  setTimeout(function() {
+    var el = document.getElementById(id);
+    var start = 0;
+    var steps = Math.max(Math.round(duration / 30), 10);
+    var inc = num / steps;
+    var count = 0;
+    var timer = setInterval(function() {
+      count++;
+      start += inc;
+      if (count >= steps) { start = num; clearInterval(timer); }
+      // Format: show decimal for 99.4 and 14.1
+      var display;
+      if (num >= 100) display = Math.round(start) + suffix;
+      else if (num >= 10) display = start.toFixed(1) + suffix;
+      else display = start.toFixed(1) + suffix;
+      el.textContent = display;
+    }, 30);
+  }, delay);
+}
+
+countUp('kpi1', '388k', 700, 900);
+countUp('kpi2', '99.4k', 800, 800);
+countUp('kpi3', '14.1k', 900, 700);
+</script>
+
+</body>
+</html>

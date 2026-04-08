@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AH Care — adeahub Clinical Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  /* ── 4:3 Shell ── */
+  .shell {
+    width: 960px;
+    height: 720px;
+    background: #EEF2F7;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: shell-in 0.5s ease 0.1s forwards;
+  }
+
+  @keyframes shell-in { to { opacity: 1; } }
+
+  /* ── Top Bar ── */
+  .topbar {
+    height: 50px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 16px;
+    flex-shrink: 0;
+    z-index: 10;
+  }
+
+  /* logo styles removed */
+  .logo-text {
+    display: none;
+  }
+
+  .topbar-search {
+    flex: 1;
+    max-width: 380px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F5F7FA;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 6px 12px;
+  }
+  .topbar-search svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .topbar-search span {
+    font-size: 13px;
+    color: #9AA5B4;
+    font-family: 'Inter', sans-serif;
+  }
+  .topbar-search .ai-chip {
+    margin-left: auto;
+    background: #EEF4FF;
+    color: #5BA8E5;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-left: auto;
+  }
+  .topbar-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .topbar-icon svg { width: 18px; height: 18px; }
+  .notif-dot {
+    position: absolute;
+    top: 4px; right: 4px;
+    width: 7px; height: 7px;
+    background: #5BA8E5;
+    border-radius: 50%;
+    border: 1.5px solid #fff;
+    animation: notif-pulse 2s ease-in-out 2s infinite;
+  }
+  @keyframes notif-pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+  }
+  .avatar-chip {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, #3A7EBF, #5BA8E5);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: #fff;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── Body ── */
+  .body {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* ── Left Sidebar ── */
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    border-right: 1px solid #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Sidebar icons rail */
+  .icon-rail {
+    position: absolute;
+    left: 0; top: 50px;
+    width: 44px;
+    height: 670px;
+    background: #FFFFFF;
+    border-right: 1px solid #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    gap: 6px;
+    z-index: 5;
+  }
+  .rail-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .rail-icon.active { background: #EEF4FF; }
+  .rail-icon svg { width: 16px; height: 16px; }
+
+  /* Sidebar content (offset for icon rail) */
+  .sidebar-inner {
+    margin-left: 44px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-left: 1px solid #E2E8F0;
+  }
+
+  .sidebar-header {
+    padding: 12px 14px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .sidebar-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1D23;
+  }
+
+  /* Doctor card */
+  .doctor-card {
+    margin: 0 10px 10px;
+    background: #F0F5FF;
+    border: 1px solid #D0E1FF;
+    border-radius: 10px;
+    padding: 10px 12px;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: rise 0.4s ease 0.6s forwards;
+  }
+  .doctor-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .doctor-avatar {
+    width: 34px; height: 34px;
+    background: linear-gradient(135deg, #3A7EBF, #5BA8E5);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: #fff;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .online-dot {
+    position: absolute; bottom: -1px; right: -1px;
+    width: 8px; height: 8px;
+    background: #22C55E;
+    border-radius: 50%;
+    border: 1.5px solid #F0F5FF;
+  }
+  .doctor-info .name {
+    font-size: 13px; font-weight: 600; color: #1A1D23;
+    font-family: 'Inter', sans-serif;
+  }
+  .doctor-info .role {
+    font-size: 11px; color: #6B7280;
+    font-family: 'Inter', sans-serif;
+  }
+  .station-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.65);
+    border-radius: 6px;
+    padding: 5px 8px;
+  }
+  .station-label { font-size: 10px; color: #9AA5B4; font-family: 'Inter', sans-serif; }
+  .station-value { font-size: 11px; font-weight: 600; color: #1A1D23; font-family: 'Inter', sans-serif; }
+
+  /* Worklist dropdown */
+  .worklist-row {
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .worklist-label { font-size: 11px; color: #6B7280; font-family: 'Inter', sans-serif; }
+  .worklist-select {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 600; color: #1A1D23; font-family: 'Inter', sans-serif;
+  }
+
+  /* Patient search */
+  .pt-search {
+    margin: 0 10px 6px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: #F5F7FA;
+    border: 1px solid #E2E8F0;
+    border-radius: 7px;
+    padding: 6px 10px;
+    flex-shrink: 0;
+  }
+  .pt-search span { font-size: 12px; color: #9AA5B4; font-family: 'Inter', sans-serif; }
+
+  /* Date separator */
+  .date-sep {
+    padding: 4px 14px 2px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6B7280;
+    font-family: 'Inter', sans-serif;
+    flex-shrink: 0;
+  }
+
+  /* Patient list */
+  .patient-list {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding: 0 6px 6px;
+  }
+  .patient-list::-webkit-scrollbar { display: none; }
+
+  .patient-item {
+    border-radius: 8px;
+    padding: 8px 8px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: background 0.15s;
+  }
+  .patient-item:hover { background: #F5F7FA; }
+
+  .pt-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .pt-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1A1D23;
+    font-family: 'Inter', sans-serif;
+  }
+  .pt-bed {
+    font-size: 11px;
+    font-weight: 600;
+    color: #5BA8E5;
+    font-family: 'Inter', sans-serif;
+    background: #EEF4FF;
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .pt-meta {
+    font-size: 10.5px;
+    color: #9AA5B4;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 5px;
+  }
+  .pt-doctor-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pt-doc-avatar {
+    width: 20px; height: 20px;
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; font-weight: 700; color: #fff;
+    font-family: 'Inter', sans-serif;
+    flex-shrink: 0;
+  }
+  .pt-doc-name { font-size: 11px; color: #4A5568; font-family: 'Inter', sans-serif; }
+  .pt-doc-role { font-size: 10px; color: #9AA5B4; font-family: 'Inter', sans-serif; }
+
+  /* p1-p5 stagger */
+  .patient-item:nth-child(1) { animation: slide-right 0.35s ease 0.9s forwards; }
+  .patient-item:nth-child(2) { animation: slide-right 0.35s ease 1.05s forwards; }
+  .patient-item:nth-child(3) { animation: slide-right 0.35s ease 1.2s forwards; }
+  .patient-item:nth-child(4) { animation: slide-right 0.35s ease 1.35s forwards; }
+  .patient-item:nth-child(5) { animation: slide-right 0.35s ease 1.5s forwards; }
+
+  /* ── Main Content ── */
+  .main {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding: 28px 28px 20px;
+    background: #EEF2F7;
+  }
+  .main::-webkit-scrollbar { display: none; }
+
+  /* Welcome */
+  .welcome-section {
+    text-align: center;
+    margin-bottom: 22px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.4s ease 0.7s forwards;
+  }
+  .welcome-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A1D23;
+    margin-bottom: 12px;
+  }
+  .welcome-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 10px 16px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .welcome-search svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .welcome-search span { font-size: 13.5px; color: #9AA5B4; font-family: 'Inter', sans-serif; }
+  .ai-badge {
+    margin-left: auto;
+    background: linear-gradient(135deg, #EEF4FF, #E0ECFF);
+    border: 1px solid #C7DEFF;
+    color: #5BA8E5;
+    font-size: 10px; font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Quick actions */
+  .section-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1A1D23;
+    margin-bottom: 10px;
+  }
+
+  .quick-actions-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.4s ease 0.9s forwards;
+  }
+
+  .qa-card {
+    flex: 1;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .qa-card:hover { box-shadow: 0 4px 12px rgba(13,110,253,0.1); transform: translateY(-2px); }
+  .qa-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: #EEF4FF;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qa-icon svg { width: 16px; height: 16px; }
+  .qa-label {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #3A4555;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.3;
+  }
+
+  /* Stats */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.4s ease 1.1s forwards;
+  }
+
+  .stat-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: #6B7280;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 8px;
+  }
+  .stat-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .stat-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #1A1D23;
+    line-height: 1;
+  }
+  .stat-trend {
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding-bottom: 3px;
+  }
+  .trend-up { color: #16A34A; }
+  .trend-down { color: #DC2626; }
+
+  /* Alerts / Feeds */
+  .feeds-section {
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.4s ease 1.3s forwards;
+  }
+
+  .feed-item {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+  }
+  .feed-item:last-child { margin-bottom: 0; }
+  .alert-circle {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid #F97316;
+    background: transparent;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    animation: alert-ring 2.5s ease-in-out 2s infinite;
+  }
+  .alert-circle::after {
+    content: '!';
+    font-size: 9px;
+    font-weight: 800;
+    color: #F97316;
+    font-family: 'Inter', sans-serif;
+  }
+  @keyframes alert-ring {
+    0%,80%,100% { box-shadow: none; }
+    40% { box-shadow: 0 0 0 4px rgba(249,115,22,0.15); }
+  }
+  .feed-close {
+    position: absolute; top: 10px; right: 10px;
+    font-size: 14px; color: #9AA5B4; cursor: pointer;
+    line-height: 1;
+  }
+  .feed-text {
+    font-size: 12.5px;
+    color: #1A1D23;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 6px;
+    padding-right: 20px;
+    line-height: 1.45;
+  }
+  .feed-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .feed-dismiss {
+    font-size: 12px;
+    color: #6B7280;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+  }
+  .feed-attend {
+    font-size: 12px;
+    font-weight: 600;
+    color: #5BA8E5;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+  }
+
+  /* Notifications */
+  .notif-section {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.4s ease 1.55s forwards;
+  }
+
+  .notif-item {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+  }
+  .notif-avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9CA3AF, #6B7280);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: #fff;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .notif-body { flex: 1; }
+  .notif-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 3px;
+  }
+  .notif-name {
+    font-size: 12.5px; font-weight: 600; color: #1A1D23;
+    font-family: 'Inter', sans-serif;
+  }
+  .notif-time {
+    font-size: 10.5px; color: #9AA5B4;
+    font-family: 'Inter', sans-serif;
+  }
+  .notif-text {
+    font-size: 12px; color: #4A5568; line-height: 1.45;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 8px;
+  }
+  .notif-text .link { color: #5BA8E5; font-weight: 500; }
+  .notif-file {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 7px;
+    padding: 6px 10px;
+  }
+  .pdf-icon {
+    width: 26px; height: 26px;
+    background: #EF4444;
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pdf-icon svg { width: 14px; height: 14px; }
+  .file-name { font-size: 11.5px; font-weight: 500; color: #1A1D23; font-family: 'Inter', sans-serif; }
+  .file-size { font-size: 10px; color: #9AA5B4; font-family: 'Inter', sans-serif; }
+  .notif-dot {
+    position: absolute; top: 14px; right: 14px;
+    width: 8px; height: 8px;
+    background: #5BA8E5;
+    border-radius: 50%;
+    animation: notif-pulse 2s ease-in-out 2.5s infinite;
+  }
+
+  /* ── Keyframes ── */
+  @keyframes rise       { to { opacity: 1; transform: translateY(0); } }
+  @keyframes slide-right { to { opacity: 1; transform: translateX(0); } }
+  @keyframes fade-in    { to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ═══ TOP BAR ═══ -->
+  <div class="topbar">
+    <!-- Logo removed -->
+
+    <!-- Center search -->
+    <div class="topbar-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <span>Search...</span>
+      <span class="ai-chip">AI</span>
+    </div>
+
+    <!-- Right icons -->
+    <div class="topbar-actions">
+      <!-- Notification bell -->
+      <div class="topbar-icon" style="position:relative;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <div class="notif-dot"></div>
+      </div>
+      <!-- User avatar -->
+      <div class="avatar-chip">D2</div>
+      <!-- Settings -->
+      <div class="topbar-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ BODY ═══ -->
+  <div class="body" style="position:relative;">
+
+    <!-- Icon rail -->
+    <div class="icon-rail">
+      <!-- Home (active) -->
+      <div class="rail-icon active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5z" fill="#EEF4FF"/>
+        </svg>
+      </div>
+      <!-- Patients -->
+      <div class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="1.7" stroke-linecap="round">
+          <circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+          <path d="M17 11l2 2 4-4" stroke-width="1.8"/>
+        </svg>
+      </div>
+      <!-- Chart -->
+      <div class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="1.7" stroke-linecap="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><polyline points="7,14 10,11 13,13 17,9"/>
+        </svg>
+      </div>
+      <!-- Video -->
+      <div class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="1.7" stroke-linecap="round">
+          <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.88V15.12a1 1 0 0 1-1.447.949L15 14v-4z"/>
+          <rect x="3" y="8" width="12" height="8" rx="2"/>
+        </svg>
+      </div>
+      <!-- More -->
+      <div class="rail-icon" style="margin-top:auto;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="5" r="1" fill="#9AA5B4"/><circle cx="12" cy="12" r="1" fill="#9AA5B4"/><circle cx="12" cy="19" r="1" fill="#9AA5B4"/>
+        </svg>
+      </div>
+      <!-- Settings -->
+      <div class="rail-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="1.7" stroke-linecap="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2"/>
+        </svg>
+      </div>
+      <!-- Doc avatar bottom -->
+      <div class="rail-icon" style="margin-top:4px;">
+        <div style="width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#3A7EBF,#5BA8E5);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;font-family:'Inter',sans-serif;">D2</div>
+      </div>
+    </div>
+
+    <!-- ── SIDEBAR ── -->
+    <div class="sidebar">
+      <div class="sidebar-inner">
+        <!-- Header -->
+        <div class="sidebar-header">
+          <span class="sidebar-title">Hub</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/>
+          </svg>
+        </div>
+
+        <!-- Doctor card -->
+        <div class="doctor-card">
+          <div class="doctor-row">
+            <div class="doctor-avatar">
+              D2
+              <div class="online-dot"></div>
+            </div>
+            <div class="doctor-info">
+              <div class="name">Doctor 2</div>
+              <div class="role">General Physician</div>
+            </div>
+          </div>
+          <div class="station-row">
+            <div>
+              <div class="station-label">Current Station</div>
+              <div class="station-value">Ward A1, Level 8</div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round">
+              <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.08-6.93"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Worklist -->
+        <div class="worklist-row">
+          <span class="worklist-label">Worklist</span>
+          <div class="worklist-select">
+            Inpatient
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+
+        <!-- Patient search -->
+        <div class="pt-search">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span>Search...</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round" style="margin-left:auto;"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
+        </div>
+
+        <!-- Date -->
+        <div class="date-sep">Tuesday, Mar 31</div>
+
+        <!-- Patient List -->
+        <div class="patient-list">
+
+          <!-- Patient 1 -->
+          <div class="patient-item">
+            <div class="pt-top">
+              <span class="pt-name">Yusnita Mohd Yusof</span>
+              <span class="pt-bed">A113</span>
+            </div>
+            <div class="pt-meta">34Y · F · 1234-5678-9012 · B+</div>
+            <div class="pt-doctor-row">
+              <div class="pt-doc-avatar" style="background:linear-gradient(135deg,#6366F1,#4F46E5);">BA</div>
+              <div>
+                <div class="pt-doc-name">Dr. Bassam Abed</div>
+                <div class="pt-doc-role">General Physician</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient 2 -->
+          <div class="patient-item">
+            <div class="pt-top">
+              <span class="pt-name">Abdulrahman al-Harbi</span>
+              <span class="pt-bed">A109</span>
+            </div>
+            <div class="pt-meta">63Y · M · 2345-6789-0123 · A+</div>
+            <div class="pt-doctor-row">
+              <div class="pt-doc-avatar" style="background:linear-gradient(135deg,#0EA5E9,#0284C7);">WA</div>
+              <div>
+                <div class="pt-doc-name">Dr. Waleed Abdurrahman</div>
+                <div class="pt-doc-role">Cardiologist</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient 3 -->
+          <div class="patient-item">
+            <div class="pt-top">
+              <span class="pt-name">Lina Ahmad al-Rashid</span>
+              <span class="pt-bed">B216</span>
+            </div>
+            <div class="pt-meta">30Y · F · 3456-7890-1234 · O+</div>
+            <div class="pt-doctor-row">
+              <div class="pt-doc-avatar" style="background:linear-gradient(135deg,#F59E0B,#D97706);">HH</div>
+              <div>
+                <div class="pt-doc-name">Dr. Haneed Hoessein</div>
+                <div class="pt-doc-role">Gynaecologist</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient 4 -->
+          <div class="patient-item">
+            <div class="pt-top">
+              <span class="pt-name">Hala Ibrahim</span>
+              <span class="pt-bed">B119</span>
+            </div>
+            <div class="pt-meta">20Y · F · 4567-8901-2345 · A–</div>
+            <div class="pt-doctor-row">
+              <div class="pt-doc-avatar" style="background:linear-gradient(135deg,#EC4899,#DB2777);">KM</div>
+              <div>
+                <div class="pt-doc-name">Dr. Khaleela Moustaffa</div>
+                <div class="pt-doc-role">Oncologist</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient 5 -->
+          <div class="patient-item">
+            <div class="pt-top">
+              <span class="pt-name">Zayd Omar</span>
+              <span class="pt-bed">A111</span>
+            </div>
+            <div class="pt-meta">37Y · M · 5678-9012-3456 · A–</div>
+            <div class="pt-doctor-row">
+              <div class="pt-doc-avatar" style="background:linear-gradient(135deg,#10B981,#059669);">AM</div>
+              <div>
+                <div class="pt-doc-name">Dr. Ali Masheer</div>
+                <div class="pt-doc-role">Physician</div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end patient-list -->
+      </div><!-- end sidebar-inner -->
+    </div><!-- end sidebar -->
+
+
+    <!-- ── MAIN CONTENT ── -->
+    <div class="main">
+
+      <!-- Welcome -->
+      <div class="welcome-section">
+        <div class="welcome-title">Welcome Doctor 2, how can I help?</div>
+        <div class="welcome-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <span>What do you wish to do?</span>
+          <div class="ai-badge">AI</div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="section-label">Quick actions</div>
+      <div class="quick-actions-row">
+
+        <div class="qa-card">
+          <div class="qa-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="2" width="6" height="4" rx="1"/><path d="M5 4h-1a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1"/>
+              <path d="M9 12h6M9 16h4"/>
+            </svg>
+          </div>
+          <span class="qa-label">Today's tasks</span>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <span class="qa-label">New messages</span>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="7" r="3"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+              <path d="M19 8v6M22 11h-6"/>
+            </svg>
+          </div>
+          <span class="qa-label">Add patient</span>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M19 8l2 2 4-4"/>
+            </svg>
+          </div>
+          <span class="qa-label">Admit patient</span>
+        </div>
+
+        <div class="qa-card">
+          <div class="qa-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5BA8E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
+          </div>
+          <span class="qa-label">Billings</span>
+        </div>
+
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Total patients in this ward</div>
+          <div class="stat-bottom">
+            <div class="stat-number" id="stat1">0</div>
+            <div class="stat-trend trend-up">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              4%
+            </div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Admitted in the last 24 hours</div>
+          <div class="stat-bottom">
+            <div class="stat-number" id="stat2">0</div>
+            <div class="stat-trend trend-down">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+              2%
+            </div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Discharged in the last 24 hours</div>
+          <div class="stat-bottom">
+            <div class="stat-number" id="stat3">0</div>
+            <div class="stat-trend trend-up">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              1%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alert Feeds -->
+      <div class="feeds-section">
+        <div class="section-label">The following feeds need your attention</div>
+
+        <div class="feed-item">
+          <div class="alert-circle"></div>
+          <div style="flex:1;">
+            <div class="feed-text">Mr. Suleiman Youssef (Bed A113) has <strong>abnormal BP and Glucose readings</strong></div>
+            <div class="feed-actions">
+              <span class="feed-dismiss">Dismiss</span>
+              <span class="feed-attend">Attend now</span>
+            </div>
+          </div>
+          <div class="feed-close">×</div>
+        </div>
+
+        <div class="feed-item">
+          <div class="alert-circle"></div>
+          <div style="flex:1;">
+            <div class="feed-text">Mr. Muhammad Ibrahim (Bed A101) needs to be <strong>prepped for surgery at 3.00pm</strong></div>
+            <div class="feed-actions">
+              <span class="feed-dismiss">Dismiss</span>
+              <span class="feed-attend">Attend now</span>
+            </div>
+          </div>
+          <div class="feed-close">×</div>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="notif-section">
+        <div class="section-label">Notifications</div>
+        <div class="notif-item">
+          <div class="notif-avatar">SA</div>
+          <div class="notif-body">
+            <div class="notif-header">
+              <span class="notif-name">Sufyan Abu Suleiman</span>
+              <span class="notif-time">Just now</span>
+            </div>
+            <div class="notif-text">
+              Radiology report for <span class="link">Mr. Suleiman Youssef</span> is ready for pick up from <span class="link">@Lab</span>
+            </div>
+            <div class="notif-file">
+              <div class="pdf-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" fill="#fff" opacity="0.9"/><path d="M14 2v6h6" stroke="#EF4444" stroke-width="1.5" fill="none"/><path d="M8 14h2a1.5 1.5 0 0 1 0 3H8v-3z" fill="#EF4444"/><path d="M12 14h1.5a2 2 0 0 1 0 4H12v-4" fill="#EF4444"/><path d="M16 14v4M16 16h2" stroke="#EF4444" stroke-width="1.2" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="file-name">Radiology-SuleimanYoussef.pdf</div>
+                <div class="file-size">720 KB</div>
+              </div>
+            </div>
+          </div>
+          <div class="notif-dot"></div>
+        </div>
+      </div>
+
+    </div><!-- end main -->
+  </div><!-- end body -->
+</div><!-- end shell -->
+
+<script>
+// Count-up animation for stat numbers
+function countUp(id, target, delay, duration) {
+  setTimeout(function() {
+    var el = document.getElementById(id);
+    var start = 0;
+    var step = Math.ceil(target / (duration / 40));
+    var timer = setInterval(function() {
+      start += step;
+      if (start >= target) { start = target; clearInterval(timer); }
+      el.textContent = start;
+    }, 40);
+  }, delay);
+}
+
+countUp('stat1', 24, 1200, 800);
+countUp('stat2',  6, 1300, 600);
+countUp('stat3',  3, 1400, 400);
+</script>
+
+</body>
+</html>

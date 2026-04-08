@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsroom | adeahub - Powering Modern Healthcare</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        adeahub: {
+                            blue: '#5BA8E5',
+                            yellow: '#F4D06F',
+                            gray: '#4B5563',
+                            lightbg: '#5BA8E5'
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Carousel Styles */
+        .carousel-container { overflow: hidden; position: relative; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); width: 200%; }
+        .carousel-slide { width: 50%; flex-shrink: 0; }
+        /* Architecture Stack Hover */
+        .arch-layer { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .arch-layer:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px -10px rgba(91,168,229,0.3); }
+        /* Marquee */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 40s linear infinite; }
+        .marquee-container:hover .animate-marquee { animation-play-state: paused; }
+        /* Fade-in animation */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+        /* Tab active states */
+        .tab-btn.active { background-color: #5BA8E5; color: white; }
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* ── Navbar dropdown hover ───────────────────────────── */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown-menu:hover { display: block !important; }
+        .nav-dropdown-menu {
+            animation: dropIn 0.18s ease forwards;
+        }
+        @keyframes dropIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ───── SCROLL REVEAL ───── */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        .reveal-d1 { transition-delay: 0.10s; }
+        .reveal-d2 { transition-delay: 0.20s; }
+        .reveal-d3 { transition-delay: 0.30s; }
+        .reveal-d4 { transition-delay: 0.40s; }
+        .reveal-d5 { transition-delay: 0.50s; }
+
+        /* ───── NAVBAR ───── */
+        .nav-scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.07) !important; }
+
+        /* ───── HERO ───── */
+        .dot-grid {
+            background-image: radial-gradient(circle, rgba(91,168,229,0.11) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        /* CTA button glow */
+        @keyframes btnGlow {
+            0%,100% { box-shadow: 0 8px 28px rgba(91,168,229,0.38); }
+            50%      { box-shadow: 0 8px 44px rgba(91,168,229,0.58); }
+        }
+        .btn-glow { animation: btnGlow 2.4s ease-in-out infinite; }
+        .btn-glow:hover {
+            animation: none;
+            box-shadow: 0 12px 40px rgba(91,168,229,0.55);
+            transform: translateY(-2px);
+            transition: all 0.25s ease;
+        }
+        /* Shimmer sweep on hover */
+        .btn-shimmer { position: relative; overflow: hidden; }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute; top: 0; left: -100%;
+            width: 55%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+        }
+        .btn-shimmer:hover::after { left: 160%; transition: left 0.55s ease; }
+
+        /* ───── SOLUTION CARDS ───── */
+        .solution-card {
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+            border-top: 3px solid transparent;
+            border-radius: 24px;
+        }
+        .solution-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 24px 56px -12px rgba(91,168,229,0.18);
+            border-top-color: #5BA8E5;
+        }
+        .solution-card .icon-wrap { transition: transform 0.28s ease, background 0.28s ease; }
+        .solution-card:hover .icon-wrap { background: rgba(91,168,229,0.12) !important; transform: scale(1.1); }
+        .solution-arrow { transition: transform 0.22s ease; }
+        .solution-card:hover .solution-arrow { transform: translateX(5px); }
+
+        /* ───── OUTCOME CARDS ───── */
+        .outcome-card { transition: transform 0.28s ease, box-shadow 0.28s ease; position: relative; overflow: hidden; }
+        .outcome-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, #5BA8E5, #60a5fa);
+            transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease;
+        }
+        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(91,168,229,0.15); }
+        .outcome-card:hover::before { transform: scaleX(1); }
+
+        /* ───── FLOATING BLOBS (hero decoration) ───── */
+        @keyframes floatBlob {
+            0%,100% { transform: translateY(0) scale(1); }
+            50%      { transform: translateY(-18px) scale(1.04); }
+        }
+        .blob-float-1 { animation: floatBlob 9s ease-in-out infinite; }
+        .blob-float-2 { animation: floatBlob 12s ease-in-out infinite 2.5s; }
+    
+        /* ═══════════════════════════════════════════════════════
+       ADEAHUB REDESIGN OVERRIDES
+       ═══════════════════════════════════════════════════════ */
+    :root {
+        --blue: #5BA8E5;
+        --yellow: #F4D06F;
+        --blue-pale: rgba(91,168,229,0.10);
+        --shadow-blue: rgba(91,168,229,0.15);
+    }
+
+    /* Gradient text → solid blue */
+    .gradient-text {
+        background: none !important;
+        -webkit-text-fill-color: #5BA8E5 !important;
+        color: #5BA8E5 !important;
+    }
+
+    /* Stat numbers → solid blue */
+    .stat-num {
+        background: none !important;
+        -webkit-text-fill-color: #5BA8E5 !important;
+        color: #5BA8E5 !important;
+    }
+
+    /* Section labels → blue on white; yellow on blue bg (overridden below) */
+    .section-label { color: #5BA8E5 !important; }
+    .section-label::before { background: #5BA8E5 !important; }
+
+    /* Tab active */
+    .tab-btn.active { background-color: #5BA8E5 !important; }
+
+    /* Solution card hover border */
+    .solution-card:hover { border-top-color: #5BA8E5 !important; }
+
+    /* Outcome card top bar */
+    .outcome-card::before { background: #5BA8E5 !important; }
+
+    /* ── ALL BLUE SECTION BACKGROUNDS → solid #5BA8E5 ── */
+    .hero-bg { background: #5BA8E5 !important; }
+    .cta-mesh { background: #5BA8E5 !important; }
+    .testimonial-bg { background: #5BA8E5 !important; }
+    section.bg-adeahub-lightbg,
+    header.bg-adeahub-lightbg { background-color: #5BA8E5 !important; }
+    section.bg-adeahub-blue { background-color: #5BA8E5 !important; }
+    #cta { background: #5BA8E5 !important; border-top-color: #5280d9 !important; }
+
+    /* ── ANIMATED ORB BACKGROUNDS on all blue sections ── */
+    .hero-bg,
+    .cta-mesh,
+    .testimonial-bg,
+    section.bg-adeahub-lightbg,
+    section.bg-adeahub-blue,
+    header.bg-adeahub-lightbg,
+    #cta {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Orb pseudo-elements shared across all blue sections */
+    .hero-bg::before, .cta-mesh::before, .testimonial-bg::before,
+    section.bg-adeahub-lightbg::before, section.bg-adeahub-blue::before,
+    header.bg-adeahub-lightbg::before, #cta::before,
+    .hero-bg::after, .cta-mesh::after, .testimonial-bg::after,
+    section.bg-adeahub-lightbg::after, section.bg-adeahub-blue::after,
+    header.bg-adeahub-lightbg::after, #cta::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        background: rgba(255,255,255,0.9);
+    }
+
+    /* Large orb — top-left */
+    .hero-bg::before, .cta-mesh::before, .testimonial-bg::before,
+    section.bg-adeahub-lightbg::before, section.bg-adeahub-blue::before,
+    header.bg-adeahub-lightbg::before, #cta::before {
+        width: 520px; height: 520px;
+        top: -180px; left: -120px;
+        animation: floatOrb1 14s ease-in-out infinite;
+        filter: blur(2px);
+        opacity: 0.08;
+    }
+    /* Smaller orb — bottom-right */
+    .hero-bg::after, .cta-mesh::after, .testimonial-bg::after,
+    section.bg-adeahub-lightbg::after, section.bg-adeahub-blue::after,
+    header.bg-adeahub-lightbg::after, #cta::after {
+        width: 340px; height: 340px;
+        bottom: -100px; right: -80px;
+        animation: floatOrb2 18s ease-in-out infinite;
+        filter: blur(1px);
+        opacity: 0.05;
+    }
+
+    /* Stagger animation delays for visual variety */
+    .cta-mesh::before, section.bg-adeahub-lightbg::before { animation-delay: -3s; }
+    .cta-mesh::after,  section.bg-adeahub-lightbg::after  { animation-delay: -7s; }
+    .testimonial-bg::before, section.bg-adeahub-blue::before { animation-delay: -6s; }
+    .testimonial-bg::after,  section.bg-adeahub-blue::after  { animation-delay: -2s; }
+    #cta::before { animation-delay: -9s; }
+    #cta::after  { animation-delay: -4s; }
+
+    @keyframes floatOrb1 {
+        0%,100% { transform: translate(0, 0) scale(1); }
+        33%     { transform: translate(30px, 25px) scale(1.06); }
+        66%     { transform: translate(-20px, 40px) scale(0.94); }
+    }
+    @keyframes floatOrb2 {
+        0%,100% { transform: translate(0, 0) scale(1); }
+        40%     { transform: translate(-35px, -20px) scale(1.08); }
+        70%     { transform: translate(25px, 30px) scale(0.92); }
+    }
+
+    /* Dot-grid overlay on all blue sections */
+    .hero-bg, .cta-mesh, .testimonial-bg,
+    section.bg-adeahub-lightbg, section.bg-adeahub-blue,
+    header.bg-adeahub-lightbg, #cta {
+        background-image:
+            radial-gradient(circle, rgba(255,255,255,0.10) 1px, transparent 1px) !important;
+        background-size: 36px 36px !important;
+        background-position: 0 0 !important;
+    }
+
+    /* All child content must sit above pseudo-elements */
+    .hero-bg > *:not(.absolute), .cta-mesh > *:not(.absolute), .testimonial-bg > *:not(.absolute),
+    section.bg-adeahub-lightbg > *:not(.absolute), section.bg-adeahub-blue > *:not(.absolute),
+    header.bg-adeahub-lightbg > *:not(.absolute), #cta > *:not(.absolute) {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ── TEXT COLORS ON BLUE BACKGROUNDS ── */
+
+    /* hero-bg / header.bg-adeahub-lightbg */
+    .hero-bg h1, .hero-bg h2, .hero-bg h3, .hero-bg p, .hero-bg li,
+    header.bg-adeahub-lightbg h1, header.bg-adeahub-lightbg h2,
+    header.bg-adeahub-lightbg h3, header.bg-adeahub-lightbg p,
+    header.bg-adeahub-lightbg li { color: white !important; }
+
+    header .text-adeahub-yellow,
+    header span[class*="yellow"],
+    .hero-bg .text-adeahub-yellow { color: #F4D06F !important; }
+
+    /* section.bg-adeahub-lightbg */
+    section.bg-adeahub-lightbg h2,
+    section.bg-adeahub-lightbg h3,
+    section.bg-adeahub-lightbg h4 { color: white !important; }
+
+    section.bg-adeahub-lightbg p,
+    section.bg-adeahub-lightbg li,
+    section.bg-adeahub-lightbg .text-gray-500,
+    section.bg-adeahub-lightbg .text-gray-600,
+    section.bg-adeahub-lightbg .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+
+    section.bg-adeahub-lightbg .text-gray-900,
+    section.bg-adeahub-lightbg .text-gray-800 { color: white !important; }
+
+    section.bg-adeahub-lightbg .section-label { color: #F4D06F !important; }
+    section.bg-adeahub-lightbg .section-label::before { background: #F4D06F !important; }
+    section.bg-adeahub-lightbg span.text-sm.font-bold,
+    section.bg-adeahub-lightbg .font-bold.tracking-wider,
+    section.bg-adeahub-lightbg .tracking-widest { color: #F4D06F !important; }
+
+    /* section.bg-adeahub-blue */
+    section.bg-adeahub-blue h2,
+    section.bg-adeahub-blue h3,
+    section.bg-adeahub-blue h4 { color: white !important; }
+
+    section.bg-adeahub-blue p,
+    section.bg-adeahub-blue li,
+    section.bg-adeahub-blue .text-gray-500,
+    section.bg-adeahub-blue .text-gray-600,
+    section.bg-adeahub-blue .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+
+    section.bg-adeahub-blue .text-gray-900,
+    section.bg-adeahub-blue .text-gray-800 { color: white !important; }
+
+    section.bg-adeahub-blue .section-label { color: #F4D06F !important; }
+    section.bg-adeahub-blue .section-label::before { background: #F4D06F !important; }
+    section.bg-adeahub-blue span.text-sm.font-bold,
+    section.bg-adeahub-blue .font-bold.tracking-wider,
+    section.bg-adeahub-blue .tracking-widest { color: #F4D06F !important; }
+
+    /* cta-mesh */
+    .cta-mesh h2, .cta-mesh h3, .cta-mesh p,
+    .cta-mesh li { color: white !important; }
+    .cta-mesh .text-gray-500, .cta-mesh .text-gray-600,
+    .cta-mesh .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+    .cta-mesh .section-label { color: #F4D06F !important; }
+    .cta-mesh .section-label::before { background: #F4D06F !important; }
+
+    /* testimonial-bg */
+    .testimonial-bg h2, .testimonial-bg h3, .testimonial-bg p,
+    .testimonial-bg li { color: white !important; }
+    .testimonial-bg .text-gray-500, .testimonial-bg .text-gray-600,
+    .testimonial-bg .text-gray-700 { color: rgba(255,255,255,0.75) !important; }
+
+    /* #cta section */
+    #cta h2, #cta h3, #cta h4 { color: white !important; }
+    #cta p, #cta li { color: rgba(255,255,255,0.80) !important; }
+    #cta span.text-sm.font-bold,
+    #cta span.tracking-wider { color: #F4D06F !important; }
+    #cta .text-gray-500, #cta .text-gray-600 { color: rgba(255,255,255,0.75) !important; }
+    #cta .text-adeahub-blue { color: #F4D06F !important; }
+
+    /* White cards inside blue sections: restore normal text colors */
+    section.bg-adeahub-lightbg .bg-white h3,
+    section.bg-adeahub-lightbg .bg-white h4,
+    section.bg-adeahub-blue .bg-white h3,
+    section.bg-adeahub-blue .bg-white h4 { color: #111827 !important; }
+
+    section.bg-adeahub-lightbg .bg-white p,
+    section.bg-adeahub-lightbg .bg-white span,
+    section.bg-adeahub-lightbg .bg-white li,
+    section.bg-adeahub-blue .bg-white p,
+    section.bg-adeahub-blue .bg-white span,
+    section.bg-adeahub-blue .bg-white li { color: #4B5563 !important; }
+
+    /* ── BUTTONS on blue backgrounds → Yellow with black text ── */
+    section.bg-adeahub-lightbg .btn-glow,
+    section.bg-adeahub-blue .btn-glow,
+    .cta-mesh .btn-glow,
+    .hero-bg .btn-glow,
+    #cta .btn-glow {
+        background: #F4D06F !important;
+        color: #1a1a2e !important;
+        border-color: #F4D06F !important;
+    }
+
+    section.bg-adeahub-lightbg a[class*="bg-adeahub-blue"],
+    section.bg-adeahub-blue a[class*="bg-adeahub-blue"],
+    .cta-mesh a[class*="bg-adeahub-blue"],
+    #cta a[class*="bg-adeahub-blue"] {
+        background: #F4D06F !important;
+        color: #1a1a2e !important;
+    }
+
+    /* Remove decorative blue blobs that look odd on blue bg */
+    .bg-blue-100\/40, .bg-blue-100 { opacity: 0.08 !important; }
+
+    /* ── SOLUTION CARD 3D TILT + GLOW CSS ── */
+    .solution-card {
+        transition: transform 0.12s ease, box-shadow 0.2s ease;
+        will-change: transform;
+        transform-style: preserve-3d;
+        cursor: default;
+    }
+    .solution-card .card-glow-layer {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+    }
+    .solution-card:hover .card-glow-layer { opacity: 1; }
+    .solution-card > *:not(.card-glow-layer) { position: relative; z-index: 1; }
+
+
+
+    
+        /* ── Mega menu product cards ── */
+        .mega-card { display:flex; align-items:flex-start; gap:13px; padding:14px 16px; border-radius:12px; text-decoration:none; color:inherit; transition:background 0.15s; }
+        .mega-card:hover { background:#f0f6ff; }
+        .mega-card:hover .mega-icon { background:#dbeafe; }
+        .mega-icon { width:40px; height:40px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s; }
+        .mega-icon svg { width:18px; height:18px; color:#5BA8E5; }
+        .mega-name { font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:2px; }
+        .mega-tag { font-size:0.7rem; color:#6b7280; font-weight:500; margin-bottom:3px; }
+        .mega-desc { font-size:0.68rem; color:#9ca3af; line-height:1.4; }
+        </style>
+
+</head>
+<body class="bg-white text-gray-700">
+
+    <!-- Unified Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
+
+            <!-- Logo -->
+            <a href="index.html" class="flex flex-col hover:opacity-90 transition shrink-0">
+                <img src="AdeaHub Logo-Default.png" alt="adeahub logo" class="h-10 object-contain object-left mb-1">
+                <span class="text-[0.65rem] font-medium text-gray-500 tracking-widest leading-none pl-1">Powering Modern Healthcare</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+
+                <!-- Solutions Dropdown -->
+                <div class="nav-dropdown relative">
+                    <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
+                        Solutions
+                        <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="left:-150px;width:740px;">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                        <!-- Mega header -->
+                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>adeahub products</span>
+                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                        <!-- 2-col product grid -->
+                        <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px;">
+                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
+                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
+                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
+                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
+                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#f5f3ff;"><svg fill="none" stroke="#7c3aed" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name" style="color:#7c3aed;">WorkWise <span style="font-size:0.62rem;background:#f5f3ff;color:#7c3aed;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
+                        </div>
+                        <!-- Footer -->
+                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Platform -->
+                <a href="adeahub_platform.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Platform</a>
+
+                <!-- Resources Dropdown -->
+                <div class="nav-dropdown relative">
+                    <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
+                        Resources
+                        <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="right:0;width:460px;">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                        <!-- Mega header -->
+                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>Resources</span>
+                        </div>
+                        <!-- Single-column items -->
+                        <div style="padding:8px;">
+                            <a href="newsroom.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg></span><div><p class="mega-name">Newsroom</p><p class="mega-tag">Press releases &amp; company announcements</p></div></a>
+                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="customers.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg></span><div><p class="mega-name">Customers</p><p class="mega-tag">Case studies &amp; client outcomes</p></div></a>
+                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
+                            <a href="Blogs.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span><div><p class="mega-name">Blog</p><p class="mega-tag">Insights, perspectives &amp; best practices</p></div></a>
+                        </div>
+                        <!-- Footer -->
+                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- About Us -->
+                <a href="about_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">About Us</a>
+
+                <!-- Contact Us -->
+                <a href="contact_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Contact Us</a>
+
+                <!-- CTA Button -->
+                <a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full hover:opacity-90 transition-colors font-semibold text-sm whitespace-nowrap" style="background:#F4D06F;">Talk to us</a>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-600 transition-colors p-1" aria-label="Toggle menu">
+                <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4">
+            <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pb-2">Solutions</p>
+            <a href="adeahub_engage.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Engage</a>
+            <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub providers</a>
+            <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub connect</a>
+            <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub insight</a>
+            <a href="workwise.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <a href="adeahub_platform.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pt-1 pb-2">Resources</p>
+            <a href="newsroom.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Newsroom</a>
+            <a href="customers.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Customers</a>
+            <a href="Blogs.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Blog</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <a href="about_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
+            <div class="my-2 border-t border-gray-100"></div>
+            <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a>
+            <div class="pt-3 pb-1">
+                <a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F4D06F;">Talk to us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Hero / Page Header -->
+    <header class="bg-gradient-to-r from-blue-700 to-adeahub-blue text-white py-16 relative overflow-hidden reveal">
+        <div class="dot-grid absolute inset-0 pointer-events-none opacity-60" aria-hidden="true"></div>
+        <div class="blob-float-1 absolute left-[5%] top-[15%] w-72 h-72 rounded-full bg-blue-100/40 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
+        <div class="blob-float-2 absolute right-[8%] bottom-[10%] w-56 h-56 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
+        <!-- Abstract background pattern -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-adeahub-yellow opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <!-- Breadcrumb Navigation -->
+            <nav class="text-sm font-medium text-blue-200 mb-6 flex items-center gap-2">
+                <a href="index.html" class="hover:text-white transition flex items-center gap-1">
+                    <i data-lucide="home" class="w-4 h-4"></i> Home
+                </a>
+                <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
+                <span class="text-white">Newsroom</span>
+            </nav>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight">Newsroom</h1>
+            <p class="text-xl md:text-2xl text-blue-100 font-light max-w-2xl">The latest news, announcements, and updates from adeahub.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow max-w-7xl mx-auto px-6 md:px-12 py-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Column: Primary Content (Featured & Feed) -->
+        <div class="lg:col-span-8 space-y-12">
+            
+            <!-- SECTION 2: Featured Story (Pinned) -->
+            <section aria-label="Featured Story" class="">
+                <div class="bg-white rounded-3xl p-8 shadow-soft border border-gray-100 relative overflow-hidden group hover:shadow-xl transition-shadow duration-300">
+                    <!-- Accent bar -->
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-adeahub-blue"></div>
+                    
+                    <div class="flex flex-wrap items-center gap-3 mb-5 mt-2">
+                        <span class="bg-adeahub-blue text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-1.5">
+                            <i data-lucide="pin" class="w-3 h-3"></i> Featured
+                        </span>
+                        <span class="text-sm font-medium text-adeahub-blue bg-blue-50 px-3 py-1 rounded-full">Case Study</span>
+                        <span class="text-sm text-gray-400 flex items-center gap-1.5 ml-auto">
+                            <i data-lucide="calendar" class="w-4 h-4"></i> 27 January 2026
+                        </span>
+                    </div>
+
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-snug group-hover:text-adeahub-blue transition-colors">
+                        adeahub Powers Digital Health Transformation Across Six Egyptian Governorates
+                    </h2>
+                    
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        adeahub has successfully deployed an integrated electronic medical record and health information exchange across 350 healthcare facilities in Egypt, serving more than five million beneficiaries. The project, delivered for the Universal Health Insurance Authority, demonstrates adeahub's ability to transform population-scale care delivery within complex, multi-stakeholder environments.
+                    </p>
+
+                    <a href="#" class="inline-flex items-center gap-2 text-adeahub-blue font-semibold hover:text-blue-800 transition-colors">
+                        Read Full Story <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- SECTION 3: News Feed -->
+            <section aria-label="News Feed" class="">
+                <!-- Filter Categories -->
+                <div class="mb-8">
+                    <div class="flex flex-nowrap overflow-x-auto pb-4 gap-2 scrollbar-hide" id="category-filters">
+                        <button class="tab-btn active px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 bg-white whitespace-nowrap" data-filter="all">All</button>
+                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="press-release">Press Releases</button>
+                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="partnership">Partnerships</button>
+                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="product-news">Product News</button>
+                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="case-study">Case Studies</button>
+                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="event">Events</button>
+                    </div>
+                </div>
+
+                <!-- Feed Items -->
+                <div class="space-y-6" id="news-feed-container">
+                    
+                    <!-- Item 1 -->
+                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="case-study">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
+                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-blue-50 text-adeahub-blue w-fit">Case Study</span>
+                            <span class="text-sm text-gray-400 font-medium">10 February 2026</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
+                            <a href="#">Five Million Patients, One Unified Record: adeahub Delivers Egypt's Largest Healthcare IT Rollout</a>
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">
+                            Deployed across 350 facilities and six governorates for the Universal Health Insurance Authority, this project gave five million Egyptian citizens access to a single, interoperable electronic medical record for the first time.
+                        </p>
+                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Item 2 -->
+                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="product-news">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
+                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-purple-50 text-purple-700 w-fit">Product Launch</span>
+                            <span class="text-sm text-gray-400 font-medium">14 February 2026</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
+                            <a href="#">AH Engage Powers My Sejahtera, Malaysia's National Health App for 33 Million Citizens</a>
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">
+                            Built on adeahub's AH Engage platform, My Sejahtera enables Malaysians to access medical records, manage appointments, and receive personalised care communications — all from a single, government-backed application.
+                        </p>
+                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Item 3 -->
+                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="press-release">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
+                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-gray-100 text-gray-700 w-fit">Press Release</span>
+                            <span class="text-sm text-gray-400 font-medium">02 February 2026</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
+                            <a href="#">adeahub Reaches 500+ Healthcare Facilities Across Asia, the Middle East, and Africa</a>
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">
+                            Marking over two decades of healthcare IT deployment, adeahub now manages more than 50 million patient records across its installed base — making it one of the region's most experienced digital health platforms.
+                        </p>
+                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Item 4 -->
+                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="product-news">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
+                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-purple-50 text-purple-700 w-fit">Product News</span>
+                            <span class="text-sm text-gray-400 font-medium">25 January 2026</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
+                            <a href="#">adeahub Connect Delivers Real-Time Health Data Exchange on FHIR-Native Architecture</a>
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">
+                            adeahub's interoperability platform enables hospitals and health systems to break down data silos with a vendor-neutral, FHIR-compliant API gateway — connecting disparate EMRs, lab systems, and third-party applications into a single, coherent data fabric.
+                        </p>
+                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Item 5 -->
+                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="partnership">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
+                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-amber-50 text-amber-700 w-fit">Partnership</span>
+                            <span class="text-sm text-gray-400 font-medium">18 January 2026</span>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
+                            <a href="#">adeahub Partners with TechCorp to Expand Digital Health Capabilities Across Southeast Asia</a>
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">
+                            This strategic alliance enhances patient access to remote care services, integrating telehealth solutions directly into the adeahub ecosystem to reduce hospital readmission rates across rural and urban centers alike.
+                        </p>
+                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                    </article>
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-10 text-center">
+                    <button class="bg-white border-2 border-adeahub-blue text-adeahub-blue hover:bg-blue-50 font-semibold py-3 px-8 rounded-full transition-colors focus:ring-4 focus:ring-blue-100">
+                        Load More Articles
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Column: Sidebar -->
+        <div class="lg:col-span-4 space-y-8">
+            
+            <!-- SECTION 4: Media Contact -->
+            <aside class="bg-white p-8 rounded-3xl shadow-soft border border-gray-100">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-blue-50 text-adeahub-blue p-2.5 rounded-xl">
+                        <i data-lucide="mic" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Media Inquiries</h3>
+                </div>
+                
+                <p class="text-gray-600 text-sm mb-6">
+                    For press inquiries, interview requests, or expert commentary on digital health transformation, patient engagement, or healthcare interoperability, contact our communications team.
+                </p>
+
+                <div class="bg-white p-5 rounded-2xl mb-6 border border-gray-100">
+                    <p class="font-bold text-gray-900">Sarah Jenkins</p>
+                    <p class="text-sm text-gray-500 mb-3">Head of Communications, adeahub</p>
+                    
+                    <a href="mailto:press@adeahub.com" class="flex items-center gap-2 text-adeahub-blue hover:underline mb-2 font-medium">
+                        <i data-lucide="mail" class="w-4 h-4"></i> press@adeahub.com
+                    </a>
+                    <a href="tel:+1234567890" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium transition-colors">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +971 50 123 4567
+                    </a>
+                </div>
+
+                <div class="pt-4 border-t border-gray-100">
+                    <h4 class="text-sm font-bold text-gray-900 mb-3">adeahub spokespeople can comment on:</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> Healthcare interoperability and FHIR adoption in emerging markets</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> National digital health programme delivery</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> Patient engagement and personal health applications</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> Population health management and AI-driven clinical analytics</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> Hospital digital transformation in Asia, the Middle East, and Africa</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- SECTION 5: Media Kit -->
+            <aside class="bg-white p-8 rounded-3xl shadow-soft border border-gray-100">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-purple-50 text-purple-600 p-2.5 rounded-xl">
+                        <i data-lucide="folder-down" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Media Kit</h3>
+                </div>
+                
+                <p class="text-gray-600 text-sm mb-6">
+                    Download logos, executive headshots, product images, and our company fact sheet for press and media use.
+                </p>
+
+                <!-- Grid of asset types -->
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:border-adeahub-blue transition-colors cursor-pointer">
+                        <i data-lucide="image" class="w-8 h-8 text-gray-400 group-hover:text-adeahub-blue transition-colors"></i>
+                        <span class="text-xs font-semibold text-gray-700">Logo Pack</span>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:border-adeahub-blue transition-colors cursor-pointer">
+                        <i data-lucide="users" class="w-8 h-8 text-gray-400 group-hover:text-adeahub-blue transition-colors"></i>
+                        <span class="text-xs font-semibold text-gray-700">Headshots</span>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:border-adeahub-blue transition-colors cursor-pointer">
+                        <i data-lucide="monitor" class="w-8 h-8 text-gray-400 group-hover:text-adeahub-blue transition-colors"></i>
+                        <span class="text-xs font-semibold text-gray-700">Screenshots</span>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:border-adeahub-blue transition-colors cursor-pointer">
+                        <i data-lucide="file-text" class="w-8 h-8 text-gray-400 group-hover:text-adeahub-blue transition-colors"></i>
+                        <span class="text-xs font-semibold text-gray-700">Fact Sheet</span>
+                    </div>
+                </div>
+
+                <button class="w-full bg-adeahub-blue text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-700 transition flex justify-center items-center gap-2 shadow-md shadow-blue-500/20">
+                    <i data-lucide="download" class="w-5 h-5"></i> Download Full Media Kit (ZIP)
+                </button>
+                
+                <p class="text-[0.7rem] text-gray-400 mt-4 leading-relaxed text-center">
+                    By downloading these assets, you agree to use them in accordance with adeahub's brand guidelines. For queries, contact press@adeahub.com.
+                </p>
+            </aside>
+
+            <!-- SECTION 7: Company Boilerplate -->
+            <aside class="bg-white p-8 rounded-3xl shadow-soft border border-gray-100">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-gray-900">About adeahub</h3>
+                    <button id="copy-btn" class="text-adeahub-blue hover:bg-blue-50 p-2 rounded-lg transition-colors flex items-center gap-1 text-sm font-semibold group" aria-label="Copy boilerplate">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span class="hidden group-hover:inline">Copy</span>
+                    </button>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl border border-gray-200">
+                    <p id="boilerplate-text" class="text-sm text-gray-600 leading-relaxed font-medium">
+                        adeahub is a digital health platform that helps hospitals, health systems, and national health authorities deliver personalised care at scale. Its four solutions — AH Engage, adeahub providers, adeahub connect, and adeahub insight — work together to unify clinical workflows, connect disparate systems, and surface the data clinicians need to act. With more than 500+ healthcare facilities and 50 million patient records across its installed base, and over 20 years of deployment experience in Asia, the Middle East, and Africa, adeahub powers modern healthcare where it is needed most. Learn more at adeahub.com.
+                    </p>
+                </div>
+                <!-- Copy Feedback Tooltip -->
+                <div id="copy-feedback" class="text-green-600 text-sm font-semibold mt-2 text-center opacity-0 transition-opacity duration-300">
+                    Copied to clipboard!
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- SECTION 6: In the Press -->
+    <section class="bg-white py-20 border-t border-gray-100 mt-10">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-adeahub-blue mb-4">adeahub in the Media</h2>
+                <p class="text-gray-600">See what healthcare journalists, analysts, and industry publications are saying about adeahub.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Press Card 1 -->
+                <div class="bg-white border border-gray-200 p-8 rounded-3xl hover:shadow-soft transition-shadow flex flex-col h-full">
+                    <div class="text-sm font-bold text-gray-400 tracking-widest mb-4 border-b border-gray-100 pb-4">Healthcare IT News</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex-grow">"How adeahub Scaled a National Health App to 33 Million Users in Malaysia"</h3>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-sm text-gray-500">16 February 2026</span>
+                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read Article <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Press Card 2 -->
+                <div class="bg-white border border-gray-200 p-8 rounded-3xl hover:shadow-soft transition-shadow flex flex-col h-full">
+                    <div class="text-sm font-bold text-gray-400 tracking-widest mb-4 border-b border-gray-100 pb-4">Arab Health Magazine</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex-grow">"Digital Transformation in Egypt's Universal Health Insurance: A Case Study"</h3>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-sm text-gray-500">22 January 2026</span>
+                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read Article <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+                
+                 <!-- Press Card 3 (Placeholder for layout consistency) -->
+                 <div class="bg-white border border-gray-200 p-8 rounded-3xl hover:shadow-soft transition-shadow flex flex-col h-full">
+                    <div class="text-sm font-bold text-gray-400 tracking-widest mb-4 border-b border-gray-100 pb-4">Fierce Healthcare</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex-grow">"adeahub's Modular Approach to EMR Implementation in Emerging Markets"</h3>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-sm text-gray-500">05 January 2026</span>
+                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read Article <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background:#ffffff; border-top: 1px solid #e5e7eb;">
+
+    <!-- Main footer body -->
+    <div class="max-w-7xl mx-auto px-6 md:px-12 pt-14 pb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+
+            <!-- Col 1: Brand (spans 2 cols on large) -->
+            <div class="lg:col-span-2 space-y-5">
+                <a href="index.html">
+                    <img src="Images/adeahub-logo-footer.png" alt="adeahub" class="h-9 object-contain object-left">
+                </a>
+                <p style="color:#6b7280; font-size:0.875rem; line-height:1.75; max-width:320px;">
+                    Modern software to deliver personalised healthcare at scale.
+                </p>
+                <!-- Social links -->
+                <div style="display:flex; gap:10px; padding-top:2px;">
+                    <a href="https://www.linkedin.com/company/adeahub" target="_blank" rel="noopener"
+                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
+                        <svg width="15" height="15" fill="#4b5563" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="mailto:hello@adeahub.com"
+                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
+                        <svg width="15" height="15" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Products -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Products</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Engage</a></li>
+                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Care</a></li>
+                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Connect</a></li>
+                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Insights</a></li>
+                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#7c3aed'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Company</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
+                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
+                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
+                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
+                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
+                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Get in Touch -->
+            <div>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Get in touch</p>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                    <li>
+                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            hello@adeahub.com
+                        </a>
+                    </li>
+                    <li style="font-size:0.875rem;color:#9ca3af;display:flex;align-items:center;gap:8px;">
+                        <svg width="14" height="14" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Kuala Lumpur, Malaysia
+                    </li>
+                    <li style="padding-top:6px;">
+                        <a href="request_demo.html"
+                           style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#F4D06F;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
+                           onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+                            Request a demo
+                            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div style="border-top:1px solid #f3f4f6;">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 py-5" style="text-align:center;">
+            <p style="font-size:0.78rem;color:#9ca3af;">&copy; 2026 adeahub. All rights reserved.</p>
+        </div>
+    </div>
+
+</footer>
+
+    <!-- Scripts for Functionality -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Boilerplate Copy Functionality
+        const copyBtn = document.getElementById('copy-btn');
+        const boilerplateText = document.getElementById('boilerplate-text');
+        const feedback = document.getElementById('copy-feedback');
+
+        copyBtn.addEventListener('click', () => {
+            // Create a temporary textarea to hold the text
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = boilerplateText.innerText;
+            document.body.appendChild(tempTextArea);
+            
+            // Select and copy
+            tempTextArea.select();
+            document.execCommand("copy");
+            
+            // Remove the temporary element
+            document.body.removeChild(tempTextArea);
+
+            // Show feedback
+            feedback.style.opacity = '1';
+            
+            // Reset feedback after 2 seconds
+            setTimeout(() => {
+                feedback.style.opacity = '0';
+            }, 2000);
+        });
+
+        // Tab Filtering Logic
+        const tabs = document.querySelectorAll('.tab-btn');
+        const newsItems = document.querySelectorAll('.news-item');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => {
+                    t.classList.remove('active', 'bg-adeahub-blue', 'text-white', 'border-adeahub-blue');
+                    t.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+                });
+
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                // Tailwind utility classes for active state
+                tab.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+
+                const filterValue = tab.getAttribute('data-filter');
+
+                // Filter items
+                newsItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.classList.remove('hidden-item');
+                        // Small timeout to allow display:block to apply before animating opacity
+                        setTimeout(() => {
+                            item.style.display = 'block';
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        item.classList.add('hidden-item');
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(10px)';
+                    }
+                });
+            });
+        });
+    </script>
+
+<!-- Navbar scroll shadow -->
+<script>
+(function() {
+    var nav = document.querySelector('nav');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 10) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    }, { passive: true });
+})();
+</script>
+
+<!-- Scroll-reveal (IntersectionObserver) -->
+<script>
+(function() {
+    var targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    if (!window.IntersectionObserver) {
+        targets.forEach(function(el) { el.classList.add('visible'); });
+        return;
+    }
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+<!-- Animated number counters -->
+<script>
+(function() {
+    function formatNum(n, suffix) {
+        if (suffix.indexOf('M+') !== -1) return n + 'M+';
+        if (n >= 1000) return n.toLocaleString() + '+';
+        return n + suffix;
+    }
+    function animateCounter(el) {
+        var target = parseInt(el.dataset.target, 10);
+        var suffix = el.dataset.suffix || '';
+        var start = 0;
+        var duration = 1600;
+        var startTime = null;
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.round(eased * target);
+            el.textContent = formatNum(current, suffix);
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = formatNum(target, suffix);
+        }
+        requestAnimationFrame(step);
+    }
+    var counters = document.querySelectorAll('.counter');
+    if (!window.IntersectionObserver) { return; }
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el) { obs.observe(el); });
+})();
+</script>
+
+<script>
+/* ── SOLUTION CARD 3D TILT + CURSOR GLOW ── */
+(function () {
+    function initCards() {
+        const cards = document.querySelectorAll('.solution-card');
+        cards.forEach(card => {
+            if (!card.querySelector('.card-glow-layer')) {
+                const glow = document.createElement('div');
+                glow.className = 'card-glow-layer';
+                card.insertBefore(glow, card.firstChild);
+            }
+            card.style.position = 'relative';
+            card.addEventListener('mousemove', function (e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width  / 2;
+                const cy = rect.height / 2;
+                const tiltY =  ((x - cx) / cx) * 6;
+                const tiltX = -((y - cy) / cy) * 6;
+                card.style.transform =
+                    `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.018)`;
+                card.style.boxShadow =
+                    `0 28px 56px -8px rgba(91,168,229,0.22), 0 8px 20px -4px rgba(91,168,229,0.14)`;
+                const glow = card.querySelector('.card-glow-layer');
+                if (glow) {
+                    glow.style.background =
+                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(91,168,229,0.13) 0%, transparent 70%)`;
+                }
+            });
+            card.addEventListener('mouseleave', function () {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+                const glow = card.querySelector('.card-glow-layer');
+                if (glow) glow.style.background = '';
+            });
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCards);
+    } else {
+        initCards();
+    }
+})();
+</script>
+
+</body>
+</html>
