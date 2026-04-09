@@ -645,22 +645,6 @@
     </div>
 
     <style>
-        /* Scale stage down on smaller desktops so cards don't overlap */
-        @media (min-width: 1024px) and (max-width: 1279px) {
-            #stage {
-                transform-origin: top center;
-                transform: scale(0.75);
-                margin-bottom: calc((var(--stage-h, 550px) * -0.25));
-            }
-        }
-        @media (min-width: 1280px) and (max-width: 1439px) {
-            #stage {
-                transform-origin: top center;
-                transform: scale(0.88);
-                margin-bottom: calc((var(--stage-h, 550px) * -0.12));
-            }
-        }
-
         /* Product cards — label and mockup are positioned independently via JS */
         .pcard {
             position: absolute;
@@ -713,9 +697,12 @@
         // ── Constants first so resize() can reference them ──
         const LABEL_H      = 74;   // fixed label block height (same for all cards)
         const MOCK_GAP     = 16;   // gap between label and mockup
-        const TALLEST_MOCK = 412;  // tallest mockup (Engage phone)
+        const TALLEST_MOCK = 412;  // tallest mockup (Engage phone) at reference width
         const MOCK_HEIGHTS = [412, 255, 255, 255];
+        const MOCK_WIDTHS  = [190, 340, 340, 340];
+        const IFRAME_SCALES= [0.507, 0.354, 0.354, 0.354];
         const STAGE_PAD    = 32;
+        const REF_WIDTH    = 1600; // viewport width where base sizes fit perfectly
 
         const YELLOW = { color:'#FAC515', r:250, g:197, b:21 };
         const PRODS  = [
@@ -727,14 +714,38 @@
         const cardEls = PRODS.map(p => document.getElementById(p.id));
 
         let VW = 0, VH = 0;
+        let vScale = 1;                          // responsive scale factor
+        let sMockHeights = [...MOCK_HEIGHTS];     // scaled mockup heights
+        let sTallestMock = TALLEST_MOCK;          // scaled tallest mockup
 
         function resize() {
             VW = stage.offsetWidth || window.innerWidth;
-            VH = STAGE_PAD + LABEL_H + MOCK_GAP + TALLEST_MOCK + STAGE_PAD;
+
+            // Compute responsive scale — mockups shrink below REF_WIDTH
+            vScale = Math.min(1, VW / REF_WIDTH);
+            sTallestMock = Math.round(TALLEST_MOCK * vScale);
+            sMockHeights = MOCK_HEIGHTS.map(h => Math.round(h * vScale));
+
+            VH = STAGE_PAD + LABEL_H + MOCK_GAP + sTallestMock + STAGE_PAD;
             stage.style.height = VH + 'px';
             stage.style.setProperty('--stage-h', VH + 'px');
             canvas.width  = VW;
             canvas.height = VH;
+
+            // Resize mockup containers & iframe transform-scale
+            cardEls.forEach((el, i) => {
+                if (!el) return;
+                const mockup = el.querySelector('.pc-mockup');
+                if (!mockup) return;
+                mockup.style.width  = Math.round(MOCK_WIDTHS[i] * vScale) + 'px';
+                mockup.style.height = sMockHeights[i] + 'px';
+                const iframe = mockup.querySelector('iframe');
+                if (iframe) iframe.style.transform = 'scale(' + (IFRAME_SCALES[i] * vScale) + ')';
+                // Constrain label width to slot width
+                const desc = el.querySelector('.pc-desc');
+                if (desc) desc.style.maxWidth = Math.min(320, (VW / 4) - 20) + 'px';
+            });
+
             positionCards();
         }
 
@@ -747,27 +758,21 @@
         // All labels share this fixed top Y — ensures headline & sub-headline are top-aligned
         function labelTopY() { return STAGE_PAD; }
 
-        // All mockups share this fixed centre Y — ensures screenshots are centre-aligned
-        // mockup centre = label top + label height + gap + mockup_height/2 (for tallest)
-        // But we want ALL mockups centred at the SAME y, so we use tallest as reference:
-        // mockCentreY = labelTopY + LABEL_H + MOCK_GAP + TALLEST_MOCK/2
-        function mockCentreY() { return labelTopY() + LABEL_H + MOCK_GAP + TALLEST_MOCK / 2; }
+        // All mockups share this fixed centre Y — uses scaled tallest mockup
+        function mockCentreY() { return labelTopY() + LABEL_H + MOCK_GAP + sTallestMock / 2; }
 
         function positionCards() {
             const ltY = labelTopY();
             const mcY = mockCentreY();
             cardEls.forEach((el, i) => {
                 if (!el) return;
-                const mockH = MOCK_HEIGHTS[i];
+                const mockH = sMockHeights[i];
                 // All cards start at labelTopY — guarantees labels are top-aligned
                 el.style.left       = slotX(i) + 'px';
                 el.style.top        = '0px';
                 el.style.marginLeft = (-el.offsetWidth / 2) + 'px';
                 el.style.marginTop  = ltY + 'px';
                 // Push each mockup down so its centre aligns at mcY
-                // mockup top relative to card top = LABEL_H + MOCK_GAP + extraPad
-                // mockup centre = ltY + LABEL_H + MOCK_GAP + extraPad + mockH/2 = mcY
-                // extraPad = mcY - ltY - LABEL_H - MOCK_GAP - mockH/2
                 const extraPad = mcY - ltY - LABEL_H - MOCK_GAP - mockH / 2;
                 const mockupEl = el.querySelector('.pc-mockup');
                 if (mockupEl) mockupEl.style.marginTop = (MOCK_GAP + Math.max(0, extraPad)) + 'px';
