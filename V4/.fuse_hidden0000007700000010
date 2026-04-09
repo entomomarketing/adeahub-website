@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request a Demo | adeahub</title>
+    <title>About adeahub | Powering modern healthcare</title>
+    <meta name="description" content="adeahub is a digital health platform managing 200 million+ patient records across 500+ facilities in Asia, the Middle East, and Africa. Built on 25+ years of regional healthcare IT heritage. Learn about our mission, team, and the real-world programmes we have delivered.">
     <!-- Google Fonts: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -565,16 +566,16 @@
             <!-- Logo -->
             <a href="index.html" class="flex flex-col hover:opacity-90 transition shrink-0">
                 <img src="AdeaHub Logo-Default.png" alt="adeahub logo" class="h-10 object-contain object-left mb-1">
-                <span class="text-[0.65rem] font-medium text-gray-500 tracking-widest leading-none pl-1">Powering Modern Healthcare</span>
+                <span class="text-[0.65rem] font-medium text-gray-500 tracking-widest leading-none pl-1">Powering modern healthcare</span>
             </a>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-6 text-sm font-medium">
 
-                <!-- Solutions Dropdown -->
+                <!-- Products Dropdown -->
                 <div class="nav-dropdown relative">
                     <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
-                        Solutions
+                        Products
                         <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="left:-150px;width:740px;">
@@ -635,13 +636,9 @@
 
                 <!-- About Us -->
                 <a href="about_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">About Us</a>
-
-
                 <!-- Contact Us -->
                 <a href="contact_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Contact Us</a>
-
-                <!-- CTA Button -->
-                <a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full hover:opacity-90 transition-colors font-semibold text-sm whitespace-nowrap" style="background:#F2C747;">Talk to us</a>
+<a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full hover:opacity-90 transition-colors font-semibold text-sm whitespace-nowrap" style="background:#F2C747;">Talk to us</a>
             </div>
 
             <!-- Mobile Hamburger -->
@@ -653,11 +650,11 @@
 
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4">
-            <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pb-2">Solutions</p>
+            <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pb-2">Products</p>
             <a href="adeahub_engage.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Engage</a>
-            <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub providers</a>
-            <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub connect</a>
-            <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub insight</a>
+            <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Care</a>
+            <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Connect</a>
+            <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Insights</a>
             <a href="workwise.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
             <div class="my-2 border-t border-gray-100"></div>
             <a href="adeahub_platform.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
@@ -669,336 +666,792 @@
             <div class="my-2 border-t border-gray-100"></div>
             <a href="about_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
             <div class="my-2 border-t border-gray-100"></div>
-            <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a>
-            <div class="pt-3 pb-1">
+            <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a><div class="pt-3 pb-1">
                 <a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F2C747;">Talk to us</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content wrapper -->
-    <main class="flex-grow">
-        
-        <!-- SECTION 1, 2 & 3: Hero, Form & Reassurance (Split Layout) -->
-        <section class="relative pt-12 pb-20 md:pt-16 md:pb-24 overflow-hidden">
-            <div class="dot-grid absolute inset-0 pointer-events-none opacity-60" aria-hidden="true"></div>
-            <div class="blob-float-1 absolute left-[5%] top-[15%] w-72 h-72 rounded-full bg-blue-100/40 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
-            <div class="blob-float-2 absolute right-[8%] bottom-[10%] w-56 h-56 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
-            <!-- Subtle background decoration -->
-            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-3xl -z-10 translate-x-1/3 -translate-y-1/3"></div>
+    <!-- SECTION 1: Hero -->
+    <header class="bg-adeahub-lightbg pt-16 pb-24 overflow-hidden relative">
+        <div class="dot-grid absolute inset-0 pointer-events-none opacity-60" aria-hidden="true"></div>
+        <div class="blob-float-1 absolute left-[5%] top-[15%] w-72 h-72 rounded-full bg-blue-100/40 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
+        <div class="blob-float-2 absolute right-[8%] bottom-[10%] w-56 h-56 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100 rounded-full blur-[100px] -z-10 opacity-60 translate-x-1/3 -translate-y-1/3"></div>
+        <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <span class="inline-block text-sm font-bold text-gray-500 tracking-wider bg-gray-200/50 px-4 py-1.5 rounded-full">
+                    About us
+                </span>
+                <h1 class="text-5xl md:text-6xl font-bold text-adeahub-blue leading-tight tracking-tight">
+                    We believe better care starts with better-connected data.
+                </h1>
+                <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
+                    We are a team of healthcare technologists and clinicians on a mission to make coordinated, patient-centred care the standard — not the exception — for health systems across Asia, the Middle East, and Africa.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a href="#cta" class="bg-adeahub-yellow btn-glow btn-shimmer text-gray-900 text-center px-8 py-3.5 rounded-full font-semibold hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30">
+                        Talk to Our Healthcare Team
+                    </a>
+                    <a href="#" class="bg-white text-adeahub-blue border border-adeahub-blue text-center px-8 py-3.5 rounded-full font-semibold hover:bg-blue-50 transition">
+                        Download Company Profile
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Visual: Placeholder for Team Photo or Founder Video -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-adeahub-blue/20 to-transparent rounded-3xl transform rotate-2 scale-105 transition-transform group-hover:rotate-3 -z-10"></div>
+                <div class="bg-gray-200 w-full aspect-video rounded-3xl shadow-2xl border border-white flex flex-col items-center justify-center overflow-hidden relative">
+                    <!-- This div serves as the placeholder box. Replace the div below with an actual <img> or <video> tag -->
+                    <div class="absolute inset-0 bg-gray-100 flex flex-col items-center justify-center text-gray-400">
+                        <i data-lucide="play-circle" class="w-16 h-16 mb-4 text-gray-300"></i>
+                        <span class="font-medium text-sm tracking-wide">Professional Team Photo / Founder Video</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-            <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10">
+    <!-- SECTION 2: Our Story -->
+    <section class="py-24 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
                 
-                <!-- LEFT COLUMN: Hero & Reassurance -->
-                <div class="lg:col-span-6 space-y-12">
+                <!-- Story Text -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-sm font-bold text-adeahub-yellow tracking-wider">Our Story</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue tracking-tight">How we got here.</h2>
                     
-                    <!-- Hero Content -->
-                    <div class="space-y-6">
-                        <span class="text-adeahub-blue tracking-[0.2em] text-sm font-bold">Request a Demo</span>
-                        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-gray-900 leading-[1.15] tracking-tight">
-                            See Personalised Care Delivered — in Your Environment
-                        </h1>
-                        <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
-                            Share a few details and our solutions team will tailor a walkthrough to your organisation's specific challenges — whether that is clinical workflows, interoperability, patient engagement, or operational performance.
+                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed mt-8">
+                        <p>
+                            We saw a pattern repeating itself across health systems in Asia, the Middle East, and Africa. Patients were moving between clinics, hospitals, and specialists — but their health data was not. The result was duplicated tests, delayed decisions, and care that felt fragmented to everyone delivering it, and everyone receiving it.
                         </p>
-                    </div>
-
-                    <!-- Reassurance Block -->
-                    <div class="bg-white/60 backdrop-blur-sm border border-blue-50/50 rounded-2xl p-6 md:p-8 space-y-8 shadow-sm">
-                        
-                        <!-- What Happens Next -->
-                        <div>
-                            <h3 class="text-sm font-bold text-gray-900 tracking-wider mb-5">What Happens Next</h3>
-                            <ul class="space-y-4">
-                                <li class="flex items-start gap-3">
-                                    <div class="number-icon mt-0.5">1</div>
-                                    <p class="text-gray-600 leading-snug">We will review your details and respond within one business day with a tailored demo agenda.</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="number-icon mt-0.5">2</div>
-                                    <p class="text-gray-600 leading-snug">Your walkthrough will be personalised to your organisation's specific environment and challenges — not a generic product tour.</p>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="number-icon mt-0.5">3</div>
-                                    <p class="text-gray-600 leading-snug">No obligation. No hard pitch. A focused conversation about outcomes that matter to your team.</p>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <hr class="border-gray-100">
-
-                        <!-- Compliance Badges -->
-                        <div class="bg-gray-50/50 rounded-xl p-4 flex items-center gap-3">
-                            <i data-lucide="shield-check" class="text-green-600 w-8 h-8 shrink-0"></i>
-                            <p class="text-xs text-gray-500 leading-tight">
-                                Your information is encrypted and handled in full compliance with HIPAA and applicable data protection regulations.
-                            </p>
-                        </div>
+                        <p>
+                            Our roots go back to 1998, when the regional healthcare IT lineage that adeahub is built on was first established across Asia, the Middle East, and Africa. Over the following two decades, we built deep expertise in large-scale clinical informatics and hospital information systems — expertise that reached a defining moment in 2020 when we deployed MySejahtera, Malaysia's national COVID-19 platform, which reached 35 million users. In 2025, we acquired the Asia, Middle East, and Africa operations of Dedalus Healthcare, adding over two decades of HIS implementation depth to our foundation. adeahub was built on that heritage — unifying provider systems, national health infrastructure, and patient-facing platforms into one coherent experience.
+                        </p>
+                        <p>
+                            Today, our platform manages over 200 million patient records across 500+ healthcare facilities. We are proud of that scale. But every number represents a patient whose care journey we helped make more connected.
+                        </p>
                     </div>
                 </div>
 
-                <!-- RIGHT COLUMN: The Form Container -->
-                <div class="lg:col-span-6 relative">
-                    <!-- Form Container -->
-                    <div id="demoFormContainer" class="bg-white rounded-3xl p-8 md:p-10 shadow-floating border border-blue-50 relative z-20">
-                        <form id="demoForm" class="space-y-6">
-                            
-                            <!-- Name Row -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="firstName" class="block text-sm font-semibold text-gray-700 mb-2">First Name <span class="text-adeahub-blue">*</span></label>
-                                    <input type="text" id="firstName" name="firstName" required class="form-input" placeholder="e.g. Sarah">
-                                </div>
-                                <div>
-                                    <label for="lastName" class="block text-sm font-semibold text-gray-700 mb-2">Last Name <span class="text-adeahub-blue">*</span></label>
-                                    <input type="text" id="lastName" name="lastName" required class="form-input" placeholder="e.g. Jenkins">
-                                </div>
+                <!-- Milestone Timeline -->
+                <div class="lg:col-span-5 relative bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm mt-8 lg:mt-0">
+                    <div class="absolute left-[112px] top-12 bottom-12 w-0.5 bg-gray-200 z-0"></div>
+                    
+                    <div class="space-y-8 relative z-10">
+                        <!-- Milestone 1 -->
+                        <div class="flex gap-6 items-start">
+                            <div class="shrink-0 w-12 text-right">
+                                <span class="text-xs font-bold text-adeahub-blue">1998</span>
                             </div>
-
-                            <!-- Work Email -->
+                            <div class="w-4 h-4 mt-0.5 rounded-full bg-adeahub-blue ring-4 ring-white shadow-sm shrink-0"></div>
                             <div>
-                                <label for="workEmail" class="block text-sm font-semibold text-gray-700 mb-2">Work Email <span class="text-adeahub-blue">*</span></label>
-                                <input type="email" id="workEmail" name="workEmail" required class="form-input" placeholder="sarah.j@hospital.org">
+                                <h4 class="font-bold text-gray-900">Healthcare IT Heritage</h4>
+                                <p class="text-sm text-gray-500 mt-1">The regional clinical informatics and hospital information systems lineage that adeahub is built on is established across Asia, the Middle East, and Africa.</p>
                             </div>
-
-                            <!-- Organisation -->
-                            <div>
-                                <label for="organisation" class="block text-sm font-semibold text-gray-700 mb-2">Organisation / Hospital Name <span class="text-adeahub-blue">*</span></label>
-                                <input type="text" id="organisation" name="organisation" required class="form-input" placeholder="e.g. General Hospital">
-                            </div>
-
-                            <!-- Job Title / Role -->
-                            <div>
-                                <label for="jobRole" class="block text-sm font-semibold text-gray-700 mb-2">Job Title / Role <span class="text-adeahub-blue">*</span></label>
-                                <div class="relative">
-                                    <select id="jobRole" name="jobRole" required class="form-input appearance-none bg-white">
-                                        <option value="" disabled selected>Select your role...</option>
-                                        <option value="cio">CIO / CTO / IT Leader</option>
-                                        <option value="cmio">CMIO / CMO / Medical Director</option>
-                                        <option value="cfo">CFO / Finance Leader</option>
-                                        <option value="clinical">Clinical Director / CNO</option>
-                                        <option value="ops">Operations / Administration</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-                                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Area of Interest (Multi-select) -->
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-3">Area of Interest <span class="text-gray-400 font-normal ml-1">(Optional)</span></label>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="pha">
-                                        <span class="text-sm font-medium text-gray-700 group-hover:text-adeahub-blue transition">AH Engage</span>
-                                    </label>
-                                    <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="providers">
-                                        <span class="text-sm font-medium text-gray-700 group-hover:text-adeahub-blue transition">adeahub providers</span>
-                                    </label>
-                                    <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="connect">
-                                        <span class="text-sm font-medium text-gray-700 group-hover:text-adeahub-blue transition">adeahub connect</span>
-                                    </label>
-                                    <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="insight">
-                                        <span class="text-sm font-medium text-gray-700 group-hover:text-adeahub-blue transition">adeahub insight</span>
-                                    </label>
-                                    <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group sm:col-span-2">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="full">
-                                        <span class="text-sm font-medium text-gray-700 group-hover:text-adeahub-blue transition">Full Platform Overview</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Challenges -->
-                            <div>
-                                <label for="challenges" class="block text-sm font-semibold text-gray-700 mb-2">What challenges are you looking to address? <span class="text-gray-400 font-normal ml-1">(Optional)</span></label>
-                                <textarea id="challenges" name="challenges" rows="3" class="form-input resize-none" placeholder="Share a little context to help us prepare..."></textarea>
-                            </div>
-
-                            <!-- Submit Button -->
-                            <div class="pt-2">
-                                <button type="submit" class="w-full bg-adeahub-blue btn-glow btn-shimmer text-white text-center px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition shadow-lg shadow-blue-500/30 flex justify-center items-center gap-2">
-                                    Request My Demo <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                                </button>
-                            </div>
-
-                            <!-- Privacy Text -->
-                            <div class="text-[0.75rem] text-gray-500 text-center leading-relaxed px-4 pt-2">
-                                By submitting this form, you agree to our Privacy Policy. Your data is handled in accordance with HIPAA and applicable data protection regulations. We will never share your information with third parties.
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- SECTION 7: Thank You State (Hidden by default) -->
-                    <div id="thankYouState" class="hidden bg-white rounded-3xl p-10 md:p-14 shadow-floating border border-blue-50 relative z-20 text-center">
-                        <div class="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-8">
-                            <i data-lucide="check-circle-2" class="w-10 h-10 text-green-500"></i>
                         </div>
-                        <h2 class="text-3xl font-bold text-gray-900 mb-4 tracking-tight">
-                            You're on the list, <span id="tyName" class="text-adeahub-blue">there</span>. Expect to hear from us soon.
-                        </h2>
-                        <p class="text-lg text-gray-600 mb-10 leading-relaxed">
-                            A member of our solutions team will reach out within one business day to schedule your personalised adeahub demo. In the meantime, explore how health systems like yours are already delivering better outcomes with adeahub.
-                        </p>
-                        
-                        <div class="space-y-4 text-left border-t border-gray-100 pt-8">
-                            <h4 class="text-sm font-bold tracking-wider text-gray-400 mb-2">Keep Exploring</h4>
-                            <a href="#" class="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-blue-50 hover:text-adeahub-blue transition group">
-                                <span class="font-semibold text-gray-800 group-hover:text-adeahub-blue">Read a customer case study</span>
-                                <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-adeahub-blue group-hover:translate-x-1 transition"></i>
-                            </a>
-                            <a href="index.html#platform" class="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-blue-50 hover:text-adeahub-blue transition group">
-                                <span class="font-semibold text-gray-800 group-hover:text-adeahub-blue">Explore the platform overview</span>
-                                <i data-lucide="arrow-right" class="w-4 h-4 text-gray-400 group-hover:text-adeahub-blue group-hover:translate-x-1 transition"></i>
-                            </a>
-                            <a href="#" class="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-blue-50 hover:text-adeahub-blue transition group">
-                                <span class="font-semibold text-gray-800 group-hover:text-adeahub-blue">Download the company profile (PDF)</span>
-                                <i data-lucide="download" class="w-4 h-4 text-gray-400 group-hover:text-adeahub-blue transition"></i>
-                            </a>
+
+                        <!-- Milestone 2 -->
+                        <div class="flex gap-6 items-start">
+                            <div class="shrink-0 w-12 text-right">
+                                <span class="text-xs font-bold text-adeahub-blue">2010</span>
+                            </div>
+                            <div class="w-4 h-4 mt-0.5 rounded-full bg-adeahub-blue ring-4 ring-white shadow-sm shrink-0"></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">entomo Founded</h4>
+                                <p class="text-sm text-gray-500 mt-1">entomo, adeahub's parent company, is founded — bringing digital transformation expertise to healthcare across the region.</p>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 3 -->
+                        <div class="flex gap-6 items-start">
+                            <div class="shrink-0 w-12 text-right">
+                                <span class="text-xs font-bold text-adeahub-blue">2015</span>
+                            </div>
+                            <div class="w-4 h-4 mt-0.5 rounded-full bg-adeahub-blue ring-4 ring-white shadow-sm shrink-0"></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Regional Scale</h4>
+                                <p class="text-sm text-gray-500 mt-1">Platform adopted across major health systems in Southeast Asia and the Middle East, serving millions of patients.</p>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 4 -->
+                        <div class="flex gap-6 items-start">
+                            <div class="shrink-0 w-12 text-right">
+                                <span class="text-xs font-bold text-adeahub-blue">2020</span>
+                            </div>
+                            <div class="w-4 h-4 mt-0.5 rounded-full bg-adeahub-yellow ring-4 ring-white shadow-sm shrink-0"></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">MySejahtera — National Scale</h4>
+                                <p class="text-sm text-gray-500 mt-1">Deployed Malaysia's national COVID-19 platform. 35 million users, 85% install penetration, ranked #1 health app worldwide by Data.ai.</p>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 5 -->
+                        <div class="flex gap-6 items-start">
+                            <div class="shrink-0 w-12 text-right">
+                                <span class="text-xs font-bold text-adeahub-blue">2021</span>
+                            </div>
+                            <div class="w-4 h-4 mt-0.5 rounded-full bg-adeahub-yellow ring-4 ring-white shadow-sm shrink-0"></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Global Recognition</h4>
+                                <p class="text-sm text-gray-500 mt-1">Gold — Quality Service Award (Reader's Digest Asia) and Gold — Most Valuable Tech Innovation (Stevie Awards MENA).</p>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 6 -->
+                        <div class="flex gap-6 items-start">
+                            <div class="shrink-0 w-12 text-right">
+                                <span class="text-xs font-bold text-adeahub-blue">2025</span>
+                            </div>
+                            <div class="w-4 h-4 mt-0.5 rounded-full bg-adeahub-blue ring-4 ring-white shadow-sm shrink-0"></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Dedalus AMEA Acquisition</h4>
+                                <p class="text-sm text-gray-500 mt-1">Acquired the Asia, Middle East &amp; Africa operations of Dedalus Healthcare — adding 20+ years of HIS expertise and 500+ facilities to the platform.</p>
+                            </div>
+                        </div>
+
+                        <!-- Milestone 7 — Present -->
+                        <div class="flex gap-6 items-start">
+                            <div class="shrink-0 w-12 text-right">
+                                <span class="text-xs font-bold text-adeahub-blue">Today</span>
+                            </div>
+                            <div class="w-6 h-6 mt-0.5 rounded-full bg-adeahub-blue ring-4 ring-white shadow-sm shrink-0 flex items-center justify-center">
+                                <div class="w-2 h-2 bg-white rounded-full"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-adeahub-blue">adeahub — The Core Healthcare Platform</h4>
+                                <p class="text-sm text-gray-600 font-medium mt-1">200M+ patient records. 500+ facilities. 18 countries. Powering modern healthcare across Asia Pacific and MENA.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SECTION 4: Persona Micro-Copy -->
-        <section class="py-16 bg-white border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-6 md:px-12">
-                <div class="text-center mb-12">
-                    <h2 class="text-2xl font-bold text-gray-900">What We Cover — For Your Role</h2>
+    <!-- SECTION 3: Mission, Vision & Values -->
+    <section class="py-24 bg-adeahub-lightbg">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <div class="text-center mb-16 max-w-2xl mx-auto">
+                <span class="text-sm font-bold text-gray-500 tracking-wider mb-2 block">Mission, Vision & Values</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue tracking-tight">Why we exist, and what we stand for.</h2>
+            </div>
+
+            <!-- Mission & Vision Cards -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Mission -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden group hover:shadow-md transition-shadow">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 text-adeahub-blue group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="target" class="w-32 h-32"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center text-adeahub-blue mb-6">
+                            <i data-lucide="flag" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            To enable public health agencies and healthcare networks to deliver better patient care — through modern, connected digital platforms that give clinicians, administrators, and patients a single source of truth.
+                        </p>
+                    </div>
                 </div>
+
+                <!-- Vision -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden group hover:shadow-md transition-shadow">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 text-adeahub-yellow group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="eye" class="w-32 h-32"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="bg-yellow-50 w-12 h-12 rounded-xl flex items-center justify-center text-adeahub-yellow mb-6">
+                            <i data-lucide="compass" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            A world where a patient's health data follows them — across clinics, hospitals, and borders — so that every clinical decision is informed, every care journey is continuous, and no patient falls through the gap.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Values -->
+            <div class="text-center mb-10">
+                <h3 class="text-2xl font-bold text-gray-900">Our Core Values</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 transition-transform">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center text-adeahub-blue mb-5">
+                        <i data-lucide="heart" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Patient First</h4>
+                    <p class="text-gray-600">Every product decision starts with one question: does this make care better for the patient at the end of the journey?</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 transition-transform">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center text-adeahub-blue mb-5">
+                        <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Evidence Over Hype</h4>
+                    <p class="text-gray-600">We measure success in clinical outcomes and operational results — not capability lists or feature announcements.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 transition-transform">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center text-adeahub-blue mb-5">
+                        <i data-lucide="unlock" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Open by Design</h4>
+                    <p class="text-gray-600">We build on open standards so health data can flow freely and securely to where patients and providers need it most.</p>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 transition-transform lg:col-start-1 lg:ml-auto lg:w-full">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center text-adeahub-blue mb-5">
+                        <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Clinically Rigorous</h4>
+                    <p class="text-gray-600">Our workflows are built to clinical standards, validated in real health systems, and trusted by clinicians who use them daily.</p>
+                </div>
+
+                <!-- Value 5 -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:-translate-y-1 transition-transform lg:col-start-2 lg:mr-auto lg:w-full">
+                    <div class="bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center text-adeahub-blue mb-5">
+                        <i data-lucide="handshake" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Partners, Not Vendors</h4>
+                    <p class="text-gray-600">We invest in long-term relationships. Your implementation success is ours. We stay long after go-live.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: Leadership Team -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            
+            <div class="mb-16">
+                <span class="text-sm font-bold text-gray-500 tracking-wider mb-2 block">Our Team</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue tracking-tight mb-4">The people building adeahub.</h2>
+                <p class="text-lg text-gray-600 max-w-3xl">
+                    Our leadership team combines deep clinical knowledge, enterprise technology experience, and two decades of regional healthcare implementation expertise.
+                </p>
+            </div>
+
+            <!-- Leaders Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+
+                <!-- Ravee Ramamoothie -->
+                <div class="flex flex-col group">
+                    <div class="aspect-square bg-gray-100 rounded-3xl mb-6 overflow-hidden relative border border-gray-200">
+                        <img src="Images/Leaders/ravee.png" alt="Ravee Ramamoothie" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Ravee Ramamoothie</h3>
+                    <h4 class="text-adeahub-blue font-semibold mb-3">Founder &amp; Group CEO</h4>
+                </div>
+
+                <!-- Naveen Deshpande -->
+                <div class="flex flex-col group">
+                    <div class="aspect-square bg-gray-100 rounded-3xl mb-6 overflow-hidden relative border border-gray-200">
+                        <img src="Images/Leaders/naveen.png" alt="Naveen Deshpande" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Naveen Deshpande</h3>
+                    <h4 class="text-adeahub-blue font-semibold mb-3">Co-Founder</h4>
+                </div>
+
+                <!-- Yogaraj Thuraisingam -->
+                <div class="flex flex-col group">
+                    <div class="aspect-square bg-gray-100 rounded-3xl mb-6 overflow-hidden relative border border-gray-200">
+                        <img src="Images/Leaders/Yogaraj.png" alt="Yogaraj Thuraisingam" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Yogaraj Thuraisingam</h3>
+                    <h4 class="text-adeahub-blue font-semibold mb-3">Chief Finance Officer</h4>
+                </div>
+
+                <!-- Jegatheswaren Ponnudurai -->
+                <div class="flex flex-col group">
+                    <div class="aspect-square bg-gray-100 rounded-3xl mb-6 overflow-hidden relative border border-gray-200">
+                        <img src="Images/Leaders/jega.png" alt="Jegatheswaren Ponnudurai" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Jegatheswaren Ponnudurai</h3>
+                    <h4 class="text-adeahub-blue font-semibold mb-3">Sales Management Director</h4>
+                </div>
+
+                <!-- Arun Sundar -->
+                <div class="flex flex-col group">
+                    <div class="aspect-square bg-gray-100 rounded-3xl mb-6 overflow-hidden relative border border-gray-200">
+                        <img src="Images/Leaders/arun.png" alt="Arun Sundar" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Arun Sundar</h3>
+                    <h4 class="text-adeahub-blue font-semibold mb-3">Chief Marketing Officer</h4>
+                </div>
+
+                <!-- Vinod Pulluru -->
+                <div class="flex flex-col group">
+                    <div class="aspect-square bg-gray-100 rounded-3xl mb-6 overflow-hidden relative border border-gray-200">
+                        <img src="Images/Leaders/Vinod.png" alt="Vinod Pulluru" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Vinod Pulluru</h3>
+                    <h4 class="text-adeahub-blue font-semibold mb-3">Senior VP Engineering</h4>
+                </div>
+
+            </div>
+
+            <!-- Optional Advisory Board -->
+            <div class="mt-20 pt-10 border-t border-gray-100">
+                <h3 class="text-xl font-bold text-gray-900 mb-6">Clinical & Scientific Advisory Board</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <h4 class="font-bold text-gray-900">[Advisor Name], MD</h4>
+                        <p class="text-sm text-gray-600 mt-1">[Credentials & Affiliation - e.g. Professor of Medicine, Global Health Institute]</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <h4 class="font-bold text-gray-900">[Advisor Name], PhD</h4>
+                        <p class="text-sm text-gray-600 mt-1">[Credentials & Affiliation - e.g. Public Health Expert, Regional Advisory Committee]</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: By the Numbers -->
+    <section class="py-24 bg-adeahub-blue text-white overflow-hidden relative">
+        <!-- Subtle Background Decorations -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-black/10 rounded-full blur-[80px] pointer-events-none translate-y-1/2 -translate-x-1/4"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-blue-200 text-sm font-bold tracking-wider mb-2 block">By the Numbers</span>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight">adeahub at a glance.</h2>
+            </div>
+
+            <!-- Primary Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16 divide-x divide-white/10">
+                <div class="text-center px-4">
+                    <div class="text-5xl md:text-6xl font-extrabold mb-3">500+</div>
+                    <div class="text-blue-100 font-medium text-lg">Healthcare Facilities</div>
+                </div>
+                <div class="text-center px-4">
+                    <div class="text-5xl md:text-6xl font-extrabold mb-3">> 200M</div>
+                    <div class="text-blue-100 font-medium text-lg">Patient Records Managed</div>
+                </div>
+                <div class="text-center px-4">
+                    <div class="text-5xl md:text-6xl font-extrabold mb-3">> 25</div>
+                    <div class="text-blue-100 font-medium text-lg">Years Regional Market Presence</div>
+                </div>
+                <div class="text-center px-4">
+                    <div class="text-5xl md:text-6xl font-extrabold mb-3">> 100</div>
+                    <div class="text-blue-100 font-medium text-lg">Years Combined Healthcare IT Experience</div>
+                </div>
+            </div>
+
+            <!-- Secondary Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto border-t border-white/10 pt-12">
+                <div class="bg-white/10 rounded-2xl p-6 text-center backdrop-blur-sm border border-white/5">
+                    <div class="text-3xl font-bold mb-1">> 120</div>
+                    <div class="text-blue-200 text-sm">Software Engineers</div>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 text-center backdrop-blur-sm border border-white/5">
+                    <div class="text-3xl font-bold mb-1">> 100</div>
+                    <div class="text-blue-200 text-sm">Implementation & Support Specialists</div>
+                </div>
+                <div class="bg-white/10 rounded-2xl p-6 text-center backdrop-blur-sm border border-white/5">
+                    <div class="text-3xl font-bold mb-1">7</div>
+                    <div class="text-blue-200 text-sm">Offices Across Key Market Locations</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5b: Where We Operate (World Map) -->
+    <section class="py-24 bg-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center mb-12">
+                <span class="text-adeahub-blue text-sm font-bold tracking-wider mb-2 block">Global Presence</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Where we operate.</h2>
+                <p class="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">18 offices spanning Asia Pacific, the Middle East, Europe, and the Americas — deeply embedded in the markets we serve.</p>
+            </div>
+
+            <!--
+                World Map — CSS background-image approach for reliable browser rendering.
+                Pin positions use equirectangular formula:
+                  left % = (lon + 180) / 360 * 100
+                  top  % = (90 - lat) / 180 * 100
+                Validated pixel-by-pixel against the PNG dot map.
+                Container maintains 1221:673 aspect ratio via padding-top trick.
+            -->
+            <div class="rounded-2xl shadow-lg border border-gray-200" style="position:relative; width:100%; padding-top:55.12%; overflow:hidden;">
+
+                <!-- Map background: solid colour + PNG overlay -->
+                <div style="position:absolute;inset:0;background-color:#6396F1;background-image:url('Images/world_map_blue.png');background-size:100% 100%;background-repeat:no-repeat;"></div>
+
+                <!-- ── CITY PINS ─────────────────────────────────────────────────
+                     Each .city-pin is a zero-size anchor at left%/top%.
+                     .pin-inner holds dot + pulse + label; scales on hover from pin centre.
+                     Label directions chosen to avoid overlaps in dense clusters.
+                ──────────────────────────────────────────────────────────────── -->
+
+                <!-- Houston  left=18% top=40%  — isolated, label right -->
+                <div class="city-pin" style="left:18%;top:40%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:0s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right">Houston</span>
+                    </div>
+                </div>
+
+                <!-- Vienna  left=51% top=28%  — isolated, label right -->
+                <div class="city-pin" style="left:51%;top:28%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:0.3s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right">Vienna</span>
+                    </div>
+                </div>
+
+                <!-- Cairo  left=56% top=47%  — label LEFT to clear Amman (58%) -->
+                <div class="city-pin" style="left:56%;top:47%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:0.6s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-left">Cairo</span>
+                    </div>
+                </div>
+
+                <!-- Amman  left=58% top=45%  — label upper-right, above Cairo row -->
+                <div class="city-pin" style="left:58%;top:45%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:0.9s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right-above">Amman</span>
+                    </div>
+                </div>
+
+                <!-- Riyadh  left=61% top=48%  — label upper-left to split with Abu Dhabi below -->
+                <div class="city-pin" style="left:61%;top:48%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:1.2s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-left-above">Riyadh</span>
+                    </div>
+                </div>
+
+                <!-- Abu Dhabi  left=63% top=48%  — label lower-left, below Riyadh label -->
+                <div class="city-pin" style="left:63%;top:48%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:1.5s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-left-below">Abu Dhabi</span>
+                    </div>
+                </div>
+
+                <!-- Dubai  left=64% top=47%  — label upper-right, above Abu Dhabi -->
+                <div class="city-pin" style="left:64%;top:47%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:1.8s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right-above">Dubai</span>
+                    </div>
+                </div>
+
+                <!-- Muscat  left=65% top=49%  — label lower-right, below Dubai -->
+                <div class="city-pin" style="left:65%;top:49%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:2.1s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right-below">Muscat</span>
+                    </div>
+                </div>
+
+                <!-- Bengaluru  left=70% top=54%  — label left, Chennai goes right -->
+                <div class="city-pin" style="left:70%;top:54%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:0.4s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-left">Bengaluru</span>
+                    </div>
+                </div>
+
+                <!-- Chennai  left=71% top=55%  — label lower-right, away from Bengaluru -->
+                <div class="city-pin" style="left:71%;top:55%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:0.7s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right-below">Chennai</span>
+                    </div>
+                </div>
+
+                <!-- Bangkok  left=76.5% top=50%  — label upper-right, clears KL/Singapore below -->
+                <div class="city-pin" style="left:76.5%;top:50%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:1.0s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right-above">Bangkok</span>
+                    </div>
+                </div>
+
+                <!-- Kuala Lumpur  left=76.6% top=55.5%  — label right to avoid Bangkok/Singapore left labels -->
+                <div class="city-pin" style="left:76.6%;top:55.5%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:1.3s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right">Kuala Lumpur</span>
+                    </div>
+                </div>
+
+                <!-- Singapore  left=76.5% top=56%  — label lower-right, clears KL above and Bangkok above-right -->
+                <div class="city-pin" style="left:76.5%;top:56%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:1.6s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right-below">Singapore</span>
+                    </div>
+                </div>
+
+                <!-- Jakarta  left=77% top=59%  — label lower-left, clear of Singapore above -->
+                <div class="city-pin" style="left:77%;top:59%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:1.9s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-left-below">Jakarta</span>
+                    </div>
+                </div>
+
+                <!-- Brunei  left=82% top=62%  — label upper-right, above Jakarta cluster -->
+                <div class="city-pin" style="left:82%;top:62%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:2.2s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right-above">Brunei</span>
+                    </div>
+                </div>
+
+                <!-- Manila  left=86% top=57%  — label right, clear of Brunei below -->
+                <div class="city-pin" style="left:86%;top:57%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:0.5s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-right">Manila</span>
+                    </div>
+                </div>
+
+                <!-- Tokyo  left=88% top=40%  — label left to avoid right edge -->
+                <div class="city-pin" style="left:88%;top:40%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:0.8s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-left">Tokyo</span>
+                    </div>
+                </div>
+
+                <!-- Sydney  left=92% top=84%  — label left to avoid right edge -->
+                <div class="city-pin" style="left:92%;top:84%;">
+                    <div class="pin-inner">
+                        <span class="pin-pulse" style="animation-delay:1.1s"></span>
+                        <span class="pin-dot"></span>
+                        <span class="pin-lbl lbl-left">Sydney</span>
+                    </div>
+                </div>
+
+            </div><!-- /map container -->
+
+            <!-- Region summary pills -->
+            <div class="mt-8 flex flex-wrap gap-2 justify-center">
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Houston</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Vienna</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Cairo</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Amman</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Riyadh</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Abu Dhabi</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Dubai</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Muscat</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Bengaluru</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Chennai</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Bangkok</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Kuala Lumpur</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Singapore</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Jakarta</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Brunei</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Manila</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Tokyo</span>
+                <span class="inline-flex items-center gap-1.5 bg-adeahub-blue/10 border border-adeahub-blue/20 text-adeahub-blue text-xs font-medium px-3 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-adeahub-yellow inline-block"></span>Sydney</span>
+            </div>
+        </div>
+
+        <style>
+            /* ── Map pin system ──────────────────────────────────────────────── */
+
+            /* Zero-size anchor at the geographic coordinate */
+            .city-pin {
+                position: absolute;
+                width: 0;
+                height: 0;
+                z-index: 10;
+            }
+
+            /* Inner group — scales from pin centre on hover */
+            .pin-inner {
+                position: relative;
+                width: 0;
+                height: 0;
+                transition: transform 0.18s ease;
+                transform-origin: 0 0;
+            }
+            .city-pin:hover .pin-inner {
+                transform: scale(1.9);
+            }
+
+            /* Pulsing ring */
+            @keyframes pinPulse {
+                0%   { transform: scale(0.4); opacity: 0.85; }
+                100% { transform: scale(3.0); opacity: 0;    }
+            }
+            .pin-pulse {
+                position: absolute;
+                display: block;
+                width: 16px;
+                height: 16px;
+                left: -8px;
+                top: -8px;
+                border-radius: 50%;
+                background: #F2C747;
+                animation: pinPulse 2.6s ease-out infinite;
+                pointer-events: none;
+            }
+
+            /* Yellow dot with white centre */
+            .pin-dot {
+                position: absolute;
+                width: 11px;
+                height: 11px;
+                left: -5.5px;
+                top: -5.5px;
+                border-radius: 50%;
+                background: #F2C747;
+                border: 2px solid rgba(255,255,255,0.75);
+                box-shadow: 0 0 0 1.5px rgba(242,199,71,0.5);
+                z-index: 2;
+            }
+
+            /* Text label — always visible, high-contrast pill */
+            .pin-lbl {
+                position: absolute;
+                display: block;
+                white-space: nowrap;
+                font-family: 'Outfit', sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.01em;
+                color: #ffffff;
+                background: rgba(4, 18, 44, 0.72);
+                border: 1px solid rgba(255,255,255,0.18);
+                padding: 3px 7px;
+                border-radius: 4px;
+                pointer-events: none;
+                z-index: 3;
+                line-height: 1.35;
+                backdrop-filter: blur(2px);
+                -webkit-backdrop-filter: blur(2px);
+            }
+
+            /* ── Label direction helpers ────────────────────────────────────── */
+            /* Vertically centred, to the right of pin */
+            .lbl-right       { left: 10px;  top: -10px; }
+            /* Vertically centred, to the left of pin */
+            .lbl-left        { right: 10px; top: -10px; }
+            /* Upper-right of pin */
+            .lbl-right-above { left: 10px;  bottom: 4px; }
+            /* Lower-right of pin */
+            .lbl-right-below { left: 10px;  top: 4px;   }
+            /* Upper-left of pin */
+            .lbl-left-above  { right: 10px; bottom: 4px; }
+            /* Lower-left of pin */
+            .lbl-left-below  { right: 10px; top: 4px;   }
+        </style>
+    </section>
+
+    <!-- SECTION 6: Awards & Recognition -->
+    <section class="py-24 bg-adeahub-lightbg">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="mb-16 text-center max-w-3xl mx-auto">
+                <span class="text-sm font-bold text-gray-500 tracking-wider mb-2 block">Awards & Recognition</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue tracking-tight mb-6">Recognised for outcomes that matter.</h2>
+                <p class="text-lg text-gray-600">
+                    These awards recognise the real-world clinical and operational impact of adeahub-powered programmes — validated by independent organisations across health, government, and technology.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Persona 1 -->
-                    <div class="p-8 rounded-2xl bg-gray-50/50 border border-gray-100 hover:shadow-md transition">
-                        <div class="w-12 h-12 bg-blue-50 text-adeahub-blue rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="lock" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-3">For CIOs & IT Leaders</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            We cover architecture, EHR integration (Epic, Cerner), FHIR/HL7 compliance, security protocols, and scalability from single-site to national deployment.
-                        </p>
+                <!-- Award 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col h-full">
+                    <div class="bg-yellow-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-6">
+                        <i data-lucide="award" class="w-7 h-7"></i>
                     </div>
-
-                    <!-- Persona 2 -->
-                    <div class="p-8 rounded-2xl bg-gray-50/50 border border-gray-100 hover:shadow-md transition">
-                        <div class="w-12 h-12 bg-blue-50 text-adeahub-blue rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="stethoscope" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-3">For Clinical Leaders</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            See how adeahub reduces documentation burden, improves clinical workflows, supports care coordination, and connects clinical teams across facilities.
-                        </p>
-                    </div>
-
-                    <!-- Persona 3 -->
-                    <div class="p-8 rounded-2xl bg-gray-50/50 border border-gray-100 hover:shadow-md transition">
-                        <div class="w-12 h-12 bg-blue-50 text-adeahub-blue rounded-xl flex items-center justify-center mb-6">
-                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-900 mb-3">For CFOs & Administrators</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            We walk through implementation timelines, ROI models, total cost of ownership, and the operational efficiencies realised by health systems already live on adeahub.
-                        </p>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">#1 Health App Worldwide</h3>
+                    <div class="text-sm font-semibold text-gray-400 tracking-wide mb-4">Data.ai — 2021</div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "MySejahtera — powered by adeahub — ranked #1 globally for install penetration and open rate across all COVID-19 apps, achieving 85% install penetration and a 92% open rate."
+                    </p>
                 </div>
+
+                <!-- Award 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col h-full">
+                    <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-blue mb-6">
+                        <i data-lucide="medal" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Gold — Quality Service Award</h3>
+                    <div class="text-sm font-semibold text-gray-400 tracking-wide mb-4">Reader's Digest Asia — 2021</div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "Recognised for Excellence in Government Service, supporting millions of Malaysians through COVID-19 health assessments, vaccination management, and contact tracing."
+                    </p>
+                </div>
+
+                <!-- Award 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col h-full">
+                    <div class="bg-yellow-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-6">
+                        <i data-lucide="trophy" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Gold — Most Valuable Tech Innovation</h3>
+                    <div class="text-sm font-semibold text-gray-400 tracking-wide mb-4">Stevie Awards MENA — 2021</div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "Recognised for the Most Valuable Technological Innovation in COVID-19 Response, enabling UAE health authorities to manage cases through AI-powered monitoring and automated triage."
+                    </p>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- SECTION 5: Social Proof (Light Touch) -->
-        <section class="py-16 bg-adeahub-lightbg border-y border-gray-200">
-            <div class="max-w-7xl mx-auto px-6 md:px-12">
-                <div class="text-center mb-10">
-                    <h2 class="text-sm font-bold text-gray-500 tracking-widest">Trusted by Health Systems Across Three Continents</h2>
-                </div>
-
-                <!-- Metrics Strip -->
-                <div class="flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-4 mb-12">
-                    <div class="text-center">
-                        <div class="text-3xl font-extrabold text-adeahub-yellow">500+</div>
-                        <div class="text-xs font-semibold text-gray-500 mt-1">Facilities Live</div>
-                    </div>
-                    <div class="hidden md:block w-px h-10 bg-gray-200"></div>
-                    <div class="text-center">
-                        <div class="text-3xl font-extrabold text-adeahub-yellow">50M+</div>
-                        <div class="text-xs font-semibold text-gray-500 mt-1">Patient Records</div>
-                    </div>
-                    <div class="hidden md:block w-px h-10 bg-gray-200"></div>
-                    <div class="text-center">
-                        <div class="text-3xl font-extrabold text-adeahub-yellow">100+ yrs</div>
-                        <div class="text-xs font-semibold text-gray-500 mt-1">Combined IT Experience</div>
-                    </div>
-                    <div class="hidden md:block w-px h-10 bg-gray-200"></div>
-                    <div class="text-center">
-                        <div class="text-3xl font-extrabold text-adeahub-yellow">20+ yrs</div>
-                        <div class="text-xs font-semibold text-gray-500 mt-1">Market Presence</div>
-                    </div>
-                </div>
-
-                <!-- Logos & Awards Container -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
-                    
-                    <!-- Awards -->
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <i data-lucide="award" class="text-adeahub-yellow w-6 h-6"></i>
-                            <span class="font-semibold text-gray-800 text-sm">#1 Health App Worldwide <span class="text-gray-400 font-normal ml-1">— Data.ai</span></span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i data-lucide="trophy" class="text-adeahub-yellow w-6 h-6"></i>
-                            <span class="font-semibold text-gray-800 text-sm">Gold Award <span class="text-gray-400 font-normal ml-1">— Stevie Awards MENA</span></span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <i data-lucide="medal" class="text-adeahub-blue w-6 h-6"></i>
-                            <span class="font-semibold text-gray-800 text-sm">Quality Service Award <span class="text-gray-400 font-normal ml-1">— Asia</span></span>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial Snippet -->
-                    <div class="border-l-0 md:border-l md:border-gray-100 md:pl-10">
-                        <div class="text-adeahub-blue mb-3">
-                            <i data-lucide="quote" class="w-8 h-8 opacity-40"></i>
-                        </div>
-                        <p class="text-gray-700 italic font-medium leading-relaxed mb-4">
-                            "adeahub gave our clinical teams a single, connected view of every patient — something we had been trying to achieve for years."
-                        </p>
-                        <div>
-                            <span class="block text-sm font-bold text-gray-900">Dr. Sarah Al-Sayed</span>
-                            <span class="block text-xs text-gray-500">Chief Medical Officer, Regional Health Authority</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- SECTION 7: Final CTA -->
+    <section id="cta" class="py-24 bg-adeahub-blue">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <span class="text-sm font-bold text-gray-500 tracking-wider mb-4 block">Work With Us</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-adeahub-blue mb-6 tracking-tight">Want to learn more? We'd love to connect.</h2>
+            <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Whether you are exploring digital health strategy for your health system or looking for a platform partner who understands your market — our regional team is ready to talk.
+            </p>
+            
+            <div class="flex items-center justify-center">
+                <a href="contact_us.html" class="bg-adeahub-yellow btn-glow btn-shimmer text-gray-900 text-lg px-10 py-4 rounded-full font-bold hover:bg-yellow-400 transition shadow-xl shadow-yellow-500/20">
+                    Talk to us
+                </a>
             </div>
-        </section>
-
-
-        <!-- SECTION 6: Alternative Contact -->
-        <section class="py-16 bg-white">
-            <div class="max-w-3xl mx-auto px-6 text-center">
-                <h3 class="text-xl font-bold text-gray-900 mb-6">Prefer to Reach Us Directly?</h3>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-10">
-                    <a href="mailto:sales@adeahub.com" class="flex items-center gap-2 text-gray-600 hover:text-adeahub-blue transition font-medium">
-                        <i data-lucide="mail" class="w-5 h-5"></i> sales@adeahub.com
-                    </a>
-                    <div class="hidden sm:block w-1 h-1 rounded-full bg-gray-300"></div>
-                    <a href="tel:+18005550199" class="flex items-center gap-2 text-gray-600 hover:text-adeahub-blue transition font-medium">
-                        <i data-lucide="phone" class="w-5 h-5"></i> +1 (800) 555-0199
-                    </a>
-                </div>
-                <div class="mt-8">
-                    <a href="#" class="inline-flex items-center gap-2 bg-gray-50 border border-gray-200 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 hover:border-gray-300 transition">
-                        <i data-lucide="calendar" class="w-4 h-4 text-adeahub-blue"></i> Book a time that works for you
-                    </a>
-                </div>
+            
+            <div class="mt-8 text-gray-500">
+                Or <a href="#" class="text-adeahub-blue font-medium underline hover:text-blue-800">download our company profile</a>
             </div>
-        </section>
-
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer style="background:#ffffff; border-top: 1px solid #e5e7eb;">
@@ -1065,7 +1518,10 @@
                             hello@adeahub.com
                         </a>
                     </li>
-                    
+                    <li style="font-size:0.875rem;color:#9ca3af;display:flex;align-items:center;gap:8px;">
+                        <svg width="14" height="14" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Kuala Lumpur, Malaysia
+                    </li>
                     <li style="padding-top:6px;">
                         <a href="request_demo.html"
                            style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#FAC515;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
@@ -1089,46 +1545,28 @@
 
 </footer>
 
-    <!-- Scripts -->
+    <!-- Scripts for Functionality -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
+    </script>
 
-        // Form Submission Logic
-        document.getElementById('demoForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent actual form submission for this demo
-            
-            // Get user's first name
-            const firstNameInput = document.getElementById('firstName').value;
-            const firstName = firstNameInput.trim() !== '' ? firstNameInput : 'there';
-            
-            // Update Thank You text
-            document.getElementById('tyName').textContent = firstName;
-            
-            // Hide form, show thank you state
-            const formContainer = document.getElementById('demoFormContainer');
-            const thankYouState = document.getElementById('thankYouState');
-            
-            // Add a simple fade transition
-            formContainer.style.opacity = '0';
-            setTimeout(() => {
-                formContainer.classList.add('hidden');
-                thankYouState.classList.remove('hidden');
-                // Trigger reflow
-                void thankYouState.offsetWidth;
-                thankYouState.style.opacity = '0';
-                thankYouState.style.transition = 'opacity 0.4s ease';
-                
-                setTimeout(() => {
-                    thankYouState.style.opacity = '1';
-                }, 50);
-                
-                // Scroll to top of the block on mobile to ensure the thank you message is seen
-                if (window.innerWidth < 1024) {
-                    thankYouState.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 300);
-        });
+    <script>
+        // Mobile menu toggle
+        (function() {
+            var btn  = document.getElementById('mobile-menu-btn');
+            var menu = document.getElementById('mobile-menu');
+            var ham  = document.getElementById('hamburger-icon');
+            var cls  = document.getElementById('close-icon');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    var open = !menu.classList.contains('hidden');
+                    menu.classList.toggle('hidden', open);
+                    ham.classList.toggle('hidden', !open);
+                    cls.classList.toggle('hidden', open);
+                });
+            }
+        })();
     </script>
 
 <!-- Navbar scroll shadow -->

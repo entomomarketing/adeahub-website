@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorkWise — Healthcare Workforce Experience Platform | adeahub</title>
-    <meta name="description" content="WorkWise by entomo is the healthcare workforce experience platform. Performance management, smart scheduling, career development, and staff wellness — built for health systems that want to retain great people.">
+    <title>AH Engage — Patient Engagement Platform | adeahub</title>
+    <meta name="description" content="60,000 appointments booked every day. AH Engage is a branded patient engagement product proven at national scale — Malaysia MOH, UAE MOHAP, and beyond.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -32,6 +32,8 @@
         :root { --blue: #6396F1; --yellow: #F2C747; --blue-pale: #EEF4FF; --shadow-blue: rgba(99,150,241,0.15); }
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
+
+        /* SCROLL REVEAL */
         .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -42,37 +44,90 @@
         .reveal-d2 { transition-delay: 0.20s; }
         .reveal-d3 { transition-delay: 0.30s; }
         .reveal-d4 { transition-delay: 0.40s; }
+
+        /* NAVBAR */
         .nav-scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.07) !important; }
         .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown-menu:hover { display: block !important; }
         .nav-dropdown-menu { animation: dropIn 0.18s ease forwards; }
         @keyframes dropIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes btnGlow { 0%,100% { box-shadow: 0 8px 28px rgba(99,150,241,0.38); } 50% { box-shadow: 0 8px 44px rgba(99,150,241,0.58); } }
+
+        /* BUTTON GLOW & SHIMMER */
+        @keyframes btnGlow {
+            0%,100% { box-shadow: 0 8px 28px rgba(99,150,241,0.38); }
+            50%      { box-shadow: 0 8px 44px rgba(99,150,241,0.58); }
+        }
         .btn-glow { animation: btnGlow 2.4s ease-in-out infinite; }
         .btn-glow:hover { animation: none; box-shadow: 0 12px 40px rgba(99,150,241,0.55); transform: translateY(-2px); transition: all 0.25s ease; }
         .btn-shimmer { position: relative; overflow: hidden; }
         .btn-shimmer::after { content: ''; position: absolute; top: 0; left: -100%; width: 55%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); }
         .btn-shimmer:hover::after { left: 160%; transition: left 0.55s ease; }
+
+        /* SECTION LABEL */
         .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; color: #6396F1; margin-bottom: 14px; }
         .section-label::before { content: ''; display: block; width: 22px; height: 2px; background: #6396F1; border-radius: 2px; }
-        .hero-bg { background: radial-gradient(ellipse 75% 65% at 90% 40%, rgba(99,150,241,0.10) 0%, transparent 68%), radial-gradient(ellipse 55% 55% at 8% 80%, rgba(99,150,241,0.07) 0%, transparent 62%), radial-gradient(ellipse 40% 40% at 50% 5%, rgba(242,199,71,0.06) 0%, transparent 60%), #F8FAFC; }
+
+        /* HERO */
+        .hero-bg {
+            background:
+                radial-gradient(ellipse 75% 65% at 90% 40%, rgba(99,150,241,0.10) 0%, transparent 68%),
+                radial-gradient(ellipse 55% 55% at 8% 80%, rgba(99,150,241,0.07) 0%, transparent 62%),
+                radial-gradient(ellipse 40% 40% at 50% 5%, rgba(242,199,71,0.06) 0%, transparent 60%),
+                #F8FAFC;
+        }
         .dot-grid { background-image: radial-gradient(circle, rgba(99,150,241,0.11) 1px, transparent 1px); background-size: 28px 28px; }
         @keyframes badgePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(99,150,241,0.30); } 50% { box-shadow: 0 0 0 7px rgba(99,150,241,0); } }
         .hero-badge { animation: badgePulse 2.8s ease-in-out infinite; }
         @keyframes floatBlob { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-18px) scale(1.04); } }
         .blob-float-1 { animation: floatBlob 9s ease-in-out infinite; }
         .blob-float-2 { animation: floatBlob 12s ease-in-out infinite 2.5s; }
+
+        /* CARDS */
+        .solution-card { transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease; }
+        .solution-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(99,150,241,0.15); }
         .outcome-card { transition: transform 0.28s ease, box-shadow 0.28s ease; position: relative; overflow: hidden; }
         .outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #6396F1, #60a5fa); transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease; }
         .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(99,150,241,0.15); }
         .outcome-card:hover::before { transform: scaleX(1); }
+
+        /* STAT NUMBERS */
+        .stat-num { font-variant-numeric: tabular-nums; background: linear-gradient(135deg, #6396F1 0%, #5280d9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        /* GRADIENT TEXT */
         .gradient-text { background: linear-gradient(135deg, #6396F1 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        /* CTA MESH */
+        .cta-mesh {
+            background:
+                radial-gradient(ellipse 70% 80% at 20% 50%, rgba(99,150,241,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 60% at 80% 30%, rgba(99,150,241,0.09) 0%, transparent 60%),
+                linear-gradient(135deg, #EEF4FF 0%, #F8FAFC 50%, #F0F7FF 100%);
+        }
+
+        /* CAPABILITY GRID HOVER */
         .cap-card { border-top: 3px solid transparent; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; border-radius: 20px; }
         .cap-card:hover { border-top-color: #6396F1; transform: translateY(-4px); box-shadow: 0 14px 36px -8px rgba(99,150,241,0.14); }
+
+        /* CASE STUDY STRIP */
         @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .metric-card { animation: countUp 0.6s ease forwards; }
+
+        /* PROOF CARDS */
         .proof-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
         .proof-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px -8px rgba(99,150,241,0.12); }
-        .desktop-frame { border-radius: 16px; background: white; position: relative; overflow: hidden; }
+
+        /* PHONE FRAME (reused from old page) */
+        .phone-frame { border-radius: 42px; background: white; position: relative; overflow: hidden; }
+        .phone-notch { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 90px; height: 24px; background: #111; border-radius: 20px; z-index: 30; }
+
+        /* COMPLIANCE PILL */
+        .compliance-pill { background: white; border: 1px solid rgba(99,150,241,0.14); border-radius: 9999px; padding: 7px 18px; font-size: 0.72rem; font-weight: 700; color: #4B5563; letter-spacing: 0.05em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: all 0.22s; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+        .compliance-pill:hover { background: var(--blue-pale); border-color: rgba(99,150,241,0.35); color: #6396F1; }
+
+        /* MARQUEE (trust bar) */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 35s linear infinite; }
+        .marquee-container:hover .animate-marquee { animation-play-state: paused; }
+
         /* Hero graphic animations */
         @keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
         .animate-float { animation: heroFloat 4s ease-in-out infinite; }
@@ -81,9 +136,6 @@
         .float-fast { animation: heroFloat 3s ease-in-out infinite 0.5s; }
         .shadow-float { box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
         .shadow-glow { box-shadow: 0 0 20px rgba(13, 110, 253, 0.3); }
-        /* Agent card pulse */
-        @keyframes agentPulse { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.02)} }
-        .agent-pulse { animation: agentPulse 3s ease-in-out infinite; }
     
         /* ═══════════════════════════════════════════════════════
        ADEAHUB REDESIGN OVERRIDES
@@ -404,7 +456,9 @@
 </head>
 <body class="bg-white text-gray-700">
 
-<!-- NAVBAR -->
+<!-- ═══════════════════════════════════════════════════
+     NAVBAR (unchanged)
+═══════════════════════════════════════════════════ -->
 <nav id="main-nav" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
         <a href="index.html" class="flex flex-col hover:opacity-90 transition shrink-0">
@@ -413,7 +467,10 @@
         </a>
         <div class="hidden md:flex items-center gap-6 text-sm font-medium">
             <div class="nav-dropdown relative">
-                <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">Products <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+                <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
+                    Products
+                    <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
                 <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="left:-150px;width:740px;">
                     <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                         <!-- Mega header -->
@@ -440,7 +497,10 @@
             </div>
             <a href="adeahub_platform.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Platform</a>
             <div class="nav-dropdown relative">
-                <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">Resources <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
+                <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
+                    Resources
+                    <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
                 <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="right:0;width:460px;">
                     <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                         <!-- Mega header -->
@@ -478,7 +538,7 @@
         <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Care</a>
         <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Connect</a>
         <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Insights</a>
-        <a href="workwise.html" class="block py-2.5 px-3 rounded-lg bg-blue-50 text-blue-600 transition-colors font-semibold text-sm">WorkWise</a>
+        <a href="workwise.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
         <div class="my-2 border-t border-gray-100"></div>
         <a href="adeahub_platform.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
         <div class="my-2 border-t border-gray-100"></div>
@@ -489,360 +549,279 @@
         <div class="my-2 border-t border-gray-100"></div>
         <a href="about_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
             <div class="my-2 border-t border-gray-100"></div>
-            <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a><div class="pt-3 pb-1"><a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F2C747;">Talk to us</a></div>
+            <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a><div class="pt-3 pb-1">
+            <a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F2C747;">Talk to us</a>
+        </div>
     </div>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 1: HERO
+     SECTION 1: HERO — THE HEADLINE METRIC
 ═══════════════════════════════════════════════════ -->
 <header class="hero-bg pt-20 pb-28 overflow-hidden relative">
     <div class="dot-grid absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"></div>
     <div class="blob-float-1 absolute left-[5%] top-[20%] w-80 h-80 rounded-full bg-blue-100/40 blur-3xl pointer-events-none" aria-hidden="true"></div>
     <div class="blob-float-2 absolute right-[5%] bottom-[10%] w-60 h-60 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div class="z-10">
-                <div class="flex items-center gap-3 mb-8 reveal">
-                    <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-adeahub-blue text-xs font-bold px-4 py-2 rounded-full tracking-wider">
-                        <span class="w-2 h-2 bg-adeahub-blue rounded-full hero-badge inline-block"></span>
-                        Healthcare Workforce Experience Platform
-                    </span>
+
+        <!-- Product label -->
+        <div class="flex items-center gap-3 mb-8 reveal">
+            <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-adeahub-blue text-xs font-bold px-4 py-2 rounded-full tracking-wider">
+                <span class="w-2 h-2 bg-adeahub-blue rounded-full hero-badge inline-block"></span>
+                Digital front door for patient engagement
+            </span>
+        </div>
+
+        <!-- Headline metric — the "oh wow" moment -->
+        <div class="max-w-4xl mb-6 reveal reveal-d1">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
+                <span class="text-2xl md:text-3xl font-bold block mb-4 tracking-normal" style="color:white!important">AH Engage</span>
+                <span style="color:#F2C747!important;font-weight:inherit">60,000</span>
+                <span style="color:white!important"> appointments</span><br>
+                <span style="color:white!important">booked </span><span style="color:#F2C747!important;font-weight:inherit">every day</span>
+            </h1>
+        </div>
+
+        <!-- Subheadline: one clear product definition sentence -->
+        <p class="text-xl md:text-2xl max-w-2xl leading-relaxed mb-10 reveal reveal-d2" style="color:white!important">
+            AH Engage is a customer-branded patient engagement product connecting patients to their care teams before, during, and after every visit.
+        </p>
+
+        <!-- Dual CTA -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-14 reveal reveal-d3">
+            <a href="contact_us.html" class="bg-adeahub-blue text-white text-center px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/30 btn-glow btn-shimmer text-base">
+                Talk to us
+            </a>
+        </div>
+
+        <!-- Trust badges row -->
+        <div class="reveal reveal-d4">
+            <p class="text-sm font-bold tracking-widest mb-5" style="color:white!important">Trusted by leading health systems</p>
+            <div class="flex flex-wrap items-center gap-3 md:gap-5">
+                <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
+                    <span class="text-xl">🇲🇾</span>
+                    <span class="text-sm font-semibold text-gray-700">Malaysia Ministry of Health</span>
                 </div>
-                <div class="max-w-4xl mb-6 reveal reveal-d1">
-                    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-                        <span class="text-2xl md:text-3xl font-bold block mb-4 tracking-normal" style="color:white!important">WorkWise by entomo</span>
-                        <span style="color:white!important">When your people </span><span style="color:#F2C747!important;font-weight:inherit">thrive,</span><br>
-                        <span style="color:white!important">your patients </span><span style="color:#F2C747!important;font-weight:inherit">do too.</span>
-                    </h1>
+                <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
+                    <span class="text-xl">🇦🇪</span>
+                    <span class="text-sm font-semibold text-gray-700">UAE MOHAP</span>
                 </div>
-                <p class="text-xl md:text-2xl max-w-2xl leading-relaxed mb-10 reveal reveal-d2" style="color:white!important">
-                    WorkWise is the healthcare workforce experience platform — unifying performance management, intelligent scheduling, career development, and staff wellness into a single AI-powered layer built for health systems.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 mb-14 reveal reveal-d3">
-                    <a href="contact_us.html" class="bg-adeahub-blue text-white text-center px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/30 btn-glow btn-shimmer text-base">Talk to us</a>
+                <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
+                    <i data-lucide="award" class="w-4 h-4 text-adeahub-yellow"></i>
+                    <span class="text-sm font-semibold text-gray-700">#1 Data.ai Worldwide</span>
                 </div>
-                <div class="reveal reveal-d4">
-                    <p class="text-sm font-bold tracking-widest mb-5" style="color:white!important">Trusted by leading health systems</p>
-                    <div class="flex flex-wrap items-center gap-3 md:gap-5">
-                        <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
-                            <i data-lucide="users" class="w-4 h-4 text-adeahub-blue"></i>
-                            <span class="text-sm font-semibold text-gray-700">30M+ Users Powered</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
-                            <i data-lucide="building-2" class="w-4 h-4 text-adeahub-blue"></i>
-                            <span class="text-sm font-semibold text-gray-700">60+ Health Enterprises</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
-                            <i data-lucide="globe" class="w-4 h-4 text-adeahub-blue"></i>
-                            <span class="text-sm font-semibold text-gray-700">13 Geographies</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
-                            <i data-lucide="award" class="w-4 h-4 text-adeahub-yellow"></i>
-                            <span class="text-sm font-semibold text-gray-700">entomo Intelligence Engine</span>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
+                    <i data-lucide="medal" class="w-4 h-4 text-adeahub-yellow"></i>
+                    <span class="text-sm font-semibold text-gray-700">Stevie Award Gold 2021</span>
                 </div>
             </div>
-            <!-- Hero Visual: Workforce Dashboard -->
-            <div class="relative w-full h-[500px] flex items-center justify-center">
-                <!-- Decorative background blobs -->
-                <div class="absolute top-10 right-10 w-64 h-64 bg-blue-200 rounded-full blur-3xl opacity-50"></div>
-                <div class="absolute bottom-10 left-10 w-72 h-72 bg-green-100 rounded-full blur-3xl opacity-40"></div>
-                <!-- Main Dashboard Card -->
-                <div class="absolute w-full max-w-lg bg-white rounded-2xl shadow-float border border-gray-100 outcome-card flex flex-col">
-                    <!-- Top Bar -->
-                    <div class="h-12 border-b border-gray-100 bg-gray-50 flex items-center px-4 gap-3">
-                        <div class="flex gap-1.5">
-                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                        </div>
-                        <div class="mx-auto bg-white border border-gray-200 h-6 w-1/2 rounded text-center flex items-center justify-center text-[10px] text-gray-400 font-mono">WorkWise — Workforce Hub</div>
-                    </div>
-                    <!-- Body -->
-                    <div class="flex h-80">
-                        <!-- Sidebar -->
-                        <div class="w-16 bg-white border-r border-gray-100 flex flex-col items-center py-4 gap-4 text-gray-300">
-                            <i data-lucide="menu" class="w-5 h-5 mb-4"></i>
-                            <i data-lucide="user" class="w-5 h-5 text-adeahub-blue bg-blue-50 p-1 rounded-md"></i>
-                            <i data-lucide="calendar" class="w-5 h-5"></i>
-                            <i data-lucide="target" class="w-5 h-5"></i>
-                            <i data-lucide="heart" class="w-5 h-5"></i>
-                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
-                        </div>
-                        <!-- Content Area -->
-                        <div class="flex-1 p-5 bg-gray-50/50">
-                            <!-- Profile Row -->
-                            <div class="flex items-center gap-3 mb-4 pb-3 border-b border-gray-100">
-                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-adeahub-blue font-bold text-sm border-2 border-white shadow-sm">SC</div>
-                                <div class="flex-1">
-                                    <h3 class="font-bold text-gray-900 text-sm leading-tight">Sarah Chen, RN</h3>
-                                    <p class="text-[10px] text-gray-400 mt-0.5">ICU · Day Shift · 7:00 AM – 7:00 PM</p>
-                                </div>
-                                <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full">On Shift</span>
-                            </div>
-                            <!-- Tabs -->
-                            <div class="flex gap-2 mb-3 overflow-x-auto">
-                                <div class="bg-adeahub-blue text-white text-[10px] font-bold px-2.5 py-1 rounded-lg whitespace-nowrap">My Goals</div>
-                                <div class="bg-gray-100 text-gray-500 text-[10px] font-medium px-2.5 py-1 rounded-lg whitespace-nowrap">Schedule</div>
-                                <div class="bg-gray-100 text-gray-500 text-[10px] font-medium px-2.5 py-1 rounded-lg whitespace-nowrap">Wellness</div>
-                                <div class="bg-gray-100 text-gray-500 text-[10px] font-medium px-2.5 py-1 rounded-lg whitespace-nowrap">Career</div>
-                            </div>
-                            <!-- Goal Cards -->
-                            <div class="space-y-2.5">
-                                <div class="bg-white rounded-xl p-3 border border-gray-100 shadow-sm">
-                                    <div class="flex justify-between items-start mb-1.5">
-                                        <p class="text-xs font-bold text-gray-800">Clinical Excellence Q1</p>
-                                        <span class="text-xs font-extrabold text-adeahub-blue">87%</span>
-                                    </div>
-                                    <div class="w-full bg-gray-100 rounded-full h-1.5">
-                                        <div class="bg-adeahub-blue h-1.5 rounded-full" style="width: 87%"></div>
-                                    </div>
-                                    <p class="text-[10px] text-gray-400 mt-1">Patient Safety Score · 26 of 30 targets met</p>
-                                </div>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <div class="bg-green-50 rounded-xl p-2.5 border border-green-100">
-                                        <p class="text-[10px] font-bold text-green-700 mb-0.5">Wellness Pulse</p>
-                                        <p class="text-sm font-extrabold text-gray-800">Energised</p>
-                                        <p class="text-[10px] text-gray-400">Today · 7:14 AM</p>
-                                    </div>
-                                    <div class="bg-purple-50 rounded-xl p-2.5 border border-purple-100">
-                                        <p class="text-[10px] font-bold text-purple-700 mb-0.5">Next Milestone</p>
-                                        <p class="text-xs font-bold text-gray-800">Senior RN Track</p>
-                                        <p class="text-[10px] text-gray-400">2 skills remaining</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Callout 1 -->
-                <div class="absolute -right-4 top-24 bg-white p-3 rounded-lg shadow-xl border border-blue-100 flex gap-3 items-start animate-float z-20 w-48">
-                    <div class="bg-blue-100 text-adeahub-blue p-1.5 rounded-md mt-0.5 shrink-0"><i data-lucide="brain" class="w-4 h-4"></i></div>
-                    <div>
-                        <p class="text-xs font-bold text-gray-900">GoalSense AI</p>
-                        <p class="text-[10px] text-gray-500 leading-tight mt-0.5">Nudge sent: "2 goals due Friday — you're on track."</p>
-                    </div>
-                </div>
-                <!-- Callout 2 -->
-                <div class="absolute -left-4 bottom-16 bg-white p-3 rounded-lg shadow-xl border border-green-100 flex gap-3 items-start animate-float-delayed z-20 w-52">
-                    <div class="bg-green-100 text-green-600 p-1.5 rounded-md mt-0.5 shrink-0"><i data-lucide="shield-check" class="w-4 h-4"></i></div>
-                    <div>
-                        <p class="text-xs font-bold text-gray-900">Smart Scheduling</p>
-                        <p class="text-[10px] text-gray-500 leading-tight mt-0.5">Back-to-back nights flagged — swap offer sent automatically.</p>
-                    </div>
-                </div>
+        </div>
+            </div>
+            <!-- Hero Visual: Animated Phone App -->
+            <div class="relative w-full flex items-center justify-center lg:justify-end">
+                <iframe src="ah-engage-animated.html" style="width:420px;height:860px;border:none;overflow:hidden;transform:scale(0.85);transform-origin:top center;" scrolling="no" loading="lazy" title="AH Engage animated preview"></iframe>
             </div>
         </div>
     </div>
 </header>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 2: THE HEALTHCARE WORKFORCE CHALLENGE
+     SECTION 2: TRANSFORMATION STORY — CASE STUDY AS CENTREPIECE
 ═══════════════════════════════════════════════════ -->
-<section id="challenge" class="py-24 bg-white border-t border-gray-100">
+<section id="case-study" class="py-24 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
+
         <div class="text-center mb-16 reveal">
-            <span class="section-label">The healthcare workforce challenge</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Staff burnout and high turnover aren't inevitable — they're a systems problem.</h2>
+            <span class="section-label">Proven at national scale</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">The transformation that changed how a nation accesses healthcare</h2>
         </div>
+
+        <!-- Case Study Card -->
         <div class="bg-gradient-to-br from-gray-50 to-blue-50/40 border border-gray-100 rounded-3xl overflow-hidden shadow-soft reveal">
+
+            <!-- Header strip -->
             <div class="bg-white border-b border-gray-100 px-10 py-8 flex flex-col md:flex-row md:items-center gap-6">
                 <div class="flex items-center gap-4">
-                    <div class="bg-blue-50 p-4 rounded-2xl">
-                        <i data-lucide="activity" class="w-8 h-8 text-adeahub-blue"></i>
-                    </div>
+                    <span class="text-5xl">🇲🇾</span>
                     <div>
-                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-1">The reality in healthcare today</p>
-                        <h3 class="text-2xl font-bold text-gray-900">What disconnected workforce systems cost health systems</h3>
-                        <p class="text-adeahub-blue font-semibold mt-0.5">Across hospitals, clinics, and health networks globally</p>
+                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-1">Case Study</p>
+                        <h3 class="text-2xl font-bold text-gray-900">Malaysia Ministry of Health</h3>
+                        <p class="text-adeahub-blue font-semibold mt-0.5">MySejahtera — National Health Platform</p>
                     </div>
                 </div>
                 <div class="md:ml-auto">
-                    <span class="inline-flex items-center gap-2 bg-red-50 text-red-600 font-bold text-sm px-5 py-2.5 rounded-full border border-red-100">
-                        <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-                        A people problem with a clinical impact
+                    <span class="inline-flex items-center gap-2 bg-blue-50 text-adeahub-blue font-bold text-sm px-5 py-2.5 rounded-full border border-blue-100">
+                        <i data-lucide="globe-2" class="w-4 h-4"></i>
+                        National-scale deployment
                     </span>
                 </div>
             </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+
+                <!-- Narrative side -->
                 <div class="p-10 md:p-12 border-b lg:border-b-0 lg:border-r border-gray-100">
                     <div class="space-y-8">
                         <div>
                             <span class="text-xs font-bold tracking-widest text-red-500 mb-2 block">The challenge</span>
-                            <p class="text-gray-700 leading-relaxed">Healthcare organisations run on people — but most are managing their workforce with systems designed for other industries. Scheduling a 24/7 nurse roster manually. Tracking credentials in spreadsheets. Setting performance goals that bear no relation to clinical outcomes. Running annual reviews that arrive too late to prevent a good nurse from walking out the door.</p>
-                            <p class="text-gray-700 leading-relaxed mt-4">The result: high turnover in critical units, scheduling gaps that create unsafe patient ratios, and a workforce that feels managed rather than valued — directly impacting the quality of patient care.</p>
+                            <p class="text-gray-700 leading-relaxed">Malaysia's public health network — spanning 8,000+ facilities and 33 million citizens — had no unified digital front door. Patients navigated separate systems, missed appointments through no fault of their own, and had no direct connection to their care team between visits.</p>
                         </div>
                         <div>
-                            <span class="text-xs font-bold tracking-widest text-adeahub-blue mb-2 block">What WorkWise does</span>
-                            <p class="text-gray-700 leading-relaxed">WorkWise by entomo replaces the patchwork of disconnected HR tools with a single, healthcare-specific workforce experience platform. Performance goals are built from a healthcare KPI library and connected to clinical outcomes. Scheduling is AI-assisted, fatigue-aware, and compliant. Career pathways are visible, personalised, and actively managed. Wellness is monitored daily — not once at exit.</p>
+                            <span class="text-xs font-bold tracking-widest text-adeahub-blue mb-2 block">What we did</span>
+                            <p class="text-gray-700 leading-relaxed">adeahub deployed the national patient platform, integrating it across the full network of public health facilities — enabling appointment booking, health records access, vaccination management, and care navigation at a scale no commercial health app had achieved in the region.</p>
                         </div>
                         <div>
                             <span class="text-xs font-bold tracking-widest text-green-600 mb-2 block">The impact</span>
+                            <!-- Impact metric strip -->
                             <div class="grid grid-cols-2 gap-4 mt-4">
                                 <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">30M<span class="text-xl">+</span></p>
-                                    <p class="text-sm text-gray-500 font-medium">Users powered by entomo globally</p>
+                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">60,000<span class="text-xl">+</span></p>
+                                    <p class="text-sm text-gray-500 font-medium">Appointments booked daily</p>
                                 </div>
                                 <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">60<span class="text-xl">+</span></p>
-                                    <p class="text-sm text-gray-500 font-medium">Health enterprises on the platform</p>
+                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">295</p>
+                                    <p class="text-sm text-gray-500 font-medium">Health services available</p>
                                 </div>
                                 <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">200K<span class="text-xl">+</span></p>
-                                    <p class="text-sm text-gray-500 font-medium">Active healthcare users</p>
+                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">8,000<span class="text-xl">+</span></p>
+                                    <p class="text-sm text-gray-500 font-medium">Facilities connected</p>
                                 </div>
                                 <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">13</p>
-                                    <p class="text-sm text-gray-500 font-medium">Geographies served</p>
+                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">#1</p>
+                                    <p class="text-sm text-gray-500 font-medium">Data.ai worldwide ranking</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="contact_us.html" class="mt-8 inline-flex items-center gap-2 text-adeahub-blue font-bold hover:text-blue-800 group">See WorkWise in action <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+                    <a href="customers.html" class="mt-8 inline-flex items-center gap-2 text-adeahub-blue font-bold hover:text-blue-800 group">
+                        Read the Full Case Study <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
+
+                <!-- Pull quote / recognition side -->
                 <div class="p-10 md:p-12 flex flex-col justify-between gap-8">
+                    <!-- Recognition card -->
                     <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-4">The five workforce barriers WorkWise addresses</p>
+                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-4">Recognition</p>
                         <div class="space-y-4">
                             <div class="flex items-start gap-3">
-                                <div class="bg-red-50 p-2 rounded-lg shrink-0"><i data-lucide="trending-down" class="w-5 h-5 text-red-500"></i></div>
-                                <div>
-                                    <p class="font-bold text-gray-900 text-sm">High turnover in critical units</p>
-                                    <p class="text-xs text-gray-500">Nursing attrition is highest in ICU, ED, and oncology — the units where continuity matters most. WorkWise surfaces retention risks before they become resignations.</p>
+                                <div class="bg-yellow-50 p-2 rounded-lg shrink-0">
+                                    <i data-lucide="award" class="w-5 h-5 text-adeahub-yellow"></i>
                                 </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="bg-orange-50 p-2 rounded-lg shrink-0"><i data-lucide="calendar-x" class="w-5 h-5 text-orange-500"></i></div>
                                 <div>
-                                    <p class="font-bold text-gray-900 text-sm">24/7 scheduling complexity</p>
-                                    <p class="text-xs text-gray-500">Manual rosters across specialties, wards, and shifts create scheduling gaps, overtime exposure, and compliance violations. AI-assisted scheduling eliminates the guesswork.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="bg-yellow-50 p-2 rounded-lg shrink-0"><i data-lucide="file-warning" class="w-5 h-5 text-yellow-600"></i></div>
-                                <div>
-                                    <p class="font-bold text-gray-900 text-sm">Credential and compliance gaps</p>
-                                    <p class="text-xs text-gray-500">Tracking licences, certifications, and mandatory training across hundreds of staff manually is error-prone and audit-risky. WorkWise automates the entire credential lifecycle.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="bg-blue-50 p-2 rounded-lg shrink-0"><i data-lucide="heart-crack" class="w-5 h-5 text-blue-500"></i></div>
-                                <div>
-                                    <p class="font-bold text-gray-900 text-sm">Burnout without early warning</p>
-                                    <p class="text-xs text-gray-500">By the time burnout shows in turnover data, the damage is done. WorkWise captures daily wellness pulses and sends proactive alerts to managers — weeks earlier.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="bg-purple-50 p-2 rounded-lg shrink-0"><i data-lucide="unlink" class="w-5 h-5 text-purple-600"></i></div>
-                                <div>
-                                    <p class="font-bold text-gray-900 text-sm">Disconnected HR systems</p>
-                                    <p class="text-xs text-gray-500">Performance goals in one system. Scheduling in another. Learning in a third. WorkWise unifies every workforce touchpoint — so the experience of every clinician is connected, not fragmented.</p>
+                                    <p class="font-bold text-gray-900 text-sm">Data.ai #1 Worldwide Ranking</p>
+                                    <p class="text-xs text-gray-500">Highest install penetration and open rate among all health apps globally, 2021</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Quote placeholder (real quote to be added on stakeholder sign-off) -->
                     <div class="bg-adeahub-blue rounded-2xl p-8 text-white relative overflow-hidden">
                         <i data-lucide="quote" class="absolute top-6 left-6 w-20 h-20 text-blue-500 opacity-30"></i>
                         <div class="relative z-10">
-                            <p class="text-base font-medium leading-relaxed italic mb-6 text-blue-50">"A customer testimonial will appear here once stakeholder approval is obtained. WorkWise's healthcare-specific workforce intelligence helps health systems address the people challenges that directly impact patient safety and care quality."</p>
+                            <p class="text-base font-medium leading-relaxed italic mb-6 text-blue-50">
+                                "A customer testimonial will appear here once stakeholder approval is obtained. This platform demonstrated what national-scale digital health looks like in practice."
+                            </p>
                             <div>
                                 <p class="font-bold text-white text-sm">[Stakeholder Name]</p>
-                                <p class="text-blue-200 text-xs">[Title] · [Health System Name]</p>
+                                <p class="text-blue-200 text-xs">[Title] · [Organisation]</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 3: THE VISION
+     SECTION 3: THE VISION — WHY THIS PRODUCT EXISTS
 ═══════════════════════════════════════════════════ -->
 <section class="py-24 bg-adeahub-lightbg border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <!-- Narrative copy -->
             <div class="reveal-left">
                 <span class="section-label">The vision</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
-                    One platform that understands what a great healthcare worker needs to thrive.
+                    Your hospital in every patient's pocket.
                 </h2>
                 <div class="space-y-5 text-lg text-gray-600 leading-relaxed">
-                    <p>Healthcare workforce management is unlike any other industry. Clinical staff operate under 24/7 shift patterns, carry credential and compliance obligations that expire, and face the kind of emotional and physical demands that lead to burnout faster than in almost any other profession.</p>
-                    <p>WorkWise brings every workforce function into <strong class="text-gray-800">a single, deeply integrated platform</strong> — built from the ground up for healthcare workflows, and powered by an AI layer that coaches, nudges, and guides at the individual level.</p>
-                    <p>From the moment a new nurse onboards through to the moment a senior clinician is considered for a leadership pathway, every touchpoint is connected, personalised, and visible to the right people at the right time.</p>
+                    <p>A decade ago, patients called a hospital to book an appointment, visited a counter to collect results, and had no way to reach their care team between visits.</p>
+                    <p>AH Engage changes that. It gives every patient a <strong class="text-gray-800">branded digital front door to their hospital</strong> — available on every smartphone, integrated with every system, always connected.</p>
+                    <p>The same way personal banking eliminated the need to visit a branch for routine transactions, AH Engage eliminates the friction between patients and the care they need.</p>
                 </div>
                 <div class="mt-10 flex items-center gap-4 p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
                     <div class="bg-blue-50 p-3 rounded-xl text-adeahub-blue shrink-0">
-                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        <i data-lucide="smartphone" class="w-6 h-6"></i>
                     </div>
                     <div>
-                        <p class="font-bold text-gray-900">Healthcare-specific KPI library. Zero generic goals.</p>
-                        <p class="text-sm text-gray-500 mt-0.5">Every performance goal is aligned to clinical outcomes — not generic HR metrics designed for other industries.</p>
+                        <p class="font-bold text-gray-900">One app. Every service. Always connected.</p>
+                        <p class="text-sm text-gray-500 mt-0.5">Fully white-labelled under your hospital brand — patients never leave your ecosystem.</p>
                     </div>
                 </div>
             </div>
+
+            <!-- Phone UI Visual -->
             <div class="reveal-right flex justify-center lg:justify-end">
-                <div class="relative w-full max-w-lg">
-                    <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-40 transform scale-110"></div>
-                    <div class="relative z-10 desktop-frame shadow-2xl border border-gray-200">
-                        <div class="bg-gray-800 px-4 py-3 flex items-center gap-2">
-                            <div class="flex gap-1.5"><div class="w-3 h-3 rounded-full bg-red-400"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full bg-green-400"></div></div>
-                            <div class="flex-1 bg-gray-700 rounded-md py-1 px-3 text-xs text-gray-400 ml-2">WorkWise — Performance Intelligence</div>
+                <div class="relative w-72">
+                    <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-50 transform scale-150 -translate-y-10"></div>
+                    <div class="absolute inset-0 bg-yellow-100 rounded-full blur-3xl opacity-30 transform scale-125 translate-x-20 translate-y-20"></div>
+                    <div class="phone-frame w-full aspect-[9/19] flex flex-col hover:-translate-y-2 transition duration-500 shadow-2xl relative z-10 border-[10px] border-gray-900">
+                        <div class="phone-notch"></div>
+                        <div class="bg-adeahub-blue text-white px-5 pt-10 pb-6 rounded-b-2xl">
+                            <p class="text-xs text-blue-200">Good morning,</p>
+                            <p class="text-lg font-bold">Sarah Jenkins</p>
                         </div>
-                        <div class="bg-white p-5">
-                            <!-- Header -->
-                            <div class="flex items-center justify-between mb-4 pb-3 border-b border-gray-100">
+                        <div class="flex-1 bg-gray-50 p-4 space-y-3 overflow-hidden -mt-3 pt-6">
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center gap-2">
+                                        <div class="bg-blue-50 p-1.5 rounded-lg text-adeahub-blue"><i data-lucide="calendar-clock" class="w-3.5 h-3.5"></i></div>
+                                        <span class="font-bold text-gray-900 text-xs">Upcoming Visit</span>
+                                    </div>
+                                    <span class="bg-green-100 text-green-700 text-[9px] font-bold px-2 py-0.5 rounded-full">Confirmed</span>
+                                </div>
+                                <p class="font-semibold text-gray-800 text-sm">Dr. Emily Chen</p>
+                                <p class="text-xs text-gray-500 mb-2">Cardiology</p>
+                                <div class="bg-gray-50 p-2 rounded-xl flex items-center gap-2 text-xs text-gray-600">
+                                    <i data-lucide="clock" class="w-3 h-3 text-adeahub-blue"></i> Tomorrow, 10:00 AM
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center gap-1.5">
+                                    <div class="bg-yellow-50 p-1.5 rounded-lg text-adeahub-yellow"><i data-lucide="file-text" class="w-4 h-4"></i></div>
+                                    <span class="text-[9px] font-bold text-gray-700 text-center">Health Records</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center gap-1.5">
+                                    <div class="bg-purple-50 p-1.5 rounded-lg text-purple-600"><i data-lucide="activity" class="w-4 h-4"></i></div>
+                                    <span class="text-[9px] font-bold text-gray-700 text-center">Care Plans</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center gap-1.5">
+                                    <div class="bg-green-50 p-1.5 rounded-lg text-green-600"><i data-lucide="video" class="w-4 h-4"></i></div>
+                                    <span class="text-[9px] font-bold text-gray-700 text-center">Teleconsult</span>
+                                </div>
+                            </div>
+                            <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-3">
+                                <div class="bg-green-50 p-2 rounded-full text-green-600 shrink-0"><i data-lucide="microscope" class="w-4 h-4"></i></div>
                                 <div>
-                                    <p class="font-bold text-gray-900 text-sm">Q1 Goal Review — ICU Nursing Team</p>
-                                    <p class="text-xs text-gray-400">8 nurses · Healthcare KPI Library · AI-generated insights</p>
+                                    <p class="text-xs font-bold text-gray-900">New Lab Result</p>
+                                    <p class="text-[10px] text-gray-500">Available now</p>
                                 </div>
-                                <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">On Track</span>
+                                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-300 ml-auto"></i>
                             </div>
-                            <!-- Goal Rows -->
-                            <div class="space-y-3 mb-4">
-                                <div class="flex items-center gap-3 bg-blue-50 rounded-xl p-3 border border-blue-100">
-                                    <div class="w-8 h-8 rounded-lg bg-adeahub-blue flex items-center justify-center shrink-0">
-                                        <i data-lucide="shield" class="w-4 h-4 text-white"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-xs font-bold text-gray-800">Patient Safety Score</p>
-                                        <div class="w-full bg-blue-200 rounded-full h-1.5 mt-1"><div class="bg-adeahub-blue h-1.5 rounded-full" style="width:91%"></div></div>
-                                    </div>
-                                    <span class="text-sm font-extrabold text-adeahub-blue">91%</span>
-                                </div>
-                                <div class="flex items-center gap-3 bg-green-50 rounded-xl p-3 border border-green-100">
-                                    <div class="w-8 h-8 rounded-lg bg-green-600 flex items-center justify-center shrink-0">
-                                        <i data-lucide="clock" class="w-4 h-4 text-white"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-xs font-bold text-gray-800">Documentation Timeliness</p>
-                                        <div class="w-full bg-green-200 rounded-full h-1.5 mt-1"><div class="bg-green-600 h-1.5 rounded-full" style="width:78%"></div></div>
-                                    </div>
-                                    <span class="text-sm font-extrabold text-green-600">78%</span>
-                                </div>
-                                <div class="flex items-center gap-3 bg-yellow-50 rounded-xl p-3 border border-yellow-100">
-                                    <div class="w-8 h-8 rounded-lg bg-adeahub-yellow flex items-center justify-center shrink-0">
-                                        <i data-lucide="book-open" class="w-4 h-4 text-white"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <p class="text-xs font-bold text-gray-800">Mandatory Training Completion</p>
-                                        <div class="w-full bg-yellow-200 rounded-full h-1.5 mt-1"><div class="bg-adeahub-yellow h-1.5 rounded-full" style="width:100%"></div></div>
-                                    </div>
-                                    <span class="text-sm font-extrabold text-adeahub-yellow">100%</span>
-                                </div>
-                            </div>
-                            <!-- AI Insight Chip -->
-                            <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 flex items-center gap-2">
-                                <div class="bg-purple-50 p-1.5 rounded-lg text-purple-600 shrink-0"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i></div>
-                                <div>
-                                    <p class="text-xs font-bold text-gray-800">PerformWise AI Insight</p>
-                                    <p class="text-[10px] text-gray-400">3 nurses eligible for Senior RN pathway — career conversation recommended this week.</p>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="h-12 bg-white border-t border-gray-100 flex justify-around items-center text-gray-400 pb-1">
+                            <div class="flex flex-col items-center text-adeahub-blue gap-0.5"><i data-lucide="home" class="w-4 h-4"></i><span class="text-[7px] font-bold">Home</span></div>
+                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="calendar" class="w-4 h-4"></i><span class="text-[7px]">Visits</span></div>
+                            <div class="flex flex-col items-center gap-0.5 relative"><i data-lucide="bell" class="w-4 h-4"></i><span class="text-[7px]">Alerts</span><span class="absolute top-0 right-0.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span></div>
                         </div>
                     </div>
                 </div>
@@ -852,229 +831,243 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 4: CAPABILITY OVERVIEW
+     SECTION 4: CAPABILITY OVERVIEW (COMPACT — 6 DOMAINS)
 ═══════════════════════════════════════════════════ -->
 <section class="py-24 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="text-center mb-16 reveal">
             <span class="section-label">What it covers</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Six workforce domains. One integrated experience.</h2>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto">WorkWise covers the full spectrum of healthcare workforce management — from shift scheduling through to career pathways and AI-powered coaching.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Six capability domains. One unified patient experience.</h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto">AH Engage covers every dimension of patient engagement — fully modular, fully white-labelled under your hospital brand.</p>
         </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
             <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d1">
-                <div class="bg-blue-50 w-12 h-12 rounded-2xl flex items-center justify-center text-adeahub-blue mb-5"><i data-lucide="target" class="w-6 h-6"></i></div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Performance &amp; Goal Intelligence</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">A healthcare-specific KPI library translates clinical outcomes into individual goals. AI nudges keep every staff member on track — without waiting for the annual review cycle to surface problems.</p>
+                <div class="bg-blue-50 w-12 h-12 rounded-2xl flex items-center justify-center text-adeahub-blue mb-5">
+                    <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Appointments &amp; Queuing</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Book, reschedule, and check real-time wait times — directly from the app, integrated with your HIS for live availability.</p>
             </div>
+
             <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d2">
-                <div class="bg-green-50 w-12 h-12 rounded-2xl flex items-center justify-center text-green-600 mb-5"><i data-lucide="calendar-check" class="w-6 h-6"></i></div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Smart Scheduling</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">AI-assisted shift allocation that optimises for coverage, fatigue prevention, and skill mix across every ward and specialty. Automates swap management and flags compliance violations before they occur.</p>
+                <div class="bg-green-50 w-12 h-12 rounded-2xl flex items-center justify-center text-green-600 mb-5">
+                    <i data-lucide="file-text" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Records &amp; Results</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Access clinical documents and lab results as soon as they are verified — securely, instantly, and without a front-desk call.</p>
             </div>
+
             <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d3">
-                <div class="bg-purple-50 w-12 h-12 rounded-2xl flex items-center justify-center text-purple-600 mb-5"><i data-lucide="graduation-cap" class="w-6 h-6"></i></div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Career Development &amp; Learning</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Digital individual development plans (IDPs), career pathway mapping, and skill profiling — so every clinician can see a clear path forward and every manager can identify and grow future leaders.</p>
+                <div class="bg-purple-50 w-12 h-12 rounded-2xl flex items-center justify-center text-purple-600 mb-5">
+                    <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Care Plans &amp; Follow-Up</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Structured post-visit journeys with medication reminders, task checklists, and progress tracking assigned at the point of discharge.</p>
             </div>
+
             <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d1">
-                <div class="bg-rose-50 w-12 h-12 rounded-2xl flex items-center justify-center text-rose-500 mb-5"><i data-lucide="heart-pulse" class="w-6 h-6"></i></div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Wellness &amp; Burnout Prevention</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Daily wellness pulse checks and mid-day check-ins capture sentiment in real time. Proactive alerts reach managers weeks before burnout escalates to attrition — connecting staff wellbeing directly to patient outcomes.</p>
+                <div class="bg-sky-50 w-12 h-12 rounded-2xl flex items-center justify-center text-sky-600 mb-5">
+                    <i data-lucide="video" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Telemedicine &amp; Messaging</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Video consultations and secure messaging with your care team — built in, with no third-party app required.</p>
             </div>
+
             <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d2">
-                <div class="bg-sky-50 w-12 h-12 rounded-2xl flex items-center justify-center text-sky-600 mb-5"><i data-lucide="badge-check" class="w-6 h-6"></i></div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Compliance &amp; Credentials</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Automated tracking of licences, certifications, and mandatory training across your entire clinical workforce. Incident reporting workflows and payroll summaries complete the compliance picture — reducing audit risk and administrative burden.</p>
+                <div class="bg-red-50 w-12 h-12 rounded-2xl flex items-center justify-center text-red-500 mb-5">
+                    <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Chronic Care &amp; Monitoring</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Patient-logged vitals and structured monitoring pathways for diabetes, hypertension, and other ongoing conditions.</p>
             </div>
+
             <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d3">
-                <div class="bg-yellow-50 w-12 h-12 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-5"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">WorkWise AI — Agentic Layer</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">GoalSense AI, PerformWise AI, and GrowthPath AI form a team of specialised agents that coach, nudge, and guide every staff member — operating autonomously within the platform to surface the right insight to the right person at the right moment.</p>
+                <div class="bg-yellow-50 w-12 h-12 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-5">
+                    <i data-lucide="store" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Marketplace &amp; Billing</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">On-demand health services, in-app payments, and insurance claim management — creating new digital revenue for your organisation.</p>
             </div>
+
         </div>
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 5: NUMBERS THAT MATTER
+     SECTION 5: THE NUMBERS THAT MATTER — SCALE & IMPACT
 ═══════════════════════════════════════════════════ -->
 <section class="py-20 bg-adeahub-blue">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="text-center mb-12 reveal">
-            <p class="text-blue-200 text-sm font-bold tracking-widest mb-2">Scale &amp; reach</p>
-            <h2 class="text-3xl font-bold text-white">The numbers behind entomo's healthcare workforce platform</h2>
+            <p class="text-blue-200 text-sm font-bold tracking-widest mb-2">Scale &amp; impact</p>
+            <h2 class="text-3xl font-bold text-white">The numbers that define AH Engage</h2>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d1">
-                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2"><span class="counter" data-target="30000000" data-suffix="+">30M+</span></p>
-                <p class="text-blue-200 text-sm font-medium">Users powered globally</p>
+                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2">
+                    <span class="counter" data-target="60000" data-suffix="+">60,000+</span>
+                </p>
+                <p class="text-blue-200 text-sm font-medium">Appointments booked daily</p>
             </div>
             <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d2">
-                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2"><span class="counter" data-target="60" data-suffix="+">60+</span></p>
-                <p class="text-blue-200 text-sm font-medium">Health enterprises</p>
+                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2">
+                    <span class="counter" data-target="295" data-suffix="">295</span>
+                </p>
+                <p class="text-blue-200 text-sm font-medium">Health services available</p>
             </div>
             <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d3">
-                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2"><span class="counter" data-target="200000" data-suffix="+">200K+</span></p>
-                <p class="text-blue-200 text-sm font-medium">Active healthcare users</p>
+                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2">
+                    <span class="counter" data-target="8000" data-suffix="+">8,000+</span>
+                </p>
+                <p class="text-blue-200 text-sm font-medium">Facilities connected</p>
             </div>
             <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d4">
-                <p class="text-5xl md:text-6xl font-extrabold text-adeahub-yellow mb-2"><span class="counter" data-target="13">13</span></p>
-                <p class="text-blue-200 text-sm font-medium">Geographies served</p>
+                <p class="text-5xl md:text-6xl font-extrabold text-adeahub-yellow mb-2">#1</p>
+                <p class="text-blue-200 text-sm font-medium">Data.ai worldwide ranking</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 6: WHO IT'S FOR
+     SECTION 6: WHO IT'S FOR — PERSONA VALUE BLOCKS
 ═══════════════════════════════════════════════════ -->
 <section class="py-24 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="text-center mb-16 reveal">
             <span class="section-label">Who it's for</span>
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Every stakeholder. One platform. Clear value.</h2>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto mt-4">WorkWise delivers distinct value to each leadership layer — from the CHRO setting workforce strategy to the nurse manager running a 24-hour ward.</p>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto mt-4">AH Engage speaks to clinical, technical, and financial leaders with the outcomes each role cares about most.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Clinical -->
             <div class="outcome-card bg-white p-10 rounded-3xl border border-gray-100 flex flex-col h-full reveal reveal-d1">
-                <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-blue mb-6"><i data-lucide="briefcase" class="w-7 h-7"></i></div>
-                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">CHRO · HR Director · Workforce Strategy</p>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">For Workforce Leaders</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">A unified view of workforce health across every facility and specialty — attrition risk, engagement scores, compliance status, and talent pipeline depth. WorkWise gives HR leaders the intelligence to make proactive decisions on staffing, succession, and workforce investment before problems reach the front line.</p>
+                <div class="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-blue mb-6">
+                    <i data-lucide="stethoscope" class="w-7 h-7"></i>
+                </div>
+                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">CMO · CMIO · Clinical Director</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">For Clinical Leaders</h3>
+                <p class="text-gray-600 leading-relaxed flex-grow">Structured post-discharge care plans and medication management keep patients on protocol between visits — reducing readmission risk without adding to your clinical team's workload. In-app messaging and telemedicine let your team resolve follow-up queries remotely, before they become readmissions.</p>
             </div>
+
+            <!-- IT -->
             <div class="outcome-card bg-white p-10 rounded-3xl border border-gray-100 flex flex-col h-full reveal reveal-d2">
-                <div class="bg-green-50 w-14 h-14 rounded-2xl flex items-center justify-center text-green-600 mb-6"><i data-lucide="stethoscope" class="w-7 h-7"></i></div>
-                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">Nurse Manager · Department Head · Shift Lead</p>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">For Frontline Leaders</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">AI-assisted scheduling that eliminates the manual roster. Daily wellness pulses that flag burnout before it becomes attrition. Goal tracking that shows every team member's clinical performance in real time. WorkWise gives nurse managers the tools to support their teams — not just manage them.</p>
+                <div class="bg-gray-100 w-14 h-14 rounded-2xl flex items-center justify-center text-gray-700 mb-6">
+                    <i data-lucide="shield-check" class="w-7 h-7"></i>
+                </div>
+                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">CIO · CTO · VP Applications</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">For IT Leaders</h3>
+                <p class="text-gray-600 leading-relaxed flex-grow">Integrates with your existing HIS and EMR through standard HL7 and FHIR R4 interfaces — no rip-and-replace required. Modular architecture, provider-controlled data governance, and Zero Trust security give your IT team confidence from day one. Deploys on cloud or on-premise.</p>
             </div>
+
+            <!-- Finance/Ops -->
             <div class="outcome-card bg-white p-10 rounded-3xl border border-gray-100 flex flex-col h-full reveal reveal-d3">
-                <div class="bg-yellow-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-6"><i data-lucide="cpu" class="w-7 h-7"></i></div>
-                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">CIO · CTO · VP Digital Health</p>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">For Digital Health Leaders</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">An AI-native platform with pre-built healthcare integrations and a modular architecture that deploys at the pace your organisation needs. WorkWise connects to your existing HIS and HR systems — adding the workforce intelligence layer without a rip-and-replace of your existing infrastructure.</p>
+                <div class="bg-yellow-50 w-14 h-14 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-6">
+                    <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+                </div>
+                <p class="text-xs font-bold tracking-wider text-adeahub-blue mb-1">CFO · VP Operations · Administrator</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">For Administrators</h3>
+                <p class="text-gray-600 leading-relaxed flex-grow">Fewer no-shows, lower call-centre volume, and reduced per-patient administrative cost. Virtual queuing shortens wait times without adding front-desk headcount. The in-app marketplace and digital billing create new revenue streams while cutting collection cycles.</p>
             </div>
+
         </div>
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 7: WORKWISE AI — AGENTIC INTELLIGENCE
+     SECTION 7: HOW WE'VE DONE IT — ADDITIONAL PROOF POINTS
 ═══════════════════════════════════════════════════ -->
 <section class="py-24 bg-adeahub-lightbg border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="text-center mb-16 reveal">
-            <span class="section-label">WorkWise AI</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">A team of AI agents working for every person in your workforce.</h2>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto mt-4">WorkWise AI is entomo's agentic intelligence layer — specialised AI agents that operate autonomously to coach, nudge, and guide clinical staff and managers, at scale.</p>
+            <span class="section-label">Breadth of deployment</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Deployed worldwide by government and private healthcare organizations</h2>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto mt-4">AH Engage has been deployed at national and enterprise scale across multiple markets globally — each deployment a proof point that this product can run your most complex patient engagement requirements.</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
             <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d1">
                 <div class="flex items-center gap-3 mb-5">
-                    <div class="bg-blue-50 p-2.5 rounded-xl"><i data-lucide="target" class="w-5 h-5 text-adeahub-blue"></i></div>
-                    <div><p class="font-bold text-gray-900 text-sm">GoalSense AI</p><p class="text-xs text-gray-500">Goal Intelligence Agent</p></div>
+                    <span class="text-3xl">🇲🇾</span>
+                    <div>
+                        <p class="font-bold text-gray-900 text-sm">Malaysia</p>
+                        <p class="text-xs text-gray-500">Ministry of Health</p>
+                    </div>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed">Translates healthcare KPIs into personalised, achievable goals for each staff member. Monitors progress, sends timely nudges, and surfaces early warning signals when a goal is at risk — without waiting for manager intervention.</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">National health platform serving 8,000+ public facilities. Ranked #1 worldwide by Data.ai for install penetration and open rate.</p>
+                <span class="inline-block bg-blue-50 text-adeahub-blue text-xs font-bold px-3 py-1 rounded-full">#1 Data.ai Worldwide</span>
             </div>
+
             <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d2">
                 <div class="flex items-center gap-3 mb-5">
-                    <div class="bg-green-50 p-2.5 rounded-xl"><i data-lucide="trending-up" class="w-5 h-5 text-green-600"></i></div>
-                    <div><p class="font-bold text-gray-900 text-sm">PerformWise AI</p><p class="text-xs text-gray-500">Performance Coach Agent</p></div>
+                    <span class="text-3xl">🇦🇪</span>
+                    <div>
+                        <p class="font-bold text-gray-900 text-sm">UAE</p>
+                        <p class="text-xs text-gray-500">Ministry of Health &amp; Prevention</p>
+                    </div>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed">Delivers continuous, personalised performance coaching to clinical staff — replacing the annual review with an always-on feedback loop aligned to clinical outcomes and individual development goals.</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Reaya patient platform deployed in partnership with MOHAP, Du Telecom, and Emirates Health Services across all UAE governorates.</p>
+                <span class="inline-block bg-yellow-50 text-yellow-700 text-xs font-bold px-3 py-1 rounded-full">Stevie Award Gold 2021</span>
             </div>
+
             <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d3">
                 <div class="flex items-center gap-3 mb-5">
-                    <div class="bg-purple-50 p-2.5 rounded-xl"><i data-lucide="map" class="w-5 h-5 text-purple-600"></i></div>
-                    <div><p class="font-bold text-gray-900 text-sm">GrowthPath AI</p><p class="text-xs text-gray-500">Career Coach Agent</p></div>
+                    <span class="text-3xl">🌏</span>
+                    <div>
+                        <p class="font-bold text-gray-900 text-sm">Asia Pacific</p>
+                        <p class="text-xs text-gray-500">Multi-market deployments</p>
+                    </div>
                 </div>
-                <p class="text-gray-600 text-sm leading-relaxed">Maps each clinician's skills and experience to available career pathways — proactively surfacing opportunities, recommending learning modules, and guiding individual development plans aligned to the organisation's talent strategy.</p>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Platform foundations built across the AMEA region, serving large hospital groups and integrated health networks.</p>
+                <span class="inline-block bg-blue-50 text-adeahub-blue text-xs font-bold px-3 py-1 rounded-full">AMEA Regional Scale</span>
             </div>
-            <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d1">
+
+            <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d4">
                 <div class="flex items-center gap-3 mb-5">
-                    <div class="bg-orange-50 p-2.5 rounded-xl"><i data-lucide="message-circle" class="w-5 h-5 text-orange-500"></i></div>
-                    <div><p class="font-bold text-gray-900 text-sm">Feedback360 AI</p><p class="text-xs text-gray-500">Performance Feedback Agent</p></div>
-                </div>
-                <p class="text-gray-600 text-sm leading-relaxed">Orchestrates structured 360-degree feedback across clinical teams — gathering peer, manager, and self-assessments, synthesising them into actionable insights, and delivering them at the right moment in the performance cycle.</p>
-            </div>
-            <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d2">
-                <div class="flex items-center gap-3 mb-5">
-                    <div class="bg-sky-50 p-2.5 rounded-xl"><i data-lucide="book-open-check" class="w-5 h-5 text-sky-600"></i></div>
-                    <div><p class="font-bold text-gray-900 text-sm">LearnPath AI</p><p class="text-xs text-gray-500">IDP &amp; Learning Agent</p></div>
-                </div>
-                <p class="text-gray-600 text-sm leading-relaxed">Automates the creation and management of individual learning pathways — matching each staff member's development goals to the right content, mandatory training requirements, and skill gaps identified through performance data.</p>
-            </div>
-            <div class="proof-card bg-white rounded-2xl p-8 border border-gray-100 shadow-sm reveal reveal-d3">
-                <div class="flex items-center gap-3 mb-5">
-                    <div class="bg-yellow-50 p-2.5 rounded-xl"><i data-lucide="id-card" class="w-5 h-5 text-adeahub-yellow"></i></div>
-                    <div><p class="font-bold text-gray-900 text-sm">SkillPassport AI</p><p class="text-xs text-gray-500">Skill Profiling Agent</p></div>
-                </div>
-                <p class="text-gray-600 text-sm leading-relaxed">Builds and maintains a dynamic skill profile for every staff member — tracking certifications, clinical competencies, and learning completions in real time, and connecting talent supply to organisational demand across specialties.</p>
-            </div>
-        </div>
-        <!-- entomo Intelligence Engine callout -->
-        <div class="bg-white rounded-3xl border border-gray-100 shadow-soft p-10 reveal">
-            <div class="flex flex-col lg:flex-row items-center gap-8">
-                <div class="lg:w-1/3">
-                    <span class="section-label">entomo Intelligence Engine</span>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-tight">The intelligence layer that powers every WorkWise AI agent</h3>
-                    <p class="text-gray-500 leading-relaxed">The entomo Intelligence Engine provides the foundational AI capabilities that every WorkWise agent draws on — combining a Healthcare-specific KPI Library, Career Map architecture, KSAT (Knowledge, Skills, Abilities, Traits) Linking, and Competitive Intelligence into a single, continuously updated intelligence platform.</p>
-                </div>
-                <div class="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="bg-blue-50 rounded-2xl p-5 border border-blue-100 text-center">
-                        <i data-lucide="library" class="w-7 h-7 text-adeahub-blue mx-auto mb-3"></i>
-                        <p class="font-bold text-gray-900 text-sm">Healthcare KPI Library</p>
-                        <p class="text-xs text-gray-500 mt-1">Clinical outcomes translated into workforce goals</p>
-                    </div>
-                    <div class="bg-green-50 rounded-2xl p-5 border border-green-100 text-center">
-                        <i data-lucide="map-pinned" class="w-7 h-7 text-green-600 mx-auto mb-3"></i>
-                        <p class="font-bold text-gray-900 text-sm">Career Map Architecture</p>
-                        <p class="text-xs text-gray-500 mt-1">Healthcare-specific career pathways and progressions</p>
-                    </div>
-                    <div class="bg-purple-50 rounded-2xl p-5 border border-purple-100 text-center">
-                        <i data-lucide="network" class="w-7 h-7 text-purple-600 mx-auto mb-3"></i>
-                        <p class="font-bold text-gray-900 text-sm">KSAT Linking</p>
-                        <p class="text-xs text-gray-500 mt-1">Knowledge, Skills, Abilities &amp; Traits connected to roles</p>
-                    </div>
-                    <div class="bg-yellow-50 rounded-2xl p-5 border border-yellow-100 text-center">
-                        <i data-lucide="bar-chart-2" class="w-7 h-7 text-adeahub-yellow mx-auto mb-3"></i>
-                        <p class="font-bold text-gray-900 text-sm">Competitive Intelligence</p>
-                        <p class="text-xs text-gray-500 mt-1">Benchmarking workforce performance across healthcare peers</p>
+                    <span class="text-3xl">🏥</span>
+                    <div>
+                        <p class="font-bold text-gray-900 text-sm">Enterprise Health Groups</p>
+                        <p class="text-xs text-gray-500">Private hospital networks</p>
                     </div>
                 </div>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">Deployed for enterprise hospital groups requiring white-labelled patient apps branded to their identity — integrated with existing HIS and EMR infrastructure.</p>
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1 rounded-full">White-Label Ready</span>
             </div>
+
         </div>
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 8: TECHNICAL FOUNDATION
+     SECTION 8: TECHNICAL CONFIDENCE — PLATFORM FOUNDATION
 ═══════════════════════════════════════════════════ -->
 <section class="py-20 bg-white border-t border-gray-100">
     <div class="max-w-5xl mx-auto px-6 md:px-12 text-center reveal">
         <span class="section-label">Technical foundation</span>
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-12">Built for healthcare integration — connects to your HIS, payroll, and HR systems without replacing them.</h2>
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-12">Built to integrate with what you already have — and scale to where you're going.</h2>
+
+        <!-- Badge row -->
         <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-12">
             <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
                 <span class="font-bold text-adeahub-blue text-lg mb-1">HL7</span>
-                <span class="text-[10px] font-bold tracking-wider text-gray-500">HIS Integration</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Messaging</span>
             </div>
             <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
                 <span class="font-bold text-adeahub-blue text-lg mb-1">FHIR R4</span>
                 <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Interoperability</span>
             </div>
             <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
-                <span class="font-bold text-gray-700 text-sm mb-0.5">HIPAA / JCAHO</span>
-                <span class="text-[10px] font-bold tracking-wider text-gray-500">Compliance Ready</span>
-            </div>
-            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
-                <span class="font-bold text-gray-700 text-sm mb-0.5">OSHA / MOH</span>
-                <span class="text-[10px] font-bold tracking-wider text-gray-500">Regulatory Support</span>
-            </div>
-            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
+                <i data-lucide="braces" class="text-gray-400 w-5 h-5 mb-1"></i>
                 <span class="font-bold text-gray-700 text-sm mb-0.5">REST APIs</span>
-                <span class="text-[10px] font-bold tracking-wider text-gray-500">Payroll &amp; HR Systems</span>
+                <span class="text-[10px] font-bold tracking-wider text-gray-500">Open Integration</span>
+            </div>
+            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
+                <i data-lucide="shield" class="text-green-600 w-5 h-5 mb-1"></i>
+                <span class="font-bold text-gray-700 text-sm mb-0.5">Zero Trust</span>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Security</span>
             </div>
             <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
                 <i data-lucide="cloud" class="text-blue-500 w-5 h-5 mb-1"></i>
@@ -1082,8 +1075,9 @@
                 <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Deployment</span>
             </div>
         </div>
+
         <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            WorkWise integrates with your existing Hospital Information System, payroll platform, and HR infrastructure — adding the workforce experience layer without disrupting current operations. Whether cloud-hosted or on-premise, WorkWise deploys to meet your data residency and security requirements.
+            AH Engage connects to your existing hospital systems through open HL7 and FHIR R4 standards, supporting full interoperability with your HIS, EMR, laboratory, and pharmacy platforms. Built on Zero Trust Architecture with provider-controlled data governance — available as a cloud-hosted or on-premise deployment to meet your jurisdiction's data residency requirements.
         </p>
         <a href="adeahub_connect.html" class="inline-flex items-center gap-2 mt-6 text-adeahub-blue font-bold hover:text-blue-800 group">
             Learn about our interoperability platform <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
@@ -1102,10 +1096,10 @@
     <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
         <p class="text-blue-200 text-sm font-bold tracking-widest mb-4">Start the conversation</p>
         <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
-            Make your workforce your strongest clinical asset.
+            See how AH Engage transforms patient access for health systems worldwide.
         </h2>
         <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            Our team will walk you through WorkWise live — including how the platform addresses your specific workforce challenges, from scheduling and compliance to performance and burnout prevention.
+            Our team will show you the platform live — configured for your patient population, your workflows, and your brand.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="contact_us.html" class="bg-adeahub-yellow text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-400 transition-all duration-200 shadow-lg btn-glow btn-shimmer inline-flex items-center gap-2">Talk to us <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
@@ -1113,7 +1107,9 @@
     </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════════
+     FOOTER (unchanged)
+═══════════════════════════════════════════════════ -->
 <footer style="background:#ffffff; border-top: 1px solid #e5e7eb;">
 
     <!-- Main footer body -->
@@ -1178,7 +1174,10 @@
                             hello@adeahub.com
                         </a>
                     </li>
-                    
+                    <li style="font-size:0.875rem;color:#9ca3af;display:flex;align-items:center;gap:8px;">
+                        <svg width="14" height="14" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Kuala Lumpur, Malaysia
+                    </li>
                     <li style="padding-top:6px;">
                         <a href="request_demo.html"
                            style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#FAC515;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
@@ -1202,35 +1201,54 @@
 
 </footer>
 
-<!-- SCRIPTS -->
+<!-- ═══════════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════════ -->
 <script>lucide.createIcons();</script>
+
 <script>
 (function() {
     var btn = document.getElementById('mobile-menu-btn');
     var menu = document.getElementById('mobile-menu');
     var ham = document.getElementById('hamburger-icon');
     var cls = document.getElementById('close-icon');
-    if (btn) { btn.addEventListener('click', function() { var open = !menu.classList.contains('hidden'); menu.classList.toggle('hidden', open); ham.classList.toggle('hidden', !open); cls.classList.toggle('hidden', open); }); }
+    if (btn) {
+        btn.addEventListener('click', function() {
+            var open = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden', open);
+            ham.classList.toggle('hidden', !open);
+            cls.classList.toggle('hidden', open);
+        });
+    }
 })();
 </script>
+
 <script>
 (function() {
     var nav = document.getElementById('main-nav');
-    window.addEventListener('scroll', function() { if (window.scrollY > 10) { nav.classList.add('nav-scrolled'); } else { nav.classList.remove('nav-scrolled'); } }, { passive: true });
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 10) { nav.classList.add('nav-scrolled'); }
+        else { nav.classList.remove('nav-scrolled'); }
+    }, { passive: true });
 })();
 </script>
+
 <script>
 (function() {
     var targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     if (!window.IntersectionObserver) { targets.forEach(function(el) { el.classList.add('visible'); }); return; }
-    var observer = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     targets.forEach(function(el) { observer.observe(el); });
 })();
 </script>
+
 <script>
 (function() {
     function formatNum(n, suffix) {
-        if (n >= 1000000) return (n / 1000000).toFixed(0) + 'M' + (suffix || '');
         if (n >= 1000) return n.toLocaleString() + (suffix || '+');
         return n + (suffix || '');
     }
@@ -1246,13 +1264,17 @@
             var current = Math.round(eased * target);
             el.textContent = formatNum(current, suffix);
             if (progress < 1) requestAnimationFrame(step);
-            else el.textContent = formatNum(target, suffix);
+            else el.textContent = target >= 1000 ? target.toLocaleString() + (suffix || '') : target + (suffix || '');
         }
         requestAnimationFrame(step);
     }
     var counters = document.querySelectorAll('.counter');
     if (!window.IntersectionObserver) { return; }
-    var obs = new IntersectionObserver(function(entries) { entries.forEach(function(entry) { if (entry.isIntersecting) { animateCounter(entry.target); obs.unobserve(entry.target); } }); }, { threshold: 0.5 });
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) { animateCounter(entry.target); obs.unobserve(entry.target); }
+        });
+    }, { threshold: 0.5 });
     counters.forEach(function(el) { obs.observe(el); });
 })();
 </script>

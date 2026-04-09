@@ -16,10 +16,10 @@
                     fontFamily: { sans: ['Outfit', 'sans-serif'] },
                     colors: {
                         adeahub: {
-                            blue: '#5BA8E5',
-                            yellow: '#F4D06F',
+                            blue: '#6396F1',
+                            yellow: '#F2C747',
                             gray: '#4B5563',
-                            lightbg: '#5BA8E5'
+                            lightbg: '#6396F1'
                         }
                     },
                     boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.08)' }
@@ -31,10 +31,10 @@
     <style>
         /* ───── BASE ───── */
         :root {
-            --blue: #5BA8E5;
-            --yellow: #F4D06F;
-            --blue-pale: rgba(91,168,229,0.10);
-            --shadow-blue: rgba(91,168,229,0.15);
+            --blue: #6396F1;
+            --yellow: #F2C747;
+            --blue-pale: rgba(99,150,241,0.10);
+            --shadow-blue: rgba(99,150,241,0.15);
         }
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
@@ -65,7 +65,7 @@
 
         /* ───── HERO ───── */
         .hero-bg {
-            background: #5BA8E5;
+            background: #6396F1;
         }
         .dot-grid {
             background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
@@ -73,8 +73,8 @@
         }
         /* Badge pulse */
         @keyframes badgePulse {
-            0%,100% { box-shadow: 0 0 0 0   rgba(91,168,229,0.30); }
-            50%      { box-shadow: 0 0 0 7px rgba(91,168,229,0);    }
+            0%,100% { box-shadow: 0 0 0 0   rgba(99,150,241,0.30); }
+            50%      { box-shadow: 0 0 0 7px rgba(99,150,241,0);    }
         }
         .hero-badge { animation: badgePulse 2.8s ease-in-out infinite; }
 
@@ -114,22 +114,22 @@
         .section-label {
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #5BA8E5; margin-bottom: 14px;
+            text-transform: uppercase; color: #6396F1; margin-bottom: 14px;
         }
         .section-label::before {
             content: ''; display: block;
             width: 22px; height: 2px;
-            background: #5BA8E5; border-radius: 2px;
+            background: #6396F1; border-radius: 2px;
         }
 
         /* ───── GRADIENT TEXT ───── */
         .gradient-text {
-            color: #5BA8E5;
+            color: #6396F1;
         }
 
         /* ───── TRUST / COMPLIANCE PILLS ───── */
         .compliance-pill {
-            background: white; border: 1px solid rgba(91,168,229,0.14);
+            background: white; border: 1px solid rgba(99,150,241,0.14);
             border-radius: 9999px; padding: 7px 18px;
             font-size: 0.72rem; font-weight: 700; color: #4B5563;
             letter-spacing: 0.05em; text-transform: uppercase;
@@ -137,25 +137,25 @@
             transition: all 0.22s; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
         }
         .compliance-pill:hover {
-            background: var(--blue-pale); border-color: rgba(91,168,229,0.35);
-            color: #5BA8E5; box-shadow: 0 4px 16px rgba(91,168,229,0.10);
+            background: var(--blue-pale); border-color: rgba(99,150,241,0.35);
+            color: #6396F1; box-shadow: 0 4px 16px rgba(99,150,241,0.10);
         }
         /* Trust-bar enlarged pills */
         .trust-pill {
             background: white;
-            border: 1.5px solid rgba(91,168,229,0.22);
+            border: 1.5px solid rgba(99,150,241,0.22);
             border-radius: 14px;
             padding: 18px 32px;
             font-size: 1.05rem; font-weight: 700; color: #1e3a5f;
             letter-spacing: 0.04em; text-transform: uppercase;
             display: flex; align-items: center; gap: 14px;
             transition: all 0.22s;
-            box-shadow: 0 2px 10px rgba(91,168,229,0.07);
+            box-shadow: 0 2px 10px rgba(99,150,241,0.07);
             width: 100%;
         }
         .trust-pill:hover {
-            background: var(--blue-pale); border-color: rgba(91,168,229,0.45);
-            color: #5BA8E5; box-shadow: 0 6px 20px rgba(91,168,229,0.13);
+            background: var(--blue-pale); border-color: rgba(99,150,241,0.45);
+            color: #6396F1; box-shadow: 0 6px 20px rgba(99,150,241,0.13);
             transform: translateY(-1px);
         }
         .trust-pill .pill-icon {
@@ -174,12 +174,12 @@
         .stat-block { position: relative; }
         .stat-num {
             font-variant-numeric: tabular-nums;
-            color: #5BA8E5;
+            color: #6396F1;
         }
         .stat-block::after {
             content: ''; position: absolute;
             bottom: 0; left: 0; right: 0;
-            height: 2px; background: linear-gradient(90deg, transparent, rgba(91,168,229,0.15), transparent);
+            height: 2px; background: linear-gradient(90deg, transparent, rgba(99,150,241,0.15), transparent);
         }
 
         /* ───── AWARD CARDS ───── */
@@ -194,20 +194,20 @@
         }
         .solution-card:hover {
             transform: translateY(-7px);
-            box-shadow: 0 24px 56px -12px rgba(91,168,229,0.18);
-            border-top-color: #F4D06F;
+            box-shadow: 0 24px 56px -12px rgba(99,150,241,0.18);
+            border-top-color: #F2C747;
         }
         .solution-card .icon-wrap { transition: transform 0.28s ease, background 0.28s ease; }
-        .solution-card:hover .icon-wrap { background: rgba(91,168,229,0.15) !important; transform: scale(1.1); }
+        .solution-card:hover .icon-wrap { background: rgba(99,150,241,0.15) !important; transform: scale(1.1); }
         .solution-arrow { transition: transform 0.22s ease; }
         .solution-card:hover .solution-arrow { transform: translateX(5px); }
 
         /* ───── ARCHITECTURE LAYERS ───── */
         .arch-layer { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .arch-layer:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px -10px rgba(91,168,229,0.3); }
+        .arch-layer:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px -10px rgba(99,150,241,0.3); }
         @keyframes platformPulse {
-            0%,100% { box-shadow: 0 4px 24px rgba(91,168,229,0.30); }
-            50%      { box-shadow: 0 4px 40px rgba(91,168,229,0.50); }
+            0%,100% { box-shadow: 0 4px 24px rgba(99,150,241,0.30); }
+            50%      { box-shadow: 0 4px 40px rgba(99,150,241,0.50); }
         }
         .platform-core { animation: platformPulse 2.6s ease-in-out infinite; }
 
@@ -215,20 +215,20 @@
         .outcome-card { transition: transform 0.28s ease, box-shadow 0.28s ease; position: relative; overflow: hidden; }
         .outcome-card::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: #5BA8E5;
+            background: #6396F1;
             transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease;
         }
-        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(91,168,229,0.15); }
+        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(99,150,241,0.15); }
         .outcome-card:hover::before { transform: scaleX(1); }
 
         /* ───── CTA SECTION ───── */
         .cta-mesh {
-            background: #5BA8E5;
+            background: #6396F1;
         }
 
         /* ───── TESTIMONIAL ───── */
         .testimonial-bg {
-            background: #5BA8E5;
+            background: #6396F1;
             position: relative; overflow: hidden;
         }
         .testimonial-bg::before {
@@ -255,7 +255,7 @@
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
         /* ───── TAB ACTIVE ───── */
-        .tab-btn.active { background-color: #5BA8E5; color: white; }
+        .tab-btn.active { background-color: #6396F1; color: white; }
 
         /* ───── FLOATING BLOBS (hero decoration) ───── */
         @keyframes floatBlob {
@@ -266,15 +266,15 @@
         .blob-float-2 { animation: floatBlob 12s ease-in-out infinite 2.5s; }
     
         /* ── OVERRIDES FOR BLUE-BACKGROUND SECTIONS ── */
-        /* Solutions section (bg-adeahub-lightbg = #5BA8E5) */
-        #solutions .section-label { color: #F4D06F; }
-        #solutions .section-label::before { background: #F4D06F; }
+        /* Solutions section (bg-adeahub-lightbg = #6396F1) */
+        #solutions .section-label { color: #F2C747; }
+        #solutions .section-label::before { background: #F2C747; }
         #solutions h2 { color: white !important; }
         #solutions p.text-gray-500, #solutions p.text-gray-600 { color: rgba(255,255,255,0.70) !important; }
 
-        /* Heritage section (bg-adeahub-lightbg = #5BA8E5) */
-        #heritage .section-label { color: #F4D06F; }
-        #heritage .section-label::before { background: #F4D06F; }
+        /* Heritage section (bg-adeahub-lightbg = #6396F1) */
+        #heritage .section-label { color: #F2C747; }
+        #heritage .section-label::before { background: #F2C747; }
         #heritage h2 { color: white !important; }
         #heritage p.text-gray-500, #heritage p.text-gray-600 { color: rgba(255,255,255,0.70) !important; }
         #heritage h4 { color: white !important; }
@@ -283,12 +283,12 @@
         #heritage .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
         #heritage .text-gray-900 { color: white !important; }
 
-        /* CTA section (.cta-mesh = #5BA8E5) */
-        #cta .section-label { color: #F4D06F; }
-        #cta .section-label::before { background: #F4D06F; }
+        /* CTA section (.cta-mesh = #6396F1) */
+        #cta .section-label { color: #F2C747; }
+        #cta .section-label::before { background: #F2C747; }
         #cta h2 { color: white !important; }
         #cta p.text-gray-500, #cta p.text-gray-600, #cta p.text-gray-700 { color: rgba(255,255,255,0.75) !important; }
-        #cta .btn-glow { background: #F4D06F !important; color: #1a1a2a !important; }
+        #cta .btn-glow { background: #F2C747 !important; color: #1a1a2a !important; }
 
         /* Footer: white background — original colors preserved */
     
@@ -349,10 +349,10 @@
         background-position: 0 0;
     }
     /* Keep the explicit solid color as the main bg (override via inline style hack) */
-    .hero-bg { background-color: #5BA8E5; }
-    #solutions { background-color: #5BA8E5; }
-    #heritage  { background-color: #5BA8E5; }
-    #cta { background-color: #5BA8E5; }
+    .hero-bg { background-color: #6396F1; }
+    #solutions { background-color: #6396F1; }
+    #heritage  { background-color: #6396F1; }
+    #cta { background-color: #6396F1; }
 
     /* Content inside blue sections must sit above pseudo-elements */
     .hero-bg > *, #solutions > *, #heritage > *, #cta > * { position: relative; z-index: 1; }
@@ -385,7 +385,7 @@
         .mega-card:hover { background:#f0f6ff; }
         .mega-card:hover .mega-icon { background:#dbeafe; }
         .mega-icon { width:40px; height:40px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s; }
-        .mega-icon svg { width:18px; height:18px; color:#5BA8E5; }
+        .mega-icon svg { width:18px; height:18px; color:#0D6EFD; }
         .mega-name { font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:2px; }
         .mega-tag { font-size:0.7rem; color:#6b7280; font-weight:500; margin-bottom:3px; }
         .mega-desc { font-size:0.68rem; color:#9ca3af; line-height:1.4; }
@@ -418,22 +418,22 @@
                     <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                         <!-- Mega header -->
                         <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>adeahub products</span>
-                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#6396F1;border-radius:2px;"></span>adeahub products</span>
+                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
                         </div>
                         <!-- 2-col product grid -->
                         <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px;">
-                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
-                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
+                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
+                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
                             <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
-                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
+                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
+                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#0D6EFD">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
                             <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#eef4ff;"><svg fill="none" stroke="#5BA8E5" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">Work</span><span style="color:#1a1a2a">Wise</span> <span style="font-size:0.62rem;background:#eef4ff;color:#5BA8E5;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
+                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#eef4ff;"><svg fill="none" stroke="#6396F1" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name"><span style="color:#6396F1">Work</span><span style="color:#1a1a2a">Wise</span> <span style="font-size:0.62rem;background:#eef4ff;color:#6396F1;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
                         </div>
                         <!-- Footer -->
                         <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
-                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
                         </div>
                     </div>
                 </div>
@@ -451,7 +451,7 @@
                     <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                         <!-- Mega header -->
                         <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>Resources</span>
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#6396F1;border-radius:2px;"></span>Resources</span>
                         </div>
                         <!-- Single-column items -->
                         <div style="padding:8px;">
@@ -463,7 +463,7 @@
                         </div>
                         <!-- Footer -->
                         <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
-                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#0D6EFD;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
                         </div>
                     </div>
                 </div>
@@ -472,7 +472,7 @@
             <a href="about_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">About Us</a>
                 <!-- Contact Us -->
                 <a href="contact_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Contact Us</a>
-<a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full hover:opacity-90 transition-colors font-semibold text-sm whitespace-nowrap" style="background:#F4D06F;">Talk to us</a>
+<a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full hover:opacity-90 transition-colors font-semibold text-sm whitespace-nowrap" style="background:#F2C747;">Talk to us</a>
         </div>
 
         <!-- Mobile Hamburger -->
@@ -501,7 +501,7 @@
         <a href="about_us.html"   class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
             <div class="my-2 border-t border-gray-100"></div>
             <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a><div class="pt-3 pb-1">
-            <a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F4D06F;">Talk to us</a>
+            <a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F2C747;">Talk to us</a>
         </div>
     </div>
 </nav>
@@ -531,7 +531,7 @@
     <div class="hidden lg:block absolute top-0 right-0 w-1/2 h-full pointer-events-none z-0">
         <img src="Images/hero-image-adeahub.svg" alt="adeahub healthcare platform ecosystem" class="w-full h-full object-cover object-left">
         <!-- Fade only on the left edge to blend into hero background -->
-        <div class="absolute inset-y-0 left-0 w-2/5" style="background: linear-gradient(to right, #5BA8E5 15%, transparent 100%);"></div>
+        <div class="absolute inset-y-0 left-0 w-2/5" style="background: linear-gradient(to right, #6396F1 15%, transparent 100%);"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[560px]">
@@ -549,19 +549,19 @@
             <!-- Impact numbers IN the hero -->
             <div class="reveal reveal-d2 grid grid-cols-2 sm:grid-cols-4 gap-5 py-5 border-y-2 border-white/20 bg-white/15 rounded-2xl px-4">
                 <div class="text-center sm:text-left">
-                    <div class="text-3xl md:text-4xl font-black leading-none" style="color:#F4D06F;">35M+</div>
+                    <div class="text-3xl md:text-4xl font-black leading-none" style="color:#F2C747;">35M+</div>
                     <div class="text-xs text-white/70 font-semibold mt-1 tracking-wider">users on platform</div>
                 </div>
                 <div class="text-center sm:text-left">
-                    <div class="text-3xl md:text-4xl font-black leading-none" style="color:#F4D06F;">500+</div>
+                    <div class="text-3xl md:text-4xl font-black leading-none" style="color:#F2C747;">500+</div>
                     <div class="text-xs text-white/70 font-semibold mt-1 tracking-wider">health facilities</div>
                 </div>
                 <div class="text-center sm:text-left">
-                    <div class="text-3xl md:text-4xl font-black leading-none" style="color:#F4D06F;">200M+</div>
+                    <div class="text-3xl md:text-4xl font-black leading-none" style="color:#F2C747;">200M+</div>
                     <div class="text-xs text-white/70 font-semibold mt-1 tracking-wider">patient records</div>
                 </div>
                 <div class="text-center sm:text-left">
-                    <div class="text-3xl md:text-4xl font-black leading-none" style="color:#F4D06F;">18+</div>
+                    <div class="text-3xl md:text-4xl font-black leading-none" style="color:#F2C747;">18+</div>
                     <div class="text-xs text-white/70 font-semibold mt-1 tracking-wider">countries</div>
                 </div>
             </div>
@@ -588,7 +588,7 @@
 <!-- ═══════════════════════════════════════ PLATFORM ANIMATION ═══════════════════════════════════════ -->
 <section class="bg-white p-0 hidden lg:block" style="padding:12px 0 0 0;">
     <div class="max-w-7xl mx-auto px-6 md:px-12 text-center" id="platformHeadline" style="padding-top:48px;">
-        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="margin:0;padding:0;color:#5BA8E5;">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="margin:0;padding:0;color:#6396F1;">
             One platform. Every layer of care.
         </h2>
     </div>
@@ -684,7 +684,7 @@
             font-size: 22px; font-weight: 800; letter-spacing: -.4px;
             line-height: 1.15; color: #111;
         }
-        .pc-name .ah { color: #5BA8E5; }
+        .pc-name .ah { color: #0D6EFD; }
         .pc-name .rest { color: #111827; }
         .pc-desc {
             font-family: 'Outfit', sans-serif;
@@ -717,7 +717,7 @@
         const MOCK_HEIGHTS = [412, 255, 255, 255];
         const STAGE_PAD    = 32;
 
-        const YELLOW = { color:'#F4D06F', r:244, g:208, b:111 };
+        const YELLOW = { color:'#FAC515', r:250, g:197, b:21 };
         const PRODS  = [
             { id:'pcEngage',  ...YELLOW },
             { id:'pcCare',    ...YELLOW },
@@ -812,7 +812,7 @@
                 ctx.strokeStyle=`rgba(13,110,253,${ring.a})`; ctx.lineWidth=1.5; ctx.stroke();
             });
             ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
-            ctx.fillStyle='#5BA8E5'; ctx.fill();
+            ctx.fillStyle='#0D6EFD'; ctx.fill();
             ctx.save();
             ctx.beginPath(); ctx.arc(cx,cy,R-6,0,Math.PI*2); ctx.clip();
             ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#fff';
@@ -827,7 +827,7 @@
             if (alpha <= 0 || R <= 0) return;
             ctx.save(); ctx.globalAlpha = alpha;
             ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
-            ctx.fillStyle='#F4D06F'; ctx.fill();
+            ctx.fillStyle='#FAC515'; ctx.fill();
             ctx.restore();
         }
 
@@ -941,7 +941,7 @@
                 ctx.beginPath();
                 ctx.moveTo(midX - halfSpan, nrY);
                 ctx.lineTo(midX + halfSpan, nrY);
-                ctx.strokeStyle = '#F4D06F'; ctx.lineWidth = 2.5; ctx.stroke();
+                ctx.strokeStyle = '#FAC515'; ctx.lineWidth = 2.5; ctx.stroke();
                 ctx.restore();
             }
 
@@ -984,11 +984,11 @@
                 <!-- Enlarged Trust Pills -->
                 <div class="flex flex-col gap-3">
                     <span class="trust-pill">
-                        <svg class="pill-icon" style="color:#F4D06F;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                        <svg class="pill-icon" style="color:#F2C747;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                         HIMSS Stage 7 Proven
                     </span>
                     <span class="trust-pill">
-                        <svg class="pill-icon" style="color:#5BA8E5;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <svg class="pill-icon" style="color:#6396F1;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         FHIR Compliant
                     </span>
                     <span class="trust-pill">
@@ -996,7 +996,7 @@
                         HL7 Standards
                     </span>
                     <span class="trust-pill">
-                        <svg class="pill-icon" style="color:#5BA8E5;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+                        <svg class="pill-icon" style="color:#6396F1;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
                         WHO GDHCN Compatible
                     </span>
                 </div>
@@ -1004,15 +1004,15 @@
                 <!-- Key Metrics row -->
                 <div class="grid grid-cols-3 gap-6">
                     <div>
-                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#5BA8E5;font-variant-numeric:tabular-nums;">35M+</div>
+                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#6396F1;font-variant-numeric:tabular-nums;">35M+</div>
                         <div class="text-gray-500 font-medium mt-2" style="font-size:0.8rem;line-height:1.4;">users on<br>platform</div>
                     </div>
                     <div style="border-left:1.5px solid #e5e7eb;padding-left:1.5rem;">
-                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#5BA8E5;font-variant-numeric:tabular-nums;">3,200+</div>
+                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#6396F1;font-variant-numeric:tabular-nums;">3,200+</div>
                         <div class="text-gray-500 font-medium mt-2" style="font-size:0.8rem;line-height:1.4;">health<br>facilities</div>
                     </div>
                     <div style="border-left:1.5px solid #e5e7eb;padding-left:1.5rem;">
-                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#5BA8E5;font-variant-numeric:tabular-nums;">200M+</div>
+                        <div class="font-black whitespace-nowrap" style="font-size:2rem;line-height:1;color:#6396F1;font-variant-numeric:tabular-nums;">200M+</div>
                         <div class="text-gray-500 font-medium mt-2" style="font-size:0.8rem;line-height:1.4;">patient records<br>managed</div>
                     </div>
                 </div>
@@ -1024,7 +1024,7 @@
 
                 <!-- Award 1: Data.ai #1 -->
                 <div class="award-card-new reveal reveal-d1 flex items-center rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,#fffbeb 0%,#fef9f0 60%,#fff 100%);border:1.5px solid #fde68a;padding:0;">
-                    <div class="shrink-0 flex flex-col items-center justify-center self-stretch" style="width:80px;background:linear-gradient(160deg,#F4D06F 0%,#f59e0b 100%);">
+                    <div class="shrink-0 flex flex-col items-center justify-center self-stretch" style="width:80px;background:linear-gradient(160deg,#F2C747 0%,#f59e0b 100%);">
                         <svg style="width:26px;height:26px;color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
                         <span style="color:white;font-size:0.58rem;font-weight:800;letter-spacing:0.04em;margin-top:5px;text-align:center;line-height:1.3;">#1<br>WORLDWIDE</span>
                     </div>
@@ -1048,7 +1048,7 @@
 
                 <!-- Award 3: Quality Service Asia -->
                 <div class="award-card-new reveal reveal-d3 flex items-center rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,#eff6ff 0%,#f0f7ff 60%,#fff 100%);border:1.5px solid #bfdbfe;padding:0;">
-                    <div class="shrink-0 flex flex-col items-center justify-center self-stretch" style="width:80px;background:linear-gradient(160deg,#5BA8E5 0%,#3A7EBF 100%);">
+                    <div class="shrink-0 flex flex-col items-center justify-center self-stretch" style="width:80px;background:linear-gradient(160deg,#6396F1 0%,#2365B1 100%);">
                         <svg style="width:26px;height:26px;color:white;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
                         <span style="color:white;font-size:0.58rem;font-weight:800;letter-spacing:0.04em;margin-top:5px;text-align:center;line-height:1.3;">QUALITY<br>AWARD</span>
                     </div>
@@ -1069,9 +1069,9 @@
     <div class="max-w-7xl mx-auto px-6 md:px-12">
 
         <div class="mb-14 reveal">
-            <p class="text-sm font-bold tracking-widest mb-3" style="text-transform:none;letter-spacing:0.12em;color:#F4D06F;">Products</p>
+            <p class="text-sm font-bold tracking-widest mb-3" style="text-transform:none;letter-spacing:0.12em;color:#F2C747;">Products</p>
             <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue max-w-2xl">A unified digital health platform to deliver every dimension of care</h2>
-            <p class="mt-5 text-lg leading-relaxed max-w-2xl" style="color:white;"><span style="color:#F4D06F;font-weight:600;">Care</span> for your patients. <span style="color:#F4D06F;font-weight:600;">Engage</span> with them beyond the hospital. <span style="color:#F4D06F;font-weight:600;">Connect</span> across your ecosystem. And let <span style="color:#F4D06F;font-weight:600;">Insights</span> guide every decision.</p>
+            <p class="mt-5 text-lg leading-relaxed max-w-2xl" style="color:white;"><span style="color:#F2C747;font-weight:600;">Care</span> for your patients. <span style="color:#F2C747;font-weight:600;">Engage</span> with them beyond the hospital. <span style="color:#F2C747;font-weight:600;">Connect</span> across your ecosystem. And let <span style="color:#F2C747;font-weight:600;">Insights</span> guide every decision.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-7">
@@ -1175,7 +1175,7 @@
             <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 w-full max-w-lg mx-auto z-10">
 
                 <!-- Agentic Layer -->
-                <div class="arch-layer w-3/4 p-3 rounded-xl shadow-md flex items-center justify-center gap-2 z-50 relative" style="background:#FEF9E7;color:#92700C;border:1px solid #F4D06F;">
+                <div class="arch-layer w-3/4 p-3 rounded-xl shadow-md flex items-center justify-center gap-2 z-50 relative" style="background:#FEF9E7;color:#92700C;border:1px solid #F2C747;">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
                     <span class="font-bold text-sm tracking-wide">adea AI</span>
                 </div>
@@ -1224,13 +1224,13 @@
             <p class="text-sm font-bold tracking-widest text-gray-400" style="text-transform:none;letter-spacing:0.12em;">The platform</p>
             <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue">Enterprise-grade. Open standards. Built to last.</h2>
             <p class="text-lg text-gray-600 leading-relaxed">
-                adeahub is a unified digital health platform built on open standards — <strong style="color:#5BA8E5;font-weight:700;">FHIR</strong>, <strong style="color:#5BA8E5;font-weight:700;">HL7</strong>, <strong style="color:#5BA8E5;font-weight:700;">ICD</strong>, and <strong style="color:#5BA8E5;font-weight:700;">REST APIs</strong>.
+                adeahub is a unified digital health platform built on open standards — <strong style="color:#6396F1;font-weight:700;">FHIR</strong>, <strong style="color:#6396F1;font-weight:700;">HL7</strong>, <strong style="color:#6396F1;font-weight:700;">ICD</strong>, and <strong style="color:#6396F1;font-weight:700;">REST APIs</strong>.
             </p>
             <ul class="text-lg text-gray-600 leading-relaxed space-y-2" style="list-style:none;padding:0;">
                 <li style="padding-left:1.2em;text-indent:-1.2em;">• Scales from a primary health centre to a national EHR</li>
                 <li style="padding-left:1.2em;text-indent:-1.2em;">• Centralised, decentralised, and hybrid deployments across cloud and on-premise</li>
                 <li style="padding-left:1.2em;text-indent:-1.2em;">• Integrates with existing EHRs, national health stacks, devices, and third-party systems — without replacing them</li>
-                <li style="padding-left:1.2em;text-indent:-1.2em;">• Built-in <strong style="color:#5BA8E5;font-weight:700;">Zero Trust security</strong> and <strong style="color:#5BA8E5;font-weight:700;">data governance</strong></li>
+                <li style="padding-left:1.2em;text-indent:-1.2em;">• Built-in <strong style="color:#6396F1;font-weight:700;">Zero Trust security</strong> and <strong style="color:#6396F1;font-weight:700;">data governance</strong></li>
                 <li style="padding-left:1.2em;text-indent:-1.2em;">• Active half-yearly release cycle</li>
                 <li style="padding-left:1.2em;text-indent:-1.2em;">• Trusted by 35M+ users worldwide</li>
             </ul>
@@ -1252,7 +1252,7 @@
     <div class="max-w-7xl mx-auto px-6 md:px-12">
 
         <div class="text-center mb-16 reveal">
-            <p class="text-sm font-bold tracking-widest mb-3" style="text-transform:none;letter-spacing:0.12em;color:#F4D06F;">Our heritage</p>
+            <p class="text-sm font-bold tracking-widest mb-3" style="text-transform:none;letter-spacing:0.12em;color:#F2C747;">Our heritage</p>
             <h2 class="text-3xl md:text-4xl font-bold text-adeahub-blue max-w-3xl mx-auto">25+ years of building the systems government and private healthcare organizations rely on</h2>
         </div>
 
@@ -1260,13 +1260,13 @@
         <div class="relative">
 
             <!-- Connecting line (desktop only) — sits at circle centre (top-8 = 32px = half of 64px circle) -->
-            <div class="hidden lg:block absolute left-[10%] right-[10%] h-0.5 z-0" style="top:32px;background:#F4D06F;"></div>
+            <div class="hidden lg:block absolute left-[10%] right-[10%] h-0.5 z-0" style="top:32px;background:#F2C747;"></div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 relative z-10">
 
                 <!-- 1998 -->
                 <div class="reveal reveal-d1 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-adeahub-blue text-white flex items-center justify-center font-extrabold text-sm shadow-lg mb-4 ring-4 ring-white relative z-10" style="outline:3px solid #F4D06F;">
+                    <div class="w-16 h-16 rounded-full bg-adeahub-blue text-white flex items-center justify-center font-extrabold text-sm shadow-lg mb-4 ring-4 ring-white relative z-10" style="outline:3px solid #F2C747;">
                         1998
                     </div>
                     <h4 class="font-bold text-gray-900 mb-2">Healthcare IT foundations</h4>
@@ -1275,7 +1275,7 @@
 
                 <!-- 2010 -->
                 <div class="reveal reveal-d2 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full text-adeahub-blue flex items-center justify-center font-extrabold text-sm shadow mb-4 ring-4 ring-white relative z-10" style="background:#fff;border:3px solid #F4D06F;">
+                    <div class="w-16 h-16 rounded-full text-adeahub-blue flex items-center justify-center font-extrabold text-sm shadow mb-4 ring-4 ring-white relative z-10" style="background:#fff;border:3px solid #F2C747;">
                         2010
                     </div>
                     <h4 class="font-bold text-gray-900 mb-2">entomo founded</h4>
@@ -1284,7 +1284,7 @@
 
                 <!-- 2020 -->
                 <div class="reveal reveal-d3 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-adeahub-blue text-white flex items-center justify-center font-extrabold text-sm shadow-lg mb-4 ring-4 ring-white relative z-10" style="outline:3px solid #F4D06F;">
+                    <div class="w-16 h-16 rounded-full bg-adeahub-blue text-white flex items-center justify-center font-extrabold text-sm shadow-lg mb-4 ring-4 ring-white relative z-10" style="outline:3px solid #F2C747;">
                         2020
                     </div>
                     <h4 class="font-bold text-gray-900 mb-2">MySejahtera</h4>
@@ -1293,7 +1293,7 @@
 
                 <!-- 2025 -->
                 <div class="reveal reveal-d4 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-adeahub-blue text-white flex items-center justify-center font-extrabold text-sm shadow-lg mb-4 ring-4 ring-white relative z-10" style="outline:3px solid #F4D06F;">
+                    <div class="w-16 h-16 rounded-full bg-adeahub-blue text-white flex items-center justify-center font-extrabold text-sm shadow-lg mb-4 ring-4 ring-white relative z-10" style="outline:3px solid #F2C747;">
                         2025
                     </div>
                     <h4 class="font-bold text-gray-900 mb-2">Dedalus AMEA acquisition</h4>
@@ -1302,7 +1302,7 @@
 
                 <!-- Today -->
                 <div class="reveal reveal-d5 flex flex-col items-center text-center">
-                    <div class="w-16 h-16 rounded-full bg-adeahub-yellow text-white flex items-center justify-center font-extrabold text-xs shadow-lg mb-4 ring-4 ring-white relative z-10" style="outline:3px solid #F4D06F;">
+                    <div class="w-16 h-16 rounded-full bg-adeahub-yellow text-white flex items-center justify-center font-extrabold text-xs shadow-lg mb-4 ring-4 ring-white relative z-10" style="outline:3px solid #F2C747;">
                         Today
                     </div>
                     <h4 class="font-bold text-gray-900 mb-2">adeahub — today</h4>
@@ -1347,15 +1347,15 @@
             .logo-marquee-img:hover { transform: scale(1.12); opacity: 1; }
         
         /* ── OVERRIDES FOR BLUE-BACKGROUND SECTIONS ── */
-        /* Solutions section (bg-adeahub-lightbg = #5BA8E5) */
-        #solutions .section-label { color: #F4D06F; }
-        #solutions .section-label::before { background: #F4D06F; }
+        /* Solutions section (bg-adeahub-lightbg = #6396F1) */
+        #solutions .section-label { color: #F2C747; }
+        #solutions .section-label::before { background: #F2C747; }
         #solutions h2 { color: white !important; }
         #solutions p.text-gray-500, #solutions p.text-gray-600 { color: rgba(255,255,255,0.70) !important; }
 
-        /* Heritage section (bg-adeahub-lightbg = #5BA8E5) */
-        #heritage .section-label { color: #F4D06F; }
-        #heritage .section-label::before { background: #F4D06F; }
+        /* Heritage section (bg-adeahub-lightbg = #6396F1) */
+        #heritage .section-label { color: #F2C747; }
+        #heritage .section-label::before { background: #F2C747; }
         #heritage h2 { color: white !important; }
         #heritage p.text-gray-500, #heritage p.text-gray-600 { color: rgba(255,255,255,0.70) !important; }
         #heritage h4 { color: white !important; }
@@ -1364,12 +1364,12 @@
         #heritage .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
         #heritage .text-gray-900 { color: white !important; }
 
-        /* CTA section (.cta-mesh = #5BA8E5) */
-        #cta .section-label { color: #F4D06F; }
-        #cta .section-label::before { background: #F4D06F; }
+        /* CTA section (.cta-mesh = #6396F1) */
+        #cta .section-label { color: #F2C747; }
+        #cta .section-label::before { background: #F2C747; }
         #cta h2 { color: white !important; }
         #cta p.text-gray-500, #cta p.text-gray-600, #cta p.text-gray-700 { color: rgba(255,255,255,0.75) !important; }
-        #cta .btn-glow { background: #F4D06F !important; color: #1a1a2a !important; }
+        #cta .btn-glow { background: #F2C747 !important; color: #1a1a2a !important; }
 
         /* Footer: white background — original colors preserved */
     </style>
@@ -1568,7 +1568,7 @@
     <div class="max-w-4xl mx-auto px-6 text-center">
 
         <div class="reveal">
-            <p class="text-sm font-bold tracking-widest mb-4" style="text-transform:none;letter-spacing:0.12em;color:#F4D06F;">Let's talk</p>
+            <p class="text-sm font-bold tracking-widest mb-4" style="text-transform:none;letter-spacing:0.12em;color:#F2C747;">Let's talk</p>
             <h2 class="text-4xl md:text-5xl font-bold text-adeahub-blue mb-6 tracking-tight leading-tight">
                 If you're evaluating a core platform for your health system, start here.
             </h2>
@@ -1616,43 +1616,46 @@
 
             <!-- Col 2: Products -->
             <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Products</p>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Products</p>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Engage</a></li>
-                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Care</a></li>
-                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Connect</a></li>
-                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Insights</a></li>
-                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
+                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Engage</a></li>
+                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Care</a></li>
+                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Connect</a></li>
+                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'"><span style="color:#0D6EFD;font-weight:700;">AH</span> Insights</a></li>
+                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#6396F1'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
                 </ul>
             </div>
 
             <!-- Col 3: Company -->
             <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Company</p>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Company</p>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
-                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
-                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
-                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
-                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
-                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
+                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
+                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
+                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
+                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
+                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
+                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
                 </ul>
             </div>
 
             <!-- Col 4: Get in Touch -->
             <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Get in touch</p>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#6396F1;margin-bottom:16px;">Get in touch</p>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
                     <li>
-                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">
+                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#0D6EFD'" onmouseout="this.style.color='#4b5563'">
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             hello@adeahub.com
                         </a>
                     </li>
-                    
+                    <li style="font-size:0.875rem;color:#9ca3af;display:flex;align-items:center;gap:8px;">
+                        <svg width="14" height="14" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Kuala Lumpur, Malaysia
+                    </li>
                     <li style="padding-top:6px;">
                         <a href="request_demo.html"
-                           style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#F4D06F;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
+                           style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#FAC515;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
                            onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
                             Request a demo
                             <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
@@ -1857,13 +1860,13 @@
                 card.style.transform =
                     `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.018)`;
                 card.style.boxShadow =
-                    `0 28px 56px -8px rgba(91,168,229,0.22), 0 8px 20px -4px rgba(91,168,229,0.14)`;
+                    `0 28px 56px -8px rgba(99,150,241,0.22), 0 8px 20px -4px rgba(99,150,241,0.14)`;
 
                 // Cursor glow
                 const glow = card.querySelector('.card-glow-layer');
                 if (glow) {
                     glow.style.background =
-                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(91,168,229,0.13) 0%, transparent 70%)`;
+                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(99,150,241,0.13) 0%, transparent 70%)`;
                 }
             });
 
