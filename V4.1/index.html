@@ -724,25 +724,45 @@
 
             // Compute responsive scale — mockups shrink below REF_WIDTH
             vScale = Math.min(1, VW / REF_WIDTH);
+
+            // Also compute the available slot width so mockups never overflow their lane
+            const pad  = Math.max(VW * 0.06, 40);
+            const slotW = (VW - pad * 2) / 4;
+            const maxMockW = slotW - 16; // 8px breathing room each side
+
             sTallestMock = Math.round(TALLEST_MOCK * vScale);
             sMockHeights = MOCK_HEIGHTS.map(h => Math.round(h * vScale));
+
+            // Cap mockup sizes: if scaled width exceeds slot, shrink further
+            cardEls.forEach((el, i) => {
+                if (!el) return;
+                const mockup = el.querySelector('.pc-mockup');
+                if (!mockup) return;
+
+                let mw = Math.round(MOCK_WIDTHS[i] * vScale);
+                let cardScale = vScale; // per-card scale
+
+                if (mw > maxMockW) {
+                    // Need extra shrink for this card
+                    cardScale = vScale * (maxMockW / mw);
+                    mw = Math.round(maxMockW);
+                    sMockHeights[i] = Math.round(MOCK_HEIGHTS[i] * cardScale);
+                }
+
+                mockup.style.width  = mw + 'px';
+                mockup.style.height = sMockHeights[i] + 'px';
+                const iframe = mockup.querySelector('iframe');
+                if (iframe) iframe.style.transform = 'scale(' + (IFRAME_SCALES[i] * cardScale) + ')';
+            });
+
+            // Recalculate tallest mockup height after capping
+            sTallestMock = Math.max(...sMockHeights);
 
             VH = STAGE_PAD + LABEL_H + MOCK_GAP + sTallestMock + STAGE_PAD;
             stage.style.height = VH + 'px';
             stage.style.setProperty('--stage-h', VH + 'px');
             canvas.width  = VW;
             canvas.height = VH;
-
-            // Resize mockup containers & iframe transform-scale
-            cardEls.forEach((el, i) => {
-                if (!el) return;
-                const mockup = el.querySelector('.pc-mockup');
-                if (!mockup) return;
-                mockup.style.width  = Math.round(MOCK_WIDTHS[i] * vScale) + 'px';
-                mockup.style.height = sMockHeights[i] + 'px';
-                const iframe = mockup.querySelector('iframe');
-                if (iframe) iframe.style.transform = 'scale(' + (IFRAME_SCALES[i] * vScale) + ')';
-            });
 
             positionCards();
         }
