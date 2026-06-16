@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AH Outbreak Management — adeahub Disease Outbreak Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 16px;
+  }
+
+  /* ─── Phone Shell ─── */
+  .phone {
+    width: 375px;
+    height: 812px;
+    background: #F2F4F7;
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.08),
+      0 8px 16px rgba(0,0,0,0.10),
+      0 24px 56px rgba(0,0,0,0.18);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .scroll-body {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ─── Status bar ─── */
+  .status-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 46px;
+    z-index: 40;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 26px 7px;
+  }
+  .status-time { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: #fff; }
+  .status-icons { display: flex; gap: 6px; align-items: center; }
+
+  /* ─── App bar ─── */
+  .app-bar {
+    height: 96px;
+    background: linear-gradient(135deg, #5BA8E5 0%, #4A8FD0 100%);
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 0 18px 16px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 5;
+  }
+  .app-bar .back {
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .app-bar .title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.1px;
+  }
+
+  /* ─── Body ─── */
+  .body-pad { padding: 18px 16px 0; }
+
+  .h-track {
+    font-family: 'Outfit', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #1A1D23;
+    margin-bottom: 12px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.5s ease 0.3s forwards;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: #fff;
+    border: 1px solid #E7EBF0;
+    border-radius: 12px;
+    padding: 11px 13px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rise 0.5s ease 0.45s forwards;
+  }
+  .search span { font-family: 'Inter', sans-serif; font-size: 13.5px; color: #9AA3AF; flex: 1; }
+
+  .hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    color: #8B93A1;
+    margin: 9px 2px 12px;
+    line-height: 1.45;
+    opacity: 0;
+    animation: fade-in 0.5s ease 0.6s forwards;
+  }
+
+  /* ─── Map / heatmap ─── */
+  .map {
+    position: relative;
+    height: 232px;
+    border-radius: 16px;
+    overflow: hidden;
+    background:
+      linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02)),
+      #E9EEF2;
+    border: 1px solid #E2E7EC;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+    animation: rise 0.6s cubic-bezier(.34,1.4,.64,1) 0.7s forwards;
+  }
+  /* faint road grid */
+  .map::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(150,165,180,0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(150,165,180,0.25) 1px, transparent 1px),
+      linear-gradient(58deg, transparent 48%, rgba(150,165,180,0.30) 49%, rgba(150,165,180,0.30) 51%, transparent 52%);
+    background-size: 46px 46px, 46px 46px, 200px 200px;
+  }
+  /* green parks */
+  .park { position: absolute; background: rgba(120,190,140,0.30); border-radius: 40% 60% 55% 45%; }
+  .park.p1 { width: 90px; height: 70px; top: 14px; left: 12px; }
+  .park.p2 { width: 70px; height: 60px; bottom: 18px; right: 16px; }
+
+  /* concentric risk heat rings */
+  .heat {
+    position: absolute;
+    top: 50%; left: 52%;
+    transform: translate(-50%, -50%);
+    width: 70px; height: 70px;
+  }
+  .ring { position: absolute; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+  .ring.r3 { width: 168px; height: 168px; background: rgba(245,210,90,0.30); }
+  .ring.r2 { width: 116px; height: 116px; background: rgba(243,150,70,0.42); }
+  .ring.r1 { width: 64px;  height: 64px;  background: rgba(225,70,60,0.62); }
+  .ring.core {
+    width: 22px; height: 22px; background: #E1463C;
+    box-shadow: 0 0 0 0 rgba(225,70,60,0.55);
+    animation: pulse-core 2.4s ease-in-out 1.6s infinite;
+  }
+  @keyframes pulse-core {
+    0%,100% { box-shadow: 0 0 0 0 rgba(225,70,60,0.5); }
+    50%     { box-shadow: 0 0 0 16px rgba(225,70,60,0); }
+  }
+
+  /* location pins */
+  .pin {
+    position: absolute;
+    width: 18px; height: 18px;
+    opacity: 0;
+    animation: drop-pin 0.45s cubic-bezier(.34,1.56,.64,1) forwards;
+  }
+  .pin.a { top: 70px; left: 60px; animation-delay: 1.2s; }
+  .pin.b { top: 150px; left: 200px; animation-delay: 1.35s; }
+  .pin.c { top: 110px; left: 250px; animation-delay: 1.5s; }
+  @keyframes drop-pin { from { opacity: 0; transform: translateY(-12px) scale(0.6);} to { opacity: 1; transform: translateY(0) scale(1);} }
+
+  .map-tag {
+    position: absolute;
+    bottom: 8px; left: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: #6B7280;
+    background: rgba(255,255,255,0.75);
+    padding: 2px 6px;
+    border-radius: 5px;
+  }
+
+  /* ─── Result card ─── */
+  .result {
+    margin-top: 14px;
+    background: #14181F;
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rise 0.5s ease 1.7s forwards;
+  }
+  .result .badge {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .result .txt { font-family: 'Inter', sans-serif; font-size: 12.5px; color: #E7EBF0; line-height: 1.45; }
+  .result .txt b { color: #fff; font-weight: 600; }
+  .result .count { color: #F4D06F; font-weight: 700; }
+
+  .note {
+    margin-top: 11px;
+    background: #FDF6E3;
+    border: 1px solid #F3E5B8;
+    border-radius: 11px;
+    padding: 10px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #8A6D1F;
+    line-height: 1.45;
+    opacity: 0;
+    animation: fade-in 0.5s ease 1.95s forwards;
+  }
+
+  /* ─── Danger-zone alert toast ─── */
+  .toast {
+    position: absolute;
+    left: 14px; right: 14px;
+    bottom: 16px;
+    background: #fff;
+    border-radius: 16px;
+    border-left: 5px solid #E1463C;
+    padding: 13px 14px;
+    display: flex;
+    gap: 11px;
+    box-shadow: 0 12px 34px rgba(0,0,0,0.20);
+    z-index: 30;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: toast-in 0.55s cubic-bezier(.34,1.4,.64,1) 2.4s forwards;
+  }
+  .toast .ico {
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    background: #FDECEA;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .toast .t-title { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #B3261E; margin-bottom: 2px; }
+  .toast .t-desc { font-family: 'Inter', sans-serif; font-size: 11px; color: #6B7280; line-height: 1.4; }
+  @keyframes toast-in { to { opacity: 1; transform: translateY(0); } }
+
+  /* ─── Bottom nav ─── */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 9px 8px 22px;
+    background: #FFFFFF;
+    border-top: 1px solid #EEF1F5;
+    flex-shrink: 0;
+    position: relative; z-index: 15;
+    opacity: 0;
+    animation: rise 0.4s ease 1.1s forwards;
+  }
+  .nav-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .nav-lbl { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: #8B93A1; }
+  .nav-btn.active .nav-lbl { color: #5BA8E5; font-weight: 600; }
+
+  @keyframes fade-in { to { opacity: 1; } }
+  @keyframes rise    { to { opacity: 1; transform: translateY(0) scale(1); } }
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+        <rect x="0"   y="8"  width="3" height="4"  rx="0.8" fill="#fff"/>
+        <rect x="4.5" y="5"  width="3" height="7"  rx="0.8" fill="#fff"/>
+        <rect x="9"   y="2"  width="3" height="10" rx="0.8" fill="#fff"/>
+        <rect x="13.5" y="0" width="3" height="12" rx="0.8" fill="rgba(255,255,255,0.55)"/>
+      </svg>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
+        <path d="M7.5 8.5 C8.3 8.5 9 9.2 9 10 C9 10.8 8.3 11 7.5 11 C6.7 11 6 10.8 6 10 C6 9.2 6.7 8.5 7.5 8.5Z" fill="#fff"/>
+        <path d="M3.5 5.5 C4.9 4.1 6.6 3.5 7.5 3.5 C8.4 3.5 10.1 4.1 11.5 5.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <path d="M1 3 C2.9 1.1 5.1 0 7.5 0 C9.9 0 12.1 1.1 14 3" stroke="#fff" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+        <rect x="0.5" y="1" width="21" height="10" rx="2.5" stroke="#fff" stroke-width="1"/>
+        <path d="M22.5 4.5 v3 C23.5 7 24 6.5 24 6 C24 5.5 23.5 5 22.5 4.5Z" fill="#fff"/>
+        <rect x="2" y="2.5" width="16" height="7" rx="1.5" fill="#fff"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- App bar -->
+  <div class="app-bar">
+    <div class="back">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="title">Infectious Diseases</div>
+  </div>
+
+  <div class="scroll-body">
+    <div class="body-pad">
+
+      <div class="h-track">Track Infectious Diseases</div>
+
+      <!-- Search -->
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="#9AA3AF" stroke-width="2"/>
+          <path d="M20 20l-3.2-3.2" stroke="#9AA3AF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>Search a location</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="4" stroke="#5BA8E5" stroke-width="2"/>
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="#5BA8E5" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <p class="hint">Use your current location or search an area to check for active infectious disease cases nearby.</p>
+
+      <!-- Map with heatmap -->
+      <div class="map">
+        <div class="park p1"></div>
+        <div class="park p2"></div>
+
+        <div class="heat">
+          <div class="ring r3"></div>
+          <div class="ring r2"></div>
+          <div class="ring r1"></div>
+          <div class="ring core"></div>
+        </div>
+
+        <div class="pin a">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.6 7-13A7 7 0 0 0 5 9c0 5.4 7 13 7 13Z" fill="#E1463C"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg>
+        </div>
+        <div class="pin b">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.6 7-13A7 7 0 0 0 5 9c0 5.4 7 13 7 13Z" fill="#F3964A"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg>
+        </div>
+        <div class="pin c">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.6 7-13A7 7 0 0 0 5 9c0 5.4 7 13 7 13Z" fill="#5BA8E5"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg>
+        </div>
+
+        <div class="map-tag">Live surveillance · MOH data</div>
+      </div>
+
+      <!-- Result -->
+      <div class="result">
+        <div class="badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 20s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.4-7 10-7 10Z" fill="#E1463C"/>
+          </svg>
+        </div>
+        <div class="txt"><b>Hi Aisha,</b> there are <span class="count">14 active cases</span> of infectious disease reported near you this week.</div>
+      </div>
+
+      <div class="note">Reported cases reflect confirmed and potential spread after investigation by the Ministry of Health.</div>
+    </div>
+
+    <!-- Danger-zone alert toast -->
+    <div class="toast">
+      <div class="ico">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3 2.5 20h19L12 3Z" stroke="#E1463C" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M12 10v4" stroke="#E1463C" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="17" r="0.6" fill="#E1463C" stroke="#E1463C"/>
+        </svg>
+      </div>
+      <div>
+        <div class="t-title">Alert · HFMD red zone</div>
+        <div class="t-desc">You are entering an active hotspot. Please take precautions and follow local advisories.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <div class="bottom-nav">
+    <div class="nav-btn active">
+      <svg width="24" height="24" viewBox="0 0 26 26" fill="none">
+        <path d="M3 12.5 13 4l10 8.5V22a1.5 1.5 0 0 1-1.5 1.5H4.5A1.5 1.5 0 0 1 3 22V12.5Z" fill="#5BA8E5"/>
+        <path d="M9.5 23.5V16.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v7" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav-lbl">Home</span>
+    </div>
+    <div class="nav-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#8B93A1" stroke-width="1.7"/>
+        <circle cx="12" cy="12" r="4.5" stroke="#8B93A1" stroke-width="1.7"/>
+        <circle cx="12" cy="12" r="1" fill="#8B93A1"/>
+      </svg>
+      <span class="nav-lbl">Tracker</span>
+    </div>
+    <div class="nav-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="#8B93A1" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="#8B93A1" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <span class="nav-lbl">Alerts</span>
+    </div>
+    <div class="nav-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="8" r="3.6" stroke="#8B93A1" stroke-width="1.7"/>
+        <path d="M5 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1" stroke="#8B93A1" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <span class="nav-lbl">Profile</span>
+    </div>
+  </div>
+
+</div><!-- end .phone -->
+
+</body>
+</html>
