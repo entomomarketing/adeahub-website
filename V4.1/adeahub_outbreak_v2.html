@@ -892,11 +892,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="mt-14 max-w-3xl mx-auto bg-blue-50/60 border border-blue-100 rounded-2xl px-6 py-5 flex items-center gap-4 reveal">
-            <div class="bg-adeahub-blue w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0"><i data-lucide="layout-dashboard" class="w-5 h-5"></i></div>
-            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-gray-900">One orchestrator behind every step.</strong> A central Disease Control Orchestrator manages patients, facilities, diseases, forms and workflows from a single console.</p>
-        </div>
     </div>
 
     <style>
@@ -956,13 +951,13 @@
             <p class="text-lg text-gray-500 max-w-2xl mx-auto">One platform spans detection, control and recovery — the full health-emergency readiness toolkit, plus the public app citizens use every day.</p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
 
             <!-- Infotainment phone -->
-            <div class="lg:col-span-5 flex flex-col items-center reveal-left lg:sticky lg:top-28">
-                <div class="relative w-60">
+            <div class="lg:col-span-5 flex items-center justify-center reveal-left">
+                <div class="relative w-60 lg:w-auto lg:h-full flex items-center justify-center">
                     <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-40 transform scale-110"></div>
-                    <div class="phone-frame w-full aspect-[9/19] relative z-10 shadow-2xl border-[9px] border-gray-900">
+                    <div class="phone-frame w-full lg:w-auto lg:h-full lg:max-h-[760px] aspect-[9/19] relative z-10 shadow-2xl border-[9px] border-gray-900">
                         <div class="phone-notch"></div>
 
                         <!-- Screen 1: Cases by state -->
@@ -976,7 +971,7 @@
                                     <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
                                 </div>
                             </div>
-                            <div class="flex-1 bg-white px-3.5 py-3">
+                            <div class="flex-1 bg-white px-3.5 pt-3 pb-16 flex flex-col justify-center">
                                 <p class="text-[9px] font-bold mb-2.5" style="color:#374151 !important;">Cases by state</p>
                                 <div class="space-y-2">
                                     <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Selangor</span><span class="font-bold" style="color:#374151 !important;">717,627</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:100%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
@@ -1001,7 +996,7 @@
                                     <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
                                 </div>
                             </div>
-                            <div class="flex-1 bg-white px-3.5 py-3">
+                            <div class="flex-1 bg-white px-3.5 pt-3 pb-16 flex flex-col justify-center">
                                 <p class="text-[9px] font-bold mb-1" style="color:#374151 !important;">Daily cases · 7-day average</p>
                                 <p class="text-[20px] font-extrabold leading-none" style="color:#14181F !important;">4,212 <span class="text-[8px] font-bold" style="color:#E1463C !important;">▲ today</span></p>
                                 <svg viewBox="0 0 200 72" preserveAspectRatio="none" style="width:100%;height:78px;margin-top:8px;">
@@ -1028,7 +1023,7 @@
                                     <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
                                 </div>
                             </div>
-                            <div class="flex-1 bg-white px-3.5 py-3">
+                            <div class="flex-1 bg-white px-3.5 pt-3 pb-16 flex flex-col justify-center">
                                 <p class="text-[9px] font-bold mb-0.5" style="color:#374151 !important;">New cases today</p>
                                 <p class="text-[20px] font-extrabold leading-none" style="color:#E1463C !important;">5,291</p>
                                 <p class="text-[7px] mb-2.5 mt-0.5" style="color:#9AA3AF !important;">across 14 states · updated 23:59</p>
@@ -1052,7 +1047,7 @@
                                     <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">Overview</span>
                                 </div>
                             </div>
-                            <div class="flex-1 bg-white px-3.5 py-3">
+                            <div class="flex-1 bg-white px-3.5 pt-3 pb-16 flex flex-col justify-center">
                                 <p class="text-[9px] font-bold mb-2.5" style="color:#374151 !important;">Cases overview</p>
                                 <div class="rounded-lg border border-gray-100 overflow-hidden">
                                     <div class="grid grid-cols-3 text-[7px] font-bold px-2 py-1.5" style="background:#F2F5F8;color:#9AA3AF !important;"><span>State</span><span class="text-right">14-day</span><span class="text-right">New</span></div>
@@ -1065,9 +1060,15 @@
                             </div>
                         </div>
 
+                        <!-- shared bottom nav (static across screens) -->
+                        <div class="absolute bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-100 flex justify-around items-center pt-2.5 pb-4">
+                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="home" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Home</span></div>
+                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="bar-chart-2" class="w-4 h-4" style="color:#5BA8E5 !important;"></i><span class="text-[7px] font-bold" style="color:#5BA8E5 !important;">Statistics</span></div>
+                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="map" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Map</span></div>
+                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="user" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Profile</span></div>
+                        </div>
                     </div>
                 </div>
-                <p class="text-[12px] text-gray-400 mt-4 text-center">Public statistics &amp; infotainment — what citizens see in the national app</p>
             </div>
 
             <!-- Readiness capability blocks -->
