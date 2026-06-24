@@ -664,8 +664,8 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
 
-                <!-- Narrative side -->
-                <div class="p-10 md:p-12 border-b lg:border-b-0 lg:border-r border-gray-100">
+                <!-- Narrative side: challenge + what we did -->
+                <div class="p-10 md:p-12 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col justify-center">
                     <div class="space-y-8">
                         <div>
                             <span class="text-xs font-bold tracking-widest text-red-500 mb-2 block">The challenge</span>
@@ -675,44 +675,42 @@
                             <span class="text-xs font-bold tracking-widest text-adeahub-blue mb-2 block">What we did</span>
                             <p class="text-gray-700 leading-relaxed">adeahub deployed a national outbreak management platform for the Ministry of Health — unifying disease surveillance, contact tracing, remote monitoring, vaccination, and risk communication in a single system that scaled from clinics to the whole population.</p>
                         </div>
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-green-600 mb-2 block">The impact</span>
-                            <!-- Impact metric strip -->
-                            <div class="grid grid-cols-2 gap-4 mt-4">
-                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">5M<span class="text-xl">+</span></p>
-                                    <p class="text-sm text-gray-500 font-medium">High-risk cases monitored remotely</p>
-                                </div>
-                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">75M<span class="text-xl">+</span></p>
-                                    <p class="text-sm text-gray-500 font-medium">Vaccinations recorded with certificates</p>
-                                </div>
-                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">4M<span class="text-xl">+</span></p>
-                                    <p class="text-sm text-gray-500 font-medium">Health screening records captured</p>
-                                </div>
-                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">#1</p>
-                                    <p class="text-sm text-gray-500 font-medium">COVID-19 app worldwide (Data.ai, 2021)</p>
-                                </div>
+                    </div>
+                </div>
+
+                <!-- Impact + Recognition side -->
+                <div class="p-10 md:p-12 flex flex-col justify-center gap-8">
+                    <div>
+                        <span class="text-xs font-bold tracking-widest text-green-600 mb-4 block">The impact</span>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
+                                <p class="text-3xl font-extrabold text-adeahub-blue mb-1">5M<span class="text-xl">+</span></p>
+                                <p class="text-sm text-gray-500 font-medium">High-risk cases monitored remotely</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
+                                <p class="text-3xl font-extrabold text-adeahub-blue mb-1">75M<span class="text-xl">+</span></p>
+                                <p class="text-sm text-gray-500 font-medium">Vaccinations recorded with certificates</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
+                                <p class="text-3xl font-extrabold text-adeahub-blue mb-1">4M<span class="text-xl">+</span></p>
+                                <p class="text-sm text-gray-500 font-medium">Health screening records captured</p>
+                            </div>
+                            <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
+                                <p class="text-3xl font-extrabold text-adeahub-blue mb-1">#1</p>
+                                <p class="text-sm text-gray-500 font-medium">COVID-19 app worldwide (Data.ai, 2021)</p>
                             </div>
                         </div>
-                    </div>                </div>
-
-                <!-- Recognition side -->
-                <div class="p-10 md:p-12 flex flex-col justify-center gap-8">
+                    </div>
                     <!-- Recognition card -->
-                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-4">Recognition</p>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <div class="bg-yellow-50 p-2 rounded-lg shrink-0">
-                                    <i data-lucide="award" class="w-5 h-5 text-adeahub-yellow"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-900 text-sm">Data.ai #1 COVID-19 App Worldwide</p>
-                                    <p class="text-xs text-gray-500">Ranked #1 worldwide among all COVID-19 apps for install penetration and open rate, 2021</p>
-                                </div>
+                    <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-3">Recognition</p>
+                        <div class="flex items-start gap-3">
+                            <div class="bg-yellow-50 p-2 rounded-lg shrink-0">
+                                <i data-lucide="award" class="w-5 h-5 text-adeahub-yellow"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900 text-sm">Data.ai #1 COVID-19 App Worldwide</p>
+                                <p class="text-xs text-gray-500">Ranked #1 worldwide among all COVID-19 apps for install penetration and open rate, 2021</p>
                             </div>
                         </div>
                     </div>
@@ -827,56 +825,58 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 3B: THE SIX-STEP OUTBREAK WORKFLOW
+     SECTION 3B: THE SIX-STEP OUTBREAK WORKFLOW (ANIMATED STAIRCASE)
 ═══════════════════════════════════════════════════ -->
 <section class="py-24 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="text-center mb-16 reveal">
             <span class="section-label">The end-to-end workflow</span>
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Manage a disease outbreak at scale.</h2>
-            <p class="text-lg text-gray-500 max-w-3xl mx-auto">Six coordinated steps take public health teams from nationwide readiness to post-release recovery — every case tracked, every contact reached.</p>
+            <p class="text-lg text-gray-500 max-w-3xl mx-auto">Six coordinated steps take public health teams from nationwide readiness to post-release recovery — each one builds on the last.</p>
         </div>
 
-        <div class="relative">
-            <div class="hidden lg:block absolute top-6 left-[8%] right-[8%] h-0.5 bg-gradient-to-r from-blue-200 via-adeahub-blue to-blue-200" aria-hidden="true"></div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-x-5 gap-y-10 relative">
-
-                <div class="text-center reveal reveal-d1">
-                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">1</span></div>
-                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Outbreak Management <span class="block text-xs font-semibold text-gray-400">Nationwide</span></h3>
-                    <p class="text-gray-500 text-[13px] leading-relaxed">Register the whole population, map cases by area, and push geo-targeted alerts across every zone and district.</p>
+        <div class="ah-stairs reveal">
+            <div class="ah-step" style="--i:1">
+                <div class="ah-riser">
+                    <div class="ah-badge">1</div>
+                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Outbreak Management <span class="block text-[11px] font-semibold text-gray-400">Nationwide</span></h3>
+                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Register the whole population, map cases by area, and push geo-targeted alerts across every zone and district.</p>
                 </div>
-
-                <div class="text-center reveal reveal-d2">
-                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">2</span></div>
-                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Quarantine</h3>
-                    <p class="text-gray-500 text-[13px] leading-relaxed">Manage positive cases under digital Home Surveillance Orders, with daily health checks and automatic ER escalation.</p>
+            </div>
+            <div class="ah-step" style="--i:2">
+                <div class="ah-riser">
+                    <div class="ah-badge">2</div>
+                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Quarantine</h3>
+                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Manage positive cases under digital Home Surveillance Orders, with daily health checks and automatic ER escalation.</p>
                 </div>
-
-                <div class="text-center reveal reveal-d3">
-                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">3</span></div>
-                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Contact Tracing</h3>
-                    <p class="text-gray-500 text-[13px] leading-relaxed">Identify close contacts and place them under surveillance orders to limit movement and get tested.</p>
+            </div>
+            <div class="ah-step" style="--i:3">
+                <div class="ah-riser">
+                    <div class="ah-badge">3</div>
+                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Contact Tracing</h3>
+                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Identify close contacts and place them under surveillance orders to limit movement and get tested.</p>
                 </div>
-
-                <div class="text-center reveal reveal-d4">
-                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">4</span></div>
-                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Access Management</h3>
-                    <p class="text-gray-500 text-[13px] leading-relaxed">QR check-in at public venues keeps infected and exposed people out of high-risk spaces.</p>
+            </div>
+            <div class="ah-step" style="--i:4">
+                <div class="ah-riser">
+                    <div class="ah-badge">4</div>
+                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Access Management</h3>
+                    <p class="text-gray-500 text-[12.5px] leading-relaxed">QR check-in at public venues keeps infected and exposed people out of high-risk spaces.</p>
                 </div>
-
-                <div class="text-center reveal reveal-d4">
-                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">5</span></div>
-                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Border Surveillance</h3>
-                    <p class="text-gray-500 text-[13px] leading-relaxed">Screen every arrival by infection status, with digital arrival cards and risk-based entry at borders.</p>
+            </div>
+            <div class="ah-step" style="--i:5">
+                <div class="ah-riser">
+                    <div class="ah-badge">5</div>
+                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Border Surveillance</h3>
+                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Screen every arrival by infection status, with digital arrival cards and risk-based entry at borders.</p>
                 </div>
-
-                <div class="text-center reveal reveal-d4">
-                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">6</span></div>
-                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Post Release</h3>
-                    <p class="text-gray-500 text-[13px] leading-relaxed">Vaccination management, lab and LIS integration, and nationwide testing close the loop after recovery.</p>
+            </div>
+            <div class="ah-step" style="--i:6">
+                <div class="ah-riser">
+                    <div class="ah-badge">6</div>
+                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Post Release</h3>
+                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Vaccination management, lab and LIS integration, and nationwide testing close the loop after recovery.</p>
                 </div>
-
             </div>
         </div>
 
@@ -885,6 +885,36 @@
             <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-gray-900">One orchestrator behind every step.</strong> A central Disease Control Orchestrator manages patients, facilities, diseases, forms and workflows from a single console.</p>
         </div>
     </div>
+
+    <style>
+        .ah-stairs { display:grid; grid-template-columns:1fr; gap:1rem; }
+        @media (min-width:640px){ .ah-stairs { grid-template-columns:repeat(2,1fr); } }
+        @media (min-width:1024px){
+            .ah-stairs { display:flex; align-items:flex-end; gap:0.6rem; }
+            .ah-stairs .ah-step { flex:1 1 0; min-width:0; }
+            .ah-stairs .ah-step .ah-riser { margin-bottom: calc((var(--i) - 1) * 48px); min-height:190px; }
+        }
+        .ah-riser {
+            position:relative; background:#fff; border:1px solid #eef0f3; border-top:3px solid #6396F1;
+            border-radius:14px; padding:18px 16px; box-shadow:0 4px 16px rgba(17,24,39,0.05);
+            animation: ahRiser 7.2s ease-in-out infinite; animation-delay: calc((var(--i) - 1) * 1.2s);
+        }
+        .ah-badge {
+            width:42px; height:42px; border-radius:9999px; background:#6396F1; color:#fff;
+            font-weight:800; font-size:1.05rem; display:flex; align-items:center; justify-content:center;
+            margin-bottom:12px; box-shadow:0 6px 14px rgba(99,150,241,0.35);
+            animation: ahBadge 7.2s ease-in-out infinite; animation-delay: calc((var(--i) - 1) * 1.2s);
+        }
+        @keyframes ahRiser {
+            0%,18%,100% { box-shadow:0 4px 16px rgba(17,24,39,0.05); border-top-color:#6396F1; transform:translateY(0); }
+            6% { box-shadow:0 16px 34px rgba(99,150,241,0.22); border-top-color:#2365B1; transform:translateY(-6px); }
+        }
+        @keyframes ahBadge {
+            0%,18%,100% { box-shadow:0 6px 14px rgba(99,150,241,0.35); transform:scale(1); }
+            6% { box-shadow:0 0 0 9px rgba(99,150,241,0.22), 0 10px 22px rgba(99,150,241,0.55); transform:scale(1.16); }
+        }
+        @media (prefers-reduced-motion: reduce){ .ah-riser, .ah-badge { animation:none; } }
+    </style>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
