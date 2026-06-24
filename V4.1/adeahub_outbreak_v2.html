@@ -835,47 +835,60 @@
             <p class="text-lg text-gray-500 max-w-3xl mx-auto">Six coordinated steps take public health teams from nationwide readiness to post-release recovery — each one builds on the last.</p>
         </div>
 
-        <div class="ah-stairs reveal">
-            <div class="ah-step" style="--i:1">
-                <div class="ah-riser">
-                    <div class="ah-badge">1</div>
-                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Outbreak Management <span class="block text-[11px] font-semibold text-gray-400">Nationwide</span></h3>
-                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Register the whole population, map cases by area, and push geo-targeted alerts across every zone and district.</p>
-                </div>
+        <div class="ah-stairs-wrap relative reveal">
+            <!-- Decorations (desktop only) — fill the top-left and bottom-right blank corners -->
+            <div class="ah-deco hidden lg:block" aria-hidden="true">
+                <svg class="ah-deco-line" preserveAspectRatio="none" viewBox="0 0 100 100"><line x1="3" y1="74" x2="97" y2="16" stroke="rgba(99,150,241,0.30)" stroke-width="0.4" stroke-dasharray="1.1 1.7" stroke-linecap="round"/></svg>
+                <span class="ah-dots ah-dots-tl"></span>
+                <span class="ah-dots ah-dots-br"></span>
+                <span class="ah-ring ah-ring-tl"></span>
+                <span class="ah-ring ah-ring-tl2"></span>
+                <span class="ah-ring ah-ring-br"></span>
+                <span class="ah-dot-accent"></span>
             </div>
-            <div class="ah-step" style="--i:2">
-                <div class="ah-riser">
-                    <div class="ah-badge">2</div>
-                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Quarantine</h3>
-                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Manage positive cases under digital Home Surveillance Orders, with daily health checks and automatic ER escalation.</p>
+
+            <div class="ah-stairs">
+                <div class="ah-step" style="--i:1">
+                    <div class="ah-riser">
+                        <div class="ah-badge">1</div>
+                        <h3 class="text-[15px] font-bold text-gray-900 mb-1.5 leading-snug">Outbreak Management (Nation-wide)</h3>
+                        <p class="text-gray-500 text-[12.5px] leading-relaxed">Register the whole population, map cases by area, and push geo-targeted alerts across every zone and district.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="ah-step" style="--i:3">
-                <div class="ah-riser">
-                    <div class="ah-badge">3</div>
-                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Contact Tracing</h3>
-                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Identify close contacts and place them under surveillance orders to limit movement and get tested.</p>
+                <div class="ah-step" style="--i:2">
+                    <div class="ah-riser">
+                        <div class="ah-badge">2</div>
+                        <h3 class="text-[15px] font-bold text-gray-900 mb-1.5 leading-snug">Quarantine</h3>
+                        <p class="text-gray-500 text-[12.5px] leading-relaxed">Manage positive cases under digital Home Surveillance Orders, with daily health checks and automatic ER escalation.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="ah-step" style="--i:4">
-                <div class="ah-riser">
-                    <div class="ah-badge">4</div>
-                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Access Management</h3>
-                    <p class="text-gray-500 text-[12.5px] leading-relaxed">QR check-in at public venues keeps infected and exposed people out of high-risk spaces.</p>
+                <div class="ah-step" style="--i:3">
+                    <div class="ah-riser">
+                        <div class="ah-badge">3</div>
+                        <h3 class="text-[15px] font-bold text-gray-900 mb-1.5 leading-snug">Contact Tracing</h3>
+                        <p class="text-gray-500 text-[12.5px] leading-relaxed">Identify close contacts and place them under surveillance orders to limit movement and get tested.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="ah-step" style="--i:5">
-                <div class="ah-riser">
-                    <div class="ah-badge">5</div>
-                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Border Surveillance</h3>
-                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Screen every arrival by infection status, with digital arrival cards and risk-based entry at borders.</p>
+                <div class="ah-step" style="--i:4">
+                    <div class="ah-riser">
+                        <div class="ah-badge">4</div>
+                        <h3 class="text-[15px] font-bold text-gray-900 mb-1.5 leading-snug">Access Management</h3>
+                        <p class="text-gray-500 text-[12.5px] leading-relaxed">QR check-in at public venues keeps infected and exposed people out of high-risk spaces.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="ah-step" style="--i:6">
-                <div class="ah-riser">
-                    <div class="ah-badge">6</div>
-                    <h3 class="text-[15px] font-bold text-gray-900 mb-1 leading-snug">Post Release</h3>
-                    <p class="text-gray-500 text-[12.5px] leading-relaxed">Vaccination management, lab and LIS integration, and nationwide testing close the loop after recovery.</p>
+                <div class="ah-step" style="--i:5">
+                    <div class="ah-riser">
+                        <div class="ah-badge">5</div>
+                        <h3 class="text-[15px] font-bold text-gray-900 mb-1.5 leading-snug">Border Surveillance</h3>
+                        <p class="text-gray-500 text-[12.5px] leading-relaxed">Screen every arrival by infection status, with digital arrival cards and risk-based entry at borders.</p>
+                    </div>
+                </div>
+                <div class="ah-step" style="--i:6">
+                    <div class="ah-riser">
+                        <div class="ah-badge">6</div>
+                        <h3 class="text-[15px] font-bold text-gray-900 mb-1.5 leading-snug">Post Release</h3>
+                        <p class="text-gray-500 text-[12.5px] leading-relaxed">Vaccination management, lab and LIS integration, and nationwide testing close the loop after recovery.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -887,12 +900,13 @@
     </div>
 
     <style>
-        .ah-stairs { display:grid; grid-template-columns:1fr; gap:1rem; }
+        .ah-stairs { display:grid; grid-template-columns:1fr; gap:1rem; position:relative; z-index:1; }
         @media (min-width:640px){ .ah-stairs { grid-template-columns:repeat(2,1fr); } }
         @media (min-width:1024px){
-            .ah-stairs { display:flex; align-items:flex-end; gap:0.6rem; }
+            .ah-stairs { display:flex; align-items:flex-start; gap:0.6rem; }
             .ah-stairs .ah-step { flex:1 1 0; min-width:0; }
-            .ah-stairs .ah-step .ah-riser { margin-bottom: calc((var(--i) - 1) * 48px); min-height:190px; }
+            /* even rise measured at the TOP of each box: step 1 lowest, step 6 highest, uniform 52px */
+            .ah-stairs .ah-step .ah-riser { margin-top: calc((6 - var(--i)) * 52px); min-height:252px; }
         }
         .ah-riser {
             position:relative; background:#fff; border:1px solid #eef0f3; border-top:3px solid #6396F1;
@@ -914,6 +928,20 @@
             6% { box-shadow:0 0 0 9px rgba(99,150,241,0.22), 0 10px 22px rgba(99,150,241,0.55); transform:scale(1.16); }
         }
         @media (prefers-reduced-motion: reduce){ .ah-riser, .ah-badge { animation:none; } }
+        /* decorations */
+        .ah-deco { position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+        .ah-deco-line { position:absolute; inset:0; width:100%; height:100%; }
+        .ah-dots { position:absolute; width:300px; height:210px;
+            background-image: radial-gradient(circle, rgba(99,150,241,0.30) 1.5px, transparent 1.7px);
+            background-size: 18px 18px; }
+        .ah-dots-tl { top:0; left:0; -webkit-mask-image:linear-gradient(135deg, rgba(0,0,0,0.9), transparent 62%); mask-image:linear-gradient(135deg, rgba(0,0,0,0.9), transparent 62%); }
+        .ah-dots-br { bottom:0; right:0; -webkit-mask-image:linear-gradient(315deg, rgba(0,0,0,0.9), transparent 62%); mask-image:linear-gradient(315deg, rgba(0,0,0,0.9), transparent 62%); }
+        .ah-ring { position:absolute; border-radius:9999px; }
+        .ah-ring-tl  { top:18px;  left:150px; width:70px;  height:70px;  border:2px solid rgba(99,150,241,0.20); }
+        .ah-ring-tl2 { top:46px;  left:60px;  width:30px;  height:30px;  border:2px solid rgba(242,199,71,0.45); }
+        .ah-ring-br  { bottom:22px; right:155px; width:96px; height:96px; border:2px solid rgba(99,150,241,0.18); }
+        .ah-dot-accent { position:absolute; bottom:60px; right:90px; width:12px; height:12px; border-radius:9999px; background:rgba(242,199,71,0.55); }
+        @media (max-width:1023px){ .ah-riser{ animation-delay: calc((var(--i) - 1) * 0.7s) !important; } }
     </style>
 </section>
 
