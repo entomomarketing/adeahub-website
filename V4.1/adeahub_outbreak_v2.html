@@ -700,7 +700,7 @@
                     </div>                </div>
 
                 <!-- Recognition side -->
-                <div class="p-10 md:p-12 flex flex-col justify-start gap-8">
+                <div class="p-10 md:p-12 flex flex-col justify-center gap-8">
                     <!-- Recognition card -->
                     <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
                         <p class="text-xs font-bold tracking-widest text-gray-400 mb-4">Recognition</p>
@@ -716,123 +716,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Public statistics phone — 4 screens cross-fading -->
-                    <div class="flex flex-col items-center reveal reveal-d2">
-                        <div class="relative w-56">
-                            <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-40 transform scale-110"></div>
-                            <div class="phone-frame w-full aspect-[9/19] relative z-10 shadow-2xl border-[8px] border-gray-900">
-                                <div class="phone-notch"></div>
-
-                                <!-- Screen 1: Cases by state -->
-                                <div class="ah-stat-screen" style="animation-delay:0s">
-                                    <div class="bg-adeahub-blue px-3.5 pt-9 pb-2.5">
-                                        <p class="text-[13px] font-bold" style="color:#fff !important;">Statistics</p>
-                                        <div class="flex gap-1 mt-1.5">
-                                            <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">By state</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Trend</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">New</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex-1 bg-white px-3.5 py-3">
-                                        <p class="text-[9px] font-bold mb-2.5" style="color:#374151 !important;">Cases by state</p>
-                                        <div class="space-y-2">
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Selangor</span><span class="font-bold" style="color:#374151 !important;">717,627</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:100%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sarawak</span><span class="font-bold" style="color:#374151 !important;">242,591</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:34%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sabah</span><span class="font-bold" style="color:#374151 !important;">219,566</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:31%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Johor</span><span class="font-bold" style="color:#374151 !important;">219,405</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:31%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Kuala Lumpur</span><span class="font-bold" style="color:#374151 !important;">194,083</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:27%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Kedah</span><span class="font-bold" style="color:#374151 !important;">149,730</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:21%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                        </div>
-                                        <p class="text-[7px] mt-3" style="color:#9AA3AF !important;">Cumulative confirmed cases</p>
-                                    </div>
-                                </div>
-
-                                <!-- Screen 2: National trend -->
-                                <div class="ah-stat-screen" style="animation-delay:4s">
-                                    <div class="bg-adeahub-blue px-3.5 pt-9 pb-2.5">
-                                        <p class="text-[13px] font-bold" style="color:#fff !important;">Statistics</p>
-                                        <div class="flex gap-1 mt-1.5">
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">By state</span>
-                                            <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">Trend</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">New</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex-1 bg-white px-3.5 py-3">
-                                        <p class="text-[9px] font-bold mb-1" style="color:#374151 !important;">Daily cases · 7-day average</p>
-                                        <p class="text-[20px] font-extrabold leading-none" style="color:#14181F !important;">4,212 <span class="text-[8px] font-bold" style="color:#E1463C !important;">▲ today</span></p>
-                                        <svg viewBox="0 0 200 72" preserveAspectRatio="none" style="width:100%;height:78px;margin-top:8px;">
-                                            <defs><linearGradient id="ahTrend" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5BA8E5" stop-opacity="0.35"/><stop offset="1" stop-color="#5BA8E5" stop-opacity="0"/></linearGradient></defs>
-                                            <path d="M0,64 L20,62 L40,58 L60,52 L80,46 L100,40 L120,28 L140,20 L160,12 L180,18 L200,9 L200,72 L0,72 Z" fill="url(#ahTrend)"/>
-                                            <path d="M0,64 L20,62 L40,58 L60,52 L80,46 L100,40 L120,28 L140,20 L160,12 L180,18 L200,9" fill="none" stroke="#2365B1" stroke-width="2.5"/>
-                                        </svg>
-                                        <div class="flex justify-between text-[6px] mt-0.5" style="color:#9AA3AF !important;"><span>Apr 2020</span><span>Jul</span><span>Oct</span></div>
-                                        <div class="grid grid-cols-2 gap-1.5 mt-2.5">
-                                            <div class="rounded-lg border border-gray-100 px-2 py-1.5" style="background:#F7F9FB;"><p class="text-[6px]" style="color:#9AA3AF !important;">Active</p><p class="text-[11px] font-extrabold" style="color:#14181F !important;">79,248</p></div>
-                                            <div class="rounded-lg border border-gray-100 px-2 py-1.5" style="background:#F7F9FB;"><p class="text-[6px]" style="color:#9AA3AF !important;">Recovered</p><p class="text-[11px] font-extrabold" style="color:#1F8A4C !important;">2.41M</p></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Screen 3: New cases -->
-                                <div class="ah-stat-screen" style="animation-delay:8s">
-                                    <div class="bg-adeahub-blue px-3.5 pt-9 pb-2.5">
-                                        <p class="text-[13px] font-bold" style="color:#fff !important;">Statistics</p>
-                                        <div class="flex gap-1 mt-1.5">
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">By state</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Trend</span>
-                                            <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">New</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex-1 bg-white px-3.5 py-3">
-                                        <p class="text-[9px] font-bold mb-0.5" style="color:#374151 !important;">New cases today</p>
-                                        <p class="text-[20px] font-extrabold leading-none" style="color:#E1463C !important;">5,291</p>
-                                        <p class="text-[7px] mb-2.5 mt-0.5" style="color:#9AA3AF !important;">across 14 states · updated 23:59</p>
-                                        <div class="space-y-2">
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Selangor</span><span class="font-bold" style="color:#E1463C !important;">1,167</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:100%;background:#E1463C;"></div></div></div>
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sarawak</span><span class="font-bold" style="color:#F3964A !important;">540</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:46%;background:#F3964A;"></div></div></div>
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sabah</span><span class="font-bold" style="color:#F3964A !important;">318</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:27%;background:#F3964A;"></div></div></div>
-                                            <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Johor</span><span class="font-bold" style="color:#5BA8E5 !important;">286</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:25%;background:#5BA8E5;"></div></div></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Screen 4: Cases overview -->
-                                <div class="ah-stat-screen" style="animation-delay:12s">
-                                    <div class="bg-adeahub-blue px-3.5 pt-9 pb-2.5">
-                                        <p class="text-[13px] font-bold" style="color:#fff !important;">Statistics</p>
-                                        <div class="flex gap-1 mt-1.5">
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">By state</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Trend</span>
-                                            <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">New</span>
-                                            <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">Overview</span>
-                                        </div>
-                                    </div>
-                                    <div class="flex-1 bg-white px-3.5 py-3">
-                                        <p class="text-[9px] font-bold mb-2.5" style="color:#374151 !important;">Cases overview</p>
-                                        <div class="rounded-lg border border-gray-100 overflow-hidden">
-                                            <div class="grid grid-cols-3 text-[7px] font-bold px-2 py-1.5" style="background:#F2F5F8;color:#9AA3AF !important;"><span>State</span><span class="text-right">14-day</span><span class="text-right">New</span></div>
-                                            <div class="grid grid-cols-3 text-[8px] px-2 py-2 border-t border-gray-100"><span class="font-bold" style="color:#1A1D23 !important;">Total</span><span class="text-right font-extrabold" style="color:#E1463C !important;">79,248</span><span class="text-right font-extrabold" style="color:#E1463C !important;">5,291</span></div>
-                                            <div class="grid grid-cols-3 text-[8px] px-2 py-2 border-t border-gray-100"><span style="color:#4B5563 !important;">Selangor</span><span class="text-right" style="color:#4B5563 !important;">15,610</span><span class="text-right font-semibold" style="color:#E1463C !important;">1,167</span></div>
-                                            <div class="grid grid-cols-3 text-[8px] px-2 py-2 border-t border-gray-100"><span style="color:#4B5563 !important;">Sarawak</span><span class="text-right" style="color:#4B5563 !important;">8,852</span><span class="text-right font-semibold" style="color:#E1463C !important;">540</span></div>
-                                            <div class="grid grid-cols-3 text-[8px] px-2 py-2 border-t border-gray-100"><span style="color:#4B5563 !important;">Sabah</span><span class="text-right" style="color:#4B5563 !important;">7,140</span><span class="text-right font-semibold" style="color:#E1463C !important;">318</span></div>
-                                        </div>
-                                        <p class="text-[7px] mt-2.5" style="color:#9AA3AF !important;">14-day movement · new cases</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <p class="text-[11px] text-gray-400 mt-4 text-center">Live public statistics on the national platform</p>
-                    </div>
-                    <style>
-                        .ah-stat-screen { position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; animation: ahStatFade 16s ease-in-out infinite; }
-                        @keyframes ahStatFade { 0%{opacity:0} 3%{opacity:1} 25%{opacity:1} 28%{opacity:0} 100%{opacity:0} }
-                        @media (prefers-reduced-motion: reduce) { .ah-stat-screen { animation: none; } .ah-stat-screen:first-of-type { opacity:1; } }
-                    </style>
                 </div>
 
             </div>
@@ -944,319 +827,277 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 3B: DETECTION-TO-CONTAINMENT LIFECYCLE
+     SECTION 3B: THE SIX-STEP OUTBREAK WORKFLOW
 ═══════════════════════════════════════════════════ -->
 <section class="py-24 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="text-center mb-16 reveal">
-            <span class="section-label">How it works</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">From detection to containment, one orchestrated journey.</h2>
-            <p class="text-lg text-gray-500 max-w-3xl mx-auto">AH Outbreak Management guides every case through a single, time-sequenced response — so no patient and no contact is lost between detection and recovery.</p>
+            <span class="section-label">The end-to-end workflow</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Manage a disease outbreak at scale.</h2>
+            <p class="text-lg text-gray-500 max-w-3xl mx-auto">Six coordinated steps take public health teams from nationwide readiness to post-release recovery — every case tracked, every contact reached.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="relative">
+            <div class="hidden lg:block absolute top-6 left-[8%] right-[8%] h-0.5 bg-gradient-to-r from-blue-200 via-adeahub-blue to-blue-200" aria-hidden="true"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-x-5 gap-y-10 relative">
 
-            <div class="cap-card bg-white p-6 border border-gray-100 reveal reveal-d1">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-sm font-extrabold shrink-0">1</span>
-                    <div class="bg-blue-50 w-10 h-10 rounded-xl flex items-center justify-center text-adeahub-blue"><i data-lucide="bell-ring" class="w-5 h-5"></i></div>
+                <div class="text-center reveal reveal-d1">
+                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">1</span></div>
+                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Outbreak Management <span class="block text-xs font-semibold text-gray-400">Nationwide</span></h3>
+                    <p class="text-gray-500 text-[13px] leading-relaxed">Register the whole population, map cases by area, and push geo-targeted alerts across every zone and district.</p>
                 </div>
-                <h3 class="text-base font-bold text-gray-900 mb-1.5">Surveillance &amp; alerts</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Live disease heatmaps, geo-triggered danger-zone and quarantine alerts keep the public and officers informed.</p>
-            </div>
 
-            <div class="cap-card bg-white p-6 border border-gray-100 reveal reveal-d2">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-sm font-extrabold shrink-0">2</span>
-                    <div class="bg-purple-50 w-10 h-10 rounded-xl flex items-center justify-center text-purple-600"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
+                <div class="text-center reveal reveal-d2">
+                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">2</span></div>
+                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Quarantine</h3>
+                    <p class="text-gray-500 text-[13px] leading-relaxed">Manage positive cases under digital Home Surveillance Orders, with daily health checks and automatic ER escalation.</p>
                 </div>
-                <h3 class="text-base font-bold text-gray-900 mb-1.5">Contact tracing</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Bluetooth encounters and location check-ins identify close contacts of suspected cases early.</p>
-            </div>
 
-            <div class="cap-card bg-white p-6 border border-gray-100 reveal reveal-d3">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-sm font-extrabold shrink-0">3</span>
-                    <div class="bg-sky-50 w-10 h-10 rounded-xl flex items-center justify-center text-sky-600"><i data-lucide="clipboard-check" class="w-5 h-5"></i></div>
+                <div class="text-center reveal reveal-d3">
+                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">3</span></div>
+                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Contact Tracing</h3>
+                    <p class="text-gray-500 text-[13px] leading-relaxed">Identify close contacts and place them under surveillance orders to limit movement and get tested.</p>
                 </div>
-                <h3 class="text-base font-bold text-gray-900 mb-1.5">Enrolment</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Self-test, lab tests and risk confirmation enrol each case onto the right care plan with a digital surveillance order.</p>
-            </div>
 
-            <div class="cap-card bg-white p-6 border border-gray-100 reveal reveal-d4">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-sm font-extrabold shrink-0">4</span>
-                    <div class="bg-green-50 w-10 h-10 rounded-xl flex items-center justify-center text-green-600"><i data-lucide="activity" class="w-5 h-5"></i></div>
+                <div class="text-center reveal reveal-d4">
+                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">4</span></div>
+                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Access Management</h3>
+                    <p class="text-gray-500 text-[13px] leading-relaxed">QR check-in at public venues keeps infected and exposed people out of high-risk spaces.</p>
                 </div>
-                <h3 class="text-base font-bold text-gray-900 mb-1.5">Remote monitoring</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Daily home assessments, telehealth and connected devices track severity and keep mild cases out of hospital.</p>
-            </div>
 
-            <div class="cap-card bg-white p-6 border border-gray-100 reveal reveal-d1">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-sm font-extrabold shrink-0">5</span>
-                    <div class="bg-red-50 w-10 h-10 rounded-xl flex items-center justify-center text-red-500"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                <div class="text-center reveal reveal-d4">
+                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">5</span></div>
+                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Border Surveillance</h3>
+                    <p class="text-gray-500 text-[13px] leading-relaxed">Screen every arrival by infection status, with digital arrival cards and risk-based entry at borders.</p>
                 </div>
-                <h3 class="text-base font-bold text-gray-900 mb-1.5">Escalation &amp; de-escalation</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Risk status moves patients to admission or steps them down automatically, balancing hospital load.</p>
-            </div>
 
-            <div class="cap-card bg-white p-6 border border-gray-100 reveal reveal-d2">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-sm font-extrabold shrink-0">6</span>
-                    <div class="bg-yellow-50 w-10 h-10 rounded-xl flex items-center justify-center text-adeahub-yellow"><i data-lucide="file-check-2" class="w-5 h-5"></i></div>
+                <div class="text-center reveal reveal-d4">
+                    <div class="flex justify-center mb-4"><span class="w-12 h-12 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-lg font-extrabold shadow-lg shadow-blue-500/30 ring-4 ring-white relative z-10">6</span></div>
+                    <h3 class="text-base font-bold text-gray-900 mb-1.5 leading-snug">Post Release</h3>
+                    <p class="text-gray-500 text-[13px] leading-relaxed">Vaccination management, lab and LIS integration, and nationwide testing close the loop after recovery.</p>
                 </div>
-                <h3 class="text-base font-bold text-gray-900 mb-1.5">Discharge</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Lab confirmation, a completed surveillance order and a discharge report close each case with confidence.</p>
-            </div>
 
-            <div class="cap-card bg-white p-6 border border-gray-100 reveal reveal-d3">
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="w-8 h-8 rounded-full bg-adeahub-blue text-white flex items-center justify-center text-sm font-extrabold shrink-0">7</span>
-                    <div class="bg-blue-50 w-10 h-10 rounded-xl flex items-center justify-center text-adeahub-blue"><i data-lucide="heart-handshake" class="w-5 h-5"></i></div>
-                </div>
-                <h3 class="text-base font-bold text-gray-900 mb-1.5">Post-recovery support</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Medication reminders, follow-up telehealth and recovery assessments guide patients safely back to daily life.</p>
             </div>
+        </div>
 
-            <div class="bg-adeahub-blue rounded-2xl p-6 flex flex-col justify-center reveal reveal-d4">
-                <p class="text-white font-bold text-lg leading-snug mb-2">One orchestrator behind every stage.</p>
-                <p class="text-blue-100 text-sm leading-relaxed">A central Disease Control Orchestrator manages patients, facilities, diseases, forms and workflows from a single console.</p>
-            </div>
-
+        <div class="mt-14 max-w-3xl mx-auto bg-blue-50/60 border border-blue-100 rounded-2xl px-6 py-5 flex items-center gap-4 reveal">
+            <div class="bg-adeahub-blue w-11 h-11 rounded-xl flex items-center justify-center text-white shrink-0"><i data-lucide="layout-dashboard" class="w-5 h-5"></i></div>
+            <p class="text-sm text-gray-600 leading-relaxed"><strong class="text-gray-900">One orchestrator behind every step.</strong> A central Disease Control Orchestrator manages patients, facilities, diseases, forms and workflows from a single console.</p>
         </div>
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
-     SECTION 3C: PUBLIC DASHBOARDS — TRANSPARENCY & INFOTAINMENT
+     SECTION 4: WHAT IT COVERS — READINESS CAPABILITIES + INFOTAINMENT
 ═══════════════════════════════════════════════════ -->
 <section class="py-24 bg-adeahub-lightbg border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-            <!-- Statistics phone -->
-            <div class="reveal-left flex justify-center lg:justify-start order-2 lg:order-1">
-                <div class="relative w-72">
-                    <div class="absolute inset-0 bg-white rounded-full blur-3xl opacity-25 transform scale-125"></div>
-                    <div class="phone-frame w-full aspect-[9/19] flex flex-col hover:-translate-y-2 transition duration-500 shadow-2xl relative z-10 border-[10px] border-gray-900">
-                        <div class="phone-notch"></div>
-                        <!-- header -->
-                        <div class="bg-adeahub-blue px-5 pt-10 pb-4 rounded-b-2xl">
-                            <div class="flex items-center gap-2">
-                                <i data-lucide="chevron-left" class="w-4 h-4" style="color:#fff !important;"></i>
-                                <span class="text-sm font-bold" style="color:#fff !important;">Statistics</span>
-                                <span class="ml-auto inline-flex items-center gap-1 text-[8px] font-semibold px-2 py-0.5 rounded-full" style="background:rgba(255,255,255,0.18);color:#fff !important;"><i data-lucide="rotate-cw" class="w-2.5 h-2.5"></i> Live</span>
-                            </div>
-                            <div class="flex gap-1.5 mt-3">
-                                <span class="text-[9px] font-bold px-2.5 py-1 rounded-full" style="background:#fff;color:#2365B1 !important;">National</span>
-                                <span class="text-[9px] font-semibold px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.18);color:#fff !important;">By region</span>
-                                <span class="text-[9px] font-semibold px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.18);color:#fff !important;">Trends</span>
-                            </div>
-                        </div>
-                        <!-- body -->
-                        <div class="flex-1 bg-white p-4 space-y-3 overflow-hidden -mt-3 pt-5">
-                            <!-- overview chips -->
-                            <div class="grid grid-cols-2 gap-2">
-                                <div class="rounded-xl border border-gray-100 bg-gray-50 px-3 py-2.5">
-                                    <p class="text-[8px] font-semibold" style="color:#9AA3AF !important;">Active cases</p>
-                                    <p class="text-base font-extrabold leading-tight" style="color:#14181F !important;">12,480</p>
-                                </div>
-                                <div class="rounded-xl border border-gray-100 bg-gray-50 px-3 py-2.5">
-                                    <p class="text-[8px] font-semibold" style="color:#9AA3AF !important;">New today</p>
-                                    <p class="text-base font-extrabold leading-tight" style="color:#E1463C !important;">+842</p>
-                                </div>
-                            </div>
-                            <!-- cases by region bar chart -->
-                            <div class="rounded-xl border border-gray-100 p-3">
-                                <p class="text-[10px] font-bold mb-2.5" style="color:#374151 !important;">Cases by region</p>
-                                <div class="space-y-2">
-                                    <div>
-                                        <div class="flex justify-between text-[8px] mb-0.5"><span style="color:#6B7280 !important;">Central</span><span class="font-bold" style="color:#374151 !important;">24,800</span></div>
-                                        <div class="h-2 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:100%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between text-[8px] mb-0.5"><span style="color:#6B7280 !important;">Northern</span><span class="font-bold" style="color:#374151 !important;">18,200</span></div>
-                                        <div class="h-2 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:73%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between text-[8px] mb-0.5"><span style="color:#6B7280 !important;">Eastern</span><span class="font-bold" style="color:#374151 !important;">12,400</span></div>
-                                        <div class="h-2 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:50%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between text-[8px] mb-0.5"><span style="color:#6B7280 !important;">Southern</span><span class="font-bold" style="color:#374151 !important;">9,600</span></div>
-                                        <div class="h-2 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:39%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between text-[8px] mb-0.5"><span style="color:#6B7280 !important;">Western</span><span class="font-bold" style="color:#374151 !important;">7,100</span></div>
-                                        <div class="h-2 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:29%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 14-day movement -->
-                            <div class="rounded-xl border border-gray-100 divide-y divide-gray-100">
-                                <div class="flex items-center justify-between px-3 py-1.5">
-                                    <span class="text-[9px] font-semibold" style="color:#9AA3AF !important;">14-day movement</span>
-                                    <span class="text-[8px] font-semibold" style="color:#9AA3AF !important;">new cases</span>
-                                </div>
-                                <div class="flex items-center justify-between px-3 py-1.5">
-                                    <span class="text-[10px]" style="color:#374151 !important;">Central</span>
-                                    <span class="inline-flex items-center gap-1 text-[9px] font-bold" style="color:#E1463C !important;"><i data-lucide="trending-up" class="w-3 h-3"></i> 3,210</span>
-                                </div>
-                                <div class="flex items-center justify-between px-3 py-1.5">
-                                    <span class="text-[10px]" style="color:#374151 !important;">Northern</span>
-                                    <span class="inline-flex items-center gap-1 text-[9px] font-bold" style="color:#1F8A4C !important;"><i data-lucide="trending-down" class="w-3 h-3"></i> 1,940</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- bottom nav -->
-                        <div class="h-12 bg-white border-t border-gray-100 flex justify-around items-center pb-1">
-                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="home" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Home</span></div>
-                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="bar-chart-2" class="w-4 h-4" style="color:#5BA8E5 !important;"></i><span class="text-[7px] font-bold" style="color:#5BA8E5 !important;">Statistics</span></div>
-                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="map" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Map</span></div>
-                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="user" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Profile</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Copy -->
-            <div class="reveal-right order-1 lg:order-2">
-                <span class="section-label">Public dashboards</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">Transparency that keeps the public informed — and compliant.</h2>
-                <div class="space-y-5 text-lg text-gray-600 leading-relaxed">
-                    <p>When people can see the outbreak around them, they act on it. Public statistics turn raw case data into clear information citizens trust.</p>
-                    <p>AH Outbreak Management publishes <strong class="text-gray-800">live national and regional figures</strong> — cases by area, new infections and 14-day movement — in a view people actually open.</p>
-                    <p>The result is higher compliance, fewer rumours, and a population that moves with the response instead of against it.</p>
-                </div>
-                <div class="mt-10 flex flex-wrap gap-10">
-                    <div>
-                        <p class="text-2xl font-extrabold text-gray-900 leading-tight">Real-time</p>
-                        <p class="text-sm text-gray-600">national &amp; regional figures</p>
-                    </div>
-                    <div>
-                        <p class="text-2xl font-extrabold leading-tight" style="color:#F4D06F !important;">Higher compliance</p>
-                        <p class="text-sm text-gray-600">when the public stays informed</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     SECTION 4: CAPABILITY OVERVIEW (COMPACT — 6 DOMAINS)
-═══════════════════════════════════════════════════ -->
-<section class="py-24 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16 reveal">
+        <div class="text-center mb-14 reveal">
             <span class="section-label">What it covers</span>
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Every lever you need to contain an outbreak.</h2>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto">From early detection to border control, AH Outbreak Management is modular by design — deploy the core first, then scale as your readiness grows.</p>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto">One platform spans detection, control and recovery — the full health-emergency readiness toolkit, plus the public app citizens use every day.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
-            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d1">
-                <div class="bg-blue-50 w-12 h-12 rounded-2xl flex items-center justify-center text-adeahub-blue mb-5">
-                    <i data-lucide="siren" class="w-6 h-6"></i>
+            <!-- Infotainment phone -->
+            <div class="lg:col-span-5 flex flex-col items-center reveal-left lg:sticky lg:top-28">
+                <div class="relative w-60">
+                    <div class="absolute inset-0 bg-blue-100 rounded-full blur-3xl opacity-40 transform scale-110"></div>
+                    <div class="phone-frame w-full aspect-[9/19] relative z-10 shadow-2xl border-[9px] border-gray-900">
+                        <div class="phone-notch"></div>
+
+                        <!-- Screen 1: Cases by state -->
+                        <div class="ah-stat-screen" style="animation-delay:0s">
+                            <div class="bg-adeahub-blue px-3.5 pt-9 pb-2.5">
+                                <p class="text-[13px] font-bold" style="color:#fff !important;">Statistics</p>
+                                <div class="flex gap-1 mt-1.5">
+                                    <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">By state</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Trend</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">New</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white px-3.5 py-3">
+                                <p class="text-[9px] font-bold mb-2.5" style="color:#374151 !important;">Cases by state</p>
+                                <div class="space-y-2">
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Selangor</span><span class="font-bold" style="color:#374151 !important;">717,627</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:100%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sarawak</span><span class="font-bold" style="color:#374151 !important;">242,591</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:34%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sabah</span><span class="font-bold" style="color:#374151 !important;">219,566</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:31%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Johor</span><span class="font-bold" style="color:#374151 !important;">219,405</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:31%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Kuala Lumpur</span><span class="font-bold" style="color:#374151 !important;">194,083</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:27%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Kedah</span><span class="font-bold" style="color:#374151 !important;">149,730</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:21%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
+                                </div>
+                                <p class="text-[7px] mt-3" style="color:#9AA3AF !important;">Cumulative confirmed cases</p>
+                            </div>
+                        </div>
+
+                        <!-- Screen 2: National trend -->
+                        <div class="ah-stat-screen" style="animation-delay:4s">
+                            <div class="bg-adeahub-blue px-3.5 pt-9 pb-2.5">
+                                <p class="text-[13px] font-bold" style="color:#fff !important;">Statistics</p>
+                                <div class="flex gap-1 mt-1.5">
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">By state</span>
+                                    <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">Trend</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">New</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white px-3.5 py-3">
+                                <p class="text-[9px] font-bold mb-1" style="color:#374151 !important;">Daily cases · 7-day average</p>
+                                <p class="text-[20px] font-extrabold leading-none" style="color:#14181F !important;">4,212 <span class="text-[8px] font-bold" style="color:#E1463C !important;">▲ today</span></p>
+                                <svg viewBox="0 0 200 72" preserveAspectRatio="none" style="width:100%;height:78px;margin-top:8px;">
+                                    <defs><linearGradient id="ahTrend2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5BA8E5" stop-opacity="0.35"/><stop offset="1" stop-color="#5BA8E5" stop-opacity="0"/></linearGradient></defs>
+                                    <path d="M0,64 L20,62 L40,58 L60,52 L80,46 L100,40 L120,28 L140,20 L160,12 L180,18 L200,9 L200,72 L0,72 Z" fill="url(#ahTrend2)"/>
+                                    <path d="M0,64 L20,62 L40,58 L60,52 L80,46 L100,40 L120,28 L140,20 L160,12 L180,18 L200,9" fill="none" stroke="#2365B1" stroke-width="2.5"/>
+                                </svg>
+                                <div class="flex justify-between text-[6px] mt-0.5" style="color:#9AA3AF !important;"><span>Apr 2020</span><span>Jul</span><span>Oct</span></div>
+                                <div class="grid grid-cols-2 gap-1.5 mt-2.5">
+                                    <div class="rounded-lg border border-gray-100 px-2 py-1.5" style="background:#F7F9FB;"><p class="text-[6px]" style="color:#9AA3AF !important;">Active</p><p class="text-[11px] font-extrabold" style="color:#14181F !important;">79,248</p></div>
+                                    <div class="rounded-lg border border-gray-100 px-2 py-1.5" style="background:#F7F9FB;"><p class="text-[6px]" style="color:#9AA3AF !important;">Recovered</p><p class="text-[11px] font-extrabold" style="color:#1F8A4C !important;">2.41M</p></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Screen 3: New cases -->
+                        <div class="ah-stat-screen" style="animation-delay:8s">
+                            <div class="bg-adeahub-blue px-3.5 pt-9 pb-2.5">
+                                <p class="text-[13px] font-bold" style="color:#fff !important;">Statistics</p>
+                                <div class="flex gap-1 mt-1.5">
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">By state</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Trend</span>
+                                    <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">New</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Overview</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white px-3.5 py-3">
+                                <p class="text-[9px] font-bold mb-0.5" style="color:#374151 !important;">New cases today</p>
+                                <p class="text-[20px] font-extrabold leading-none" style="color:#E1463C !important;">5,291</p>
+                                <p class="text-[7px] mb-2.5 mt-0.5" style="color:#9AA3AF !important;">across 14 states · updated 23:59</p>
+                                <div class="space-y-2">
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Selangor</span><span class="font-bold" style="color:#E1463C !important;">1,167</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:100%;background:#E1463C;"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sarawak</span><span class="font-bold" style="color:#F3964A !important;">540</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:46%;background:#F3964A;"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sabah</span><span class="font-bold" style="color:#F3964A !important;">318</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:27%;background:#F3964A;"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Johor</span><span class="font-bold" style="color:#5BA8E5 !important;">286</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:25%;background:#5BA8E5;"></div></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Screen 4: Cases overview -->
+                        <div class="ah-stat-screen" style="animation-delay:12s">
+                            <div class="bg-adeahub-blue px-3.5 pt-9 pb-2.5">
+                                <p class="text-[13px] font-bold" style="color:#fff !important;">Statistics</p>
+                                <div class="flex gap-1 mt-1.5">
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">By state</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">Trend</span>
+                                    <span class="text-[7px] font-semibold px-1.5 py-0.5 rounded-full" style="background:rgba(255,255,255,0.22);color:#fff !important;">New</span>
+                                    <span class="text-[7px] font-bold px-1.5 py-0.5 rounded-full" style="background:#fff;color:#2365B1 !important;">Overview</span>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white px-3.5 py-3">
+                                <p class="text-[9px] font-bold mb-2.5" style="color:#374151 !important;">Cases overview</p>
+                                <div class="rounded-lg border border-gray-100 overflow-hidden">
+                                    <div class="grid grid-cols-3 text-[7px] font-bold px-2 py-1.5" style="background:#F2F5F8;color:#9AA3AF !important;"><span>State</span><span class="text-right">14-day</span><span class="text-right">New</span></div>
+                                    <div class="grid grid-cols-3 text-[8px] px-2 py-2 border-t border-gray-100"><span class="font-bold" style="color:#1A1D23 !important;">Total</span><span class="text-right font-extrabold" style="color:#E1463C !important;">79,248</span><span class="text-right font-extrabold" style="color:#E1463C !important;">5,291</span></div>
+                                    <div class="grid grid-cols-3 text-[8px] px-2 py-2 border-t border-gray-100"><span style="color:#4B5563 !important;">Selangor</span><span class="text-right" style="color:#4B5563 !important;">15,610</span><span class="text-right font-semibold" style="color:#E1463C !important;">1,167</span></div>
+                                    <div class="grid grid-cols-3 text-[8px] px-2 py-2 border-t border-gray-100"><span style="color:#4B5563 !important;">Sarawak</span><span class="text-right" style="color:#4B5563 !important;">8,852</span><span class="text-right font-semibold" style="color:#E1463C !important;">540</span></div>
+                                    <div class="grid grid-cols-3 text-[8px] px-2 py-2 border-t border-gray-100"><span style="color:#4B5563 !important;">Sabah</span><span class="text-right" style="color:#4B5563 !important;">7,140</span><span class="text-right font-semibold" style="color:#E1463C !important;">318</span></div>
+                                </div>
+                                <p class="text-[7px] mt-2.5" style="color:#9AA3AF !important;">14-day movement · new cases</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Early Warning Dashboard</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Flags symptom and case spikes by ward, zone or district, with threshold alerts that reach leadership before a cluster becomes an outbreak.</p>
+                <p class="text-[12px] text-gray-400 mt-4 text-center">Public statistics &amp; infotainment — what citizens see in the national app</p>
             </div>
 
-            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d2">
-                <div class="bg-purple-50 w-12 h-12 rounded-2xl flex items-center justify-center text-purple-600 mb-5">
-                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+            <!-- Readiness capability blocks -->
+            <div class="lg:col-span-7">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="siren" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Early Warning Dashboard</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">Symptom and case-spike detection with threshold alerts to leadership.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d2">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="gauge" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Population Triage &amp; Self-Assessment</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">Algorithm-based risk status, self-assessment and self-declared results mobilise people fast.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d3">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="share-2" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Contact Tracing</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">Check-in and Bluetooth tracing surface close contacts of suspected cases early.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="scan-line" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Access &amp; Border Control</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">QR venue check-in, port-of-entry workflows and risk-based traveller cards.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="home" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Legally-Backed Quarantine</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">Home Surveillance Orders enforce isolation with daily assessment and escalation.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d2">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="flask-conical" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Labs, Tests &amp; Interoperability</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">Nationwide lab integration with IPS on WHO GDHCN moves results across providers and borders.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d3">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="syringe" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Immunisation &amp; Certificates</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">Vaccination timelines, digital certificates and the national kids immunisation programme.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d4">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="bar-chart-2" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Disease Tracker &amp; Public Dashboards</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">Live heatmaps, hotspots and public statistics inform teams and citizens alike.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-5 border border-gray-100 hover:border-blue-200 hover:shadow-md transition reveal reveal-d2 sm:col-span-2">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center text-adeahub-blue shrink-0"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
+                            <h3 class="text-[15px] font-bold text-gray-900 leading-tight">Case Management &amp; Citizen Services</h3>
+                        </div>
+                        <p class="text-gray-500 text-[13px] leading-relaxed">Government-run case management, disease care plans, on-demand appointments, a facility locator and donor pledges — all inside the public health app.</p>
+                    </div>
+
                 </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Disease Tracker &amp; Hotspots</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Live heatmaps and colour-coded red, orange and green zones map spread and send teams straight to where cases are rising.</p>
             </div>
 
-            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d3">
-                <div class="bg-sky-50 w-12 h-12 rounded-2xl flex items-center justify-center text-sky-600 mb-5">
-                    <i data-lucide="scan-line" class="w-6 h-6"></i>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Access &amp; Border Control</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">QR check-in governs entry to public venues, while risk-based traveller cards and arrival declarations screen every person at ports of entry.</p>
-            </div>
-
-            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d1">
-                <div class="bg-green-50 w-12 h-12 rounded-2xl flex items-center justify-center text-green-600 mb-5">
-                    <i data-lucide="home" class="w-6 h-6"></i>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Legally-Backed Quarantine</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Digital Home Surveillance Orders enforce quarantine with daily assessments, and escalate to care the moment a patient's condition worsens.</p>
-            </div>
-
-            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d2">
-                <div class="bg-red-50 w-12 h-12 rounded-2xl flex items-center justify-center text-red-500 mb-5">
-                    <i data-lucide="syringe" class="w-6 h-6"></i>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Vaccination, Lab &amp; Test QR</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Nationwide lab and LIS integration returns results into patient-linked QR codes carrying vaccination status and digital certificates.</p>
-            </div>
-
-            <div class="cap-card bg-white p-8 border border-gray-100 reveal reveal-d3">
-                <div class="bg-yellow-50 w-12 h-12 rounded-2xl flex items-center justify-center text-adeahub-yellow mb-5">
-                    <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
-                </div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Public Dashboards &amp; Infotainment</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Real-time public statistics keep citizens informed by region and disease, turning everyday transparency into trust and compliance.</p>
-            </div>
-
-        </div>
-
-        <!-- Full readiness toolkit (breadth) -->
-        <div class="mt-8 bg-gray-50 rounded-2xl border border-gray-100 p-7 md:p-8 reveal">
-            <p class="text-xs font-bold tracking-widest text-gray-400 mb-5 text-center">PLUS THE FULL READINESS TOOLKIT</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Population triage &amp; risk mapping</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Contact tracing — check-in &amp; Bluetooth</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Self-assessment risk algorithm</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Outbreak SOP playbooks</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Resource &amp; capacity management</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Immunisation timeline &amp; certificates</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Self-declaration of results</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Health facility locator</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Multi-jurisdiction zones &amp; districts</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Facility coordination &amp; reporting</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">Nationwide testing &amp; LIS integration</span></div>
-                <div class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0"></i><span class="text-sm text-gray-600">IPS on WHO GDHCN interoperability</span></div>
-            </div>
         </div>
     </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════
-     SECTION 5: THE NUMBERS THAT MATTER — SCALE & IMPACT
-═══════════════════════════════════════════════════ -->
-<section class="py-20 bg-adeahub-blue">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-12 reveal">
-            <p class="text-blue-200 text-sm font-bold tracking-widest mb-2">Scale &amp; impact</p>
-            <h2 class="text-3xl font-bold text-white">The numbers behind a national outbreak response</h2>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d1">
-                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2">5M<span class="text-3xl">+</span></p>
-                <p class="text-blue-200 text-sm font-medium">High-risk cases monitored remotely</p>
-            </div>
-            <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d2">
-                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2">75M<span class="text-3xl">+</span></p>
-                <p class="text-blue-200 text-sm font-medium">Vaccinations recorded with certificates</p>
-            </div>
-            <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d3">
-                <p class="text-5xl md:text-6xl font-extrabold text-white mb-2">4M<span class="text-3xl">+</span></p>
-                <p class="text-blue-200 text-sm font-medium">Health screening records captured</p>
-            </div>
-            <div class="text-center p-8 bg-white/10 rounded-2xl border border-white/20 reveal reveal-d4">
-                <p class="text-5xl md:text-6xl font-extrabold text-adeahub-yellow mb-2">#1</p>
-                <p class="text-blue-200 text-sm font-medium">COVID-19 app worldwide · Data.ai 2021</p>
-            </div>
-        </div>
-    </div>
+    <style>
+        .ah-stat-screen { position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; animation: ahStatFade 16s ease-in-out infinite; }
+        @keyframes ahStatFade { 0%{opacity:0} 3%{opacity:1} 25%{opacity:1} 28%{opacity:0} 100%{opacity:0} }
+        @media (prefers-reduced-motion: reduce) { .ah-stat-screen { animation: none; } .ah-stat-screen:first-of-type { opacity:1; } }
+    </style>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
