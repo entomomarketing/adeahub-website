@@ -17,10 +17,10 @@
                     fontFamily: { sans: ['Outfit', 'sans-serif'] },
                     colors: {
                         adeahub: {
-                            blue: '#5BA8E5',
+                            blue: '#5298F8',
                             yellow: '#F4D06F',
                             gray: '#4B5563',
-                            lightbg: '#5BA8E5'
+                            lightbg: '#5298F8'
                         }
                     },
                     boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.08)' }
@@ -29,7 +29,7 @@
         }
     </script>
     <style>
-        :root { --blue: #5BA8E5; --yellow: #F4D06F; --blue-pale: #EEF4FF; --shadow-blue: rgba(91,168,229,0.15); }
+        :root { --blue: #5298F8; --yellow: #F4D06F; --blue-pale: #EEF4FF; --shadow-blue: rgba(82,152,248,0.15); }
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
 
@@ -53,29 +53,29 @@
 
         /* BUTTON GLOW & SHIMMER */
         @keyframes btnGlow {
-            0%,100% { box-shadow: 0 8px 28px rgba(91,168,229,0.38); }
-            50%      { box-shadow: 0 8px 44px rgba(91,168,229,0.58); }
+            0%,100% { box-shadow: 0 8px 28px rgba(82,152,248,0.38); }
+            50%      { box-shadow: 0 8px 44px rgba(82,152,248,0.58); }
         }
         .btn-glow { animation: btnGlow 2.4s ease-in-out infinite; }
-        .btn-glow:hover { animation: none; box-shadow: 0 12px 40px rgba(91,168,229,0.55); transform: translateY(-2px); transition: all 0.25s ease; }
+        .btn-glow:hover { animation: none; box-shadow: 0 12px 40px rgba(82,152,248,0.55); transform: translateY(-2px); transition: all 0.25s ease; }
         .btn-shimmer { position: relative; overflow: hidden; }
         .btn-shimmer::after { content: ''; position: absolute; top: 0; left: -100%; width: 55%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); }
         .btn-shimmer:hover::after { left: 160%; transition: left 0.55s ease; }
 
         /* SECTION LABEL */
-        .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; color: #5BA8E5; margin-bottom: 14px; }
-        .section-label::before { content: ''; display: block; width: 22px; height: 2px; background: #5BA8E5; border-radius: 2px; }
+        .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; color: #5298F8; margin-bottom: 14px; }
+        .section-label::before { content: ''; display: block; width: 22px; height: 2px; background: #5298F8; border-radius: 2px; }
 
         /* HERO */
         .hero-bg {
             background:
-                radial-gradient(ellipse 75% 65% at 90% 40%, rgba(91,168,229,0.10) 0%, transparent 68%),
-                radial-gradient(ellipse 55% 55% at 8% 80%, rgba(91,168,229,0.07) 0%, transparent 62%),
+                radial-gradient(ellipse 75% 65% at 90% 40%, rgba(82,152,248,0.10) 0%, transparent 68%),
+                radial-gradient(ellipse 55% 55% at 8% 80%, rgba(82,152,248,0.07) 0%, transparent 62%),
                 radial-gradient(ellipse 40% 40% at 50% 5%, rgba(242,199,71,0.06) 0%, transparent 60%),
                 #F8FAFC;
         }
-        .dot-grid { background-image: radial-gradient(circle, rgba(91,168,229,0.11) 1px, transparent 1px); background-size: 28px 28px; }
-        @keyframes badgePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(91,168,229,0.30); } 50% { box-shadow: 0 0 0 7px rgba(91,168,229,0); } }
+        .dot-grid { background-image: radial-gradient(circle, rgba(82,152,248,0.11) 1px, transparent 1px); background-size: 28px 28px; }
+        @keyframes badgePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(82,152,248,0.30); } 50% { box-shadow: 0 0 0 7px rgba(82,152,248,0); } }
         .hero-badge { animation: badgePulse 2.8s ease-in-out infinite; }
         @keyframes floatBlob { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-18px) scale(1.04); } }
         .blob-float-1 { animation: floatBlob 9s ease-in-out infinite; }
@@ -83,29 +83,29 @@
 
         /* CARDS */
         .solution-card { transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease; }
-        .solution-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(91,168,229,0.15); }
+        .solution-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(82,152,248,0.15); }
         .outcome-card { transition: transform 0.28s ease, box-shadow 0.28s ease; position: relative; overflow: hidden; }
-        .outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #5BA8E5, #60a5fa); transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease; }
-        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(91,168,229,0.15); }
+        .outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #5298F8, #60a5fa); transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease; }
+        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(82,152,248,0.15); }
         .outcome-card:hover::before { transform: scaleX(1); }
 
         /* STAT NUMBERS */
-        .stat-num { font-variant-numeric: tabular-nums; background: linear-gradient(135deg, #5BA8E5 0%, #5280d9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-num { font-variant-numeric: tabular-nums; background: linear-gradient(135deg, #5298F8 0%, #5280d9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
         /* GRADIENT TEXT */
-        .gradient-text { background: linear-gradient(135deg, #5BA8E5 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-text { background: linear-gradient(135deg, #5298F8 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
         /* CTA MESH */
         .cta-mesh {
             background:
-                radial-gradient(ellipse 70% 80% at 20% 50%, rgba(91,168,229,0.12) 0%, transparent 65%),
-                radial-gradient(ellipse 50% 60% at 80% 30%, rgba(91,168,229,0.09) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 80% at 20% 50%, rgba(82,152,248,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 60% at 80% 30%, rgba(82,152,248,0.09) 0%, transparent 60%),
                 linear-gradient(135deg, #EEF4FF 0%, #F8FAFC 50%, #F0F7FF 100%);
         }
 
         /* CAPABILITY GRID HOVER */
         .cap-card { border-top: 3px solid transparent; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; border-radius: 20px; }
-        .cap-card:hover { border-top-color: #5BA8E5; transform: translateY(-4px); box-shadow: 0 14px 36px -8px rgba(91,168,229,0.14); }
+        .cap-card:hover { border-top-color: #5298F8; transform: translateY(-4px); box-shadow: 0 14px 36px -8px rgba(82,152,248,0.14); }
 
         /* CASE STUDY STRIP */
         @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -113,15 +113,15 @@
 
         /* PROOF CARDS */
         .proof-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
-        .proof-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px -8px rgba(91,168,229,0.12); }
+        .proof-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px -8px rgba(82,152,248,0.12); }
 
         /* PHONE FRAME (reused from old page) */
         .phone-frame { border-radius: 42px; background: white; position: relative; overflow: hidden; }
         .phone-notch { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 90px; height: 24px; background: #111; border-radius: 20px; z-index: 30; }
 
         /* COMPLIANCE PILL */
-        .compliance-pill { background: white; border: 1px solid rgba(91,168,229,0.14); border-radius: 9999px; padding: 7px 18px; font-size: 0.72rem; font-weight: 700; color: #4B5563; letter-spacing: 0.05em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: all 0.22s; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-        .compliance-pill:hover { background: var(--blue-pale); border-color: rgba(91,168,229,0.35); color: #5BA8E5; }
+        .compliance-pill { background: white; border: 1px solid rgba(82,152,248,0.14); border-radius: 9999px; padding: 7px 18px; font-size: 0.72rem; font-weight: 700; color: #4B5563; letter-spacing: 0.05em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: all 0.22s; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+        .compliance-pill:hover { background: var(--blue-pale); border-color: rgba(82,152,248,0.35); color: #5298F8; }
 
         /* MARQUEE (trust bar) */
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -141,47 +141,47 @@
        ADEAHUB REDESIGN OVERRIDES
        ═══════════════════════════════════════════════════════ */
     :root {
-        --blue: #5BA8E5;
+        --blue: #5298F8;
         --yellow: #F4D06F;
-        --blue-pale: rgba(91,168,229,0.10);
-        --shadow-blue: rgba(91,168,229,0.15);
+        --blue-pale: rgba(82,152,248,0.10);
+        --shadow-blue: rgba(82,152,248,0.15);
     }
 
     /* Gradient text → solid blue */
     .gradient-text {
         background: none !important;
-        -webkit-text-fill-color: #5BA8E5 !important;
-        color: #5BA8E5 !important;
+        -webkit-text-fill-color: #5298F8 !important;
+        color: #5298F8 !important;
     }
 
     /* Stat numbers → solid blue */
     .stat-num {
         background: none !important;
-        -webkit-text-fill-color: #5BA8E5 !important;
-        color: #5BA8E5 !important;
+        -webkit-text-fill-color: #5298F8 !important;
+        color: #5298F8 !important;
     }
 
     /* Section labels → blue on white; yellow on blue bg (overridden below) */
-    .section-label { color: #5BA8E5 !important; }
-    .section-label::before { background: #5BA8E5 !important; }
+    .section-label { color: #5298F8 !important; }
+    .section-label::before { background: #5298F8 !important; }
 
     /* Tab active */
-    .tab-btn.active { background-color: #5BA8E5 !important; }
+    .tab-btn.active { background-color: #5298F8 !important; }
 
     /* Solution card hover border */
-    .solution-card:hover { border-top-color: #5BA8E5 !important; }
+    .solution-card:hover { border-top-color: #5298F8 !important; }
 
     /* Outcome card top bar */
-    .outcome-card::before { background: #5BA8E5 !important; }
+    .outcome-card::before { background: #5298F8 !important; }
 
-    /* ── ALL BLUE SECTION BACKGROUNDS → solid #5BA8E5 ── */
-    .hero-bg { background: #5BA8E5 !important; }
-    .cta-mesh { background: #5BA8E5 !important; }
-    .testimonial-bg { background: #5BA8E5 !important; }
+    /* ── ALL BLUE SECTION BACKGROUNDS → solid #5298F8 ── */
+    .hero-bg { background: #5298F8 !important; }
+    .cta-mesh { background: #5298F8 !important; }
+    .testimonial-bg { background: #5298F8 !important; }
     section.bg-adeahub-lightbg,
-    header.bg-adeahub-lightbg { background-color: #5BA8E5 !important; }
-    section.bg-adeahub-blue { background-color: #5BA8E5 !important; }
-    #cta { background: #5BA8E5 !important; border-top-color: #5280d9 !important; }
+    header.bg-adeahub-lightbg { background-color: #5298F8 !important; }
+    section.bg-adeahub-blue { background-color: #5298F8 !important; }
+    #cta { background: #5298F8 !important; border-top-color: #5280d9 !important; }
 
     /* ── ANIMATED ORB BACKGROUNDS on all blue sections ── */
     .hero-bg,
@@ -448,7 +448,7 @@
         .mega-card:hover { background:#f0f6ff; }
         .mega-card:hover .mega-icon { background:#dbeafe; }
         .mega-icon { width:40px; height:40px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s; }
-        .mega-icon svg { width:18px; height:18px; color:#5BA8E5; }
+        .mega-icon svg { width:18px; height:18px; color:#5298F8; }
         .mega-name { font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:2px; }
         .mega-tag { font-size:0.7rem; color:#6b7280; font-weight:500; margin-bottom:3px; }
         .mega-desc { font-size:0.68rem; color:#9ca3af; line-height:1.4; }
@@ -475,23 +475,23 @@
                     <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                         <!-- Mega header -->
                         <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>adeahub products</span>
-                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5298F8;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5298F8;border-radius:2px;"></span>adeahub products</span>
+                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#5298F8;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
                         </div>
                         <!-- 2-col product grid -->
                         <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px;">
-                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
-                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
+                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5298F8">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
+                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#5298F8">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
                             <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
-                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
-                            <a href="adeahub_outbreak.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Outbreak Management</p><p class="mega-tag">Manage disease outbreaks</p><p class="mega-desc">Detection, tracing, monitoring &amp; containment</p></div></a>
+                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5298F8">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
+                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#5298F8">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
+                            <a href="adeahub_outbreak.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><p class="mega-name"><span style="color:#5298F8">AH</span> Outbreak Management</p><p class="mega-tag">Manage disease outbreaks</p><p class="mega-desc">Detection, tracing, monitoring &amp; containment</p></div></a>
                             <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#eef4ff;"><svg fill="none" stroke="#5BA8E5" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">Work</span><span style="color:#1a1a2a">Wise</span> <span style="font-size:0.62rem;background:#eef4ff;color:#5BA8E5;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
+                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#eef4ff;"><svg fill="none" stroke="#5298F8" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name"><span style="color:#5298F8">Work</span><span style="color:#1a1a2a">Wise</span> <span style="font-size:0.62rem;background:#eef4ff;color:#5298F8;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
                         </div>
                         <!-- Footer -->
                         <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
-                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5298F8;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
                         </div>
                     </div>
                 </div>
@@ -506,7 +506,7 @@
                     <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                         <!-- Mega header -->
                         <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>Resources</span>
+                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5298F8;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5298F8;border-radius:2px;"></span>Resources</span>
                         </div>
                         <!-- Single-column items -->
                         <div style="padding:8px;">
@@ -518,7 +518,7 @@
                         </div>
                         <!-- Footer -->
                         <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
-                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
+                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5298F8;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
                         </div>
                     </div>
                 </div>
@@ -763,20 +763,20 @@
                             <!-- Quick actions -->
                             <div class="grid grid-cols-3 gap-2">
                                 <div class="rounded-xl border border-gray-100 bg-gray-50 py-2.5 flex flex-col items-center gap-1">
-                                    <i data-lucide="gauge" class="w-4 h-4" style="color:#5BA8E5 !important;"></i>
+                                    <i data-lucide="gauge" class="w-4 h-4" style="color:#5298F8 !important;"></i>
                                     <span class="text-[8px] font-semibold text-gray-600 text-center leading-tight">Risk status</span>
                                 </div>
                                 <div class="rounded-xl border border-gray-100 bg-gray-50 py-2.5 flex flex-col items-center gap-1">
-                                    <i data-lucide="syringe" class="w-4 h-4" style="color:#5BA8E5 !important;"></i>
+                                    <i data-lucide="syringe" class="w-4 h-4" style="color:#5298F8 !important;"></i>
                                     <span class="text-[8px] font-semibold text-gray-600 text-center leading-tight">Vaccination</span>
                                 </div>
                                 <div class="rounded-xl border border-gray-100 bg-gray-50 py-2.5 flex flex-col items-center gap-1">
-                                    <i data-lucide="clipboard-check" class="w-4 h-4" style="color:#5BA8E5 !important;"></i>
+                                    <i data-lucide="clipboard-check" class="w-4 h-4" style="color:#5298F8 !important;"></i>
                                     <span class="text-[8px] font-semibold text-gray-600 text-center leading-tight">Self-test</span>
                                 </div>
                             </div>
                             <!-- Risk level banner -->
-                            <div class="rounded-2xl p-4" style="background:linear-gradient(135deg,#5BA8E5 0%,#4A8FD0 100%);">
+                            <div class="rounded-2xl p-4" style="background:linear-gradient(135deg,#5298F8 0%,#4A8FD0 100%);">
                                 <div class="flex items-center justify-between mb-2.5">
                                     <span class="text-[9px] font-semibold" style="color:rgba(255,255,255,0.85) !important;">Current risk level</span>
                                     <span class="text-[8px] font-medium" style="color:rgba(255,255,255,0.7) !important;">Updated today</span>
@@ -812,7 +812,7 @@
                             </div>
                         </div>
                         <div class="h-12 bg-white border-t border-gray-100 flex justify-around items-center pb-1">
-                            <div class="flex flex-col items-center gap-0.5" style="color:#5BA8E5 !important;"><i data-lucide="home" class="w-4 h-4"></i><span class="text-[7px] font-bold">Home</span></div>
+                            <div class="flex flex-col items-center gap-0.5" style="color:#5298F8 !important;"><i data-lucide="home" class="w-4 h-4"></i><span class="text-[7px] font-bold">Home</span></div>
                             <div class="flex flex-col items-center gap-0.5 text-gray-400"><i data-lucide="file-text" class="w-4 h-4"></i><span class="text-[7px]">Records</span></div>
                             <div class="flex flex-col items-center gap-0.5 text-gray-400"><i data-lucide="flask-conical" class="w-4 h-4"></i><span class="text-[7px]">Tests</span></div>
                             <div class="flex flex-col items-center gap-0.5 text-gray-400"><i data-lucide="user" class="w-4 h-4"></i><span class="text-[7px]">Profile</span></div>
@@ -838,7 +838,7 @@
         <div class="ah-stairs-wrap relative reveal">
             <!-- Decorations (desktop only) — fill the top-left and bottom-right blank corners -->
             <div class="ah-deco hidden lg:block" aria-hidden="true">
-                <svg class="ah-deco-line" preserveAspectRatio="none" viewBox="0 0 100 100"><line x1="3" y1="74" x2="97" y2="16" stroke="rgba(99,150,241,0.30)" stroke-width="0.4" stroke-dasharray="1.1 1.7" stroke-linecap="round"/></svg>
+                <svg class="ah-deco-line" preserveAspectRatio="none" viewBox="0 0 100 100"><line x1="3" y1="74" x2="97" y2="16" stroke="rgba(82,152,248,0.30)" stroke-width="0.4" stroke-dasharray="1.1 1.7" stroke-linecap="round"/></svg>
                 <span class="ah-dots ah-dots-tl"></span>
                 <span class="ah-dots ah-dots-br"></span>
                 <span class="ah-ring ah-ring-tl"></span>
@@ -904,37 +904,37 @@
             .ah-stairs .ah-step .ah-riser { margin-top: calc((6 - var(--i)) * 52px); min-height:252px; }
         }
         .ah-riser {
-            position:relative; background:#fff; border:1px solid #eef0f3; border-top:3px solid #6396F1;
+            position:relative; background:#fff; border:1px solid #eef0f3; border-top:3px solid #5298F8;
             border-radius:14px; padding:18px 16px; box-shadow:0 4px 16px rgba(17,24,39,0.05);
             animation: ahRiser 7.2s ease-in-out infinite; animation-delay: calc((var(--i) - 1) * 1.2s);
         }
         .ah-badge {
-            width:42px; height:42px; border-radius:9999px; background:#6396F1; color:#fff;
+            width:42px; height:42px; border-radius:9999px; background:#5298F8; color:#fff;
             font-weight:800; font-size:1.05rem; display:flex; align-items:center; justify-content:center;
-            margin-bottom:12px; box-shadow:0 6px 14px rgba(99,150,241,0.35);
+            margin-bottom:12px; box-shadow:0 6px 14px rgba(82,152,248,0.35);
             animation: ahBadge 7.2s ease-in-out infinite; animation-delay: calc((var(--i) - 1) * 1.2s);
         }
         @keyframes ahRiser {
-            0%,18%,100% { box-shadow:0 4px 16px rgba(17,24,39,0.05); border-top-color:#6396F1; transform:translateY(0); }
-            6% { box-shadow:0 16px 34px rgba(99,150,241,0.22); border-top-color:#2365B1; transform:translateY(-6px); }
+            0%,18%,100% { box-shadow:0 4px 16px rgba(17,24,39,0.05); border-top-color:#5298F8; transform:translateY(0); }
+            6% { box-shadow:0 16px 34px rgba(82,152,248,0.22); border-top-color:#2365B1; transform:translateY(-6px); }
         }
         @keyframes ahBadge {
-            0%,18%,100% { box-shadow:0 6px 14px rgba(99,150,241,0.35); transform:scale(1); }
-            6% { box-shadow:0 0 0 9px rgba(99,150,241,0.22), 0 10px 22px rgba(99,150,241,0.55); transform:scale(1.16); }
+            0%,18%,100% { box-shadow:0 6px 14px rgba(82,152,248,0.35); transform:scale(1); }
+            6% { box-shadow:0 0 0 9px rgba(82,152,248,0.22), 0 10px 22px rgba(82,152,248,0.55); transform:scale(1.16); }
         }
         @media (prefers-reduced-motion: reduce){ .ah-riser, .ah-badge { animation:none; } }
         /* decorations */
         .ah-deco { position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
         .ah-deco-line { position:absolute; inset:0; width:100%; height:100%; }
         .ah-dots { position:absolute; width:300px; height:210px;
-            background-image: radial-gradient(circle, rgba(99,150,241,0.30) 1.5px, transparent 1.7px);
+            background-image: radial-gradient(circle, rgba(82,152,248,0.30) 1.5px, transparent 1.7px);
             background-size: 18px 18px; }
         .ah-dots-tl { top:0; left:0; -webkit-mask-image:linear-gradient(135deg, rgba(0,0,0,0.9), transparent 62%); mask-image:linear-gradient(135deg, rgba(0,0,0,0.9), transparent 62%); }
         .ah-dots-br { bottom:0; right:0; -webkit-mask-image:linear-gradient(315deg, rgba(0,0,0,0.9), transparent 62%); mask-image:linear-gradient(315deg, rgba(0,0,0,0.9), transparent 62%); }
         .ah-ring { position:absolute; border-radius:9999px; }
-        .ah-ring-tl  { top:18px;  left:150px; width:70px;  height:70px;  border:2px solid rgba(99,150,241,0.20); }
+        .ah-ring-tl  { top:18px;  left:150px; width:70px;  height:70px;  border:2px solid rgba(82,152,248,0.20); }
         .ah-ring-tl2 { top:46px;  left:60px;  width:30px;  height:30px;  border:2px solid rgba(242,199,71,0.45); }
-        .ah-ring-br  { bottom:22px; right:155px; width:96px; height:96px; border:2px solid rgba(99,150,241,0.18); }
+        .ah-ring-br  { bottom:22px; right:155px; width:96px; height:96px; border:2px solid rgba(82,152,248,0.18); }
         .ah-dot-accent { position:absolute; bottom:60px; right:90px; width:12px; height:12px; border-radius:9999px; background:rgba(242,199,71,0.55); }
         @media (max-width:1023px){ .ah-riser{ animation-delay: calc((var(--i) - 1) * 0.7s) !important; } }
     </style>
@@ -974,12 +974,12 @@
                             <div class="flex-1 bg-white px-3.5 pt-3 pb-16 flex flex-col justify-center">
                                 <p class="text-[9px] font-bold mb-2.5" style="color:#374151 !important;">Cases by state</p>
                                 <div class="space-y-2">
-                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Selangor</span><span class="font-bold" style="color:#374151 !important;">717,627</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:100%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sarawak</span><span class="font-bold" style="color:#374151 !important;">242,591</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:34%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sabah</span><span class="font-bold" style="color:#374151 !important;">219,566</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:31%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Johor</span><span class="font-bold" style="color:#374151 !important;">219,405</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:31%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Kuala Lumpur</span><span class="font-bold" style="color:#374151 !important;">194,083</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:27%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
-                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Kedah</span><span class="font-bold" style="color:#374151 !important;">149,730</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:21%;background:linear-gradient(90deg,#5BA8E5,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Selangor</span><span class="font-bold" style="color:#374151 !important;">717,627</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:100%;background:linear-gradient(90deg,#5298F8,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sarawak</span><span class="font-bold" style="color:#374151 !important;">242,591</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:34%;background:linear-gradient(90deg,#5298F8,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sabah</span><span class="font-bold" style="color:#374151 !important;">219,566</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:31%;background:linear-gradient(90deg,#5298F8,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Johor</span><span class="font-bold" style="color:#374151 !important;">219,405</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:31%;background:linear-gradient(90deg,#5298F8,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Kuala Lumpur</span><span class="font-bold" style="color:#374151 !important;">194,083</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:27%;background:linear-gradient(90deg,#5298F8,#2365B1);"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Kedah</span><span class="font-bold" style="color:#374151 !important;">149,730</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#EEF2F6;"><div class="h-full rounded-full" style="width:21%;background:linear-gradient(90deg,#5298F8,#2365B1);"></div></div></div>
                                 </div>
                                 <p class="text-[7px] mt-3" style="color:#9AA3AF !important;">Cumulative confirmed cases</p>
                             </div>
@@ -1000,7 +1000,7 @@
                                 <p class="text-[9px] font-bold mb-1" style="color:#374151 !important;">Daily cases · 7-day average</p>
                                 <p class="text-[20px] font-extrabold leading-none" style="color:#14181F !important;">4,212 <span class="text-[8px] font-bold" style="color:#E1463C !important;">▲ today</span></p>
                                 <svg viewBox="0 0 200 72" preserveAspectRatio="none" style="width:100%;height:78px;margin-top:8px;">
-                                    <defs><linearGradient id="ahTrend2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5BA8E5" stop-opacity="0.35"/><stop offset="1" stop-color="#5BA8E5" stop-opacity="0"/></linearGradient></defs>
+                                    <defs><linearGradient id="ahTrend2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5298F8" stop-opacity="0.35"/><stop offset="1" stop-color="#5298F8" stop-opacity="0"/></linearGradient></defs>
                                     <path d="M0,64 L20,62 L40,58 L60,52 L80,46 L100,40 L120,28 L140,20 L160,12 L180,18 L200,9 L200,72 L0,72 Z" fill="url(#ahTrend2)"/>
                                     <path d="M0,64 L20,62 L40,58 L60,52 L80,46 L100,40 L120,28 L140,20 L160,12 L180,18 L200,9" fill="none" stroke="#2365B1" stroke-width="2.5"/>
                                 </svg>
@@ -1031,7 +1031,7 @@
                                     <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Selangor</span><span class="font-bold" style="color:#E1463C !important;">1,167</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:100%;background:#E1463C;"></div></div></div>
                                     <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sarawak</span><span class="font-bold" style="color:#F3964A !important;">540</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:46%;background:#F3964A;"></div></div></div>
                                     <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Sabah</span><span class="font-bold" style="color:#F3964A !important;">318</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:27%;background:#F3964A;"></div></div></div>
-                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Johor</span><span class="font-bold" style="color:#5BA8E5 !important;">286</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:25%;background:#5BA8E5;"></div></div></div>
+                                    <div><div class="flex justify-between text-[7px] mb-0.5"><span style="color:#6B7280 !important;">Johor</span><span class="font-bold" style="color:#5298F8 !important;">286</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:#FBE9E7;"><div class="h-full rounded-full" style="width:25%;background:#5298F8;"></div></div></div>
                                 </div>
                             </div>
                         </div>
@@ -1063,7 +1063,7 @@
                         <!-- shared bottom nav (static across screens) -->
                         <div class="absolute bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-100 flex justify-around items-center pt-2.5 pb-4">
                             <div class="flex flex-col items-center gap-0.5"><i data-lucide="home" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Home</span></div>
-                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="bar-chart-2" class="w-4 h-4" style="color:#5BA8E5 !important;"></i><span class="text-[7px] font-bold" style="color:#5BA8E5 !important;">Statistics</span></div>
+                            <div class="flex flex-col items-center gap-0.5"><i data-lucide="bar-chart-2" class="w-4 h-4" style="color:#5298F8 !important;"></i><span class="text-[7px] font-bold" style="color:#5298F8 !important;">Statistics</span></div>
                             <div class="flex flex-col items-center gap-0.5"><i data-lucide="map" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Map</span></div>
                             <div class="flex flex-col items-center gap-0.5"><i data-lucide="user" class="w-4 h-4" style="color:#9AA3AF !important;"></i><span class="text-[7px]" style="color:#9AA3AF !important;">Profile</span></div>
                         </div>
@@ -1421,36 +1421,36 @@
 
             <!-- Col 2: Products -->
             <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Products</p>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5298F8;margin-bottom:16px;">Products</p>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Engage</a></li>
-                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Care</a></li>
-                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Connect</a></li>
-                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Insights</a></li>
-                    <li><a href="adeahub_outbreak.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Outbreak Management</a></li>
-                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
+                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'"><span style="color:#5298F8;font-weight:700;">AH</span> Engage</a></li>
+                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'"><span style="color:#5298F8;font-weight:700;">AH</span> Care</a></li>
+                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'"><span style="color:#5298F8;font-weight:700;">AH</span> Connect</a></li>
+                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'"><span style="color:#5298F8;font-weight:700;">AH</span> Insights</a></li>
+                    <li><a href="adeahub_outbreak.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'"><span style="color:#5298F8;font-weight:700;">AH</span> Outbreak Management</a></li>
+                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
                 </ul>
             </div>
 
             <!-- Col 3: Company -->
             <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Company</p>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5298F8;margin-bottom:16px;">Company</p>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
-                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
-                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
-                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
-                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
-                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
+                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
+                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
+                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
+                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
+                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
+                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
                 </ul>
             </div>
 
             <!-- Col 4: Get in Touch -->
             <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Get in touch</p>
+                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5298F8;margin-bottom:16px;">Get in touch</p>
                 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
                     <li>
-                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">
+                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#5298F8'" onmouseout="this.style.color='#4b5563'">
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             hello@adeahub.com
                         </a>
@@ -1581,11 +1581,11 @@
                 card.style.transform =
                     `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.018)`;
                 card.style.boxShadow =
-                    `0 28px 56px -8px rgba(91,168,229,0.22), 0 8px 20px -4px rgba(91,168,229,0.14)`;
+                    `0 28px 56px -8px rgba(82,152,248,0.22), 0 8px 20px -4px rgba(82,152,248,0.14)`;
                 const glow = card.querySelector('.card-glow-layer');
                 if (glow) {
                     glow.style.background =
-                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(91,168,229,0.13) 0%, transparent 70%)`;
+                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(82,152,248,0.13) 0%, transparent 70%)`;
                 }
             });
             card.addEventListener('mouseleave', function () {
