@@ -107,7 +107,7 @@ body::before {
   height: 26px; /* fixed — keeps headline row consistent */
 }
 /* "AH" prefix always in adeahub blue */
-.pc-name .ah { color: #5BA8E5; }
+.pc-name .ah { color: #5298F8; }
 /* rest of product name in near-black */
 .pc-name .rest { color: #111827; }
 
@@ -224,7 +224,7 @@ const canvas = document.getElementById('cv');
 const ctx    = canvas.getContext('2d');
 
 /* ── Products — all circles use adeahub yellow ── */
-const YELLOW = { color:'#F4D06F', r:244, g:208, b:111 };
+const YELLOW = { color:'#F3D06F', r:244, g:208, b:111 };
 const PRODS = [
   { id:'pcEngage',  ...YELLOW },
   { id:'pcCare',    ...YELLOW },
@@ -327,7 +327,7 @@ function drawHub(cx, cy, R, alpha) {
 
   /* flat solid fill — adeahub blue */
   ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
-  ctx.fillStyle='#5BA8E5'; ctx.fill();
+  ctx.fillStyle='#5298F8'; ctx.fill();
 
   /* text — clip to circle */
   ctx.save();
@@ -347,7 +347,7 @@ function drawProdCircle(cx, cy, R, alpha) {
   if (alpha <= 0 || R <= 0) return;
   ctx.save(); ctx.globalAlpha = alpha;
   ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
-  ctx.fillStyle='#F4D06F'; ctx.fill();
+  ctx.fillStyle='#F3D06F'; ctx.fill();
   ctx.restore();
 }
 
@@ -485,7 +485,7 @@ function render(ts) {
     ctx.moveTo(lineX1, nrY);
     ctx.lineTo(lineX2, nrY);
     ctx.setLineDash([5, 5]);
-    ctx.strokeStyle = '#F4D06F';
+    ctx.strokeStyle = '#F3D06F';
     ctx.lineWidth = 1.5;
     ctx.stroke();
     ctx.setLineDash([]);

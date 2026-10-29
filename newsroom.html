@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsroom | adeahub - Powering Modern Healthcare</title>
+    <title>Newsroom | adeahub</title>
+    <meta name="description" content="The latest news, announcements, and updates from adeahub.">
     <!-- Google Fonts: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,10 +26,10 @@
                     },
                     colors: {
                         adeahub: {
-                            blue: '#5BA8E5',
-                            yellow: '#F4D06F',
+                            blue: '#5298F8',
+                            yellow: '#F3D06F',
                             gray: '#4B5563',
-                            lightbg: '#5BA8E5'
+                            lightbg: '#5298F8'
                         }
                     },
                     boxShadow: {
@@ -50,7 +51,7 @@
         .carousel-slide { width: 50%; flex-shrink: 0; }
         /* Architecture Stack Hover */
         .arch-layer { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .arch-layer:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px -10px rgba(91,168,229,0.3); }
+        .arch-layer:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px -10px rgba(82,152,248,0.3); }
         /* Marquee */
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .animate-marquee { animation: marquee 40s linear infinite; }
@@ -59,7 +60,7 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in-up { animation: fadeInUp 0.6s ease forwards; }
         /* Tab active states */
-        .tab-btn.active { background-color: #5BA8E5; color: white; }
+        .tab-btn.active { background-color: #5298F8; color: white; }
         /* Smooth scroll */
         html { scroll-behavior: smooth; }
 
@@ -93,19 +94,19 @@
 
         /* ───── HERO ───── */
         .dot-grid {
-            background-image: radial-gradient(circle, rgba(91,168,229,0.11) 1px, transparent 1px);
+            background-image: radial-gradient(circle, rgba(82,152,248,0.11) 1px, transparent 1px);
             background-size: 28px 28px;
         }
 
         /* CTA button glow */
         @keyframes btnGlow {
-            0%,100% { box-shadow: 0 8px 28px rgba(91,168,229,0.38); }
-            50%      { box-shadow: 0 8px 44px rgba(91,168,229,0.58); }
+            0%,100% { box-shadow: 0 8px 28px rgba(82,152,248,0.38); }
+            50%      { box-shadow: 0 8px 44px rgba(82,152,248,0.58); }
         }
         .btn-glow { animation: btnGlow 2.4s ease-in-out infinite; }
         .btn-glow:hover {
             animation: none;
-            box-shadow: 0 12px 40px rgba(91,168,229,0.55);
+            box-shadow: 0 12px 40px rgba(82,152,248,0.55);
             transform: translateY(-2px);
             transition: all 0.25s ease;
         }
@@ -127,11 +128,11 @@
         }
         .solution-card:hover {
             transform: translateY(-7px);
-            box-shadow: 0 24px 56px -12px rgba(91,168,229,0.18);
-            border-top-color: #5BA8E5;
+            box-shadow: 0 24px 56px -12px rgba(82,152,248,0.18);
+            border-top-color: #5298F8;
         }
         .solution-card .icon-wrap { transition: transform 0.28s ease, background 0.28s ease; }
-        .solution-card:hover .icon-wrap { background: rgba(91,168,229,0.12) !important; transform: scale(1.1); }
+        .solution-card:hover .icon-wrap { background: rgba(82,152,248,0.12) !important; transform: scale(1.1); }
         .solution-arrow { transition: transform 0.22s ease; }
         .solution-card:hover .solution-arrow { transform: translateX(5px); }
 
@@ -139,10 +140,10 @@
         .outcome-card { transition: transform 0.28s ease, box-shadow 0.28s ease; position: relative; overflow: hidden; }
         .outcome-card::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, #5BA8E5, #60a5fa);
+            background: linear-gradient(90deg, #5298F8, #60a5fa);
             transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease;
         }
-        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(91,168,229,0.15); }
+        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(82,152,248,0.15); }
         .outcome-card:hover::before { transform: scaleX(1); }
 
         /* ───── FLOATING BLOBS (hero decoration) ───── */
@@ -157,47 +158,47 @@
        ADEAHUB REDESIGN OVERRIDES
        ═══════════════════════════════════════════════════════ */
     :root {
-        --blue: #5BA8E5;
-        --yellow: #F4D06F;
-        --blue-pale: rgba(91,168,229,0.10);
-        --shadow-blue: rgba(91,168,229,0.15);
+        --blue: #5298F8;
+        --yellow: #F3D06F;
+        --blue-pale: rgba(82,152,248,0.10);
+        --shadow-blue: rgba(82,152,248,0.15);
     }
 
     /* Gradient text → solid blue */
     .gradient-text {
         background: none !important;
-        -webkit-text-fill-color: #5BA8E5 !important;
-        color: #5BA8E5 !important;
+        -webkit-text-fill-color: #5298F8 !important;
+        color: #5298F8 !important;
     }
 
     /* Stat numbers → solid blue */
     .stat-num {
         background: none !important;
-        -webkit-text-fill-color: #5BA8E5 !important;
-        color: #5BA8E5 !important;
+        -webkit-text-fill-color: #5298F8 !important;
+        color: #5298F8 !important;
     }
 
     /* Section labels → blue on white; yellow on blue bg (overridden below) */
-    .section-label { color: #5BA8E5 !important; }
-    .section-label::before { background: #5BA8E5 !important; }
+    .section-label { color: #5298F8 !important; }
+    .section-label::before { background: #5298F8 !important; }
 
     /* Tab active */
-    .tab-btn.active { background-color: #5BA8E5 !important; }
+    .tab-btn.active { background-color: #5298F8 !important; }
 
     /* Solution card hover border */
-    .solution-card:hover { border-top-color: #5BA8E5 !important; }
+    .solution-card:hover { border-top-color: #5298F8 !important; }
 
     /* Outcome card top bar */
-    .outcome-card::before { background: #5BA8E5 !important; }
+    .outcome-card::before { background: #5298F8 !important; }
 
-    /* ── ALL BLUE SECTION BACKGROUNDS → solid #5BA8E5 ── */
-    .hero-bg { background: #5BA8E5 !important; }
-    .cta-mesh { background: #5BA8E5 !important; }
-    .testimonial-bg { background: #5BA8E5 !important; }
+    /* ── ALL BLUE SECTION BACKGROUNDS → solid #5298F8 ── */
+    .hero-bg { background: #5298F8 !important; }
+    .cta-mesh { background: #5298F8 !important; }
+    .testimonial-bg { background: #5298F8 !important; }
     section.bg-adeahub-lightbg,
-    header.bg-adeahub-lightbg { background-color: #5BA8E5 !important; }
-    section.bg-adeahub-blue { background-color: #5BA8E5 !important; }
-    #cta { background: #5BA8E5 !important; border-top-color: #5280d9 !important; }
+    header.bg-adeahub-lightbg { background-color: #5298F8 !important; }
+    section.bg-adeahub-blue { background-color: #5298F8 !important; }
+    #cta { background: #5298F8 !important; border-top-color: #5280d9 !important; }
 
     /* ── ANIMATED ORB BACKGROUNDS on all blue sections ── */
     .hero-bg,
@@ -294,7 +295,7 @@
 
     header .text-adeahub-yellow,
     header span[class*="yellow"],
-    .hero-bg .text-adeahub-yellow { color: #F4D06F !important; }
+    .hero-bg .text-adeahub-yellow { color: #F3D06F !important; }
 
     /* section.bg-adeahub-lightbg */
     section.bg-adeahub-lightbg h2,
@@ -310,11 +311,11 @@
     section.bg-adeahub-lightbg .text-gray-900,
     section.bg-adeahub-lightbg .text-gray-800 { color: white !important; }
 
-    section.bg-adeahub-lightbg .section-label { color: #F4D06F !important; }
-    section.bg-adeahub-lightbg .section-label::before { background: #F4D06F !important; }
+    section.bg-adeahub-lightbg .section-label { color: #F3D06F !important; }
+    section.bg-adeahub-lightbg .section-label::before { background: #F3D06F !important; }
     section.bg-adeahub-lightbg span.text-sm.font-bold,
     section.bg-adeahub-lightbg .font-bold.tracking-wider,
-    section.bg-adeahub-lightbg .tracking-widest { color: #F4D06F !important; }
+    section.bg-adeahub-lightbg .tracking-widest { color: #F3D06F !important; }
 
     /* section.bg-adeahub-blue */
     section.bg-adeahub-blue h2,
@@ -330,19 +331,19 @@
     section.bg-adeahub-blue .text-gray-900,
     section.bg-adeahub-blue .text-gray-800 { color: white !important; }
 
-    section.bg-adeahub-blue .section-label { color: #F4D06F !important; }
-    section.bg-adeahub-blue .section-label::before { background: #F4D06F !important; }
+    section.bg-adeahub-blue .section-label { color: #F3D06F !important; }
+    section.bg-adeahub-blue .section-label::before { background: #F3D06F !important; }
     section.bg-adeahub-blue span.text-sm.font-bold,
     section.bg-adeahub-blue .font-bold.tracking-wider,
-    section.bg-adeahub-blue .tracking-widest { color: #F4D06F !important; }
+    section.bg-adeahub-blue .tracking-widest { color: #F3D06F !important; }
 
     /* cta-mesh */
     .cta-mesh h2, .cta-mesh h3, .cta-mesh p,
     .cta-mesh li { color: white !important; }
     .cta-mesh .text-gray-500, .cta-mesh .text-gray-600,
     .cta-mesh .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
-    .cta-mesh .section-label { color: #F4D06F !important; }
-    .cta-mesh .section-label::before { background: #F4D06F !important; }
+    .cta-mesh .section-label { color: #F3D06F !important; }
+    .cta-mesh .section-label::before { background: #F3D06F !important; }
 
     /* testimonial-bg */
     .testimonial-bg h2, .testimonial-bg h3, .testimonial-bg p,
@@ -354,9 +355,9 @@
     #cta h2, #cta h3, #cta h4 { color: white !important; }
     #cta p, #cta li { color: rgba(255,255,255,0.80) !important; }
     #cta span.text-sm.font-bold,
-    #cta span.tracking-wider { color: #F4D06F !important; }
+    #cta span.tracking-wider { color: #F3D06F !important; }
     #cta .text-gray-500, #cta .text-gray-600 { color: rgba(255,255,255,0.75) !important; }
-    #cta .text-adeahub-blue { color: #F4D06F !important; }
+    #cta .text-adeahub-blue { color: #F3D06F !important; }
 
     /* White cards inside blue sections: restore normal text colors */
     section.bg-adeahub-lightbg .bg-white h3,
@@ -377,16 +378,16 @@
     .cta-mesh .btn-glow,
     .hero-bg .btn-glow,
     #cta .btn-glow {
-        background: #F4D06F !important;
+        background: #F3D06F !important;
         color: #1a1a2e !important;
-        border-color: #F4D06F !important;
+        border-color: #F3D06F !important;
     }
 
     section.bg-adeahub-lightbg a[class*="bg-adeahub-blue"],
     section.bg-adeahub-blue a[class*="bg-adeahub-blue"],
     .cta-mesh a[class*="bg-adeahub-blue"],
     #cta a[class*="bg-adeahub-blue"] {
-        background: #F4D06F !important;
+        background: #F3D06F !important;
         color: #1a1a2e !important;
     }
 
@@ -420,606 +421,408 @@
         .mega-card:hover { background:#f0f6ff; }
         .mega-card:hover .mega-icon { background:#dbeafe; }
         .mega-icon { width:40px; height:40px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s; }
-        .mega-icon svg { width:18px; height:18px; color:#5BA8E5; }
+        .mega-icon svg { width:18px; height:18px; color:#5298F8; }
         .mega-name { font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:2px; }
         .mega-tag { font-size:0.7rem; color:#6b7280; font-weight:500; margin-bottom:3px; }
         .mega-desc { font-size:0.68rem; color:#9ca3af; line-height:1.4; }
         </style>
 
+<!-- live-head:start (favicon + canonical/social tags as on adeahub.co) -->
+<link rel="icon" href="Images/favicon/cropped-Entomo-Box-Logos-scaled-1-32x32.png" sizes="32x32">
+<link rel="icon" href="Images/favicon/cropped-Entomo-Box-Logos-scaled-1-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="Images/favicon/cropped-Entomo-Box-Logos-scaled-1-180x180.png">
+<meta name="msapplication-TileImage" content="Images/favicon/cropped-Entomo-Box-Logos-scaled-1-270x270.png">
+<link rel="canonical" href="https://adeahub.co/newsroom/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Newsroom | adeahub">
+<meta property="og:description" content="The latest news, announcements, and updates from adeahub.">
+<meta property="og:url" content="https://adeahub.co/newsroom/">
+<meta property="og:site_name" content="adeahub">
+<meta property="og:image" content="https://adeahub.co/wp-content/uploads/2026/05/team-young-specialist-doctors-standing-corridor-hospital-scaled.webp">
+<meta property="og:image:width" content="2560">
+<meta property="og:image:height" content="1706">
+<meta property="og:image:type" content="image/webp">
+<meta name="twitter:card" content="summary_large_image">
+<!-- live-head:end -->
+<style id="site-chrome">
+/* ── Site header / mega-menus / footer — values measured on adeahub.co (2026-10-29) ── */
+html,body{overflow-x:clip;} /* stop slide-in animations and decorative overhangs from causing sideways scroll on phones */
+.snav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 4px 10px rgba(0,0,0,.08);font-family:'Outfit',sans-serif;}
+.snav-inner{max-width:1188px;margin:0 auto;padding:0 24px;height:84px;display:flex;align-items:center;justify-content:space-between;}
+.snav-brand{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;flex-shrink:0;}
+.snav-brand img{height:39px;width:auto;display:block;}
+.snav-tag{display:block;font-size:13px;line-height:13px;font-weight:300;color:#6B7280;padding-left:8px;margin-top:2px;}
+.snav-menu{display:none;align-items:center;}
+@media (min-width:768px){.snav-menu{display:flex;}}
+.snav-links{display:flex;align-items:center;list-style:none;margin:0;padding:0;}
+.snav-links>li{position:relative;}
+.snav-link{display:flex;align-items:center;gap:6px;padding:0 15px;font-size:14px;line-height:21px;font-weight:500;color:#4B5563;text-decoration:none;background:none;border:0;cursor:pointer;font-family:inherit;transition:color .2s;}
+.snav-links>li:hover>.snav-link,.snav-link:focus-visible,.snav-link.is-current{color:#5298F8;}
+.snav-link svg{width:11px;height:11px;margin-right:6px;stroke:currentColor;fill:none;stroke-width:2;}
+.snav-cta{margin-left:20px;display:inline-block;background:#F3D06F;color:#111827;font-size:16px;line-height:16px;font-weight:500;padding:14px 32px;border-radius:9999px;text-decoration:none;white-space:nowrap;transition:transform .3s;}
+.snav-cta{position:relative;overflow:hidden;}
+.snav-cta::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);}
+.snav-cta:hover{transform:translateY(-8px);}
+.snav-cta:hover::after{left:160%;transition:left .55s ease;}
+.snav-burger{display:block;color:#4B5563;padding:4px;background:none;border:0;cursor:pointer;}
+@media (min-width:768px){.snav-burger{display:none;}}
+/* mega panels */
+.snav-dd .snav-panel{position:absolute;top:100%;padding-top:16px;display:none;z-index:60;}
+.snav-dd:hover .snav-panel,.snav-dd:focus-within .snav-panel{display:block;animation:snavDrop .18s ease forwards;}
+@keyframes snavDrop{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.snav-dd-products .snav-panel{left:-150px;}
+.snav-dd-resources .snav-panel{left:0;}
+.snav-card{background:#fff;border-radius:16px;box-shadow:0 0 28px rgba(0,0,0,.14);overflow:hidden;}
+.snav-dd-products .snav-card{width:750px;}
+.snav-dd-resources .snav-card{width:500px;}
+.snav-card-head{background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;line-height:18px;color:#5298F8;}
+.snav-label{display:inline-flex;align-items:center;gap:6px;font-size:.65rem;font-weight:800;letter-spacing:.12em;}
+.snav-label::before{content:'';display:inline-block;width:18px;height:2px;background:#5298F8;border-radius:2px;}
+.snav-card-head a{color:#5298F8;text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;}
+.snav-chev{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.5;}
+.snav-card-body{padding:16px 16px 16px 8px;}
+.snav-grid{display:grid;grid-template-columns:1fr 1fr;}
+.snav-group{border-bottom:1px solid #F1F1F1;margin-bottom:8px;}
+.snav-group:last-child{border-bottom:0;margin-bottom:0;}
+.snav-item{display:flex;align-items:flex-start;gap:13px;padding:10px 12px;border-radius:12px;text-decoration:none;transition:background .15s;}
+.snav-item:hover{background:#f0f6ff;}
+.snav-ico{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:#EFF6FF;color:#5298F8;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.snav-item:hover .snav-ico{background:#dbeafe;}
+.snav-ico svg{width:18px;height:18px;stroke:#5298F8;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.snav-title{font-size:14px;line-height:18px;font-weight:600;color:#000;margin:0 0 5px;}
+.snav-title span{color:#5298F8;}
+.snav-text{font-size:12px;line-height:21px;color:#7A7A7A;margin:0;}
+.snav-text strong{font-weight:700;display:block;}
+.snav-item:hover .snav-title{color:#5298F8;}
+.snav-card-foot{background:#FAFAFA;border-top:1px solid #fff;padding:16px;display:flex;justify-content:flex-end;}
+.snav-card-foot a{background:#EFF6FF;color:#5298F8;font-size:12px;line-height:18px;font-weight:600;padding:6px 14px;border-radius:20px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+/* footer */
+.sfoot{background:#fff;font-family:'Outfit',sans-serif;}
+.sfoot-inner{max-width:1188px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:1fr;gap:40px;}
+@media (min-width:768px){.sfoot-inner{grid-template-columns:1fr 1fr;}}
+@media (min-width:1024px){.sfoot-inner{grid-template-columns:456px 228px 228px 228px;gap:0;}}
+.sfoot-logo img{height:36px;width:auto;display:block;}
+.sfoot-tag{margin:20px 0 0;max-width:320px;font-size:14px;line-height:19px;color:#9E9E9E;}
+.sfoot-social{margin-top:20px;display:flex;gap:10px;}
+.sfoot-social a{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;transition:background .2s,border-color .2s;}
+.sfoot-social a:hover{background:#dbeafe;border-color:#bfdbfe;}
+.sfoot-social svg{width:15px;height:15px;}
+.sfoot-h{margin:0 0 16px;font-size:.65rem;line-height:17px;font-weight:800;letter-spacing:.12em;color:#5298F8;}
+.sfoot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.sfoot-list a{font-size:14px;line-height:21px;color:#54595F;text-decoration:none;transition:color .2s;display:block;width:fit-content;}
+.sfoot-list a.sfoot-mail{display:flex;align-items:center;gap:5px;}
+.sfoot-list a:hover{color:#5298F8;}
+.sfoot-list b{color:#5298F8;font-weight:700;}
+.sfoot-list svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
+.sfoot-btn{margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:#F3D06F;color:#000;font-size:12px;line-height:19px;font-weight:700;padding:4px 16px;border-radius:32px;text-decoration:none;}
+.sfoot-btn svg{width:12px;height:12px;stroke:#000;fill:none;stroke-width:2.5;}
+.sfoot-copy{border-top:1px solid #F1F1F1;}
+.sfoot-copy p{max-width:1188px;margin:0 auto;padding:16px 24px;text-align:center;font-size:12px;line-height:17px;color:#9E9E9E;}
+</style>
 </head>
 <body class="bg-white text-gray-700">
 
     <!-- Unified Navbar -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
-
-            <!-- Logo -->
-            <a href="index.html" class="flex flex-col hover:opacity-90 transition shrink-0">
-                <img src="AdeaHub Logo-Default.png" alt="adeahub logo" class="h-10 object-contain object-left mb-1">
-                <span class="text-[0.65rem] font-medium text-gray-500 tracking-widest leading-none pl-1">Powering Modern Healthcare</span>
-            </a>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-
-                <!-- Solutions Dropdown -->
-                <div class="nav-dropdown relative">
-                    <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
-                        Solutions
-                        <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="left:-150px;width:740px;">
-                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                        <!-- Mega header -->
-                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>adeahub products</span>
-                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-                        </div>
-                        <!-- 2-col product grid -->
-                        <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px;">
-                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
-                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
-                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
-                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
-                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="adeahub_outbreak.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Outbreak Management</p><p class="mega-tag">Manage disease outbreaks</p><p class="mega-desc">Detection, tracing, monitoring &amp; containment</p></div></a>
-                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#eef4ff;"><svg fill="none" stroke="#5BA8E5" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">Work</span><span style="color:#1a1a2a">Wise</span> <span style="font-size:0.62rem;background:#eef4ff;color:#5BA8E5;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
-                        </div>
-                        <!-- Footer -->
-                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
-                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-                <!-- Platform -->
-                <a href="adeahub_platform.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Platform</a>
-
-                <!-- Resources Dropdown -->
-                <div class="nav-dropdown relative">
-                    <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">
-                        Resources
-                        <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="right:0;width:460px;">
-                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                        <!-- Mega header -->
-                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>Resources</span>
-                        </div>
-                        <!-- Single-column items -->
-                        <div style="padding:8px;">
-                            <a href="newsroom.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg></span><div><p class="mega-name">Newsroom</p><p class="mega-tag">Press releases &amp; company announcements</p></div></a>
-                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="customers.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg></span><div><p class="mega-name">Customers</p><p class="mega-tag">Case studies &amp; client outcomes</p></div></a>
-                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="Blogs.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span><div><p class="mega-name">Blog</p><p class="mega-tag">Insights, perspectives &amp; best practices</p></div></a>
-                        </div>
-                        <!-- Footer -->
-                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
-                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-                        </div>
-                    </div>
-                </div>
-                </div>
-
-                <!-- About Us -->
-                <a href="about_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">About Us</a>
-
-                <!-- Contact Us -->
-                <a href="contact_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Contact Us</a>
-
-                <!-- CTA Button -->
-                <a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full hover:opacity-90 transition-colors font-semibold text-sm whitespace-nowrap" style="background:#F4D06F;">Talk to us</a>
-            </div>
-
-            <!-- Mobile Hamburger -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-blue-600 transition-colors p-1" aria-label="Toggle menu">
-                <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
+    <nav id="main-nav" class="snav">
+    <div class="snav-inner">
+        <a href="index.html" class="snav-brand"><img src="Images/AdeaHub-Logo-Default.webp" alt="adeahub logo"><span class="snav-tag">Powering modern healthcare</span></a>
+        <div class="snav-menu">
+            <ul class="snav-links">
+                <li><a href="adeahub_platform.html" class="snav-link">Platform</a></li>
+                <li class="snav-dd snav-dd-products"><button type="button" class="snav-link" aria-haspopup="true">Products <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><div class="snav-panel"><div class="snav-card"><div class="snav-card-head"><span class="snav-label">adeahub products</span><a href="adeahub_platform.html">View platform overview <svg class="snav-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a></div><div class="snav-card-body"><div class="snav-group snav-grid"><a href="adeahub_engage.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span><span><p class="snav-title"><span>AH</span> Engage</p><p class="snav-text"><strong>Digital front door for patients</strong>Appointments, health records &amp; care journeys</p></span></a><a href="adeahub_care.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span><span><p class="snav-title"><span>AH</span> Care</p><p class="snav-text"><strong>Health information system</strong>25+ clinical &amp; admin modules, multi-site</p></span></a></div><div class="snav-group snav-grid"><a href="adeahub_connect.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span><span><p class="snav-title"><span>AH</span> Connect</p><p class="snav-text"><strong>Interoperability &amp; health data exchange</strong>FHIR server, integration engine &amp; API gateway</p></span></a><a href="adeahub_insights.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-9"/></svg></span><span><p class="snav-title"><span>AH</span> Insights</p><p class="snav-text"><strong>Healthcare intelligence &amp; analytics</strong>Population health, real-time analytics &amp; AI/ML</p></span></a><a href="adeahub_outbreak.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><p class="snav-title"><span>AH</span> Outbreak Management</p><p class="snav-text"><strong>Manage disease outbreaks</strong>Detection, tracing, monitoring &amp; containment</p></span></a></div><div class="snav-group"><a href="workwise.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><span><p class="snav-title"><span>Work</span>Wise</p><p class="snav-text"><strong>Healthcare workforce experience platform</strong>Performance, learning &amp; workforce intelligence for healthcare teams</p></span></a></div></div><div class="snav-card-foot"><a href="request_demo.html">Request a demo <svg class="snav-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a></div></div></div></li>
+                <li class="snav-dd snav-dd-resources"><button type="button" class="snav-link" aria-haspopup="true">Resources <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><div class="snav-panel"><div class="snav-card"><div class="snav-card-head"><span class="snav-label">Resources</span></div><div class="snav-card-body"><div class="snav-group"><a href="newsroom.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span><span><p class="snav-title">Newsroom</p><p class="snav-text"><strong>Press releases &amp; company announcements</strong></p></span></a></div><div class="snav-group"><a href="customers.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span><span><p class="snav-title">Customers</p><p class="snav-text"><strong>Case studies &amp; client outcomes</strong></p></span></a></div><div class="snav-group"><a href="Blogs.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><span><p class="snav-title">Blog</p><p class="snav-text"><strong>Insights, perspectives &amp; best practices</strong></p></span></a></div></div><div class="snav-card-foot"><a href="request_demo.html">Request a demo <svg class="snav-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a></div></div></div></li>
+                <li><a href="about_us.html" class="snav-link">About Us</a></li>
+                <li><a href="contact_us.html" class="snav-link">Contact Us</a></li>
+            </ul>
+            <a href="request_demo.html" class="snav-cta">Talk To Us</a>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4">
-            <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pb-2">Solutions</p>
-            <a href="adeahub_engage.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Engage</a>
-            <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub providers</a>
-            <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub connect</a>
-            <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">adeahub insight</a>
-            <a href="adeahub_outbreak.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Outbreak Management</a>
-            <a href="workwise.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
-            <div class="my-2 border-t border-gray-100"></div>
-            <a href="adeahub_platform.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
-            <div class="my-2 border-t border-gray-100"></div>
-            <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pt-1 pb-2">Resources</p>
-            <a href="newsroom.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Newsroom</a>
-            <a href="customers.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Customers</a>
-            <a href="Blogs.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Blog</a>
-            <div class="my-2 border-t border-gray-100"></div>
-            <a href="about_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
-            <div class="my-2 border-t border-gray-100"></div>
-            <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a>
-            <div class="pt-3 pb-1">
-                <a href="request_demo.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F4D06F;">Talk to us</a>
-            </div>
+        <button id="mobile-menu-btn" class="snav-burger" aria-label="Toggle menu">
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4">
+        <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pb-2">Products</p>
+        <a href="adeahub_engage.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Engage</a>
+        <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Care</a>
+        <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Connect</a>
+        <a href="adeahub_outbreak.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Outbreak Management</a>
+        <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Insights</a>
+        <a href="workwise.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <a href="adeahub_platform.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pt-1 pb-2">Resources</p>
+        <a href="newsroom.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Newsroom</a>
+        <a href="customers.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Customers</a>
+        <a href="Blogs.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Blog</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <a href="about_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a>
+        <div class="pt-3 pb-1">
+            <a href="contact_us.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F3D06F;">Talk to us</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- SECTION 1: Hero / Page Header -->
-    <header class="bg-gradient-to-r from-blue-700 to-adeahub-blue text-white py-16 relative overflow-hidden reveal">
+    <header class="text-white pt-16 pb-[110px] relative overflow-hidden reveal" style="background-image: radial-gradient(at 100% 50%, #6CB1E8 10%, #5298F8 100%);">
         <div class="dot-grid absolute inset-0 pointer-events-none opacity-60" aria-hidden="true"></div>
-        <div class="blob-float-1 absolute left-[5%] top-[15%] w-72 h-72 rounded-full bg-blue-100/40 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
-        <div class="blob-float-2 absolute right-[8%] bottom-[10%] w-56 h-56 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none -z-0" aria-hidden="true"></div>
-        <!-- Abstract background pattern -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-adeahub-yellow opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-            <!-- Breadcrumb Navigation -->
-            <nav class="text-sm font-medium text-blue-200 mb-6 flex items-center gap-2">
-                <a href="index.html" class="hover:text-white transition flex items-center gap-1">
-                    <i data-lucide="home" class="w-4 h-4"></i> Home
-                </a>
-                <i data-lucide="chevron-right" class="w-4 h-4 opacity-70"></i>
-                <span class="text-white">Newsroom</span>
-            </nav>
-
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight">Newsroom</h1>
-            <p class="text-xl md:text-2xl text-blue-100 font-light max-w-2xl">The latest news, announcements, and updates from adeahub.</p>
+        <div class="blob-float-1 absolute left-[5%] top-[15%] w-72 h-72 rounded-full bg-blue-100/40 blur-3xl pointer-events-none" aria-hidden="true"></div>
+        <div class="blob-float-2 absolute right-[8%] bottom-[10%] w-56 h-56 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" aria-hidden="true"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-adeahub-yellow opacity-10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" aria-hidden="true"></div>
+        <div class="max-w-[1188px] mx-auto px-6 relative z-10">
+            <h1 class="text-[44px] leading-[44px] md:text-[65px] md:leading-[65px] font-extrabold tracking-tight text-white">Newsroom</h1>
+            <p class="mt-5 text-[20px] md:text-[25px] leading-[32px] font-normal text-white">The latest news, announcements, and updates from adeahub.</p>
         </div>
     </header>
 
     <!-- Main Content Grid -->
-    <main class="flex-grow max-w-7xl mx-auto px-6 md:px-12 py-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        <!-- Left Column: Primary Content (Featured & Feed) -->
-        <div class="lg:col-span-8 space-y-12">
-            
+    <main class="bg-[#FDFDFD] w-full pt-16 lg:pt-[106px] pb-16 lg:pb-[105px]">
+        <div class="max-w-[1188px] mx-auto px-6">
+        <div class="lg:px-[10px] grid grid-cols-1 lg:grid-cols-[1fr_322px] gap-5 items-start">
+
+        <!-- Left Column: Featured Story -->
+        <div>
+
             <!-- SECTION 2: Featured Story (Pinned) -->
-            <section aria-label="Featured Story" class="">
-                <div class="bg-white rounded-3xl p-8 shadow-soft border border-gray-100 relative overflow-hidden group hover:shadow-xl transition-shadow duration-300">
-                    <!-- Accent bar -->
-                    <div class="absolute top-0 left-0 w-full h-1.5 bg-adeahub-blue"></div>
-                    
-                    <div class="flex flex-wrap items-center gap-3 mb-5 mt-2">
-                        <span class="bg-adeahub-blue text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full flex items-center gap-1.5">
-                            <i data-lucide="pin" class="w-3 h-3"></i> Featured
-                        </span>
-                        <span class="text-sm font-medium text-adeahub-blue bg-blue-50 px-3 py-1 rounded-full">Case Study</span>
-                        <span class="text-sm text-gray-400 flex items-center gap-1.5 ml-auto">
-                            <i data-lucide="calendar" class="w-4 h-4"></i> 27 January 2026
-                        </span>
+            <section aria-label="Featured Story" class="reveal">
+                <div class="border border-[#E7E7E7] rounded-[20px] group hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-white border-t-[6px] border-[#5298F8] rounded-[20px] p-6 md:p-[50px]">
+
+                        <div class="pt-[10px] grid grid-cols-1 sm:grid-cols-2 items-center gap-3 sm:gap-0">
+                            <div class="sm:pl-[10px]">
+                                <span class="inline-flex items-center justify-center gap-[6px] bg-[#5298F8] text-white text-[14px] leading-[14px] font-bold tracking-[1.3px] px-4 py-[10px] rounded-full"><i data-lucide="pin" class="w-[13px] h-[13px]"></i>FEATURED</span>
+                            </div>
+                            <span class="sm:pl-[23px] flex items-center gap-[4px] text-[15px] leading-[22.5px] text-[#9E9E9E]">
+                                <i data-lucide="calendar" class="w-[15px] h-[15px]"></i> 23 July 2025
+                            </span>
+                        </div>
+
+                        <h2 class="mt-[30px] text-[24px] leading-[26px] md:text-[30px] md:leading-[30px] font-bold text-black group-hover:text-[#5298F8] transition-colors">
+                            entomo Labs signs agreement to acquire the Asia, Middle East, and Africa (AMEA) operations of Dedalus, strengthening its digital health offering
+                        </h2>
+
+                        <p class="mt-5 text-[17px] leading-[25.5px] text-[#4B5563]">
+                            The agreement for this strategic acquisition comes at a pivotal time, as countries across the region ramp up efforts to build Digital Public Infrastructure for Health (DPI-H) — focusing on open standards, patient-centric care, and interoperable platforms. By joining forces, entomo Labs and Dedalus AMEA will create a unified, future-ready offering that serves both public health and provider health networks.
+                        </p>
+
+                        <a href="https://adeahub.co/entomo-labs-signs-agreement-to-acquire-the-asia-middle-east-and-africa-amea-operations-of-dedalus-strengthening-its-digital-health-offering/" target="_blank" rel="noopener" class="mt-[37px] mb-1 inline-flex items-center gap-[5px] text-[17px] leading-[17px] font-semibold text-[#5298F8] hover:text-blue-800 transition-colors group">
+                            Read Full Story <i data-lucide="arrow-right" class="w-[17px] h-[17px] group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
-
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-snug group-hover:text-adeahub-blue transition-colors">
-                        adeahub Powers Digital Health Transformation Across Six Egyptian Governorates
-                    </h2>
-                    
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        adeahub has successfully deployed an integrated electronic medical record and health information exchange across 350 healthcare facilities in Egypt, serving more than five million beneficiaries. The project, delivered for the Universal Health Insurance Authority, demonstrates adeahub's ability to transform population-scale care delivery within complex, multi-stakeholder environments.
-                    </p>
-
-                    <a href="#" class="inline-flex items-center gap-2 text-adeahub-blue font-semibold hover:text-blue-800 transition-colors">
-                        Read Full Story <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
-            </section>
-
-            <!-- SECTION 3: News Feed -->
-            <section aria-label="News Feed" class="">
-                <!-- Filter Categories -->
-                <div class="mb-8">
-                    <div class="flex flex-nowrap overflow-x-auto pb-4 gap-2 scrollbar-hide" id="category-filters">
-                        <button class="tab-btn active px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 bg-white whitespace-nowrap" data-filter="all">All</button>
-                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="press-release">Press Releases</button>
-                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="partnership">Partnerships</button>
-                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="product-news">Product News</button>
-                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="case-study">Case Studies</button>
-                        <button class="tab-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-gray-600 hover:bg-gray-50 bg-white whitespace-nowrap" data-filter="event">Events</button>
-                    </div>
-                </div>
-
-                <!-- Feed Items -->
-                <div class="space-y-6" id="news-feed-container">
-                    
-                    <!-- Item 1 -->
-                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="case-study">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
-                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-blue-50 text-adeahub-blue w-fit">Case Study</span>
-                            <span class="text-sm text-gray-400 font-medium">10 February 2026</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
-                            <a href="#">Five Million Patients, One Unified Record: adeahub Delivers Egypt's Largest Healthcare IT Rollout</a>
-                        </h3>
-                        <p class="text-gray-600 mb-5 leading-relaxed">
-                            Deployed across 350 facilities and six governorates for the Universal Health Insurance Authority, this project gave five million Egyptian citizens access to a single, interoperable electronic medical record for the first time.
-                        </p>
-                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
-                    </article>
-
-                    <!-- Item 2 -->
-                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="product-news">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
-                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-purple-50 text-purple-700 w-fit">Product Launch</span>
-                            <span class="text-sm text-gray-400 font-medium">14 February 2026</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
-                            <a href="#">AH Engage Powers My Sejahtera, Malaysia's National Health App for 33 Million Citizens</a>
-                        </h3>
-                        <p class="text-gray-600 mb-5 leading-relaxed">
-                            Built on adeahub's AH Engage platform, My Sejahtera enables Malaysians to access medical records, manage appointments, and receive personalised care communications — all from a single, government-backed application.
-                        </p>
-                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
-                    </article>
-
-                    <!-- Item 3 -->
-                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="press-release">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
-                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-gray-100 text-gray-700 w-fit">Press Release</span>
-                            <span class="text-sm text-gray-400 font-medium">02 February 2026</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
-                            <a href="#">adeahub Reaches 500+ Healthcare Facilities Across Asia, the Middle East, and Africa</a>
-                        </h3>
-                        <p class="text-gray-600 mb-5 leading-relaxed">
-                            Marking over two decades of healthcare IT deployment, adeahub now manages more than 50 million patient records across its installed base — making it one of the region's most experienced digital health platforms.
-                        </p>
-                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
-                    </article>
-
-                    <!-- Item 4 -->
-                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="product-news">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
-                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-purple-50 text-purple-700 w-fit">Product News</span>
-                            <span class="text-sm text-gray-400 font-medium">25 January 2026</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
-                            <a href="#">adeahub Connect Delivers Real-Time Health Data Exchange on FHIR-Native Architecture</a>
-                        </h3>
-                        <p class="text-gray-600 mb-5 leading-relaxed">
-                            adeahub's interoperability platform enables hospitals and health systems to break down data silos with a vendor-neutral, FHIR-compliant API gateway — connecting disparate EMRs, lab systems, and third-party applications into a single, coherent data fabric.
-                        </p>
-                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
-                    </article>
-
-                    <!-- Item 5 -->
-                    <article class="news-item bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all group" data-category="partnership">
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
-                            <span class="text-xs font-bold tracking-wider px-3 py-1 rounded-full bg-amber-50 text-amber-700 w-fit">Partnership</span>
-                            <span class="text-sm text-gray-400 font-medium">18 January 2026</span>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-adeahub-blue transition-colors">
-                            <a href="#">adeahub Partners with TechCorp to Expand Digital Health Capabilities Across Southeast Asia</a>
-                        </h3>
-                        <p class="text-gray-600 mb-5 leading-relaxed">
-                            This strategic alliance enhances patient access to remote care services, integrating telehealth solutions directly into the adeahub ecosystem to reduce hospital readmission rates across rural and urban centers alike.
-                        </p>
-                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read More <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
-                    </article>
-
-                </div>
-
-                <!-- Pagination -->
-                <div class="mt-10 text-center">
-                    <button class="bg-white border-2 border-adeahub-blue text-adeahub-blue hover:bg-blue-50 font-semibold py-3 px-8 rounded-full transition-colors focus:ring-4 focus:ring-blue-100">
-                        Load More Articles
-                    </button>
                 </div>
             </section>
         </div>
 
         <!-- Right Column: Sidebar -->
-        <div class="lg:col-span-4 space-y-8">
-            
-            <!-- SECTION 4: Media Contact -->
-            <aside class="bg-white p-8 rounded-3xl shadow-soft border border-gray-100">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="bg-blue-50 text-adeahub-blue p-2.5 rounded-xl">
-                        <i data-lucide="mic" class="w-6 h-6"></i>
+        <div class="space-y-5">
+
+            <!-- SECTION 3: Media Contact -->
+            <aside class="bg-white p-[30px] rounded-[20px] shadow-[0_0_5px_0_rgba(0,0,0,0.06)] reveal reveal-d1">
+                <div class="mt-[2px] flex items-start gap-[10px]">
+                    <div class="w-[50px] h-[50px] shrink-0 flex items-center justify-center bg-[#EFF6FF] text-[#5298F8] rounded-[5px]">
+                        <i data-lucide="mic" class="w-[25px] h-[25px]"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900">Media Inquiries</h3>
+                    <h3 class="mt-[5px] text-[25px] leading-[30px] font-semibold text-black">Media Inquiries</h3>
                 </div>
-                
-                <p class="text-gray-600 text-sm mb-6">
+
+                <p class="mt-[22px] text-[14px] leading-[21px] text-[#4B5563]">
                     For press inquiries, interview requests, or expert commentary on digital health transformation, patient engagement, or healthcare interoperability, contact our communications team.
                 </p>
 
-                <div class="bg-white p-5 rounded-2xl mb-6 border border-gray-100">
-                    <p class="font-bold text-gray-900">Sarah Jenkins</p>
-                    <p class="text-sm text-gray-500 mb-3">Head of Communications, adeahub</p>
-                    
-                    <a href="mailto:press@adeahub.com" class="flex items-center gap-2 text-adeahub-blue hover:underline mb-2 font-medium">
-                        <i data-lucide="mail" class="w-4 h-4"></i> press@adeahub.com
+                <div class="mt-[34px] border border-[#E7E7E7] rounded-[20px] px-5 pt-[25px] pb-5 space-y-[15px]">
+                    <a href="mailto:press@adeahub.co" class="flex items-start gap-[4px] text-[17px] leading-[25.5px] font-medium text-[#5298F8] hover:underline">
+                        <i data-lucide="mail" class="w-[15px] h-[15px] mt-[5px] shrink-0"></i> press@adeahub.co
                     </a>
-                    <a href="tel:+1234567890" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium transition-colors">
-                        <i data-lucide="phone" class="w-4 h-4"></i> +971 50 123 4567
+                    <a href="tel:1800819624" class="flex items-start gap-[4px] text-[17px] leading-[25.5px] font-medium text-[#666666] hover:text-gray-900 transition-colors">
+                        <i data-lucide="phone" class="w-[15px] h-[15px] mt-[5px] shrink-0"></i> Malaysia (Local): 1800 819 624
                     </a>
                 </div>
 
-                <div class="pt-4 border-t border-gray-100">
-                    <h4 class="text-sm font-bold text-gray-900 mb-3">adeahub spokespeople can comment on:</h4>
-                    <ul class="space-y-2 text-sm text-gray-600">
-                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> Healthcare interoperability and FHIR adoption in emerging markets</li>
-                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> National digital health programme delivery</li>
-                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> Patient engagement and personal health applications</li>
-                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> Population health management and AI-driven clinical analytics</li>
-                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-adeahub-blue shrink-0 mt-0.5"></i> Hospital digital transformation in Asia, the Middle East, and Africa</li>
+                <div class="mt-[35px] pt-[35px] border-t border-[#F3F4F6]">
+                    <h4 class="text-[14px] leading-[14px] font-medium text-black">adeahub spokespeople can comment on:</h4>
+                    <ul class="mt-[25px] space-y-[10px] text-[15px] leading-[22.5px] text-[#666666]">
+                        <li class="flex items-start gap-[3px]"><i data-lucide="check" class="w-[13px] h-[13px] text-[#5298F8] shrink-0 mt-[5px]" stroke-width="3"></i> Healthcare interoperability and FHIR adoption in emerging markets</li>
+                        <li class="flex items-start gap-[3px]"><i data-lucide="check" class="w-[13px] h-[13px] text-[#5298F8] shrink-0 mt-[5px]" stroke-width="3"></i> National digital health programme delivery</li>
+                        <li class="flex items-start gap-[3px]"><i data-lucide="check" class="w-[13px] h-[13px] text-[#5298F8] shrink-0 mt-[5px]" stroke-width="3"></i> Patient engagement and personal health applications</li>
+                        <li class="flex items-start gap-[3px]"><i data-lucide="check" class="w-[13px] h-[13px] text-[#5298F8] shrink-0 mt-[5px]" stroke-width="3"></i> Population health management and AI-driven clinical analytics</li>
+                        <li class="flex items-start gap-[3px]"><i data-lucide="check" class="w-[13px] h-[13px] text-[#5298F8] shrink-0 mt-[5px]" stroke-width="3"></i> Hospital digital transformation in Asia, the Middle East, and Africa</li>
                     </ul>
                 </div>
             </aside>
 
-            <!-- SECTION 5: Media Kit -->
-            <aside class="bg-white p-8 rounded-3xl shadow-soft border border-gray-100">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-purple-50 text-purple-600 p-2.5 rounded-xl">
-                        <i data-lucide="folder-down" class="w-6 h-6"></i>
+            <!-- SECTION 4: Media Kit -->
+            <aside class="bg-white p-[30px] rounded-[20px] shadow-[0_0_5px_0_rgba(0,0,0,0.06)] reveal reveal-d2">
+                <div class="mt-[2px] flex items-start gap-[10px]">
+                    <div class="w-[50px] h-[50px] shrink-0 flex items-center justify-center bg-[#FAF5FF] text-[#9333EA] rounded-[5px]">
+                        <i data-lucide="folder-down" class="w-[25px] h-[25px]"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900">Media Kit</h3>
+                    <h3 class="mt-[5px] text-[25px] leading-[30px] font-semibold text-black">Media Kit</h3>
                 </div>
-                
-                <p class="text-gray-600 text-sm mb-6">
+
+                <p class="mt-[22px] text-[14px] leading-[21px] text-[#4B5563]">
                     Download logos, executive headshots, product images, and our company fact sheet for press and media use.
                 </p>
 
                 <!-- Grid of asset types -->
-                <div class="grid grid-cols-2 gap-3 mb-6">
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:border-adeahub-blue transition-colors cursor-pointer">
-                        <i data-lucide="image" class="w-8 h-8 text-gray-400 group-hover:text-adeahub-blue transition-colors"></i>
-                        <span class="text-xs font-semibold text-gray-700">Logo Pack</span>
+                <div class="mt-[34px] grid grid-cols-2 gap-[10px]">
+                    <div class="group h-[95px] bg-[#F3F4F6] border border-[#F3F4F6] hover:border-[#5298F8] transition-colors rounded-[20px] pt-[10px] px-[10px] pb-[10px] flex flex-col items-center justify-start text-center">
+                        <i data-lucide="image" class="w-[25px] h-[25px] text-[#9E9E9E] group-hover:text-[#5298F8] transition-colors"></i>
+                        <span class="mt-[14px] text-[15px] leading-[18px] font-medium text-[#1A1A1A]">Logo Pack</span>
                     </div>
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:border-adeahub-blue transition-colors cursor-pointer">
-                        <i data-lucide="users" class="w-8 h-8 text-gray-400 group-hover:text-adeahub-blue transition-colors"></i>
-                        <span class="text-xs font-semibold text-gray-700">Headshots</span>
+                    <div class="group h-[95px] bg-[#F3F4F6] border border-[#F3F4F6] hover:border-[#5298F8] transition-colors rounded-[20px] pt-[10px] px-[10px] pb-[10px] flex flex-col items-center justify-start text-center">
+                        <i data-lucide="users" class="w-[25px] h-[25px] text-[#9E9E9E] group-hover:text-[#5298F8] transition-colors"></i>
+                        <span class="mt-[14px] text-[15px] leading-[18px] font-medium text-[#1A1A1A]">Headshots</span>
                     </div>
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:border-adeahub-blue transition-colors cursor-pointer">
-                        <i data-lucide="monitor" class="w-8 h-8 text-gray-400 group-hover:text-adeahub-blue transition-colors"></i>
-                        <span class="text-xs font-semibold text-gray-700">Screenshots</span>
+                    <div class="group h-[95px] bg-[#F3F4F6] border border-[#F3F4F6] hover:border-[#5298F8] transition-colors rounded-[20px] pt-[10px] px-[10px] pb-[10px] flex flex-col items-center justify-start text-center">
+                        <i data-lucide="monitor" class="w-[25px] h-[25px] text-[#9E9E9E] group-hover:text-[#5298F8] transition-colors"></i>
+                        <span class="mt-[14px] text-[15px] leading-[18px] font-medium text-[#1A1A1A]">Screenshots</span>
                     </div>
-                    <div class="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col items-center justify-center text-center gap-2 group hover:border-adeahub-blue transition-colors cursor-pointer">
-                        <i data-lucide="file-text" class="w-8 h-8 text-gray-400 group-hover:text-adeahub-blue transition-colors"></i>
-                        <span class="text-xs font-semibold text-gray-700">Fact Sheet</span>
+                    <div class="group h-[95px] bg-[#F3F4F6] border border-[#F3F4F6] hover:border-[#5298F8] transition-colors rounded-[20px] pt-[10px] px-[10px] pb-[10px] flex flex-col items-center justify-start text-center">
+                        <i data-lucide="file-text" class="w-[25px] h-[25px] text-[#9E9E9E] group-hover:text-[#5298F8] transition-colors"></i>
+                        <span class="mt-[14px] text-[15px] leading-[18px] font-medium text-[#1A1A1A]">Fact Sheet</span>
                     </div>
                 </div>
 
-                <button class="w-full bg-adeahub-blue text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-700 transition flex justify-center items-center gap-2 shadow-md shadow-blue-500/20">
-                    <i data-lucide="download" class="w-5 h-5"></i> Download Full Media Kit (ZIP)
-                </button>
-                
-                <p class="text-[0.7rem] text-gray-400 mt-4 leading-relaxed text-center">
-                    By downloading these assets, you agree to use them in accordance with adeahub's brand guidelines. For queries, contact press@adeahub.com.
+                <a href="Images/newsroom/logos.zip" download class="mt-5 ml-[2px] mr-[1px] bg-[#5298F8] text-white text-[15px] leading-[15px] font-semibold whitespace-nowrap py-[15px] px-[18px] rounded-[10px] shadow-[0_4px_6px_-1px_rgba(82,152,248,0.20)] hover:bg-blue-600 transition flex justify-center items-center gap-[5px]">
+                    <i data-lucide="download" class="w-[15px] h-[15px]"></i> Download Full Media Kit (ZIP)
+                </a>
+
+                <p class="mt-5 mb-[15px] text-[12px] leading-[18px] text-[#9E9E9E] text-center">
+                    By downloading these assets, you agree to use them in accordance with adeahub&#8217;s brand guidelines. For queries, contact press@adeahub.co.
                 </p>
             </aside>
 
-            <!-- SECTION 7: Company Boilerplate -->
-            <aside class="bg-white p-8 rounded-3xl shadow-soft border border-gray-100">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-900">About adeahub</h3>
-                    <button id="copy-btn" class="text-adeahub-blue hover:bg-blue-50 p-2 rounded-lg transition-colors flex items-center gap-1 text-sm font-semibold group" aria-label="Copy boilerplate">
+            <!-- SECTION 5: Company Boilerplate -->
+            <aside class="relative bg-white p-[30px] rounded-[20px] shadow-[0_0_5px_0_rgba(0,0,0,0.06)] reveal reveal-d3">
+                <div class="flex items-center justify-between gap-3">
+                    <h3 class="text-[20px] leading-[20px] font-semibold text-black">About adeahub</h3>
+                    <button type="button" id="copy-btn" class="group -my-2 -mr-2 p-2 rounded-lg text-[#5298F8] hover:bg-[#EFF6FF] transition-colors flex items-center gap-1 text-sm font-semibold" aria-label="Copy boilerplate" title="Copy boilerplate">
                         <i data-lucide="copy" class="w-4 h-4"></i>
                         <span class="hidden group-hover:inline">Copy</span>
                     </button>
                 </div>
-                
-                <div class="bg-white p-5 rounded-xl border border-gray-200">
-                    <p id="boilerplate-text" class="text-sm text-gray-600 leading-relaxed font-medium">
-                        adeahub is a digital health platform that helps hospitals, health systems, and national health authorities deliver personalised care at scale. Its four solutions — AH Engage, adeahub providers, adeahub connect, and adeahub insight — work together to unify clinical workflows, connect disparate systems, and surface the data clinicians need to act. With more than 500+ healthcare facilities and 50 million patient records across its installed base, and over 20 years of deployment experience in Asia, the Middle East, and Africa, adeahub powers modern healthcare where it is needed most. Learn more at adeahub.com.
+
+                <div class="mt-5 p-5 rounded-[20px] border border-[#F3F4F6]">
+                    <p id="boilerplate-text" class="mb-[14px] text-[15px] leading-[22.5px] text-[#666666]">
+                        adeahub is a digital health platform that helps hospitals, health systems, and national health authorities deliver personalised care at scale. Its four solutions — AH Engage, AH Care, AH Connect, and AH Insights — work together to unify clinical workflows, connect disparate systems, and surface the data clinicians need to act. With 8,500+ healthcare facilities and more than 200 million patient records across its installed base, and over 25 years of deployment experience in Asia, the Middle East, and Africa, adeahub powers modern healthcare where it is needed most. Learn more at adeahub.co.
                     </p>
                 </div>
-                <!-- Copy Feedback Tooltip -->
-                <div id="copy-feedback" class="text-green-600 text-sm font-semibold mt-2 text-center opacity-0 transition-opacity duration-300">
-                    Copied to clipboard!
-                </div>
+                <div id="copy-feedback" class="absolute left-0 right-0 bottom-[6px] text-center text-sm font-semibold text-green-600 opacity-0 transition-opacity duration-300" aria-live="polite"></div>
             </aside>
 
         </div>
+        </div>
+        </div>
     </main>
 
-    <!-- SECTION 6: In the Press -->
-    <section class="bg-white py-20 border-t border-gray-100 mt-10">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <h2 class="text-3xl font-bold text-adeahub-blue mb-4">adeahub in the Media</h2>
-                <p class="text-gray-600">See what healthcare journalists, analysts, and industry publications are saying about adeahub.</p>
+    <!-- SECTION 6: In the Media -->
+    <section class="bg-[#FDFDFD] border-y border-[#F3F4F6] pt-20 lg:pt-[106px] pb-20 lg:pb-[116px]">
+        <div class="max-w-[1188px] mx-auto px-6">
+            <div class="text-center lg:px-[10px] reveal">
+                <h2 class="text-[30px] leading-[34.5px] font-bold text-[#5298F8]">adeahub in the Media</h2>
+                <p class="mt-5 text-[17px] leading-[25.5px] font-medium text-[#4B5563]">See what healthcare journalists, analysts, and industry publications are saying about adeahub.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="mt-[44px] lg:px-5 grid grid-cols-1 md:grid-cols-2 gap-5">
                 <!-- Press Card 1 -->
-                <div class="bg-white border border-gray-200 p-8 rounded-3xl hover:shadow-soft transition-shadow flex flex-col h-full">
-                    <div class="text-sm font-bold text-gray-400 tracking-widest mb-4 border-b border-gray-100 pb-4">Healthcare IT News</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex-grow">"How adeahub Scaled a National Health App to 33 Million Users in Malaysia"</h3>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-sm text-gray-500">16 February 2026</span>
-                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read Article <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
-                    </div>
+                <div class="border border-[#EEEEEE] rounded-[20px] p-[30px] hover:shadow-soft transition-shadow reveal reveal-d1">
+                    <p class="text-[17px] leading-[24px] font-semibold tracking-[1px] text-[#9E9E9E]">Healthcare Operations Representative Multi-Specialty Hospital Group, India</p>
+                    <div class="mt-[22px] border-t border-[#EEEEEE]"></div>
+                    <h3 class="mt-[22px] text-[20px] leading-[28px] font-semibold text-black">&#8220;adeahub helped us bring clinical, operational and financial workflows into a more integrated hospital environment. It supported our teams with consistent records, better coordination, and stronger visibility across the organization.&#8221;</h3>
                 </div>
 
                 <!-- Press Card 2 -->
-                <div class="bg-white border border-gray-200 p-8 rounded-3xl hover:shadow-soft transition-shadow flex flex-col h-full">
-                    <div class="text-sm font-bold text-gray-400 tracking-widest mb-4 border-b border-gray-100 pb-4">Arab Health Magazine</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex-grow">"Digital Transformation in Egypt's Universal Health Insurance: A Case Study"</h3>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-sm text-gray-500">22 January 2026</span>
-                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read Article <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
-                    </div>
-                </div>
-                
-                 <!-- Press Card 3 (Placeholder for layout consistency) -->
-                 <div class="bg-white border border-gray-200 p-8 rounded-3xl hover:shadow-soft transition-shadow flex flex-col h-full">
-                    <div class="text-sm font-bold text-gray-400 tracking-widest mb-4 border-b border-gray-100 pb-4">Fierce Healthcare</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex-grow">"adeahub's Modular Approach to EMR Implementation in Emerging Markets"</h3>
-                    <div class="flex items-center justify-between mt-auto">
-                        <span class="text-sm text-gray-500">05 January 2026</span>
-                        <a href="#" class="text-adeahub-blue font-semibold hover:underline flex items-center gap-1 text-sm">Read Article <i data-lucide="external-link" class="w-3.5 h-3.5"></i></a>
-                    </div>
+                <div class="border border-[#EEEEEE] rounded-[20px] p-[30px] hover:shadow-soft transition-shadow reveal reveal-d2">
+                    <p class="text-[17px] leading-[24px] font-semibold tracking-[1px] text-[#9E9E9E]">Senior Healthcare IT Representative National Health Authority, Brunei</p>
+                    <div class="mt-[22px] border-t border-[#EEEEEE]"></div>
+                    <h3 class="mt-[22px] text-[20px] leading-[28px] font-semibold text-black">&#8220;With adeahub, we were able to connect our hospitals and health centres around a single patient record. It gave our clinicians more consistent access to patient information and helped us move closer to true nationwide care continuity.&#8221;</h3>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer style="background:#ffffff; border-top: 1px solid #e5e7eb;">
-
-    <!-- Main footer body -->
-    <div class="max-w-7xl mx-auto px-6 md:px-12 pt-14 pb-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
-
-            <!-- Col 1: Brand (spans 2 cols on large) -->
-            <div class="lg:col-span-2 space-y-5">
-                <a href="index.html">
-                    <img src="Images/adeahub-logo-footer.png" alt="adeahub" class="h-9 object-contain object-left">
-                </a>
-                <p style="color:#6b7280; font-size:0.875rem; line-height:1.75; max-width:320px;">
-                    Modern software to deliver personalised healthcare at scale.
-                </p>
-                <!-- Social links -->
-                <div style="display:flex; gap:10px; padding-top:2px;">
-                    <a href="https://www.linkedin.com/company/adeahub" target="_blank" rel="noopener"
-                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
-                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
-                        <svg width="15" height="15" fill="#4b5563" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="mailto:hello@adeahub.com"
-                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
-                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
-                        <svg width="15" height="15" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Col 2: Products -->
-            <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Products</p>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Engage</a></li>
-                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Care</a></li>
-                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Connect</a></li>
-                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Insights</a></li>
-                    <li><a href="adeahub_outbreak.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Outbreak Management</a></li>
-                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 3: Company -->
-            <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Company</p>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
-                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
-                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
-                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
-                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
-                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Get in Touch -->
-            <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Get in touch</p>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li>
-                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            hello@adeahub.com
-                        </a>
-                    </li>
-                    
-                    <li style="padding-top:6px;">
-                        <a href="request_demo.html"
-                           style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#F4D06F;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
-                           onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-                            Request a demo
-                            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
+    <footer class="sfoot">
+    <div class="sfoot-inner">
+        <div>
+            <a href="index.html" class="sfoot-logo"><img src="Images/adeahub-logo-footer.webp" alt="adeahub"></a>
+            <p class="sfoot-tag">Modern software to deliver personalised healthcare at scale.</p>
+            <div class="sfoot-social"><a href="https://www.linkedin.com/company/adeahub/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="#4b5563"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:hello@adeahub.co" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a></div>
+        </div>
+        <div>
+            <p class="sfoot-h">Products</p>
+            <ul class="sfoot-list">
+                    <li><a href="adeahub_engage.html"><b>AH</b> Engage</a></li>
+                    <li><a href="adeahub_care.html"><b>AH</b> Care</a></li>
+                    <li><a href="adeahub_connect.html"><b>AH</b> Connect</a></li>
+                    <li><a href="adeahub_outbreak.html"><b>AH</b> Outbreak Management</a></li>
+                    <li><a href="adeahub_insights.html"><b>AH</b> Insights</a></li>
+                    <li><a href="workwise.html"><b>Work</b>Wise</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="sfoot-h">Company</p>
+            <ul class="sfoot-list">
+                    <li><a href="adeahub_platform.html">Platform</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="customers.html">Customers</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="Blogs.html">Blog</a></li>
+                    <li><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="sfoot-h">Get in touch</p>
+            <ul class="sfoot-list">
+                <li><a href="mailto:hello@adeahub.co" target="_blank" class="sfoot-mail"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>hello@adeahub.co</a></li>
+            </ul>
+            <a href="request_demo.html" class="sfoot-btn">Request a demo <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
     </div>
-
-    <!-- Copyright bar -->
-    <div style="border-top:1px solid #f3f4f6;">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 py-5" style="text-align:center;">
-            <p style="font-size:0.78rem;color:#9ca3af;">&copy; 2026 adeahub. All rights reserved.</p>
-        </div>
-    </div>
-
+    <div class="sfoot-copy"><p>&copy; 2026 adeahub. All rights reserved.</p></div>
 </footer>
 
     <!-- Scripts for Functionality -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
-
-        // Boilerplate Copy Functionality
-        const copyBtn = document.getElementById('copy-btn');
-        const boilerplateText = document.getElementById('boilerplate-text');
-        const feedback = document.getElementById('copy-feedback');
-
-        copyBtn.addEventListener('click', () => {
-            // Create a temporary textarea to hold the text
-            const tempTextArea = document.createElement("textarea");
-            tempTextArea.value = boilerplateText.innerText;
-            document.body.appendChild(tempTextArea);
-            
-            // Select and copy
-            tempTextArea.select();
-            document.execCommand("copy");
-            
-            // Remove the temporary element
-            document.body.removeChild(tempTextArea);
-
-            // Show feedback
-            feedback.style.opacity = '1';
-            
-            // Reset feedback after 2 seconds
-            setTimeout(() => {
-                feedback.style.opacity = '0';
-            }, 2000);
-        });
-
-        // Tab Filtering Logic
-        const tabs = document.querySelectorAll('.tab-btn');
-        const newsItems = document.querySelectorAll('.news-item');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs
-                tabs.forEach(t => {
-                    t.classList.remove('active', 'bg-adeahub-blue', 'text-white', 'border-adeahub-blue');
-                    t.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
-                });
-
-                // Add active class to clicked tab
-                tab.classList.add('active');
-                // Tailwind utility classes for active state
-                tab.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
-
-                const filterValue = tab.getAttribute('data-filter');
-
-                // Filter items
-                newsItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.classList.remove('hidden-item');
-                        // Small timeout to allow display:block to apply before animating opacity
-                        setTimeout(() => {
-                            item.style.display = 'block';
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-                        }, 50);
-                    } else {
-                        item.classList.add('hidden-item');
-                        item.style.display = 'none';
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(10px)';
-                    }
-                });
-            });
-        });
     </script>
+
+<!-- About adeahub: copy boilerplate to clipboard -->
+<script>
+(function () {
+    var btn = document.getElementById('copy-btn');
+    var text = document.getElementById('boilerplate-text');
+    var fb = document.getElementById('copy-feedback');
+    if (!btn || !text) return;
+    function done() {
+        if (!fb) return;
+        fb.textContent = 'Copied to clipboard!';
+        fb.style.opacity = '1';
+        setTimeout(function () { fb.style.opacity = '0'; }, 2000);
+    }
+    function fallback(t) {
+        var ta = document.createElement('textarea');
+        ta.value = t; ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        done();
+    }
+    btn.addEventListener('click', function () {
+        var t = text.innerText.replace(/\s+/g, ' ').trim();
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(t).then(done, function () { fallback(t); });
+        } else { fallback(t); }
+    });
+})();
+</script>
 
 <!-- Navbar scroll shadow -->
 <script>
@@ -1117,11 +920,11 @@
                 card.style.transform =
                     `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.018)`;
                 card.style.boxShadow =
-                    `0 28px 56px -8px rgba(91,168,229,0.22), 0 8px 20px -4px rgba(91,168,229,0.14)`;
+                    `0 28px 56px -8px rgba(82,152,248,0.22), 0 8px 20px -4px rgba(82,152,248,0.14)`;
                 const glow = card.querySelector('.card-glow-layer');
                 if (glow) {
                     glow.style.background =
-                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(91,168,229,0.13) 0%, transparent 70%)`;
+                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(82,152,248,0.13) 0%, transparent 70%)`;
                 }
             });
             card.addEventListener('mouseleave', function () {
@@ -1140,5 +943,22 @@
 })();
 </script>
 
+<!-- Mobile menu -->
+<script>
+(function() {
+    var btn  = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    var ham  = document.getElementById('hamburger-icon');
+    var cls  = document.getElementById('close-icon');
+    if (btn) {
+        btn.addEventListener('click', function() {
+            var open = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden', open);
+            ham.classList.toggle('hidden', !open);
+            cls.classList.toggle('hidden', open);
+        });
+    }
+})();
+</script>
 </body>
 </html>
