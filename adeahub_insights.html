@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AH Insights — Healthcare Intelligence & Analytics | adeahub</title>
-    <meta name="description" content="200+ KPIs. Real-time. AH Insights is a healthcare analytics platform that turns clinical, operational, and financial data into decisions that improve care outcomes.">
+    <title>Healthcare Analytics &amp; Population Health Platform | adeahub</title>
+    <meta name="description" content="Real-time healthcare analytics and population health management for hospitals and ministries of health. 200+ standardised KPIs. AI-powered prescriptive intelligence. Deployed across 16 countries.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -15,14 +15,14 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['Outfit', 'sans-serif'] },
-                    colors: { adeahub: { blue: '#5BA8E5', yellow: '#F4D06F', gray: '#4B5563', lightbg: '#5BA8E5' } },
+                    colors: { adeahub: { blue: '#5298F8', yellow: '#F3D06F', gray: '#4B5563', lightbg: '#5298F8' } },
                     boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.08)' }
                 }
             }
         }
     </script>
     <style>
-        :root { --blue: #5BA8E5; --yellow: #F4D06F; --blue-pale: #EEF4FF; }
+        :root { --blue: #5298F8; --yellow: #F3D06F; --blue-pale: #EEF4FF; }
         body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
         .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -39,38 +39,38 @@
         .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown-menu:hover { display: block !important; }
         .nav-dropdown-menu { animation: dropIn 0.18s ease forwards; }
         @keyframes dropIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes btnGlow { 0%,100% { box-shadow: 0 8px 28px rgba(91,168,229,0.38); } 50% { box-shadow: 0 8px 44px rgba(91,168,229,0.58); } }
+        @keyframes btnGlow { 0%,100% { box-shadow: 0 8px 28px rgba(82,152,248,0.38); } 50% { box-shadow: 0 8px 44px rgba(82,152,248,0.58); } }
         .btn-glow { animation: btnGlow 2.4s ease-in-out infinite; }
-        .btn-glow:hover { animation: none; box-shadow: 0 12px 40px rgba(91,168,229,0.55); transform: translateY(-2px); transition: all 0.25s ease; }
+        .btn-glow:hover { animation: none; box-shadow: 0 12px 40px rgba(82,152,248,0.55); transform: translateY(-2px); transition: all 0.25s ease; }
         .btn-shimmer { position: relative; overflow: hidden; }
         .btn-shimmer::after { content: ''; position: absolute; top: 0; left: -100%; width: 55%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent); }
         .btn-shimmer:hover::after { left: 160%; transition: left 0.55s ease; }
-        .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; color: #5BA8E5; margin-bottom: 14px; }
-        .section-label::before { content: ''; display: block; width: 22px; height: 2px; background: #5BA8E5; border-radius: 2px; }
+        .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em; color: #5298F8; margin-bottom: 14px; }
+        .section-label::before { content: ''; display: block; width: 22px; height: 2px; background: #5298F8; border-radius: 2px; }
         .hero-bg {
             background:
-                radial-gradient(ellipse 75% 65% at 90% 40%, rgba(91,168,229,0.10) 0%, transparent 68%),
-                radial-gradient(ellipse 55% 55% at 8% 80%, rgba(91,168,229,0.07) 0%, transparent 62%),
+                radial-gradient(ellipse 75% 65% at 90% 40%, rgba(82,152,248,0.10) 0%, transparent 68%),
+                radial-gradient(ellipse 55% 55% at 8% 80%, rgba(82,152,248,0.07) 0%, transparent 62%),
                 radial-gradient(ellipse 40% 40% at 50% 5%, rgba(242,199,71,0.06) 0%, transparent 60%),
                 #F8FAFC;
         }
-        .dot-grid { background-image: radial-gradient(circle, rgba(91,168,229,0.11) 1px, transparent 1px); background-size: 28px 28px; }
-        @keyframes badgePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(91,168,229,0.30); } 50% { box-shadow: 0 0 0 7px rgba(91,168,229,0); } }
+        .dot-grid { background-image: radial-gradient(circle, rgba(82,152,248,0.11) 1px, transparent 1px); background-size: 28px 28px; }
+        @keyframes badgePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(82,152,248,0.30); } 50% { box-shadow: 0 0 0 7px rgba(82,152,248,0); } }
         .hero-badge { animation: badgePulse 2.8s ease-in-out infinite; }
         @keyframes floatBlob { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-18px) scale(1.04); } }
         .blob-float-1 { animation: floatBlob 9s ease-in-out infinite; }
         .blob-float-2 { animation: floatBlob 12s ease-in-out infinite 2.5s; }
         .outcome-card { transition: transform 0.28s ease, box-shadow 0.28s ease; position: relative; overflow: hidden; }
-        .outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #5BA8E5, #60a5fa); transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease; }
-        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(91,168,229,0.15); }
+        .outcome-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #5298F8, #60a5fa); transform: scaleX(0); transform-origin: left; transition: transform 0.32s ease; }
+        .outcome-card:hover { transform: translateY(-5px); box-shadow: 0 18px 44px -10px rgba(82,152,248,0.15); }
         .outcome-card:hover::before { transform: scaleX(1); }
-        .gradient-text { background: linear-gradient(135deg, #5BA8E5 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-text { background: linear-gradient(135deg, #5298F8 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .cap-card { border-top: 3px solid transparent; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; border-radius: 20px; }
-        .cap-card:hover { border-top-color: #5BA8E5; transform: translateY(-4px); box-shadow: 0 14px 36px -8px rgba(91,168,229,0.14); }
+        .cap-card:hover { border-top-color: #5298F8; transform: translateY(-4px); box-shadow: 0 14px 36px -8px rgba(82,152,248,0.14); }
         @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .metric-card { animation: countUp 0.6s ease forwards; }
         .proof-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
-        .proof-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px -8px rgba(91,168,229,0.12); }
+        .proof-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px -8px rgba(82,152,248,0.12); }
 
         /* Hero graphic animations */
         @keyframes heroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
@@ -85,464 +85,622 @@
        ADEAHUB REDESIGN OVERRIDES
        ═══════════════════════════════════════════════════════ */
     :root {
-        --blue: #5BA8E5;
-        --yellow: #F4D06F;
-        --blue-pale: rgba(91,168,229,0.10);
-        --shadow-blue: rgba(91,168,229,0.15);
+        --blue: #5298F8;
+        --yellow: #F3D06F;
+        --blue-pale: rgba(82,152,248,0.10);
+        --shadow-blue: rgba(82,152,248,0.15);
     }
 
     /* Gradient text → solid blue */
     .gradient-text {
         background: none !important;
-        -webkit-text-fill-color: #5BA8E5 !important;
-        color: #5BA8E5 !important;
+        -webkit-text-fill-color: #5298F8 !important;
+        color: #5298F8 !important;
     }
 
     /* Stat numbers → solid blue */
     .stat-num {
         background: none !important;
-        -webkit-text-fill-color: #5BA8E5 !important;
-        color: #5BA8E5 !important;
+        -webkit-text-fill-color: #5298F8 !important;
+        color: #5298F8 !important;
     }
 
     /* Section labels → blue on white; yellow on blue bg (overridden below) */
-    .section-label { color: #5BA8E5 !important; }
-    .section-label::before { background: #5BA8E5 !important; }
+    .section-label { color: #5298F8 !important; }
+    .section-label::before { background: #5298F8 !important; }
 
     /* Tab active */
-    .tab-btn.active { background-color: #5BA8E5 !important; }
+    .tab-btn.active { background-color: #5298F8 !important; }
 
     /* Solution card hover border */
-    .solution-card:hover { border-top-color: #5BA8E5 !important; }
+    .solution-card:hover { border-top-color: #5298F8 !important; }
 
     /* Outcome card top bar */
-    .outcome-card::before { background: #5BA8E5 !important; }
-
-    /* ── ALL BLUE SECTION BACKGROUNDS → solid #5BA8E5 ── */
-    .hero-bg { background: #5BA8E5 !important; }
-    .cta-mesh { background: #5BA8E5 !important; }
-    .testimonial-bg { background: #5BA8E5 !important; }
-    section.bg-adeahub-lightbg,
-    header.bg-adeahub-lightbg { background-color: #5BA8E5 !important; }
-    section.bg-adeahub-blue { background-color: #5BA8E5 !important; }
-    #cta { background: #5BA8E5 !important; border-top-color: #5280d9 !important; }
-
-    /* ── ANIMATED ORB BACKGROUNDS on all blue sections ── */
-    .hero-bg,
-    .cta-mesh,
-    .testimonial-bg,
-    section.bg-adeahub-lightbg,
-    section.bg-adeahub-blue,
-    header.bg-adeahub-lightbg,
-    #cta {
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Orb pseudo-elements shared across all blue sections */
-    .hero-bg::before, .cta-mesh::before, .testimonial-bg::before,
-    section.bg-adeahub-lightbg::before, section.bg-adeahub-blue::before,
-    header.bg-adeahub-lightbg::before, #cta::before,
-    .hero-bg::after, .cta-mesh::after, .testimonial-bg::after,
-    section.bg-adeahub-lightbg::after, section.bg-adeahub-blue::after,
-    header.bg-adeahub-lightbg::after, #cta::after {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 0;
-        background: rgba(255,255,255,0.9);
-    }
-
-    /* Large orb — top-left */
-    .hero-bg::before, .cta-mesh::before, .testimonial-bg::before,
-    section.bg-adeahub-lightbg::before, section.bg-adeahub-blue::before,
-    header.bg-adeahub-lightbg::before, #cta::before {
-        width: 520px; height: 520px;
-        top: -180px; left: -120px;
-        animation: floatOrb1 14s ease-in-out infinite;
-        filter: blur(2px);
-        opacity: 0.08;
-    }
-    /* Smaller orb — bottom-right */
-    .hero-bg::after, .cta-mesh::after, .testimonial-bg::after,
-    section.bg-adeahub-lightbg::after, section.bg-adeahub-blue::after,
-    header.bg-adeahub-lightbg::after, #cta::after {
-        width: 340px; height: 340px;
-        bottom: -100px; right: -80px;
-        animation: floatOrb2 18s ease-in-out infinite;
-        filter: blur(1px);
-        opacity: 0.05;
-    }
-
-    /* Stagger animation delays for visual variety */
-    .cta-mesh::before, section.bg-adeahub-lightbg::before { animation-delay: -3s; }
-    .cta-mesh::after,  section.bg-adeahub-lightbg::after  { animation-delay: -7s; }
-    .testimonial-bg::before, section.bg-adeahub-blue::before { animation-delay: -6s; }
-    .testimonial-bg::after,  section.bg-adeahub-blue::after  { animation-delay: -2s; }
-    #cta::before { animation-delay: -9s; }
-    #cta::after  { animation-delay: -4s; }
-
-    @keyframes floatOrb1 {
-        0%,100% { transform: translate(0, 0) scale(1); }
-        33%     { transform: translate(30px, 25px) scale(1.06); }
-        66%     { transform: translate(-20px, 40px) scale(0.94); }
-    }
-    @keyframes floatOrb2 {
-        0%,100% { transform: translate(0, 0) scale(1); }
-        40%     { transform: translate(-35px, -20px) scale(1.08); }
-        70%     { transform: translate(25px, 30px) scale(0.92); }
-    }
-
-    /* Dot-grid overlay on all blue sections */
-    .hero-bg, .cta-mesh, .testimonial-bg,
-    section.bg-adeahub-lightbg, section.bg-adeahub-blue,
-    header.bg-adeahub-lightbg, #cta {
-        background-image:
-            radial-gradient(circle, rgba(255,255,255,0.10) 1px, transparent 1px) !important;
-        background-size: 36px 36px !important;
-        background-position: 0 0 !important;
-    }
-
-    /* All child content must sit above pseudo-elements */
-    .hero-bg > *:not(.absolute), .cta-mesh > *:not(.absolute), .testimonial-bg > *:not(.absolute),
-    section.bg-adeahub-lightbg > *:not(.absolute), section.bg-adeahub-blue > *:not(.absolute),
-    header.bg-adeahub-lightbg > *:not(.absolute), #cta > *:not(.absolute) {
-        position: relative;
-        z-index: 1;
-    }
-
-    /* ── TEXT COLORS ON BLUE BACKGROUNDS ── */
-
-    /* hero-bg / header.bg-adeahub-lightbg */
-    .hero-bg h1, .hero-bg h2, .hero-bg h3, .hero-bg p, .hero-bg li,
-    header.bg-adeahub-lightbg h1, header.bg-adeahub-lightbg h2,
-    header.bg-adeahub-lightbg h3, header.bg-adeahub-lightbg p,
-    header.bg-adeahub-lightbg li { color: white !important; }
-
-    header .text-adeahub-yellow,
-    header span[class*="yellow"],
-    .hero-bg .text-adeahub-yellow { color: #F4D06F !important; }
-
-    /* section.bg-adeahub-lightbg */
-    section.bg-adeahub-lightbg h2,
-    section.bg-adeahub-lightbg h3,
-    section.bg-adeahub-lightbg h4 { color: white !important; }
-
-    section.bg-adeahub-lightbg p,
-    section.bg-adeahub-lightbg li,
-    section.bg-adeahub-lightbg .text-gray-500,
-    section.bg-adeahub-lightbg .text-gray-600,
-    section.bg-adeahub-lightbg .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
-
-    section.bg-adeahub-lightbg .text-gray-900,
-    section.bg-adeahub-lightbg .text-gray-800 { color: white !important; }
-
-    section.bg-adeahub-lightbg .section-label { color: #F4D06F !important; }
-    section.bg-adeahub-lightbg .section-label::before { background: #F4D06F !important; }
-    section.bg-adeahub-lightbg span.text-sm.font-bold,
-    section.bg-adeahub-lightbg .font-bold.tracking-wider,
-    section.bg-adeahub-lightbg .tracking-widest { color: #F4D06F !important; }
-
-    /* section.bg-adeahub-blue */
-    section.bg-adeahub-blue h2,
-    section.bg-adeahub-blue h3,
-    section.bg-adeahub-blue h4 { color: white !important; }
-
-    section.bg-adeahub-blue p,
-    section.bg-adeahub-blue li,
-    section.bg-adeahub-blue .text-gray-500,
-    section.bg-adeahub-blue .text-gray-600,
-    section.bg-adeahub-blue .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
-
-    section.bg-adeahub-blue .text-gray-900,
-    section.bg-adeahub-blue .text-gray-800 { color: white !important; }
-
-    section.bg-adeahub-blue .section-label { color: #F4D06F !important; }
-    section.bg-adeahub-blue .section-label::before { background: #F4D06F !important; }
-    section.bg-adeahub-blue span.text-sm.font-bold,
-    section.bg-adeahub-blue .font-bold.tracking-wider,
-    section.bg-adeahub-blue .tracking-widest { color: #F4D06F !important; }
-
-    /* cta-mesh */
-    .cta-mesh h2, .cta-mesh h3, .cta-mesh p,
-    .cta-mesh li { color: white !important; }
-    .cta-mesh .text-gray-500, .cta-mesh .text-gray-600,
-    .cta-mesh .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
-    .cta-mesh .section-label { color: #F4D06F !important; }
-    .cta-mesh .section-label::before { background: #F4D06F !important; }
-
-    /* testimonial-bg */
-    .testimonial-bg h2, .testimonial-bg h3, .testimonial-bg p,
-    .testimonial-bg li { color: white !important; }
-    .testimonial-bg .text-gray-500, .testimonial-bg .text-gray-600,
-    .testimonial-bg .text-gray-700 { color: rgba(255,255,255,0.75) !important; }
-
-    /* #cta section */
-    #cta h2, #cta h3, #cta h4 { color: white !important; }
-    #cta p, #cta li { color: rgba(255,255,255,0.80) !important; }
-    #cta span.text-sm.font-bold,
-    #cta span.tracking-wider { color: #F4D06F !important; }
-    #cta .text-gray-500, #cta .text-gray-600 { color: rgba(255,255,255,0.75) !important; }
-    #cta .text-adeahub-blue { color: #F4D06F !important; }
-
-    /* White cards inside blue sections: restore normal text colors */
-    section.bg-adeahub-lightbg .bg-white h3,
-    section.bg-adeahub-lightbg .bg-white h4,
-    section.bg-adeahub-blue .bg-white h3,
-    section.bg-adeahub-blue .bg-white h4 { color: #111827 !important; }
-
-    section.bg-adeahub-lightbg .bg-white p,
-    section.bg-adeahub-lightbg .bg-white span,
-    section.bg-adeahub-lightbg .bg-white li,
-    section.bg-adeahub-blue .bg-white p,
-    section.bg-adeahub-blue .bg-white span,
-    section.bg-adeahub-blue .bg-white li { color: #4B5563 !important; }
-
-    /* ── BUTTONS on blue backgrounds → Yellow with black text ── */
-    section.bg-adeahub-lightbg .btn-glow,
-    section.bg-adeahub-blue .btn-glow,
-    .cta-mesh .btn-glow,
-    .hero-bg .btn-glow,
-    #cta .btn-glow {
-        background: #F4D06F !important;
-        color: #1a1a2e !important;
-        border-color: #F4D06F !important;
-    }
-
-    section.bg-adeahub-lightbg a[class*="bg-adeahub-blue"],
-    section.bg-adeahub-blue a[class*="bg-adeahub-blue"],
-    .cta-mesh a[class*="bg-adeahub-blue"],
-    #cta a[class*="bg-adeahub-blue"] {
-        background: #F4D06F !important;
-        color: #1a1a2e !important;
-    }
-
-    /* Remove decorative blue blobs that look odd on blue bg */
-    .bg-blue-100\/40, .bg-blue-100 { opacity: 0.08 !important; }
-
-    /* ── SOLUTION CARD 3D TILT + GLOW CSS ── */
-    .solution-card {
-        transition: transform 0.12s ease, box-shadow 0.2s ease;
-        will-change: transform;
-        transform-style: preserve-3d;
-        cursor: default;
-    }
-    .solution-card .card-glow-layer {
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 0;
-    }
-    .solution-card:hover .card-glow-layer { opacity: 1; }
-    .solution-card > *:not(.card-glow-layer) { position: relative; z-index: 1; }
+    .outcome-card::before { background: #5298F8 !important; }
 
 
+        /* ═══ PASS 3: GitHub design restored where WordPress downgraded it ═══ */
+        /* R4 eyebrow labels: blue on white; live spacing kept (h2 carries mt-5) */
+        p.section-label, span.section-label { margin-bottom: 0; }
+        .section-label.on-blue { color: #F3D06F !important; }
+        .section-label.on-blue::before { background: #F3D06F !important; }
+        /* R2 blue-section decoration: white dot grid + two slow floating orbs */
+        .ah-deco { position: relative; overflow: hidden; background-image: radial-gradient(circle, rgba(255,255,255,0.10) 1px, transparent 1px); background-size: 36px 36px; }
+        .ah-deco::before, .ah-deco::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; background: rgba(255,255,255,0.9); }
+        .ah-deco::before { width: 520px; height: 520px; top: -180px; left: -120px; filter: blur(2px); opacity: 0.08; animation: floatOrb1 14s ease-in-out infinite; animation-delay: var(--orb1, 0s); }
+        .ah-deco::after { width: 340px; height: 340px; bottom: -100px; right: -80px; filter: blur(1px); opacity: 0.05; animation: floatOrb2 18s ease-in-out infinite; animation-delay: var(--orb2, 0s); }
+        .ah-deco > *:not(.absolute) { position: relative; z-index: 1; }
+        @keyframes floatOrb1 { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(30px,25px) scale(1.06); } 66% { transform: translate(-20px,40px) scale(0.94); } }
+        @keyframes floatOrb2 { 0%,100% { transform: translate(0,0) scale(1); } 40% { transform: translate(-35px,-20px) scale(1.08); } 70% { transform: translate(25px,30px) scale(0.92); } }
+        /* R3 yellow CTA glow on blue sections */
+        .ah-deco .btn-glow { animation-name: btnGlowY; }
+        @keyframes btnGlowY { 0%,100% { box-shadow: 0 8px 28px rgba(243,208,111,0.38); } 50% { box-shadow: 0 8px 44px rgba(243,208,111,0.58); } }
+        .ah-deco .btn-glow:hover { box-shadow: 0 12px 40px rgba(243,208,111,0.55); }
 
-    
-    /* ── Hero graphic preservation: keep text readable inside white-bg cards ── */
-    .hero-bg .bg-white, .hero-bg .bg-white *,
-    .hero-bg .bg-gray-50, .hero-bg .bg-gray-50 *,
-    .hero-bg .outcome-card, .hero-bg .outcome-card *,
-    .hero-bg .system-node, .hero-bg .system-node *,
-    .hero-bg .phone-frame, .hero-bg .phone-frame *,
-    .hero-bg [class*="rounded"] .bg-white *,
-    .hero-bg .rounded-xl *, .hero-bg .rounded-2xl *, .hero-bg .rounded-3xl * {
-        color: inherit !important;
-    }
-    /* Specific overrides for dark text inside graphic cards */
-    .hero-bg .bg-white p, .hero-bg .bg-white span, .hero-bg .bg-white div,
-    .hero-bg .bg-white h1, .hero-bg .bg-white h2, .hero-bg .bg-white h3,
-    .hero-bg .bg-white h4, .hero-bg .bg-white label, .hero-bg .bg-white li {
-        color: #111827 !important;
-    }
-    .hero-bg .bg-gray-50 p, .hero-bg .bg-gray-50 span, .hero-bg .bg-gray-50 div,
-    .hero-bg .bg-gray-50 h1, .hero-bg .bg-gray-50 h2, .hero-bg .bg-gray-50 h3 {
-        color: #374151 !important;
-    }
-    .hero-bg .outcome-card p, .hero-bg .outcome-card span, .hero-bg .outcome-card div,
-    .hero-bg .outcome-card h1, .hero-bg .outcome-card h2, .hero-bg .outcome-card h3 {
-        color: #111827 !important;
-    }
-    .hero-bg .system-node p, .hero-bg .system-node span, .hero-bg .system-node div {
-        color: #111827 !important;
-    }
-    .hero-bg .phone-frame p, .hero-bg .phone-frame span, .hero-bg .phone-frame div {
-        color: #111827 !important;
-    }
-    /* Preserve colored text in graphic badges / status pills */
-    .hero-bg .bg-green-50, .hero-bg .bg-green-50 *, .hero-bg .text-green-600 { color: #16a34a !important; }
-    .hero-bg .bg-blue-50,  .hero-bg .bg-blue-50 *,  .hero-bg .text-blue-600  { color: #2563eb !important; }
-    .hero-bg .bg-red-50,   .hero-bg .bg-red-50 *,   .hero-bg .text-red-600   { color: #dc2626 !important; }
-    .hero-bg .bg-yellow-50,.hero-bg .bg-yellow-50 *,.hero-bg .text-yellow-600 { color: #d97706 !important; }
-    .hero-bg .bg-purple-50,.hero-bg .bg-purple-50 *,.hero-bg .text-purple-600 { color: #9333ea !important; }
-    .hero-bg .text-gray-400 { color: #9ca3af !important; }
-    .hero-bg .text-gray-500 { color: #6b7280 !important; }
-    .hero-bg .text-gray-600 { color: #4b5563 !important; }
-    .hero-bg .text-gray-700 { color: #374151 !important; }
-    .hero-bg .text-gray-800 { color: #1f2937 !important; }
-    .hero-bg .text-gray-900 { color: #111827 !important; }
-
-    
         /* ── Mega menu product cards ── */
         .mega-card { display:flex; align-items:flex-start; gap:13px; padding:14px 16px; border-radius:12px; text-decoration:none; color:inherit; transition:background 0.15s; }
         .mega-card:hover { background:#f0f6ff; }
         .mega-card:hover .mega-icon { background:#dbeafe; }
         .mega-icon { width:40px; height:40px; background:#eff6ff; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s; }
-        .mega-icon svg { width:18px; height:18px; color:#5BA8E5; }
+        .mega-icon svg { width:18px; height:18px; color:#5298F8; }
         .mega-name { font-size:0.85rem; font-weight:700; color:#111827; margin-bottom:2px; }
         .mega-tag { font-size:0.7rem; color:#6b7280; font-weight:500; margin-bottom:3px; }
         .mega-desc { font-size:0.68rem; color:#9ca3af; line-height:1.4; }
         </style>
+<!-- live-head:start (favicon + canonical/social tags as on adeahub.co) -->
+<link rel="icon" href="Images/favicon/cropped-Entomo-Box-Logos-scaled-1-32x32.png" sizes="32x32">
+<link rel="icon" href="Images/favicon/cropped-Entomo-Box-Logos-scaled-1-192x192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="Images/favicon/cropped-Entomo-Box-Logos-scaled-1-180x180.png">
+<meta name="msapplication-TileImage" content="Images/favicon/cropped-Entomo-Box-Logos-scaled-1-270x270.png">
+<link rel="canonical" href="https://adeahub.co/ah-insights/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Healthcare Analytics &amp; Population Health Platform | adeahub">
+<meta property="og:description" content="Real-time healthcare analytics and population health management for hospitals and ministries of health. 200+ standardised KPIs. AI-powered prescriptive intelligence. Deployed across 16 countries.">
+<meta property="og:url" content="https://adeahub.co/ah-insights/">
+<meta property="og:site_name" content="adeahub">
+<meta property="og:image" content="https://adeahub.co/wp-content/uploads/2026/05/team-young-specialist-doctors-standing-corridor-hospital-scaled.webp">
+<meta property="og:image:width" content="2560">
+<meta property="og:image:height" content="1706">
+<meta property="og:image:type" content="image/webp">
+<meta name="twitter:card" content="summary_large_image">
+<!-- live-head:end -->
+<style id="site-chrome">
+/* ── Site header / mega-menus / footer — values measured on adeahub.co (2026-10-29) ── */
+html,body{overflow-x:clip;} /* stop slide-in animations and decorative overhangs from causing sideways scroll on phones */
+.snav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 4px 10px rgba(0,0,0,.08);font-family:'Outfit',sans-serif;}
+.snav-inner{max-width:1188px;margin:0 auto;padding:0 24px;height:84px;display:flex;align-items:center;justify-content:space-between;}
+.snav-brand{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;flex-shrink:0;}
+.snav-brand img{height:39px;width:auto;display:block;}
+.snav-tag{display:block;font-size:13px;line-height:13px;font-weight:300;color:#6B7280;padding-left:8px;margin-top:2px;}
+.snav-menu{display:none;align-items:center;}
+@media (min-width:768px){.snav-menu{display:flex;}}
+.snav-links{display:flex;align-items:center;list-style:none;margin:0;padding:0;}
+.snav-links>li{position:relative;}
+.snav-link{display:flex;align-items:center;gap:6px;padding:0 15px;font-size:14px;line-height:21px;font-weight:500;color:#4B5563;text-decoration:none;background:none;border:0;cursor:pointer;font-family:inherit;transition:color .2s;}
+.snav-links>li:hover>.snav-link,.snav-link:focus-visible,.snav-link.is-current{color:#5298F8;}
+.snav-link svg{width:11px;height:11px;margin-right:6px;stroke:currentColor;fill:none;stroke-width:2;}
+.snav-cta{margin-left:20px;display:inline-block;background:#F3D06F;color:#111827;font-size:16px;line-height:16px;font-weight:500;padding:14px 32px;border-radius:9999px;text-decoration:none;white-space:nowrap;transition:transform .3s;}
+.snav-cta{position:relative;overflow:hidden;}
+.snav-cta::after{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);}
+.snav-cta:hover{transform:translateY(-8px);}
+.snav-cta:hover::after{left:160%;transition:left .55s ease;}
+.snav-burger{display:block;color:#4B5563;padding:4px;background:none;border:0;cursor:pointer;}
+@media (min-width:768px){.snav-burger{display:none;}}
+/* mega panels */
+.snav-dd .snav-panel{position:absolute;top:100%;padding-top:16px;display:none;z-index:60;}
+.snav-dd:hover .snav-panel,.snav-dd:focus-within .snav-panel{display:block;animation:snavDrop .18s ease forwards;}
+@keyframes snavDrop{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+.snav-dd-products .snav-panel{left:-150px;}
+.snav-dd-resources .snav-panel{left:0;}
+.snav-card{background:#fff;border-radius:16px;box-shadow:0 0 28px rgba(0,0,0,.14);overflow:hidden;}
+.snav-dd-products .snav-card{width:750px;}
+.snav-dd-resources .snav-card{width:500px;}
+.snav-card-head{background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;line-height:18px;color:#5298F8;}
+.snav-label{display:inline-flex;align-items:center;gap:6px;font-size:.65rem;font-weight:800;letter-spacing:.12em;}
+.snav-label::before{content:'';display:inline-block;width:18px;height:2px;background:#5298F8;border-radius:2px;}
+.snav-card-head a{color:#5298F8;text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;}
+.snav-chev{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.5;}
+.snav-card-body{padding:16px 16px 16px 8px;}
+.snav-grid{display:grid;grid-template-columns:1fr 1fr;}
+.snav-group{border-bottom:1px solid #F1F1F1;margin-bottom:8px;}
+.snav-group:last-child{border-bottom:0;margin-bottom:0;}
+.snav-item{display:flex;align-items:flex-start;gap:13px;padding:10px 12px;border-radius:12px;text-decoration:none;transition:background .15s;}
+.snav-item:hover{background:#f0f6ff;}
+.snav-ico{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:#EFF6FF;color:#5298F8;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.snav-item:hover .snav-ico{background:#dbeafe;}
+.snav-ico svg{width:18px;height:18px;stroke:#5298F8;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.snav-title{font-size:14px;line-height:18px;font-weight:600;color:#000;margin:0 0 5px;}
+.snav-title span{color:#5298F8;}
+.snav-text{font-size:12px;line-height:21px;color:#7A7A7A;margin:0;}
+.snav-text strong{font-weight:700;display:block;}
+.snav-item:hover .snav-title{color:#5298F8;}
+.snav-card-foot{background:#FAFAFA;border-top:1px solid #fff;padding:16px;display:flex;justify-content:flex-end;}
+.snav-card-foot a{background:#EFF6FF;color:#5298F8;font-size:12px;line-height:18px;font-weight:600;padding:6px 14px;border-radius:20px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+/* footer */
+.sfoot{background:#fff;font-family:'Outfit',sans-serif;}
+.sfoot-inner{max-width:1188px;margin:0 auto;padding:48px 24px;display:grid;grid-template-columns:1fr;gap:40px;}
+@media (min-width:768px){.sfoot-inner{grid-template-columns:1fr 1fr;}}
+@media (min-width:1024px){.sfoot-inner{grid-template-columns:456px 228px 228px 228px;gap:0;}}
+.sfoot-logo img{height:36px;width:auto;display:block;}
+.sfoot-tag{margin:20px 0 0;max-width:320px;font-size:14px;line-height:19px;color:#9E9E9E;}
+.sfoot-social{margin-top:20px;display:flex;gap:10px;}
+.sfoot-social a{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;transition:background .2s,border-color .2s;}
+.sfoot-social a:hover{background:#dbeafe;border-color:#bfdbfe;}
+.sfoot-social svg{width:15px;height:15px;}
+.sfoot-h{margin:0 0 16px;font-size:.65rem;line-height:17px;font-weight:800;letter-spacing:.12em;color:#5298F8;}
+.sfoot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.sfoot-list a{font-size:14px;line-height:21px;color:#54595F;text-decoration:none;transition:color .2s;display:block;width:fit-content;}
+.sfoot-list a.sfoot-mail{display:flex;align-items:center;gap:5px;}
+.sfoot-list a:hover{color:#5298F8;}
+.sfoot-list b{color:#5298F8;font-weight:700;}
+.sfoot-list svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
+.sfoot-btn{margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:#F3D06F;color:#000;font-size:12px;line-height:19px;font-weight:700;padding:4px 16px;border-radius:32px;text-decoration:none;}
+.sfoot-btn svg{width:12px;height:12px;stroke:#000;fill:none;stroke-width:2.5;}
+.sfoot-copy{border-top:1px solid #F1F1F1;}
+.sfoot-copy p{max-width:1188px;margin:0 auto;padding:16px 24px;text-align:center;font-size:12px;line-height:17px;color:#9E9E9E;}
+</style>
 </head>
 <body class="bg-white text-gray-700">
 
 <!-- NAVBAR -->
-<nav id="main-nav" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
-        <a href="index.html" class="flex flex-col hover:opacity-90 transition shrink-0">
-            <img src="AdeaHub Logo-Default.png" alt="adeahub logo" class="h-10 object-contain object-left mb-1">
-            <span class="text-[0.65rem] font-medium text-gray-500 tracking-widest leading-none pl-1">Powering modern healthcare</span>
-        </a>
-        <div class="hidden md:flex items-center gap-6 text-sm font-medium">
-            <div class="nav-dropdown relative">
-                <button class="nav-dropdown-trigger text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">Products <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
-                <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="left:-150px;width:740px;">
-                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                        <!-- Mega header -->
-                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>adeahub products</span>
-                            <a href="adeahub_platform.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;display:flex;align-items:center;gap:4px;text-decoration:none;">View platform overview <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-                        </div>
-                        <!-- 2-col product grid -->
-                        <div style="display:grid;grid-template-columns:1fr 1fr;padding:8px;">
-                            <a href="adeahub_engage.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Engage</p><p class="mega-tag">Digital front door for patients</p><p class="mega-desc">Appointments, health records &amp; care journeys</p></div></a>
-                            <a href="adeahub_care.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Care</p><p class="mega-tag">Health information system</p><p class="mega-desc">25+ clinical &amp; admin modules, multi-site</p></div></a>
-                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="adeahub_connect.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Connect</p><p class="mega-tag">Interoperability &amp; health data exchange</p><p class="mega-desc">FHIR server, integration engine &amp; API gateway</p></div></a>
-                            <a href="adeahub_insights.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Insights</p><p class="mega-tag">Healthcare intelligence &amp; analytics</p><p class="mega-desc">Population health, real-time analytics &amp; AI/ML</p></div></a>
-                            <a href="adeahub_outbreak.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">AH</span> Outbreak Management</p><p class="mega-tag">Manage disease outbreaks</p><p class="mega-desc">Detection, tracing, monitoring &amp; containment</p></div></a>
-                            <div style="grid-column:1/-1;height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="workwise.html" class="mega-card" style="grid-column:1/-1;"><span class="mega-icon" style="background:#eef4ff;"><svg fill="none" stroke="#5BA8E5" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></span><div><p class="mega-name"><span style="color:#5BA8E5">Work</span><span style="color:#1a1a2a">Wise</span> <span style="font-size:0.62rem;background:#eef4ff;color:#5BA8E5;padding:1px 6px;border-radius:8px;font-weight:600;">by entomo</span></p><p class="mega-tag">Healthcare workforce experience platform</p><p class="mega-desc">Performance, learning &amp; workforce intelligence for healthcare teams</p></div></a>
-                        </div>
-                        <!-- Footer -->
-                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
-                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="adeahub_platform.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Platform</a>
-            <div class="nav-dropdown relative">
-                <button class="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium py-2">Resources <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg></button>
-                <div class="nav-dropdown-menu absolute top-full pt-2 hidden" style="right:0;width:460px;">
-                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                        <!-- Mega header -->
-                        <div style="background:linear-gradient(135deg,#f0f6ff,#eef4ff);border-bottom:1px solid #dbeafe;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-                            <span style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;display:flex;align-items:center;gap:6px;"><span style="display:inline-block;width:18px;height:2px;background:#5BA8E5;border-radius:2px;"></span>Resources</span>
-                        </div>
-                        <!-- Single-column items -->
-                        <div style="padding:8px;">
-                            <a href="newsroom.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg></span><div><p class="mega-name">Newsroom</p><p class="mega-tag">Press releases &amp; company announcements</p></div></a>
-                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="customers.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg></span><div><p class="mega-name">Customers</p><p class="mega-tag">Case studies &amp; client outcomes</p></div></a>
-                            <div style="height:1px;background:#f3f4f6;margin:0 10px;"></div>
-                            <a href="Blogs.html" class="mega-card"><span class="mega-icon"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></span><div><p class="mega-name">Blog</p><p class="mega-tag">Insights, perspectives &amp; best practices</p></div></a>
-                        </div>
-                        <!-- Footer -->
-                        <div style="border-top:1px solid #f3f4f6;padding:10px 20px;display:flex;align-items:center;justify-content:flex-end;background:#fafafa;">
-                            <a href="request_demo.html" style="font-size:0.72rem;font-weight:600;color:#5BA8E5;background:#eff6ff;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:4px;text-decoration:none;">Request a demo <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="about_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">About</a>
-            <a href="contact_us.html" class="text-gray-600 hover:text-blue-600 transition-colors font-medium py-2">Contact Us</a>
-            <a href="request_demo.html" class="btn-shimmer text-gray-900 px-5 py-2.5 rounded-full font-semibold hover:opacity-90 transition-colors" style="background:#F4D06F;">Talk to us</a>
+<nav id="main-nav" class="snav">
+    <div class="snav-inner">
+        <a href="index.html" class="snav-brand"><img src="Images/AdeaHub-Logo-Default.webp" alt="adeahub logo"><span class="snav-tag">Powering modern healthcare</span></a>
+        <div class="snav-menu">
+            <ul class="snav-links">
+                <li><a href="adeahub_platform.html" class="snav-link">Platform</a></li>
+                <li class="snav-dd snav-dd-products"><button type="button" class="snav-link" aria-haspopup="true">Products <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><div class="snav-panel"><div class="snav-card"><div class="snav-card-head"><span class="snav-label">adeahub products</span><a href="adeahub_platform.html">View platform overview <svg class="snav-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a></div><div class="snav-card-body"><div class="snav-group snav-grid"><a href="adeahub_engage.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span><span><p class="snav-title"><span>AH</span> Engage</p><p class="snav-text"><strong>Digital front door for patients</strong>Appointments, health records &amp; care journeys</p></span></a><a href="adeahub_care.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span><span><p class="snav-title"><span>AH</span> Care</p><p class="snav-text"><strong>Health information system</strong>25+ clinical &amp; admin modules, multi-site</p></span></a></div><div class="snav-group snav-grid"><a href="adeahub_connect.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span><span><p class="snav-title"><span>AH</span> Connect</p><p class="snav-text"><strong>Interoperability &amp; health data exchange</strong>FHIR server, integration engine &amp; API gateway</p></span></a><a href="adeahub_insights.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-9"/></svg></span><span><p class="snav-title"><span>AH</span> Insights</p><p class="snav-text"><strong>Healthcare intelligence &amp; analytics</strong>Population health, real-time analytics &amp; AI/ML</p></span></a><a href="adeahub_outbreak.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><p class="snav-title"><span>AH</span> Outbreak Management</p><p class="snav-text"><strong>Manage disease outbreaks</strong>Detection, tracing, monitoring &amp; containment</p></span></a></div><div class="snav-group"><a href="workwise.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><span><p class="snav-title"><span>Work</span>Wise</p><p class="snav-text"><strong>Healthcare workforce experience platform</strong>Performance, learning &amp; workforce intelligence for healthcare teams</p></span></a></div></div><div class="snav-card-foot"><a href="request_demo.html">Request a demo <svg class="snav-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a></div></div></div></li>
+                <li class="snav-dd snav-dd-resources"><button type="button" class="snav-link" aria-haspopup="true">Resources <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><div class="snav-panel"><div class="snav-card"><div class="snav-card-head"><span class="snav-label">Resources</span></div><div class="snav-card-body"><div class="snav-group"><a href="newsroom.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span><span><p class="snav-title">Newsroom</p><p class="snav-text"><strong>Press releases &amp; company announcements</strong></p></span></a></div><div class="snav-group"><a href="customers.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span><span><p class="snav-title">Customers</p><p class="snav-text"><strong>Case studies &amp; client outcomes</strong></p></span></a></div><div class="snav-group"><a href="Blogs.html" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><span><p class="snav-title">Blog</p><p class="snav-text"><strong>Insights, perspectives &amp; best practices</strong></p></span></a></div></div><div class="snav-card-foot"><a href="request_demo.html">Request a demo <svg class="snav-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></a></div></div></div></li>
+                <li><a href="about_us.html" class="snav-link">About Us</a></li>
+                <li><a href="contact_us.html" class="snav-link">Contact Us</a></li>
+            </ul>
+            <a href="request_demo.html" class="snav-cta">Talk To Us</a>
         </div>
-        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl hover:bg-gray-100 transition" aria-label="Open menu">
-            <svg id="hamburger-icon" class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            <svg id="close-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        <button id="mobile-menu-btn" class="snav-burger" aria-label="Toggle menu">
+            <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-6 py-4 space-y-1">
-        <p class="text-xs font-bold text-gray-400 tracking-widest mb-3 mt-1">Products</p>
-        <a href="adeahub_engage.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">AH Engage</a>
-        <a href="adeahub_care.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">AH Care</a>
-        <a href="adeahub_connect.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">AH Connect</a>
-        <a href="adeahub_insights.html" class="block py-2.5 text-adeahub-blue font-semibold">AH Insights</a>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4">
+        <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pb-2">Products</p>
+        <a href="adeahub_engage.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Engage</a>
+        <a href="adeahub_care.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Care</a>
+        <a href="adeahub_connect.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Connect</a>
         <a href="adeahub_outbreak.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Outbreak Management</a>
-        <a href="workwise.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">WorkWise</a>
-        <hr class="border-gray-100 my-3">
-        <a href="adeahub_platform.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">Platform</a>
-        <a href="newsroom.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">Newsroom</a>
-        <a href="customers.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">Customers</a>
-        <a href="about_us.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">About</a>
-        <a href="contact_us.html" class="block py-2.5 text-gray-700 font-medium hover:text-adeahub-blue transition-colors">Contact Us</a>
-        <a href="request_demo.html" class="mt-3 block text-center text-gray-900 px-5 py-3 rounded-full font-semibold hover:opacity-90 transition-colors" style="background:#F4D06F;">Talk to us</a>
+        <a href="adeahub_insights.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Insights</a>
+        <a href="workwise.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <a href="adeahub_platform.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <p class="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400 pt-1 pb-2">Resources</p>
+        <a href="newsroom.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Newsroom</a>
+        <a href="customers.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Customers</a>
+        <a href="Blogs.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Blog</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <a href="about_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
+        <div class="my-2 border-t border-gray-100"></div>
+        <a href="contact_us.html" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a>
+        <div class="pt-3 pb-1">
+            <a href="contact_us.html" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F3D06F;">Talk to us</a>
+        </div>
     </div>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════
      SECTION 1: HERO
 ═══════════════════════════════════════════════════ -->
-<header class="hero-bg pt-20 pb-28 relative" style="overflow:clip;">
-    <div class="dot-grid absolute inset-0 pointer-events-none opacity-50" aria-hidden="true"></div>
-    <div class="blob-float-1 absolute left-[5%] top-[20%] w-80 h-80 rounded-full bg-blue-100/40 blur-3xl pointer-events-none" aria-hidden="true"></div>
+<header class="bg-[#5298F8] ah-deco pt-12 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
     <div class="blob-float-2 absolute right-[5%] bottom-[10%] w-60 h-60 rounded-full bg-yellow-100/30 blur-3xl pointer-events-none" aria-hidden="true"></div>
-    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            <div class="z-10">
-        <div class="flex items-center gap-3 mb-8 reveal">
-            <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-adeahub-blue text-xs font-bold px-4 py-2 rounded-full tracking-wider">
-                <span class="w-2 h-2 bg-adeahub-blue rounded-full hero-badge inline-block"></span>
-                Healthcare intelligence and analytics
-            </span>
-        </div>
-        <div class="max-w-4xl mb-6 reveal reveal-d1">
-            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-                <span class="text-2xl md:text-3xl font-bold block mb-4 tracking-normal" style="color:white!important">AH Insights</span>
-                <span style="color:white!important">Give every leader </span><span style="color:#F4D06F!important;font-weight:inherit">the intelligence</span><br>
-                <span style="color:white!important">to act </span><span style="color:#F4D06F!important;font-weight:inherit">before problems</span><br>
-                <span style="color:#F4D06F!important;font-weight:inherit">reach patients</span>
-            </h1>
-        </div>
-        <p class="text-xl md:text-2xl max-w-2xl leading-relaxed mb-10 reveal reveal-d2" style="color:white!important;">
-            AH Insights is a healthcare prescriptive, predictive analytics platform that consolidates clinical, operational, and financial data into real-time dashboards — giving leaders the intelligence to act before problems escalate.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 reveal reveal-d3">
-            <a href="contact_us.html" class="bg-adeahub-blue text-white text-center px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/30 btn-glow btn-shimmer text-base">Talk to us</a>
-        </div>
-            </div>
-            <!-- Hero Visual: Animated Analytics Dashboard -->
+    <div class="max-w-[1200px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[441fr_661fr] gap-12 lg:gap-[50px] items-start">
             <div>
-                <div class="relative w-full" style="height:533px;">
-                    <iframe src="ah-insights-animated.html" style="position:absolute;top:0;right:-140px;width:960px;height:740px;border:none;overflow:hidden;transform:scale(0.72);transform-origin:top right;" scrolling="no" loading="lazy" title="AH Insights animated preview"></iframe>
-                </div>
-                <!-- Trust pills below image -->
-                <div class="reveal reveal-d4" style="padding-top:24px;">
-                    <p class="text-sm font-bold tracking-widest mb-5" style="color:white!important">Trusted by leading health systems</p>
-                    <div class="flex flex-wrap items-center gap-3 md:gap-5">
-                        <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
-                            <span class="text-xl">🇯🇴</span>
-                            <span class="text-sm font-semibold text-gray-700">King Abdullah University Hospital</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
-                            <span class="text-xl">🇪🇬</span>
-                            <span class="text-sm font-semibold text-gray-700">Egypt Universal Health Insurance</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
-                            <span class="text-xl">🇸🇦</span>
-                            <span class="text-sm font-semibold text-gray-700">Mouwasat Medical Services</span>
-                        </div>
-                        <div class="flex items-center gap-2 bg-white border border-gray-100 rounded-xl px-4 py-2.5 shadow-sm">
-                            <i data-lucide="activity" class="w-4 h-4 text-adeahub-blue"></i>
-                            <span class="text-sm font-semibold text-gray-700">Real-time dashboards</span>
-                        </div>
-                    </div>
+                <p class="inline-flex items-center gap-2 bg-[#EFF6FF] text-[#2563EB] text-[11px] leading-[11px] font-bold tracking-[1px] p-2 rounded-full reveal"><span class="w-2 h-2 shrink-0 bg-[#5298F8] rounded-full hero-badge inline-block" aria-hidden="true"></span>Healthcare intelligence and analytics</p>
+                <h1 class="mt-5 text-[40px] sm:text-[55px] leading-[1] font-extrabold tracking-tight text-white reveal reveal-d1">
+                    <span class="block text-[30px] leading-[30px] font-bold tracking-normal mb-5">AH Insights</span>
+                    Give every leader <span class="text-[#F3D06F]">the intelligence</span> to act <span class="text-[#F3D06F]">before problems reach patients</span>
+                </h1>
+                <p class="mt-5 text-[18px] sm:text-[20px] leading-[32px] text-white reveal reveal-d2">
+                    AH Insights is a healthcare prescriptive, predictive analytics platform that consolidates clinical, operational, and financial data into real-time dashboards — giving leaders the intelligence to act before problems escalate.
+                </p>
+                <a href="request_demo.html" class="mt-[34px] inline-flex items-center bg-[#F3D06F] text-[#111827] text-[16px] leading-[16px] font-medium px-8 py-[14px] rounded-full hover:bg-[#ecc355] transition-colors btn-glow btn-shimmer reveal reveal-d3">Talk to us</a>
+            </div>
+
+            <!-- Hero Visual: AH Insights analytics dashboard (inline mock, scales to column width) -->
+            <div class="lg:mt-[3px] reveal reveal-d2">
+<!-- AH Insights analytics dashboard mock-up — same UI as the live ah-insights hero, inlined and scoped under #ahi-shell -->
+<div id="ahi-wrapper">
+<style>
+#ahi-shell *, #ahi-shell *::before, #ahi-shell *::after{margin:0;padding:0;box-sizing:border-box;}
+#ahi-wrapper{width:100%;
+  aspect-ratio:960/720;
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+  box-shadow:0 2px 6px rgba(0,0,0,.08),0 16px 48px rgba(0,0,0,.18);}
+#ahi-shell{font-family:'Outfit',sans-serif;width:960px;height:720px;
+  background:#F0F2F5;
+  border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;
+  opacity:0;animation:ahi-fade-in .5s ease .1s forwards;
+  transform-origin:top left;
+  position:absolute;top:0;left:0;}
+#ahi-shell .topnav{height:44px;background:#fff;border-bottom:1px solid #E2E8F0;
+  display:flex;align-items:center;padding:0 16px;gap:6px;flex-shrink:0;z-index:10;}
+#ahi-shell .logo{display:flex;align-items:center;gap:6px;margin-right:18px;}
+#ahi-shell .logo-mark{width:24px;height:24px;
+  background:linear-gradient(135deg,#5298F8,#3A7EBF);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;}
+#ahi-shell .logo-mark svg{width:14px;height:14px;}
+#ahi-shell .logo-text{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#5298F8;}
+#ahi-shell .nav-tabs{display:flex;gap:2px;flex:1;}
+#ahi-shell .nav-tab{padding:8px 12px;font-size:12px;font-weight:500;color:#6B7280;
+  border-radius:6px;cursor:pointer;white-space:nowrap;
+  font-family:'Outfit',sans-serif;transition:all .15s;}
+#ahi-shell .nav-tab.active{background:#EEF4FF;color:#5298F8;font-weight:600;}
+#ahi-shell .nav-tab.ai{background:linear-gradient(135deg,#EEF4FF,#E0ECFF);color:#5298F8;
+  border:1px solid #C7DEFF;font-weight:600;}
+#ahi-shell .nav-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
+#ahi-shell .nav-right span{font-size:12px;color:#6B7280;cursor:pointer;}
+#ahi-shell .title-bar{padding:10px 18px;display:flex;align-items:center;gap:10px;background:#fff;
+  border-bottom:1px solid #E2E8F0;flex-shrink:0;}
+#ahi-shell .page-title{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:#1A1D23;}
+#ahi-shell .title-star{color:#F59E0B;font-size:14px;}
+#ahi-shell .title-badge{display:inline-flex;align-items:center;gap:5px;
+  background:#F5F7FA;border:1px solid #E2E8F0;border-radius:14px;
+  padding:3px 10px 3px 6px;font-size:11px;color:#6B7280;}
+#ahi-shell .badge-avatar{width:18px;height:18px;border-radius:50%;background:#E2E8F0;display:flex;align-items:center;justify-content:center;}
+#ahi-shell .badge-avatar svg{width:10px;height:10px;}
+#ahi-shell .title-time{font-size:11px;color:#9AA5B4;display:flex;align-items:center;gap:4px;}
+#ahi-shell .content{flex:1;display:flex;overflow:hidden;}
+#ahi-shell .filter-panel{width:180px;flex-shrink:0;background:#fff;border-right:1px solid #E2E8F0;
+  padding:14px 12px;display:flex;flex-direction:column;gap:10px;
+  opacity:0;animation:ahi-fade-in .4s ease .5s forwards;}
+#ahi-shell .filter-title{font-size:12px;font-weight:700;color:#1A1D23;}
+#ahi-shell .filter-label{font-size:10px;color:#6B7280;margin-bottom:3px;}
+#ahi-shell .filter-input{font-size:10px;color:#1A1D23;background:#F5F7FA;border:1px solid #E2E8F0;
+  border-radius:6px;padding:6px 8px;width:100%;font-family:'Outfit',sans-serif;}
+#ahi-shell .filter-btn{font-size:11px;font-weight:600;color:#fff;background:#5298F8;
+  border:none;border-radius:6px;padding:7px 0;text-align:center;cursor:pointer;margin-top:4px;}
+#ahi-shell .filter-clear{font-size:11px;color:#9AA5B4;text-align:center;cursor:pointer;}
+#ahi-shell .dashboard{flex:1;overflow-y:auto;scrollbar-width:none;padding:14px;
+  display:flex;flex-direction:column;gap:12px;}
+#ahi-shell .dashboard::-webkit-scrollbar{display:none;}
+#ahi-shell .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+  opacity:0;transform:translateY(10px);animation:ahi-rise .4s ease .6s forwards;}
+#ahi-shell .kpi-card{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px 18px;position:relative;}
+#ahi-shell .kpi-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+#ahi-shell .kpi-title{font-size:11px;font-weight:600;color:#4A5568;}
+#ahi-shell .kpi-icons{display:flex;gap:6px;align-items:center;}
+#ahi-shell .kpi-icon{width:14px;height:14px;cursor:pointer;}
+#ahi-shell .kpi-sub{font-size:10px;color:#9AA5B4;margin-bottom:10px;}
+#ahi-shell .kpi-number{font-family:'Outfit',sans-serif;font-size:48px;font-weight:800;color:#1A1D23;line-height:1;}
+#ahi-shell .kpi-unit{font-family:'Outfit',sans-serif;font-size:16px;font-weight:500;color:#6B7280;margin-top:2px;}
+#ahi-shell .charts-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  opacity:0;transform:translateY(10px);}
+#ahi-shell .charts-row.row1{animation:ahi-rise .4s ease 1.2s forwards;}
+#ahi-shell .charts-row.row2{animation:ahi-rise .4s ease 1.8s forwards;}
+#ahi-shell .chart-card{background:#fff;border:1px solid #E2E8F0;border-radius:12px;
+  padding:14px 16px;min-height:0;}
+#ahi-shell .chart-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+#ahi-shell .chart-title{font-size:12px;font-weight:700;color:#1A1D23;}
+#ahi-shell .chart-icons{display:flex;gap:5px;align-items:center;}
+#ahi-shell .legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+#ahi-shell .legend-item{display:flex;align-items:center;gap:4px;font-size:10px;color:#6B7280;}
+#ahi-shell .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+#ahi-shell .donut-wrap{display:flex;align-items:center;justify-content:center;height:160px;position:relative;}
+#ahi-shell .donut-svg{width:150px;height:150px;}
+#ahi-shell .donut-center{position:absolute;text-align:center;}
+#ahi-shell .donut-center-label{font-size:9px;color:#9AA5B4;}
+#ahi-shell .donut-center-val{font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#1A1D23;}
+#ahi-shell .donut-ring{fill:none;stroke-linecap:round;transform:rotate(-90deg);transform-origin:center;}
+#ahi-shell .donut-appt{stroke:#3EC6CF;stroke-width:24;stroke-dasharray:0 314;animation:ahi-donut-fill-appt 1.2s ease 1.5s forwards;}
+#ahi-shell .donut-walkin{stroke:#A8E063;stroke-width:24;stroke-dasharray:0 314;animation:ahi-donut-fill-walkin 1s ease 1.8s forwards;}
+@keyframes ahi-donut-fill-appt{to{stroke-dasharray:298 314;}}
+@keyframes ahi-donut-fill-walkin{to{stroke-dasharray:16 314;}}
+#ahi-shell .scatter-area{height:155px;position:relative;}
+#ahi-shell .scatter-svg{width:100%;height:100%;}
+#ahi-shell .scatter-dot{opacity:0;animation:ahi-pop-in .3s ease forwards;}
+#ahi-shell .bar-area{height:155px;position:relative;}
+#ahi-shell .bar-svg{width:100%;height:100%;}
+#ahi-shell .bar-rect{transform-origin:bottom;transform:scaleY(0);animation:ahi-bar-grow .6s ease forwards;}
+@keyframes ahi-bar-grow{to{transform:scaleY(1);}}
+#ahi-shell .line-area{height:155px;position:relative;}
+#ahi-shell .line-svg{width:100%;height:100%;}
+#ahi-shell .line-path{stroke-dasharray:600;stroke-dashoffset:600;animation:ahi-line-draw 2s ease 2.2s forwards;}
+@keyframes ahi-line-draw{to{stroke-dashoffset:0;}}
+#ahi-shell .tooltip-box{position:absolute;top:20px;left:50%;transform:translateX(-50%);
+  background:#fff;border:1px solid #E2E8F0;border-radius:8px;
+  padding:6px 10px;box-shadow:0 4px 12px rgba(0,0,0,.1);
+  opacity:0;animation:ahi-fade-in .3s ease 3.2s forwards;white-space:nowrap;}
+#ahi-shell .tooltip-title{font-size:10px;font-weight:700;color:#1A1D23;}
+#ahi-shell .tooltip-val{font-size:10px;color:#6B7280;display:flex;align-items:center;gap:4px;}
+#ahi-shell .tooltip-dot{width:6px;height:6px;border-radius:50%;background:#3EC6CF;}
+@keyframes ahi-fade-in{to{opacity:1;}}
+@keyframes ahi-rise{to{opacity:1;transform:translateY(0);}}
+@keyframes ahi-pop-in{to{opacity:1;}}
+</style>
+<div id="ahi-shell">
+
+  <!-- TOP NAV -->
+  <div class="topnav">
+    <div class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <span class="logo-text">adeahub</span>
+    </div>
+    <div class="nav-tabs">
+      <div class="nav-tab ai">Ask Adea AI</div>
+      <div class="nav-tab active">Dashboards</div>
+      <div class="nav-tab">Charts</div>
+      <div class="nav-tab">Datasets</div>
+      <div class="nav-tab">SQL</div>
+    </div>
+    <div class="nav-right"><span>+ &nbsp;Settings</span></div>
+  </div>
+
+  <!-- TITLE BAR -->
+  <div class="title-bar">
+    <div class="page-title">AH Insights – Appointments</div>
+    <span class="title-star">★</span>
+    <div class="title-badge">
+      <div class="badge-avatar">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#9AA5B4"/><path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" fill="#9AA5B4"/></svg>
+      </div>
+      Admin User
+    </div>
+    <div class="title-time">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      2 months ago
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- Filter Panel -->
+    <div class="filter-panel">
+      <div class="filter-title">Filters</div>
+      <div>
+        <div class="filter-label">Appointment Date – From &amp; To</div>
+        <input class="filter-input" value="2024-01-01 ≤ col ≤ 2026-03" readonly/>
+      </div>
+      <button class="filter-btn">Apply Filters</button>
+      <div class="filter-clear">Clear all</div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+
+      <!-- KPI Cards -->
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">Total Appointments</span>
+            <div class="kpi-icons">
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#5298F8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+          </div>
+          <div class="kpi-sub">Volume</div>
+          <div class="kpi-number" id="ahi-kpi1">0</div>
+          <div class="kpi-unit">Appointments</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">No-Show Volume</span>
+            <div class="kpi-icons">
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#5298F8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+          </div>
+          <div class="kpi-sub">Volume</div>
+          <div class="kpi-number" id="ahi-kpi2">0</div>
+          <div class="kpi-unit">Appointments</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-header">
+            <span class="kpi-title">Appointment Cancellation</span>
+            <div class="kpi-icons">
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#9AA5B4" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <svg class="kpi-icon" viewBox="0 0 24 24" fill="none" stroke="#5298F8" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+          </div>
+          <div class="kpi-sub">Volume</div>
+          <div class="kpi-number" id="ahi-kpi3">0</div>
+          <div class="kpi-unit">Appointments</div>
+        </div>
+      </div>
+
+      <!-- Charts Row 1 -->
+      <div class="charts-row row1">
+
+        <!-- Donut -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">OP Visit : Appointment vs Walk-In</div>
+            <div class="chart-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5298F8" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#3EC6CF;"></div>Appointment</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#A8E063;"></div>Walk-In</div>
+          </div>
+          <div class="donut-wrap">
+            <svg class="donut-svg" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#F0F2F5" stroke-width="24"/>
+              <circle class="donut-ring donut-appt" cx="60" cy="60" r="50"/>
+              <circle class="donut-ring donut-walkin" cx="60" cy="60" r="50" style="stroke-dashoffset:-298;"/>
+            </svg>
+            <div class="donut-center">
+              <div class="donut-center-label">Walk-In</div>
+              <div class="donut-center-val">2,815</div>
+              <div class="donut-center-label" style="margin-top:4px;">Appointment ↗</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scatter -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Appt Status by Speciality</div>
+            <div class="chart-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5298F8" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#9AA5B4;"></div>CLOSED</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#22C55E;"></div>OPEN</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#F59E0B;"></div>CANCEL</div>
+          </div>
+          <div class="scatter-area">
+            <svg class="scatter-svg" viewBox="0 0 340 140">
+              <line x1="30" y1="10" x2="330" y2="10" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="35" x2="330" y2="35" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="60" x2="330" y2="60" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="85" x2="330" y2="85" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="110" x2="330" y2="110" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="130" x2="330" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+              <text x="24" y="14" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">21k</text>
+              <text x="24" y="39" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">16k</text>
+              <text x="24" y="64" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">12k</text>
+              <text x="24" y="89" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">6k</text>
+              <text x="24" y="114" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">2k</text>
+              <text x="55"  y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Outfit">CTC</text>
+              <text x="90"  y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Outfit">GP</text>
+              <text x="125" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Outfit">Gen Surg</text>
+              <text x="165" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Outfit">Cardio</text>
+              <text x="200" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Outfit">OB/GYN</text>
+              <text x="235" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Outfit">ENT</text>
+              <text x="270" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Outfit">Ortho</text>
+              <text x="305" y="140" font-size="6" fill="#9AA5B4" text-anchor="middle" font-family="Outfit">Paed</text>
+              <circle class="scatter-dot" cx="55"  cy="18"  r="4" fill="#C4C9D2" style="animation-delay:1.5s"/>
+              <circle class="scatter-dot" cx="90"  cy="30"  r="4" fill="#C4C9D2" style="animation-delay:1.55s"/>
+              <circle class="scatter-dot" cx="125" cy="40"  r="4" fill="#C4C9D2" style="animation-delay:1.6s"/>
+              <circle class="scatter-dot" cx="165" cy="55"  r="4" fill="#C4C9D2" style="animation-delay:1.65s"/>
+              <circle class="scatter-dot" cx="200" cy="62"  r="4" fill="#C4C9D2" style="animation-delay:1.7s"/>
+              <circle class="scatter-dot" cx="235" cy="75"  r="4" fill="#C4C9D2" style="animation-delay:1.75s"/>
+              <circle class="scatter-dot" cx="270" cy="85"  r="4" fill="#C4C9D2" style="animation-delay:1.8s"/>
+              <circle class="scatter-dot" cx="305" cy="95"  r="4" fill="#C4C9D2" style="animation-delay:1.85s"/>
+              <circle class="scatter-dot" cx="55"  cy="22"  r="3.5" fill="#22C55E" style="animation-delay:1.6s"/>
+              <circle class="scatter-dot" cx="90"  cy="36"  r="3.5" fill="#22C55E" style="animation-delay:1.65s"/>
+              <circle class="scatter-dot" cx="125" cy="52"  r="3.5" fill="#22C55E" style="animation-delay:1.7s"/>
+              <circle class="scatter-dot" cx="165" cy="65"  r="3.5" fill="#22C55E" style="animation-delay:1.75s"/>
+              <circle class="scatter-dot" cx="200" cy="72"  r="3.5" fill="#22C55E" style="animation-delay:1.8s"/>
+              <circle class="scatter-dot" cx="235" cy="80"  r="3.5" fill="#22C55E" style="animation-delay:1.85s"/>
+              <circle class="scatter-dot" cx="270" cy="92"  r="3.5" fill="#22C55E" style="animation-delay:1.9s"/>
+              <circle class="scatter-dot" cx="305" cy="100" r="3.5" fill="#22C55E" style="animation-delay:1.95s"/>
+              <circle class="scatter-dot" cx="55"  cy="100" r="3" fill="#F59E0B" style="animation-delay:1.7s"/>
+              <circle class="scatter-dot" cx="90"  cy="98"  r="3" fill="#F59E0B" style="animation-delay:1.75s"/>
+              <circle class="scatter-dot" cx="125" cy="96"  r="3" fill="#F59E0B" style="animation-delay:1.8s"/>
+              <circle class="scatter-dot" cx="165" cy="102" r="3" fill="#F59E0B" style="animation-delay:1.85s"/>
+              <circle class="scatter-dot" cx="200" cy="105" r="3" fill="#F59E0B" style="animation-delay:1.9s"/>
+              <circle class="scatter-dot" cx="235" cy="104" r="3" fill="#F59E0B" style="animation-delay:1.95s"/>
+              <circle class="scatter-dot" cx="270" cy="108" r="3" fill="#F59E0B" style="animation-delay:2.0s"/>
+              <circle class="scatter-dot" cx="305" cy="107" r="3" fill="#F59E0B" style="animation-delay:2.05s"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Charts Row 2 -->
+      <div class="charts-row row2">
+
+        <!-- Bar -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Appts by Speciality</div>
+            <div class="chart-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5298F8" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#3EC6CF;width:10px;height:10px;border-radius:2px;"></div>COUNT(APPT_ID)</div>
+          </div>
+          <div class="bar-area">
+            <svg class="bar-svg" viewBox="0 0 330 150">
+              <line x1="35" y1="10" x2="320" y2="10" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="35" y1="40" x2="320" y2="40" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="35" y1="70" x2="320" y2="70" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="35" y1="100" x2="320" y2="100" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="35" y1="130" x2="320" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+              <text x="30" y="14" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">80k</text>
+              <text x="30" y="44" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">60k</text>
+              <text x="30" y="74" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">40k</text>
+              <text x="30" y="104" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">20k</text>
+              <text x="65"  y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Outfit">Anaesthesia</text>
+              <text x="125" y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Outfit">Gen Surgery</text>
+              <text x="185" y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Outfit">ORL (ENT)</text>
+              <text x="245" y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Outfit">Paed Dent</text>
+              <text x="305" y="143" font-size="6.5" fill="#6B7280" text-anchor="middle" font-family="Outfit">Urology</text>
+              <rect class="bar-rect" x="52"  y="108" width="26" height="22" rx="3" fill="#3EC6CF" style="animation-delay:2.0s"/>
+              <rect class="bar-rect" x="112" y="22"  width="26" height="108" rx="3" fill="#3EC6CF" style="animation-delay:2.1s"/>
+              <rect class="bar-rect" x="172" y="58"  width="26" height="72" rx="3" fill="#3EC6CF" style="animation-delay:2.2s"/>
+              <rect class="bar-rect" x="232" y="110" width="26" height="20" rx="3" fill="#3EC6CF" style="animation-delay:2.3s"/>
+              <rect class="bar-rect" x="292" y="114" width="26" height="16" rx="3" fill="#3EC6CF" style="animation-delay:2.4s"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Line -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">Appts by Week</div>
+            <div class="chart-icons">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5298F8" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#3EC6CF;"></div>COUNT(APPT_ID)</div>
+          </div>
+          <div class="line-area">
+            <svg class="line-svg" viewBox="0 0 330 150">
+              <line x1="30" y1="10" x2="320" y2="10" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="40" x2="320" y2="40" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="70" x2="320" y2="70" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="100" x2="320" y2="100" stroke="#F0F2F5" stroke-width="1"/>
+              <line x1="30" y1="130" x2="320" y2="130" stroke="#E2E8F0" stroke-width="1"/>
+              <text x="25" y="14" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">21k</text>
+              <text x="25" y="44" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">15k</text>
+              <text x="25" y="74" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">9k</text>
+              <text x="25" y="104" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">3k</text>
+              <text x="25" y="132" font-size="7" fill="#9AA5B4" text-anchor="end" font-family="Outfit">0</text>
+              <text x="50"  y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Outfit">Oct</text>
+              <text x="100" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Outfit">Nov</text>
+              <text x="150" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Outfit">Dec</text>
+              <text x="200" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Outfit">2025</text>
+              <text x="250" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Outfit">Feb</text>
+              <text x="300" y="143" font-size="7" fill="#6B7280" text-anchor="middle" font-family="Outfit">Mar</text>
+              <polyline class="line-path" fill="none" stroke="#3EC6CF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"
+                points="40,38 55,42 70,36 85,100 100,38 115,42 130,40 145,36 160,100 175,35 190,38 205,42 220,38 235,100 250,34 265,38 280,40 295,35 310,38"/>
+              <line x1="85" y1="15" x2="85" y2="130" stroke="#3EC6CF" stroke-width="1" stroke-dasharray="4 3" opacity="0" style="animation:ahi-fade-in .3s ease 3s forwards;"/>
+              <circle cx="85" cy="38" r="4" fill="#fff" stroke="#3EC6CF" stroke-width="2" opacity="0" style="animation:ahi-fade-in .3s ease 3.1s forwards;"/>
+            </svg>
+            <div class="tooltip-box" style="left:85px;top:5px;transform:translateX(-50%);">
+              <div class="tooltip-title">Mon Oct 14</div>
+              <div class="tooltip-val"><span class="tooltip-dot"></span> COUNT(APPT_ID) &nbsp;<strong>15.8k</strong></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- end dashboard -->
+  </div><!-- end content -->
+</div><!-- end ahi-shell -->
+</div><!-- end ahi-wrapper -->
+                <!-- Trust pills below the dashboard -->
+                <p class="mt-5 text-[14px] leading-[21px] font-bold tracking-widest text-white">Trusted by leading health systems</p>
+                <div class="mt-[30px] lg:mx-[10px] grid grid-cols-1 sm:grid-cols-2 gap-x-[19px] gap-y-5">
+                    <p class="bg-white rounded-[10px] px-[5px] py-[10px] flex items-center justify-center gap-2 text-center text-[14px] leading-[21px] font-medium text-[#020202]"><span aria-hidden="true">🇲🇾</span> Serdang Hospital, Malaysia</p>
+                    <p class="bg-white rounded-[10px] px-[5px] py-[10px] flex items-center justify-center gap-2 text-center text-[14px] leading-[21px] font-medium text-[#020202]"><span aria-hidden="true">🇪🇬</span> Egypt Universal Health Insurance</p>
+                    <p class="bg-white rounded-[10px] px-[5px] py-[10px] flex items-center justify-center gap-2 text-center text-[14px] leading-[21px] font-medium text-[#020202]">
+                        <i data-lucide="building-2" class="w-4 h-4 shrink-0 text-[#5298F8]" aria-hidden="true"></i>Multi-facility insights at any scale</p>
+                    <p class="bg-white rounded-[10px] px-[5px] py-[10px] flex items-center justify-center gap-2 text-center text-[14px] leading-[21px] font-medium text-[#020202]">
+                        <i data-lucide="activity" class="w-4 h-4 shrink-0 text-[#5298F8]" aria-hidden="true"></i>Real-time dashboards</p>
                 </div>
             </div>
         </div>
@@ -552,100 +710,94 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 2: THE PROBLEM / TRANSFORMATION STORY
 ═══════════════════════════════════════════════════ -->
-<section id="case-study" class="py-24 bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16 reveal">
-            <span class="section-label">Proven at scale</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">A 200+ KPI analytics platform deployed across a national health network</h2>
+<section id="case-study" class="bg-white pt-16 pb-16 lg:pt-[90px] lg:pb-[80px]">
+    <div class="max-w-[1188px] mx-auto px-6">
+        <div class="text-center max-w-[1120px] mx-auto reveal">
+            <p class="section-label">Proven at scale</p>
+            <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-black">A 200+ KPI analytics platform deployed across a national health network</h2>
         </div>
-        <div class="bg-gradient-to-br from-gray-50 to-blue-50/40 border border-gray-100 rounded-3xl overflow-hidden shadow-soft reveal">
-            <div class="bg-white border-b border-gray-100 px-10 py-8 flex flex-col md:flex-row md:items-center gap-6">
-                <div class="flex items-center gap-4">
-                    <span class="text-5xl">🇯🇴</span>
-                    <div>
-                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-1">Case Study</p>
-                        <h3 class="text-2xl font-bold text-gray-900">King Abdullah University Hospital</h3>
-                        <p class="text-adeahub-blue font-semibold mt-0.5">Jordan — BI Analytics &amp; KPI Dashboard Platform</p>
-                    </div>
+
+        <!-- Case Study Card -->
+        <div class="mt-[30px] rounded-t-[20px] shadow-[0_0_10px_0_rgba(224,224,224,0.5)] reveal">
+
+            <!-- Header strip -->
+            <div class="bg-white rounded-t-[20px] p-[15px] md:min-h-[132px] shadow-[0_0_4px_0_rgba(231,231,231,0.5)] flex flex-col md:flex-row md:items-center gap-4 md:gap-0">
+                <span class="text-[60px] leading-none md:ml-[22px] md:mr-[50px]" aria-hidden="true">🇯🇴</span>
+                <div>
+                    <p class="text-[12px] leading-[18px] font-black tracking-widest text-[#888888]">Case Study</p>
+                    <h3 class="mt-[10px] text-[20px] leading-[20px] font-bold text-black">King Abdullah University Hospital</h3>
+                    <p class="mt-[10px] text-[16px] leading-[24px] font-bold text-[#5298F8]">Jordan — BI Analytics &amp; KPI Dashboard Platform</p>
                 </div>
-                <div class="md:ml-auto">
-                    <span class="inline-flex items-center gap-2 bg-blue-50 text-adeahub-blue font-bold text-sm px-5 py-2.5 rounded-full border border-blue-100">
+                <div class="md:ml-auto md:mr-[10px]">
+                    <span class="inline-flex items-center gap-[5px] bg-[#EFF6FF] rounded-[25px] px-5 py-[10px] text-[14px] leading-[21px] font-bold text-[#5298F8]">
                         <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
                         Enterprise analytics deployment
                     </span>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                <div class="p-10 md:p-12 border-b lg:border-b-0 lg:border-r border-gray-100">
-                    <div class="space-y-8">
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-red-500 mb-2 block">The challenge</span>
-                            <p class="text-gray-700 leading-relaxed">King Abdullah University Hospital needed a unified analytics layer that could draw clinical, operational, and financial data from disparate systems into a single, coherent view. Hospital leaders were making decisions based on delayed reports and fragmented data — limiting their ability to respond to capacity pressures, clinician workload imbalances, and service quality trends in time to act.</p>
+
+            <div class="bg-[#F6F9FF] rounded-b-[20px] p-6 md:p-[35px] grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[90px]">
+
+                <!-- Narrative side -->
+                <div>
+                    <p class="text-[12px] leading-[18px] font-black tracking-widest text-[#EF4444]">The challenge</p>
+                    <p class="mt-5 text-[16px] leading-[28px] font-light text-black">King Abdullah University Hospital needed a unified analytics layer that could draw clinical, operational, and financial data from disparate systems into a single, coherent view. Hospital leaders were making decisions based on delayed reports and fragmented data — limiting their ability to respond to capacity pressures, clinician workload imbalances, and service quality trends in time to act.</p>
+                    <p class="mt-5 text-[12px] leading-[18px] font-black tracking-widest text-[#5298F8]">What we did</p>
+                    <p class="mt-5 text-[16px] leading-[28px] font-light text-black">adeahub deployed AH Insights as the hospital’s central analytics platform — delivering over 200 standardised KPIs across clinical, operational, and financial domains. The platform connected to existing EMR and HIS systems through FHIR, HL7, and REST APIs, and provided real-time dashboards, ad-hoc reporting, and geo-spatial visualisation for hospital leadership and department heads.</p>
+                    <p class="mt-5 text-[12px] leading-[18px] font-black tracking-widest text-[#16A34A]">The impact</p>
+                    <div class="mt-5 grid grid-cols-2 gap-5">
+                        <div class="bg-white rounded-[15px] p-5 min-h-[178px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
+                            <p class="text-[20px] sm:text-[30px] leading-[30px] sm:leading-[45px] font-bold text-[#5298F8]">200+</p>
+                            <p class="max-w-[123px] text-[14px] leading-[21px] font-medium text-[#9E9E9E]">KPIs deployed across all departments</p>
                         </div>
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-adeahub-blue mb-2 block">What we did</span>
-                            <p class="text-gray-700 leading-relaxed">adeahub deployed AH Insights as the hospital's central analytics platform — delivering over 200 standardised KPIs across clinical, operational, and financial domains. The platform connected to existing EMR and HIS systems through FHIR, HL7, and REST APIs, and provided real-time dashboards, ad-hoc reporting, and geo-spatial visualisation for hospital leadership and department heads.</p>
+                        <div class="bg-white rounded-[15px] p-5 min-h-[178px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
+                            <p class="text-[20px] sm:text-[30px] leading-[30px] sm:leading-[45px] font-bold text-[#5298F8]">Real-time</p>
+                            <p class="max-w-[123px] text-[14px] leading-[21px] font-medium text-[#9E9E9E]">Dashboards replacing static reporting</p>
                         </div>
-                        <div>
-                            <span class="text-xs font-bold tracking-widest text-green-600 mb-2 block">The impact</span>
-                            <div class="grid grid-cols-2 gap-4 mt-4">
-                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">200+</p>
-                                    <p class="text-sm text-gray-500 font-medium">KPIs deployed across all departments</p>
-                                </div>
-                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">Real-time</p>
-                                    <p class="text-sm text-gray-500 font-medium">Dashboards replacing static reporting</p>
-                                </div>
-                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">Ad-hoc</p>
-                                    <p class="text-sm text-gray-500 font-medium">Reporting capability for any query</p>
-                                </div>
-                                <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm metric-card">
-                                    <p class="text-3xl font-extrabold text-adeahub-blue mb-1">Geo-Spatial</p>
-                                    <p class="text-sm text-gray-500 font-medium">Visualisation across facilities</p>
-                                </div>
-                            </div>
+                        <div class="bg-white rounded-[15px] p-5 min-h-[178px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
+                            <p class="text-[20px] sm:text-[30px] leading-[30px] sm:leading-[45px] font-bold text-[#5298F8]">Ad-hoc</p>
+                            <p class="max-w-[123px] text-[14px] leading-[21px] font-medium text-[#9E9E9E]">Reporting capability for any query</p>
+                        </div>
+                        <div class="bg-white rounded-[15px] p-5 min-h-[178px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
+                            <p class="text-[20px] sm:text-[30px] leading-[30px] sm:leading-[45px] font-bold text-[#5298F8]">Geo-Spatial</p>
+                            <p class="max-w-[123px] text-[14px] leading-[21px] font-medium text-[#9E9E9E]">Visualisation across facilities</p>
                         </div>
                     </div>
-                    <a href="customers.html" class="mt-8 inline-flex items-center gap-2 text-adeahub-blue font-bold hover:text-blue-800 group">View all case studies <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+                    <a href="customers.html" class="mt-5 inline-flex items-center gap-[9px] p-[10px] text-[16px] leading-[16px] font-bold text-[#5298F8] hover:text-blue-700 group">Read all case studies <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
                 </div>
-                <div class="p-10 md:p-12 flex flex-col justify-between gap-8">
-                    <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-                        <p class="text-xs font-bold tracking-widest text-gray-400 mb-4">Platform capabilities delivered</p>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <div class="bg-blue-50 p-2 rounded-lg shrink-0"><i data-lucide="layout-dashboard" class="w-5 h-5 text-adeahub-blue"></i></div>
+
+                <!-- Capabilities / quote side -->
+                <div class="flex flex-col justify-between gap-8">
+                    <div class="bg-white rounded-[15px] p-[30px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
+                        <p class="text-[14px] leading-[21px] font-bold tracking-widest text-[#919090]">Platform capabilities delivered</p>
+                        <div class="mt-[23px] space-y-[23px]">
+                            <div class="flex items-center gap-[25px]">
+                                <div class="w-9 h-9 shrink-0 rounded-[10%] bg-[rgba(68,143,202,0.09)] flex items-center justify-center text-[#448FCA]"><i data-lucide="layout-dashboard" class="w-[18px] h-[18px]"></i></div>
                                 <div>
-                                    <p class="font-bold text-gray-900 text-sm">Executive KPI dashboards</p>
-                                    <p class="text-xs text-gray-500">Real-time visibility across revenue, bed occupancy, clinician load, and care quality metrics for hospital leadership</p>
+                                    <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">Executive KPI dashboards</h3>
+                                    <p class="mt-[7px] text-[12px] leading-[18px] text-[#7A7A7A]">Real-time visibility across revenue, bed occupancy, clinician load, and care quality metrics for hospital leadership</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <div class="bg-green-50 p-2 rounded-lg shrink-0"><i data-lucide="bar-chart-2" class="w-5 h-5 text-green-600"></i></div>
+                            <div class="flex items-center gap-[25px]">
+                                <div class="w-9 h-9 shrink-0 rounded-[10%] bg-[rgba(97,206,112,0.16)] flex items-center justify-center text-[#16A34A]"><i data-lucide="bar-chart-2" class="w-[18px] h-[18px]"></i></div>
                                 <div>
-                                    <p class="font-bold text-gray-900 text-sm">BI analytics workbench</p>
-                                    <p class="text-xs text-gray-500">Investigative analytics with trend detection, cohort identification, and anomaly alerts — connected to the integrated care record</p>
+                                    <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">BI analytics workbench</h3>
+                                    <p class="mt-[7px] text-[12px] leading-[18px] text-[#7A7A7A]">Investigative analytics with trend detection, cohort identification, and anomaly alerts — connected to the integrated care record</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3">
-                                <div class="bg-yellow-50 p-2 rounded-lg shrink-0"><i data-lucide="map-pin" class="w-5 h-5 text-adeahub-yellow"></i></div>
+                            <div class="flex items-center gap-[25px]">
+                                <div class="w-9 h-9 shrink-0 rounded-[10%] bg-[rgba(243,208,111,0.22)] flex items-center justify-center text-[#FDBB02]"><i data-lucide="map-pin" class="w-[18px] h-[18px]"></i></div>
                                 <div>
-                                    <p class="font-bold text-gray-900 text-sm">Geo-spatial visualisation</p>
-                                    <p class="text-xs text-gray-500">Population-level mapping for disease surveillance, care access gaps, and multi-facility performance monitoring</p>
+                                    <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">Geo-spatial visualisation</h3>
+                                    <p class="mt-[7px] text-[12px] leading-[18px] text-[#7A7A7A]">Population-level mapping for disease surveillance, care access gaps, and multi-facility performance monitoring</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-adeahub-blue rounded-2xl p-8 text-white relative overflow-hidden">
-                        <i data-lucide="quote" class="absolute top-6 left-6 w-20 h-20 text-blue-500 opacity-30"></i>
-                        <div class="relative z-10">
-                            <p class="text-base font-medium leading-relaxed italic mb-6 text-blue-50">"A customer testimonial will appear here once stakeholder approval is obtained. AH Insights has delivered a unified analytics view across the hospital's clinical and operational systems."</p>
-                            <div>
-                                <p class="font-bold text-white text-sm">[Stakeholder Name]</p>
-                                <p class="text-blue-200 text-xs">[Title] · King Abdullah University Hospital</p>
-                            </div>
-                        </div>
+                    <div class="relative overflow-hidden bg-[#5298F8] rounded-[15px] p-[30px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
+                        <i data-lucide="quote" class="absolute top-6 left-6 w-20 h-20 text-white opacity-[0.15] pointer-events-none" aria-hidden="true"></i>
+                        <p class="relative max-w-[366px] text-[14px] leading-[21px] font-medium italic text-white">“Before this, it was difficult to get one clear picture of what was happening across the hospital. adeahub gave our leadership teams better visibility into operations, capacity, and performance, helping us respond faster and make more informed decisions.”</p>
+                        <p class="relative mt-5 text-[14px] leading-[21px] font-medium italic text-white">Hospital Operations Representative<br>King Abdullah University Hospital, Jordan</p>
                     </div>
                 </div>
             </div>
@@ -656,17 +808,17 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 3: THE VISION
 ═══════════════════════════════════════════════════ -->
-<section id="vision" class="py-24 bg-gray-50 border-t border-gray-100">
-    <div class="max-w-5xl mx-auto px-6 text-center reveal">
-        <span class="section-label">The vision</span>
-        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mt-2 mb-8">
-            Healthcare decisions delayed are <span class="gradient-text">outcomes missed.</span>
+<section id="vision" class="bg-[#FAFAFA] py-16 lg:py-[90px]">
+    <div class="max-w-[1168px] mx-auto px-6 text-center reveal">
+        <p class="section-label">The vision</p>
+        <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-black">
+            Healthcare decisions delayed are <span class="text-[#5298F8]">outcomes missed.</span>
         </h2>
-        <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Most hospital leaders still make decisions based on reports that are days old, drawn from systems that don't speak to each other. By the time a problem is visible, the window to act has closed. AH Insights gives every decision-maker — from the CEO to the clinical director to the operations manager — a real-time, unified picture of performance across every facility and every function.
+        <p class="mt-5 max-w-[627px] mx-auto text-[18px] leading-[27px] text-[#666666]">
+            Most hospital leaders still make decisions based on reports that are days old, drawn from systems that don’t speak to each other. By the time a problem is visible, the window to act has closed. AH Insights gives every decision-maker — from the CEO to the clinical director to the operations manager — a real-time, unified picture of performance across every facility and every function.
         </p>
-        <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mt-6">
-            Not because data is interesting. Because the right decision, made in time, changes a patient's outcome.
+        <p class="mt-[27px] max-w-[627px] mx-auto text-[18px] leading-[27px] text-[#666666]">
+            Not because data is interesting. Because the right decision, made in time, changes a patient’s outcome.
         </p>
     </div>
 </section>
@@ -674,55 +826,43 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 4: CAPABILITY OVERVIEW
 ═══════════════════════════════════════════════════ -->
-<section id="capabilities" class="py-24 bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16 reveal">
-            <span class="section-label">What it covers</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Intelligence built for every layer of the organisation</h2>
-            <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">AH Insights is modular by design — delivering the right view to the right person, from the board to the bedside.</p>
+<section id="capabilities" class="bg-white py-16 lg:py-[90px]">
+    <div class="max-w-[1168px] mx-auto px-6">
+        <div class="text-center reveal">
+            <p class="section-label">What it covers</p>
+            <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-black">Intelligence built for every layer of the organisation</h2>
+            <p class="mt-5 max-w-[627px] mx-auto text-[18px] leading-[27px] text-[#666666]">AH Insights is modular by design — delivering the right view to the right person, from the board to the bedside.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="cap-card bg-white border border-gray-100 p-8 shadow-sm reveal reveal-d1">
-                <div class="bg-blue-50 rounded-2xl p-4 w-14 h-14 flex items-center justify-center mb-6">
-                    <i data-lucide="layout-dashboard" class="w-7 h-7 text-adeahub-blue"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Executive dashboards</h3>
-                <p class="text-gray-500 leading-relaxed">Real-time KPIs covering revenue, bed occupancy, patient flow, and clinician load — giving hospital leadership a single source of truth for strategic and operational decisions.</p>
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[276px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d1">
+                <div class="w-11 h-11 rounded-[14px] bg-[#EFF6FF] flex items-center justify-center text-[#6CB1E8]"><i data-lucide="layout-dashboard" class="w-[22px] h-[22px]"></i></div>
+                <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Executive dashboards</h3>
+                <p class="mt-[15px] text-[14px] leading-[24px] text-[#7A7A7A]">Real-time KPIs covering revenue, bed occupancy, patient flow, and clinician load — giving hospital leadership a single source of truth for strategic and operational decisions.</p>
             </div>
-            <div class="cap-card bg-white border border-gray-100 p-8 shadow-sm reveal reveal-d2">
-                <div class="bg-green-50 rounded-2xl p-4 w-14 h-14 flex items-center justify-center mb-6">
-                    <i data-lucide="users" class="w-7 h-7 text-green-600"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Clinician workload intelligence</h3>
-                <p class="text-gray-500 leading-relaxed">Analytics dashboards that track clinician workload distribution, caseload imbalances, and early burnout risk indicators — helping administrators respond before staff are overstretched.</p>
+            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[276px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d2">
+                <div class="w-11 h-11 rounded-[14px] bg-[#E6FFE9] flex items-center justify-center text-[#0E771D]"><i data-lucide="users" class="w-[22px] h-[22px]"></i></div>
+                <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Clinician workload intelligence</h3>
+                <p class="mt-[15px] text-[14px] leading-[24px] text-[#7A7A7A]">Analytics dashboards that track clinician workload distribution, caseload imbalances, and early burnout risk indicators — helping administrators respond before staff are overstretched.</p>
             </div>
-            <div class="cap-card bg-white border border-gray-100 p-8 shadow-sm reveal reveal-d3">
-                <div class="bg-yellow-50 rounded-2xl p-4 w-14 h-14 flex items-center justify-center mb-6">
-                    <i data-lucide="trending-up" class="w-7 h-7 text-adeahub-yellow"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Service line planning</h3>
-                <p class="text-gray-500 leading-relaxed">Strategic dashboards for hospital leadership and service line directors — tracking department performance, demand trends, and resource utilisation to support long-term planning decisions.</p>
+            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[276px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d3">
+                <div class="w-11 h-11 rounded-[14px] bg-[rgba(243,208,111,0.12)] flex items-center justify-center text-[#A47900]"><i data-lucide="trending-up" class="w-[22px] h-[22px]"></i></div>
+                <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Service line planning</h3>
+                <p class="mt-[15px] text-[14px] leading-[24px] text-[#7A7A7A]">Strategic dashboards for hospital leadership and service line directors — tracking department performance, demand trends, and resource utilisation to support long-term planning decisions.</p>
             </div>
-            <div class="cap-card bg-white border border-gray-100 p-8 shadow-sm reveal reveal-d1">
-                <div class="bg-purple-50 rounded-2xl p-4 w-14 h-14 flex items-center justify-center mb-6">
-                    <i data-lucide="git-branch" class="w-7 h-7 text-purple-600"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Cross-facility benchmarking</h3>
-                <p class="text-gray-500 leading-relaxed">Standardised metrics across all connected facilities enable performance comparison, trend detection, and best-practice identification at the network or group level.</p>
+            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[276px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d1">
+                <div class="w-11 h-11 rounded-[14px] bg-[rgba(122,11,97,0.15)] flex items-center justify-center text-[#7A0B61]"><i data-lucide="git-branch" class="w-[22px] h-[22px]"></i></div>
+                <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Cross-facility benchmarking</h3>
+                <p class="mt-[15px] text-[14px] leading-[24px] text-[#7A7A7A]">Standardised metrics across all connected facilities enable performance comparison, trend detection, and best-practice identification at the network or group level.</p>
             </div>
-            <div class="cap-card bg-white border border-gray-100 p-8 shadow-sm reveal reveal-d2">
-                <div class="bg-red-50 rounded-2xl p-4 w-14 h-14 flex items-center justify-center mb-6">
-                    <i data-lucide="zap" class="w-7 h-7 text-red-500"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Predictive analytics</h3>
-                <p class="text-gray-500 leading-relaxed">Rule-based and machine learning models that surface clinical and operational risks before they materialise — enabling proactive interventions rather than reactive responses.</p>
+            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[276px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d2">
+                <div class="w-11 h-11 rounded-[14px] bg-[#FCEFEF] flex items-center justify-center text-[#EF4444]"><i data-lucide="zap" class="w-[22px] h-[22px]"></i></div>
+                <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Predictive analytics</h3>
+                <p class="mt-[15px] text-[14px] leading-[24px] text-[#7A7A7A]">Rule-based and machine learning models that surface clinical and operational risks before they materialise — enabling proactive interventions rather than reactive responses.</p>
             </div>
-            <div class="cap-card bg-white border border-gray-100 p-8 shadow-sm reveal reveal-d3">
-                <div class="bg-teal-50 rounded-2xl p-4 w-14 h-14 flex items-center justify-center mb-6">
-                    <i data-lucide="map-pin" class="w-7 h-7 text-teal-600"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-3">Geo-spatial visualisation</h3>
-                <p class="text-gray-500 leading-relaxed">Population-level mapping for public health teams and multi-facility operators — visualising care access gaps, disease prevalence, and programme performance across a geographic area.</p>
+            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[276px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d3">
+                <div class="w-11 h-11 rounded-[14px] bg-[rgba(97,206,112,0.12)] flex items-center justify-center text-[#16A34A]"><i data-lucide="map-pin" class="w-[22px] h-[22px]"></i></div>
+                <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Geo-spatial visualisation</h3>
+                <p class="mt-[15px] text-[14px] leading-[24px] text-[#7A7A7A]">Population-level mapping for public health teams and multi-facility operators — visualising care access gaps, disease prevalence, and programme performance across a geographic area.</p>
             </div>
         </div>
     </div>
@@ -731,44 +871,38 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 4A: adea AI — EMBEDDED INTELLIGENCE
 ═══════════════════════════════════════════════════ -->
-<section class="py-24 border-t border-gray-100" style="background:#F6FAFF;">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16 reveal">
-            <span class="section-label">Powered by adea AI</span>
-            <div class="inline-flex items-center gap-3 mb-5 mt-1">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-yellow-400 to-blue-500 flex items-center justify-center shadow-lg">
-                    <i data-lucide="brain" class="w-5 h-5 text-white"></i>
-                </div>
-                <span class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-500 to-blue-500 bg-clip-text text-transparent tracking-tight">adea AI</span>
+<section class="bg-[#F3F9FF] py-16 lg:py-[90px]">
+    <div class="max-w-[1168px] mx-auto px-6">
+        <div class="text-center reveal">
+            <p class="section-label">Powered by adea AI</p>
+            <div class="mt-[18px] flex justify-center">
+                <img src="Images/adea-AI-default.svg" alt="adea AI" width="813" height="240" class="h-[52px] w-auto">
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Predictive intelligence, embedded in your analytics</h2>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto">adea AI runs inside AH Insights — turning longitudinal data into foresight, so care teams reach patients before a clinical event, not after.</p>
+            <h2 class="mt-[30px] max-w-[772px] mx-auto text-[30px] md:text-[37px] leading-[1] font-bold text-black">Predictive intelligence, embedded in your analytics</h2>
+            <p class="mt-5 max-w-[672px] mx-auto text-[18px] leading-[27px] text-[#666666]">adea AI runs inside AH Insights — turning longitudinal data into foresight, so care teams reach patients before a clinical event, not after.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-
-            <div class="proof-card bg-white rounded-2xl p-8 border border-blue-100 shadow-sm reveal reveal-d1">
-                <div class="flex items-center gap-3 mb-5">
-                    <div class="bg-yellow-50 p-2.5 rounded-xl shrink-0"><i data-lucide="activity" class="w-5 h-5 text-yellow-600"></i></div>
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-[772px] mx-auto">
+            <div class="proof-card bg-white rounded-[15px] px-[25px] py-[30px] sm:min-h-[290px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d1">
+                <div class="flex items-center gap-5">
+                    <div class="w-[51px] h-[54px] shrink-0"><div class="w-12 h-12 rounded-[14px] bg-[#FFFBEB] flex items-center justify-center text-[#FF9600]"><i data-lucide="activity" class="w-6 h-6"></i></div></div>
                     <div>
-                        <p class="font-bold text-gray-900 text-sm leading-tight">Predictive Risk Stratification</p>
-                        <p class="text-xs text-gray-400">Risk scoring</p>
+                        <h3 class="text-[13px] leading-[20px] font-bold text-[#020202]">Predictive Risk Stratification</h3>
+                        <p class="mt-[6px] text-[12px] leading-[18px] font-bold text-[#949494]">Risk scoring</p>
                     </div>
                 </div>
-                <p class="text-gray-500 text-sm leading-relaxed">adea AI scores patient risk across deterioration, readmission, and chronic disease progression — before a clinical event occurs. High-risk patients are surfaced to care teams automatically, enabling proactive intervention rather than reactive treatment.</p>
+                <p class="mt-2 text-[16px] leading-[24px] font-light text-[#080808]">adea AI scores patient risk across deterioration, readmission, and chronic disease progression — before a clinical event occurs. High-risk patients are surfaced to care teams automatically, enabling proactive intervention rather than reactive treatment.</p>
             </div>
-
-            <div class="proof-card bg-white rounded-2xl p-8 border border-blue-100 shadow-sm reveal reveal-d2">
-                <div class="flex items-center gap-3 mb-5">
-                    <div class="bg-green-50 p-2.5 rounded-xl shrink-0"><i data-lucide="globe-2" class="w-5 h-5 text-green-600"></i></div>
+            <div class="proof-card bg-white rounded-[15px] px-[25px] py-[30px] sm:min-h-[290px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d2">
+                <div class="flex items-center gap-5">
+                    <div class="w-[51px] h-[54px] shrink-0"><div class="w-12 h-12 rounded-[14px] bg-[#E4FFDF] flex items-center justify-center text-[#38BB5D]"><i data-lucide="earth" class="w-6 h-6"></i></div></div>
                     <div>
-                        <p class="font-bold text-gray-900 text-sm leading-tight">Population Health Modelling</p>
-                        <p class="text-xs text-gray-400">Population level</p>
+                        <h3 class="text-[13px] leading-[20px] font-bold text-[#020202]">Population Health Modelling</h3>
+                        <p class="mt-[6px] text-[12px] leading-[18px] font-bold text-[#949494]">Population level</p>
                     </div>
                 </div>
-                <p class="text-gray-500 text-sm leading-relaxed">Longitudinal patient data across facilities is aggregated and modelled to identify disease trends, high-burden cohorts, and intervention opportunities at the population level — giving health authorities and hospital groups the intelligence to plan resources ahead of demand.</p>
+                <p class="mt-2 text-[16px] leading-[24px] font-light text-[#080808]">Longitudinal patient data across facilities is aggregated and modelled to identify disease trends, high-burden cohorts, and intervention opportunities at the population level — giving health authorities and hospital groups the intelligence to plan resources ahead of demand.</p>
             </div>
-
         </div>
     </div>
 </section>
@@ -776,19 +910,19 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 4B: ASK AH INSIGHTS AI
 ═══════════════════════════════════════════════════ -->
-<section id="ask-ai" class="py-24 border-t border-gray-100" style="background:#5BA8E5;">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="flex flex-col lg:flex-row items-center gap-16">
+<section id="ask-ai" class="bg-[#5298F8] pt-16 pb-16 lg:pt-16 lg:pb-24">
+    <div class="max-w-[1188px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[50px] items-center">
 
             <!-- Left: Copy -->
-            <div class="flex-1 text-white reveal">
-                <span class="inline-block text-sm font-bold tracking-wider mb-4" style="color:#F4D06F;">Ask AH Insights AI</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-5">Ask any question.<br>Get an answer in seconds.</h2>
-                <p class="text-lg leading-relaxed mb-6" style="color:rgba(255,255,255,0.82);">AH Insights AI lets your clinical, operational and decision-making teams query insights in plain English and get clear, data-backed factual answers and predictive insights instantly.</p>
+            <div class="reveal">
+                <p class="text-[11.2px] leading-[16.8px] font-bold tracking-wider text-[#F3D06F]">Ask AH Insights AI</p>
+                <h2 class="mt-5 text-[30px] md:text-[36px] leading-[1] font-bold text-white">Ask any question. Get an answer in seconds.</h2>
+                <p class="mt-5 text-[18px] leading-[32px] text-white">AH Insights AI lets your clinical, operational and decision-making teams query insights in plain English and get clear, data-backed factual answers and predictive insights instantly.</p>
             </div>
 
             <!-- Right: Animated Chat Demo -->
-            <div class="flex-1 w-full reveal reveal-d2">
+            <div class="w-full reveal reveal-d2">
                 <style>
                     #adea-chat-wrap { font-family: 'Outfit', 'Inter', sans-serif; width: 100%; max-width: 580px; margin: 0 auto; }
                     #adea-chat-wrap .adea-container { background: #FFFFFF; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.18); overflow: hidden; display: flex; flex-direction: column; height: 480px; }
@@ -800,7 +934,7 @@
                     #adea-chat-wrap .adea-welcome-desc { font-family: 'Inter', sans-serif; font-size: 13px; color: #5A6170; line-height: 1.5; }
                     #adea-chat-wrap .adea-user-row { display: flex; justify-content: flex-end; opacity: 0; transform: translateY(8px); }
                     #adea-chat-wrap .adea-user-row.adea-vis { animation: adea-fadeup 0.35s ease forwards; }
-                    #adea-chat-wrap .adea-user-bubble { background: linear-gradient(135deg,#2B7BF7 0%,#5BA8E5 100%); color:#fff; font-family:'Inter',sans-serif; font-size:13px; line-height:1.5; padding:11px 16px; border-radius:16px 16px 4px 16px; max-width:82%; }
+                    #adea-chat-wrap .adea-user-bubble { background: linear-gradient(135deg,#2B7BF7 0%,#5298F8 100%); color:#fff; font-family:'Inter',sans-serif; font-size:13px; line-height:1.5; padding:11px 16px; border-radius:16px 16px 4px 16px; max-width:82%; }
                     #adea-chat-wrap .adea-user-bubble .adea-ts { display:block; text-align:right; font-size:10px; color:rgba(255,255,255,0.6); margin-top:5px; }
                     #adea-chat-wrap .adea-ai-row { display: flex; justify-content: flex-start; opacity: 0; transform: translateY(8px); }
                     #adea-chat-wrap .adea-ai-row.adea-vis { animation: adea-fadeup 0.4s ease forwards; }
@@ -815,18 +949,18 @@
                     #adea-chat-wrap .adea-badge-text { font-size:11px; color:#5A6170; font-family:'Inter',sans-serif; }
                     #adea-chat-wrap .adea-badge-text strong { display:block; font-size:12px; color:#2D3140; font-weight:500; }
                     #adea-chat-wrap .adea-ans-bold { font-weight:600; color:#1A1D23; }
-                    #adea-chat-wrap .adea-ans-blue { color:#5BA8E5; }
+                    #adea-chat-wrap .adea-ans-blue { color:#5298F8; }
                     #adea-chat-wrap .adea-follow { color:#5A6170; font-size:12.5px; margin-top:8px; }
                     #adea-chat-wrap .adea-status { margin:0 14px; padding:9px 16px; border-radius:10px; border:1.5px solid #E8835A; background:#FFF9F6; display:flex; justify-content:space-between; align-items:center; }
                     #adea-chat-wrap .adea-status-l { display:flex; align-items:center; gap:9px; font-family:'Inter',sans-serif; font-size:13px; font-weight:500; color:#2D3140; }
-                    #adea-chat-wrap .adea-dot { width:9px; height:9px; border-radius:50%; background:#5BA8E5; flex-shrink:0; }
-                    #adea-chat-wrap .adea-dot.spin { background:transparent; border:2px solid #5BA8E5; border-top-color:transparent; animation:adea-spin .9s linear infinite; }
+                    #adea-chat-wrap .adea-dot { width:9px; height:9px; border-radius:50%; background:#5298F8; flex-shrink:0; }
+                    #adea-chat-wrap .adea-dot.spin { background:transparent; border:2px solid #5298F8; border-top-color:transparent; animation:adea-spin .9s linear infinite; }
                     @keyframes adea-spin { to{transform:rotate(360deg)} }
                     #adea-chat-wrap .adea-status-r { font-family:'Inter',sans-serif; font-size:12px; color:#A0A7B4; }
                     #adea-chat-wrap .adea-input-bar { padding:10px 14px 14px; display:flex; align-items:center; gap:9px; }
                     #adea-chat-wrap .adea-input { flex:1; border:1.5px solid #DDE1E8; border-radius:12px; padding:10px 14px; font-family:'Inter',sans-serif; font-size:13px; color:#2D3140; outline:none; background:#FFF; min-height:42px; }
-                    #adea-chat-wrap .adea-input.focused { border-color:#5BA8E5; box-shadow:0 0 0 3px rgba(13,110,253,.12); }
-                    #adea-chat-wrap .adea-send { width:42px; height:42px; border-radius:50%; border:none; background:#5BA8E5; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; }
+                    #adea-chat-wrap .adea-input.focused { border-color:#5298F8; box-shadow:0 0 0 3px rgba(13,110,253,.12); }
+                    #adea-chat-wrap .adea-send { width:42px; height:42px; border-radius:50%; border:none; background:#5298F8; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; }
                     #adea-chat-wrap .adea-send.off { background:#DDE1E8; }
                     #adea-chat-wrap .adea-send svg { fill:#fff; }
                     #adea-chat-wrap .adea-cursor { display:inline-block; width:2px; height:16px; background:#2D3140; vertical-align:text-bottom; margin-left:1px; animation:adea-blink 1s step-end infinite; }
@@ -939,28 +1073,28 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 5: NUMBERS THAT MATTER
 ═══════════════════════════════════════════════════ -->
-<section id="scale" class="py-24 bg-gray-50 border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16 reveal">
-            <span class="section-label">Scale and impact</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">What AH Insights delivers at scale</h2>
+<section id="scale" class="bg-[#F3F4F6] py-16 lg:py-[90px]">
+    <div class="max-w-[1168px] mx-auto px-6">
+        <div class="text-center reveal">
+            <p class="section-label">Scale and impact</p>
+            <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-black">What AH Insights delivers at scale</h2>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-soft text-center reveal reveal-d1">
-                <p class="text-5xl font-extrabold text-adeahub-blue mb-2"><span class="counter" data-target="200" data-suffix="+">200+</span></p>
-                <p class="text-sm font-semibold text-gray-500 leading-snug">Pre-built KPIs across clinical, operational, and financial domains</p>
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="text-center bg-[rgba(255,255,255,0.99)] border border-[rgba(196,209,226,0.68)] rounded-[15px] p-[30px] lg:min-h-[175px] reveal reveal-d1">
+                <p class="text-[32px] leading-[42px] font-extrabold text-[#5298F8]"><span class="counter" data-target="200" data-suffix="">200</span><span>+</span></p>
+                <p class="mt-2 text-[14px] leading-[21px] font-medium text-[#666666]">Pre-built KPIs across clinical, operational, and financial domains</p>
             </div>
-            <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-soft text-center reveal reveal-d2">
-                <p class="text-5xl font-extrabold text-adeahub-blue mb-2">Real-time</p>
-                <p class="text-sm font-semibold text-gray-500 leading-snug">Dashboard refresh from live system feeds — no overnight batch processing</p>
+            <div class="text-center bg-[rgba(255,255,255,0.99)] border border-[rgba(196,209,226,0.68)] rounded-[15px] p-[30px] lg:min-h-[175px] reveal reveal-d2">
+                <p class="text-[32px] leading-[42px] font-extrabold text-[#5298F8]">Real-time</p>
+                <p class="mt-2 text-[14px] leading-[21px] font-medium text-[#666666]">Dashboard refresh from live system feeds — no overnight batch processing</p>
             </div>
-            <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-soft text-center reveal reveal-d3">
-                <p class="text-5xl font-extrabold text-adeahub-blue mb-2"><span class="counter" data-target="3" data-suffix="">3</span>+</p>
-                <p class="text-sm font-semibold text-gray-500 leading-snug">Integration methods — FHIR R4, HL7, and REST APIs connecting to any EMR or HIS</p>
+            <div class="text-center bg-[rgba(255,255,255,0.99)] border border-[rgba(196,209,226,0.68)] rounded-[15px] p-[30px] lg:min-h-[175px] reveal reveal-d3">
+                <p class="text-[32px] leading-[42px] font-extrabold text-[#5298F8]"><span class="counter" data-target="3" data-suffix="">3</span>+</p>
+                <p class="mt-2 text-[14px] leading-[21px] font-medium text-[#666666]">Integration methods — FHIR R4, HL7, and REST APIs connecting to any EMR or HIS</p>
             </div>
-            <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-soft text-center reveal reveal-d4">
-                <p class="text-5xl font-extrabold text-adeahub-blue mb-2">Multi-facility</p>
-                <p class="text-sm font-semibold text-gray-500 leading-snug">Unified view across hospital groups, networks, or national health programmes</p>
+            <div class="text-center bg-[rgba(255,255,255,0.99)] border border-[rgba(196,209,226,0.68)] rounded-[15px] p-[30px] lg:min-h-[175px] reveal reveal-d4">
+                <p class="text-[32px] leading-[42px] font-extrabold text-[#5298F8]">Multi-facility</p>
+                <p class="mt-2 text-[14px] leading-[21px] font-medium text-[#666666]">Unified view across hospital groups, networks, or national health programmes</p>
             </div>
         </div>
     </div>
@@ -969,53 +1103,53 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 6: WHO IT'S FOR
 ═══════════════════════════════════════════════════ -->
-<section id="who" class="py-24 bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16 reveal">
-            <span class="section-label">Who it's for</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">The right intelligence, for every decision-maker</h2>
-            <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">AH Insights adapts to the needs of each user — from the board room to the department level.</p>
+<section id="who" class="bg-white py-16 lg:py-[90px]">
+    <div class="max-w-[1168px] mx-auto px-6">
+        <div class="text-center reveal">
+            <p class="section-label">Who it’s for</p>
+            <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-black">The right intelligence, for every decision-maker</h2>
+            <p class="mt-5 max-w-[627px] mx-auto text-[18px] leading-[27px] text-[#666666]">AH Insights adapts to the needs of each user — from the board room to the department level.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="outcome-card bg-white border border-gray-100 rounded-3xl p-8 shadow-soft reveal reveal-d1">
-                <div class="flex items-start gap-4 mb-5">
-                    <div class="bg-blue-50 rounded-2xl p-3.5 shrink-0"><i data-lucide="briefcase" class="w-7 h-7 text-adeahub-blue"></i></div>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="outcome-card bg-white rounded-[15px] px-10 py-[30px] md:min-h-[244px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d1">
+                <div class="flex items-center gap-5">
+                    <div class="w-[42px] h-[54px] shrink-0"><div class="w-12 h-12 rounded-[14px] bg-[#EFF6FF] flex items-center justify-center text-[#6CB1E8]"><i data-lucide="briefcase" class="w-6 h-6"></i></div></div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900">Hospital leadership</h3>
-                        <p class="text-sm text-adeahub-blue font-semibold mt-0.5">CEO · COO · CFO · CMO</p>
+                        <h3 class="text-[18px] leading-[18px] font-bold text-[#020202]">Hospital leadership</h3>
+                        <p class="mt-1 text-[12px] leading-[18px] font-bold text-[#5298F8]">CEO · COO · CFO · CMO</p>
                     </div>
                 </div>
-                <p class="text-gray-600 leading-relaxed">A single dashboard combining financial performance, bed utilisation, and care quality metrics. Leaders can identify operational bottlenecks, track improvement initiatives, and make resourcing decisions with real-time confidence — without waiting for weekly reports.</p>
+                <p class="mt-[10px] text-[16px] leading-[24px] font-light text-[#080808]">A single dashboard combining financial performance, bed utilisation, and care quality metrics. Leaders can identify operational bottlenecks, track improvement initiatives, and make resourcing decisions with real-time confidence — without waiting for weekly reports.</p>
             </div>
-            <div class="outcome-card bg-white border border-gray-100 rounded-3xl p-8 shadow-soft reveal reveal-d2">
-                <div class="flex items-start gap-4 mb-5">
-                    <div class="bg-green-50 rounded-2xl p-3.5 shrink-0"><i data-lucide="stethoscope" class="w-7 h-7 text-green-600"></i></div>
+            <div class="outcome-card bg-white rounded-[15px] px-10 py-[30px] md:min-h-[244px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d2">
+                <div class="flex items-center gap-5">
+                    <div class="w-[42px] h-[54px] shrink-0"><div class="w-12 h-12 rounded-[14px] bg-[rgba(97,206,112,0.11)] flex items-center justify-center text-[#16A34A]"><i data-lucide="stethoscope" class="w-6 h-6"></i></div></div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900">Clinical leaders</h3>
-                        <p class="text-sm text-green-600 font-semibold mt-0.5">CMIO · Clinical directors · Department heads</p>
+                        <h3 class="text-[18px] leading-[18px] font-bold text-[#020202]">Clinical leaders</h3>
+                        <p class="mt-1 text-[12px] leading-[18px] font-bold text-[#5298F8]">CMIO · Clinical directors · Department heads</p>
                     </div>
                 </div>
-                <p class="text-gray-600 leading-relaxed">Workload analytics showing which clinicians are overloaded, which departments are underperforming, and where care quality metrics are trending in the wrong direction. Early signals before they become serious problems — with the context to act.</p>
+                <p class="mt-[10px] text-[16px] leading-[24px] font-light text-[#080808]">Workload analytics showing which clinicians are overloaded, which departments are underperforming, and where care quality metrics are trending in the wrong direction. Early signals before they become serious problems — with the context to act.</p>
             </div>
-            <div class="outcome-card bg-white border border-gray-100 rounded-3xl p-8 shadow-soft reveal reveal-d3">
-                <div class="flex items-start gap-4 mb-5">
-                    <div class="bg-yellow-50 rounded-2xl p-3.5 shrink-0"><i data-lucide="settings" class="w-7 h-7 text-adeahub-yellow"></i></div>
+            <div class="outcome-card bg-white rounded-[15px] px-10 py-[30px] md:min-h-[244px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d3">
+                <div class="flex items-center gap-5">
+                    <div class="w-[42px] h-[54px] shrink-0"><div class="w-12 h-12 rounded-[14px] bg-[rgba(243,208,111,0.16)] flex items-center justify-center text-[#E2B63C]"><i data-lucide="settings" class="w-6 h-6"></i></div></div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900">Operations managers</h3>
-                        <p class="text-sm text-yellow-600 font-semibold mt-0.5">VP Operations · Department directors · Practice managers</p>
+                        <h3 class="text-[18px] leading-[18px] font-bold text-[#020202]">Operations managers</h3>
+                        <p class="mt-1 text-[12px] leading-[18px] font-bold text-[#5298F8]">VP Operations · Department directors · Practice managers</p>
                     </div>
                 </div>
-                <p class="text-gray-600 leading-relaxed">Operational dashboards tracking patient flow, wait times, resource utilisation, and staff productivity. AH Insights replaces manual spreadsheet consolidation with automated, standardised reporting — freeing managers to act, not aggregate.</p>
+                <p class="mt-[10px] text-[16px] leading-[24px] font-light text-[#080808]">Operational dashboards tracking patient flow, wait times, resource utilisation, and staff productivity. AH Insights replaces manual spreadsheet consolidation with automated, standardised reporting — freeing managers to act, not aggregate.</p>
             </div>
-            <div class="outcome-card bg-white border border-gray-100 rounded-3xl p-8 shadow-soft reveal reveal-d4">
-                <div class="flex items-start gap-4 mb-5">
-                    <div class="bg-purple-50 rounded-2xl p-3.5 shrink-0"><i data-lucide="globe-2" class="w-7 h-7 text-purple-600"></i></div>
+            <div class="outcome-card bg-white rounded-[15px] px-10 py-[30px] md:min-h-[244px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d4">
+                <div class="flex items-center gap-5">
+                    <div class="w-[42px] h-[54px] shrink-0"><div class="w-12 h-12 rounded-[14px] bg-[rgba(158,8,151,0.13)] flex items-center justify-center text-[#9E0897]"><i data-lucide="earth" class="w-6 h-6"></i></div></div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900">Health authority officials</h3>
-                        <p class="text-sm text-purple-600 font-semibold mt-0.5">Ministry of Health · Public health departments</p>
+                        <h3 class="text-[18px] leading-[18px] font-bold text-[#020202]">Health authority officials</h3>
+                        <p class="mt-1 text-[12px] leading-[18px] font-bold text-[#5298F8]">Ministry of Health · Public health departments</p>
                     </div>
                 </div>
-                <p class="text-gray-600 leading-relaxed">Population-level dashboards for national and regional health programmes. Geo-spatial analytics, cross-facility performance benchmarking, and public health surveillance metrics — supporting evidence-based policy decisions and intervention planning at scale.</p>
+                <p class="mt-[10px] text-[16px] leading-[24px] font-light text-[#080808]">Population-level dashboards for national and regional health programmes. Geo-spatial analytics, cross-facility performance benchmarking, and public health surveillance metrics — supporting evidence-based policy decisions and intervention planning at scale.</p>
             </div>
         </div>
     </div>
@@ -1024,81 +1158,54 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 7: PROOF POINTS
 ═══════════════════════════════════════════════════ -->
-<section id="proof" class="py-24 bg-gray-50 border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16 reveal">
-            <span class="section-label">Breadth of deployment</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Analytics deployed across the region's leading health organisations</h2>
+<section id="proof" class="bg-[#F3F4F6] py-16 lg:py-[90px]">
+    <div class="max-w-[1168px] mx-auto px-6">
+        <div class="text-center reveal">
+            <p class="section-label">Breadth of deployment</p>
+            <h2 class="mt-5 max-w-[896px] mx-auto text-[30px] md:text-[35px] leading-[1.15] md:leading-[40px] font-bold text-black">Analytics deployed across the region's leading health organisations</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="proof-card bg-white rounded-3xl p-8 border border-gray-100 shadow-soft reveal reveal-d1">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">🇯🇴</span>
-                    <div>
-                        <p class="font-bold text-gray-900">King Abdullah University Hospital</p>
-                        <p class="text-sm text-adeahub-blue font-semibold">Jordan</p>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="proof-card bg-[rgba(255,255,255,0.99)] rounded-[15px] p-[30px] md:min-h-[305px] reveal reveal-d1">
+                <div class="flex items-start gap-3">
+                    <span class="w-[46px] h-[60px] shrink-0 flex items-center justify-center text-[40px] leading-none" aria-hidden="true">🇯🇴</span>
+                    <div class="pt-[7px]">
+                        <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">King Abdullah University Hospital</h3>
+                        <p class="mt-[7px] text-[14px] leading-[21px] font-semibold text-[#5298F8]">Jordan</p>
                     </div>
                 </div>
-                <div class="space-y-3 mb-6">
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>200+ KPIs across clinical and operational domains</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>Ad-hoc reporting tool for on-demand analysis</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>BI analytics platform integrated with existing HIS</span>
-                    </div>
-                </div>
+                <ul class="mt-[10px] space-y-2 text-[14px] leading-[21px] text-[#54595F]">
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">200+ KPIs across clinical and operational domains</span></li>
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">Ad-hoc reporting tool for on-demand analysis</span></li>
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">BI analytics platform integrated with existing HIS</span></li>
+                </ul>
             </div>
-            <div class="proof-card bg-white rounded-3xl p-8 border border-gray-100 shadow-soft reveal reveal-d2">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">🇪🇬</span>
-                    <div>
-                        <p class="font-bold text-gray-900">Egypt Universal Health Insurance</p>
-                        <p class="text-sm text-adeahub-blue font-semibold">Egypt · 321 facilities across 6 governorates</p>
+            <div class="proof-card bg-[rgba(255,255,255,0.99)] rounded-[15px] p-[30px] md:min-h-[305px] reveal reveal-d2">
+                <div class="flex items-start gap-3">
+                    <span class="w-[46px] h-[60px] shrink-0 flex items-center justify-center text-[40px] leading-none" aria-hidden="true">🇪🇬</span>
+                    <div class="pt-[7px]">
+                        <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">Egypt Universal Health Insurance</h3>
+                        <p class="mt-[7px] text-[14px] leading-[21px] font-semibold text-[#5298F8]">Egypt · 321 facilities across 6 governorates</p>
                     </div>
                 </div>
-                <div class="space-y-3 mb-6">
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>Analytics Workbench for national programme management</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>Geo-spatial visualisation across 6 governorates</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>Population-level KPI dashboards for UHIA oversight</span>
-                    </div>
-                </div>
+                <ul class="mt-[10px] space-y-2 text-[14px] leading-[21px] text-[#54595F]">
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">Analytics Workbench for national programme management</span></li>
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">Geo-spatial visualisation across 6 governorates</span></li>
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">Population-level KPI dashboards for UHIA oversight</span></li>
+                </ul>
             </div>
-            <div class="proof-card bg-white rounded-3xl p-8 border border-gray-100 shadow-soft reveal reveal-d3">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="text-4xl">🇸🇦</span>
-                    <div>
-                        <p class="font-bold text-gray-900">Mouwasat Medical Services</p>
-                        <p class="text-sm text-adeahub-blue font-semibold">Saudi Arabia · 6 facilities</p>
+            <div class="proof-card bg-[rgba(255,255,255,0.99)] rounded-[15px] p-[30px] md:min-h-[305px] reveal reveal-d3">
+                <div class="flex items-start gap-3">
+                    <span class="w-[46px] h-[60px] shrink-0 flex items-center justify-center text-[40px] leading-none" aria-hidden="true">🇸🇦</span>
+                    <div class="pt-[7px]">
+                        <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">Mouwasat Medical Services</h3>
+                        <p class="mt-[7px] text-[14px] leading-[21px] font-semibold text-[#5298F8]">Saudi Arabia · 6 facilities</p>
                     </div>
                 </div>
-                <div class="space-y-3 mb-6">
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>Integrated analytics alongside EMR platform</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>HIMSS EMRAM Stage 7 certified across all 6 branches</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-sm text-gray-600">
-                        <i data-lucide="check-circle" class="w-4 h-4 text-adeahub-blue shrink-0"></i>
-                        <span>Cross-facility performance benchmarking</span>
-                    </div>
-                </div>
+                <ul class="mt-[10px] space-y-2 text-[14px] leading-[21px] text-[#54595F]">
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">Integrated analytics alongside EMR platform</span></li>
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">HIMSS EMRAM Stage 7 certified across all 6 branches</span></li>
+                    <li class="flex"><span class="w-[18px] shrink-0 pt-[5px]"><i data-lucide="circle-check-big" class="w-[14px] h-[14px] text-[#6CB1E8]"></i></span><span class="pl-[5px]">Cross-facility performance benchmarking</span></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -1107,160 +1214,152 @@
 <!-- ═══════════════════════════════════════════════════
      SECTION 8: TECHNICAL FOUNDATION
 ═══════════════════════════════════════════════════ -->
-<section id="technical" class="py-24 bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16 reveal">
-            <span class="section-label">Technical foundation</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Built on open standards. Deployable anywhere.</h2>
-            <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">AH Insights connects to your existing systems — no rip-and-replace, no proprietary lock-in.</p>
+<section id="technical" class="bg-white pt-16 pb-16 lg:pt-[90px] lg:pb-[80px]">
+    <div class="max-w-[1188px] mx-auto px-6 text-center">
+        <div class="reveal">
+            <p class="section-label">Technical foundation</p>
+            <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-black">Built on open standards. Deployable anywhere.</h2>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 reveal">
-            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
-                <i data-lucide="activity" class="text-adeahub-blue w-5 h-5 mb-1"></i>
-                <span class="font-bold text-gray-700 text-sm mb-0.5">FHIR R4</span>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Integration</span>
+        <div class="mt-[30px] grid grid-cols-2 lg:grid-cols-4 gap-5 reveal">
+            <div class="h-[99px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
+                <div class="h-[30px]"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#5298F8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <p class="text-[16px] leading-[24px] font-bold text-black">FHIR R4</p>
+                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Integration</p>
             </div>
-            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
-                <i data-lucide="git-merge" class="text-adeahub-blue w-5 h-5 mb-1"></i>
-                <span class="font-bold text-gray-700 text-sm mb-0.5">HL7</span>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Standard</span>
+            <div class="h-[99px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
+                <div class="h-[30px] text-[#6CB1E8]"><i data-lucide="git-merge" class="w-6 h-6"></i></div>
+                <p class="text-[16px] leading-[24px] font-bold text-black">HL7</p>
+                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Standard</p>
             </div>
-            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
-                <i data-lucide="code-2" class="text-adeahub-blue w-5 h-5 mb-1"></i>
-                <span class="font-bold text-gray-700 text-sm mb-0.5">REST APIs</span>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Connectivity</span>
+            <div class="h-[99px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
+                <div class="h-[30px]"><i data-lucide="braces" class="w-6 h-6 text-[#6CB1E8]"></i></div>
+                <p class="text-[16px] leading-[24px] font-bold text-black">REST APIs</p>
+                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Connectivity</p>
             </div>
-            <div class="flex flex-col items-center justify-center px-6 py-4 bg-gray-50 rounded-xl border border-gray-100 min-w-[120px]">
-                <i data-lucide="shield" class="text-green-600 w-5 h-5 mb-1"></i>
-                <span class="font-bold text-gray-700 text-sm mb-0.5">Zero Trust</span>
-                <span class="text-[10px] font-bold uppercase tracking-wider text-gray-500">Security</span>
+            <div class="h-[99px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
+                <div class="h-[30px]"><i data-lucide="shield-check" class="w-6 h-6 text-[#16A34A]"></i></div>
+                <p class="text-[16px] leading-[24px] font-bold text-black">Zero Trust</p>
+                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Security</p>
             </div>
         </div>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed text-center reveal">
+        <p class="mt-5 max-w-[638px] mx-auto text-[18px] leading-[27px] font-light text-[#111111] reveal">
             AH Insights integrates with existing EMR and HIS systems through FHIR, HL7, and REST APIs — with no requirement to replace infrastructure. It deploys on cloud, on-premise, or hybrid environments and supports enterprise-grade access controls, audit trails, and data governance by design.
         </p>
-        <div class="text-center mt-8 reveal">
-            <a href="adeahub_connect.html" class="inline-flex items-center gap-2 text-adeahub-blue font-bold hover:text-blue-800 group">
-                See how AH Connect powers the integration layer <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-            </a>
-        </div>
+        <a href="adeahub_connect.html" class="mt-5 inline-flex items-center gap-[9px] p-[10px] text-[16px] leading-[16px] font-bold text-[#5298F8] hover:text-blue-700 group">
+            See how AH Connect powers the integration layer <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════
      SECTION 9: FINAL CTA
 ═══════════════════════════════════════════════════ -->
-<section id="cta" class="py-24 bg-adeahub-blue border-t border-blue-600 text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10" aria-hidden="true">
+<section class="bg-[#5298F8] ah-deco py-16 lg:py-[90px] text-center" style="--orb1:-9s;--orb2:-4s">
+    <div class="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
         <div class="absolute w-96 h-96 bg-white rounded-full blur-3xl -top-20 -left-20"></div>
         <div class="absolute w-96 h-96 bg-white rounded-full blur-3xl -bottom-20 -right-20"></div>
     </div>
-    <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
-        <p class="text-blue-200 text-sm font-bold tracking-widest mb-4">Start the conversation</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+    <div class="max-w-[1188px] mx-auto px-6 reveal">
+        <p class="text-[12px] leading-[18px] font-bold tracking-widest text-[#EFF6FF]">Start the conversation</p>
+        <h2 class="mt-5 max-w-[896px] mx-auto text-[36px] md:text-[50px] leading-[1.1] font-bold tracking-tight text-white">
             Your data is already there. AH Insights turns it into decisions.
         </h2>
-        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+        <p class="mt-5 max-w-[627px] mx-auto text-[18px] leading-[27px] text-white/[0.88]">
             Our analytics team will assess your current reporting landscape and show you exactly what AH Insights can surface — from your existing systems, without disruption.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="contact_us.html" class="bg-adeahub-yellow text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-400 transition-all duration-200 shadow-lg btn-glow btn-shimmer inline-flex items-center gap-2">Talk to us <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
-        </div>
+        <a href="request_demo.html" class="mt-5 inline-flex items-center gap-[11px] bg-[#F3D06F] text-[#111827] text-[16px] leading-[16px] font-medium px-8 py-[14px] rounded-full hover:bg-[#ecc355] transition-colors btn-glow btn-shimmer">Talk to us <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
     </div>
 </section>
 
 <!-- FOOTER -->
-<footer style="background:#ffffff; border-top: 1px solid #e5e7eb;">
-
-    <!-- Main footer body -->
-    <div class="max-w-7xl mx-auto px-6 md:px-12 pt-14 pb-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
-
-            <!-- Col 1: Brand (spans 2 cols on large) -->
-            <div class="lg:col-span-2 space-y-5">
-                <a href="index.html">
-                    <img src="Images/adeahub-logo-footer.png" alt="adeahub" class="h-9 object-contain object-left">
-                </a>
-                <p style="color:#6b7280; font-size:0.875rem; line-height:1.75; max-width:320px;">
-                    Modern software to deliver personalised healthcare at scale.
-                </p>
-                <!-- Social links -->
-                <div style="display:flex; gap:10px; padding-top:2px;">
-                    <a href="https://www.linkedin.com/company/adeahub" target="_blank" rel="noopener"
-                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
-                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
-                        <svg width="15" height="15" fill="#4b5563" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="mailto:hello@adeahub.com"
-                       style="width:36px;height:36px;border-radius:8px;background:#f3f4f6;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
-                       onmouseover="this.style.background='#dbeafe';this.style.borderColor='#bfdbfe'" onmouseout="this.style.background='#f3f4f6';this.style.borderColor='#e5e7eb'">
-                        <svg width="15" height="15" fill="none" stroke="#4b5563" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Col 2: Products -->
-            <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Products</p>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="adeahub_engage.html"  style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Engage</a></li>
-                    <li><a href="adeahub_care.html"    style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Care</a></li>
-                    <li><a href="adeahub_connect.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Connect</a></li>
-                    <li><a href="adeahub_insights.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Insights</a></li>
-                    <li><a href="adeahub_outbreak.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'"><span style="color:#5BA8E5;font-weight:700;">AH</span> Outbreak Management</a></li>
-                    <li><a href="workwise.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">WorkWise</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 3: Company -->
-            <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Company</p>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li><a href="adeahub_platform.html" style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Platform</a></li>
-                    <li><a href="about_us.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">About Us</a></li>
-                    <li><a href="customers.html"        style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Customers</a></li>
-                    <li><a href="newsroom.html"         style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Newsroom</a></li>
-                    <li><a href="Blogs.html"            style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Blog</a></li>
-                    <li><a href="contact_us.html"       style="font-size:0.875rem;color:#4b5563;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Get in Touch -->
-            <div>
-                <p style="font-size:0.65rem;font-weight:800;letter-spacing:0.12em;color:#5BA8E5;margin-bottom:16px;">Get in touch</p>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
-                    <li>
-                        <a href="mailto:hello@adeahub.com" style="font-size:0.875rem;color:#4b5563;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#5BA8E5'" onmouseout="this.style.color='#4b5563'">
-                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            hello@adeahub.com
-                        </a>
-                    </li>
-                    
-                    <li style="padding-top:6px;">
-                        <a href="request_demo.html"
-                           style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;color:#0D1B2E;background:#F4D06F;padding:8px 18px;border-radius:20px;text-decoration:none;transition:opacity 0.2s;"
-                           onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-                            Request a demo
-                            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
+<footer class="sfoot">
+    <div class="sfoot-inner">
+        <div>
+            <a href="index.html" class="sfoot-logo"><img src="Images/adeahub-logo-footer.webp" alt="adeahub"></a>
+            <p class="sfoot-tag">Modern software to deliver personalised healthcare at scale.</p>
+            <div class="sfoot-social"><a href="https://www.linkedin.com/company/adeahub/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="#4b5563"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:hello@adeahub.co" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="#4b5563" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a></div>
+        </div>
+        <div>
+            <p class="sfoot-h">Products</p>
+            <ul class="sfoot-list">
+                    <li><a href="adeahub_engage.html"><b>AH</b> Engage</a></li>
+                    <li><a href="adeahub_care.html"><b>AH</b> Care</a></li>
+                    <li><a href="adeahub_connect.html"><b>AH</b> Connect</a></li>
+                    <li><a href="adeahub_outbreak.html"><b>AH</b> Outbreak Management</a></li>
+                    <li><a href="adeahub_insights.html"><b>AH</b> Insights</a></li>
+                    <li><a href="workwise.html"><b>Work</b>Wise</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="sfoot-h">Company</p>
+            <ul class="sfoot-list">
+                    <li><a href="adeahub_platform.html">Platform</a></li>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="customers.html">Customers</a></li>
+                    <li><a href="newsroom.html">Newsroom</a></li>
+                    <li><a href="Blogs.html">Blog</a></li>
+                    <li><a href="contact_us.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="sfoot-h">Get in touch</p>
+            <ul class="sfoot-list">
+                <li><a href="mailto:hello@adeahub.co" target="_blank" class="sfoot-mail"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>hello@adeahub.co</a></li>
+            </ul>
+            <a href="request_demo.html" class="sfoot-btn">Request a demo <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
     </div>
-
-    <!-- Copyright bar -->
-    <div style="border-top:1px solid #f3f4f6;">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 py-5" style="text-align:center;">
-            <p style="font-size:0.78rem;color:#9ca3af;">&copy; 2026 adeahub. All rights reserved.</p>
-        </div>
-    </div>
-
+    <div class="sfoot-copy"><p>&copy; 2026 adeahub. All rights reserved.</p></div>
 </footer>
 
 <!-- SCRIPTS -->
 <script>lucide.createIcons();</script>
+<!-- Hero dashboard mock-up: scale #ahi-shell to its column width + KPI count-up -->
+<script>
+(function() {
+  var wrapper = document.getElementById('ahi-wrapper');
+  var shell = document.getElementById('ahi-shell');
+  if (!wrapper || !shell) return;
+  var BASE_W = 960;
+  var BASE_H = 720;
+
+  function fit() {
+    var w = wrapper.offsetWidth;
+    if (w <= 0) return;
+    var scale = w / BASE_W;
+    shell.style.transform = 'scale(' + scale + ')';
+    wrapper.style.height = (BASE_H * scale) + 'px';
+  }
+
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fit);
+  }
+
+  function countUp(id, finalText, delay, duration) {
+    var suffix = finalText.replace(/[0-9.]/g, '');
+    var num = parseFloat(finalText);
+    setTimeout(function() {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var cur = 0;
+      var steps = Math.max(Math.round(duration / 30), 10);
+      var inc = num / steps;
+      var count = 0;
+      var timer = setInterval(function() {
+        count++;
+        cur += inc;
+        if (count >= steps) { cur = num; clearInterval(timer); }
+        el.textContent = (num >= 100 ? Math.round(cur) : cur.toFixed(1)) + suffix;
+      }, 30);
+    }, delay);
+  }
+  countUp('ahi-kpi1', '388k', 700, 900);
+  countUp('ahi-kpi2', '99.4k', 800, 800);
+  countUp('ahi-kpi3', '14.1k', 900, 700);
+})();
+</script>
 <script>
 (function() {
     var btn = document.getElementById('mobile-menu-btn'); var menu = document.getElementById('mobile-menu'); var ham = document.getElementById('hamburger-icon'); var cls = document.getElementById('close-icon');
@@ -1326,11 +1425,11 @@
                 card.style.transform =
                     `perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.018)`;
                 card.style.boxShadow =
-                    `0 28px 56px -8px rgba(91,168,229,0.22), 0 8px 20px -4px rgba(91,168,229,0.14)`;
+                    `0 28px 56px -8px rgba(82,152,248,0.22), 0 8px 20px -4px rgba(82,152,248,0.14)`;
                 const glow = card.querySelector('.card-glow-layer');
                 if (glow) {
                     glow.style.background =
-                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(91,168,229,0.13) 0%, transparent 70%)`;
+                        `radial-gradient(280px circle at ${x}px ${y}px, rgba(82,152,248,0.13) 0%, transparent 70%)`;
                 }
             });
             card.addEventListener('mouseleave', function () {

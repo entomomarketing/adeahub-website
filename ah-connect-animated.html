@@ -6,6 +6,15 @@
 <title>AH Connect – Integration Orchestrator</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+
+html, body{
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+  background:transparent;
+}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{display:flex;justify-content:center;align-items:flex-start;background:transparent;font-family:'Inter',sans-serif;padding:0;}
 
@@ -13,11 +22,11 @@ body{display:flex;justify-content:center;align-items:flex-start;background:trans
 
 /* ═══ LEFT SIDEBAR ═══ */
 .sidebar{width:150px;background:#fff;border-right:1px solid #e9ecef;display:flex;flex-direction:column;padding:14px 0;flex-shrink:0;animation:slideInLeft .5s ease both;}
-.sidebar-brand{font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:#5BA8E5;padding:0 16px 18px;letter-spacing:-.3px;}
+.sidebar-brand{font-family:'Outfit',sans-serif;font-weight:700;font-size:13px;color:#5298F8;padding:0 16px 18px;letter-spacing:-.3px;}
 .sidebar-item{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:11.5px;color:#6c757d;cursor:pointer;transition:all .2s;position:relative;}
-.sidebar-item:hover{background:#f0f4ff;color:#5BA8E5;}
-.sidebar-item.active{background:#f0f4ff;color:#5BA8E5;font-weight:600;}
-.sidebar-item.active::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:3px;background:#5BA8E5;border-radius:0 3px 3px 0;}
+.sidebar-item:hover{background:#f0f4ff;color:#5298F8;}
+.sidebar-item.active{background:#f0f4ff;color:#5298F8;font-weight:600;}
+.sidebar-item.active::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:3px;background:#5298F8;border-radius:0 3px 3px 0;}
 .sidebar-icon{width:18px;height:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .sidebar-icon svg{width:16px;height:16px;}
 .sidebar-spacer{flex:1;}
@@ -31,20 +40,20 @@ body{display:flex;justify-content:center;align-items:flex-start;background:trans
 .top-title h1{font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:#212529;}
 .top-tabs{display:flex;gap:2px;margin-left:8px;}
 .top-tab{font-size:11.5px;padding:5px 12px;color:#6c757d;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;}
-.top-tab.active{color:#5BA8E5;border-bottom-color:#5BA8E5;font-weight:600;}
+.top-tab.active{color:#5298F8;border-bottom-color:#5298F8;font-weight:600;}
 
 /* Flow Bar */
 .flow-bar{display:flex;align-items:center;gap:10px;padding:10px 20px;border-bottom:1px solid #e9ecef;background:#fafbfc;}
 .flow-label{font-size:11px;font-weight:600;color:#495057;text-transform:uppercase;letter-spacing:.5px;}
-.btn-new{background:#5BA8E5;color:#fff;font-size:10px;padding:4px 10px;border-radius:4px;font-weight:600;cursor:pointer;}
+.btn-new{background:#5298F8;color:#fff;font-size:10px;padding:4px 10px;border-radius:4px;font-weight:600;cursor:pointer;}
 .flow-name{font-size:12.5px;font-weight:600;color:#212529;margin-left:12px;padding-left:12px;border-left:1px solid #dee2e6;}
 .flow-route{font-size:10.5px;color:#6c757d;margin-left:6px;}
 .flow-actions{display:flex;gap:6px;margin-left:auto;}
 .flow-btn{font-size:10px;padding:4px 12px;border-radius:4px;font-weight:600;cursor:pointer;border:1px solid transparent;}
-.flow-btn.activate{background:#5BA8E5;color:#fff;}
+.flow-btn.activate{background:#5298F8;color:#fff;}
 .flow-btn.delete{background:#fff;color:#dc3545;border-color:#dc3545;}
 .flow-btn.save{background:#198754;color:#fff;}
-.flow-badge{background:#F4D06F;color:#212529;font-size:9px;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:.3px;}
+.flow-badge{background:#F3D06F;color:#212529;font-size:9px;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:.3px;}
 
 /* Content Split */
 .content-split{display:flex;flex:1;overflow:hidden;}
@@ -53,7 +62,7 @@ body{display:flex;justify-content:center;align-items:flex-start;background:trans
 .flows-panel{width:200px;border-right:1px solid #e9ecef;overflow-y:auto;padding:8px 0;flex-shrink:0;background:#fff;}
 .flow-item{padding:10px 14px;border-bottom:1px solid #f1f3f5;cursor:pointer;transition:background .2s;animation:slideUp .4s ease both;opacity:0;}
 .flow-item:hover{background:#f8f9fa;}
-.flow-item.selected{background:#f0f4ff;border-left:3px solid #5BA8E5;}
+.flow-item.selected{background:#f0f4ff;border-left:3px solid #5298F8;}
 .flow-item-name{font-size:11px;font-weight:600;color:#212529;display:flex;align-items:center;gap:6px;}
 .flow-item-desc{font-size:9.5px;color:#868e96;margin-top:3px;line-height:1.3;}
 .flow-status{font-size:8px;padding:2px 6px;border-radius:3px;font-weight:700;letter-spacing:.3px;}
@@ -243,7 +252,7 @@ body{display:flex;justify-content:center;align-items:flex-start;background:trans
               <path d="M0,0 L7,3.5 L0,7 Z" fill="#6366f1"/>
             </marker>
             <marker id="arr-blue" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-              <path d="M0,0 L7,3.5 L0,7 Z" fill="#5BA8E5"/>
+              <path d="M0,0 L7,3.5 L0,7 Z" fill="#5298F8"/>
             </marker>
             <marker id="arr-green" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
               <path d="M0,0 L7,3.5 L0,7 Z" fill="#10b981"/>
@@ -295,7 +304,7 @@ body{display:flex;justify-content:center;align-items:flex-start;background:trans
 
           <!-- 4. File Watcher (right=315, mid-y=68) → To FHIR ADT (left=350, mid-y=163)
                Exit right, curve down -->
-          <path id="e4" class="conn-path" stroke="#5BA8E5" marker-end="url(#arr-blue)"
+          <path id="e4" class="conn-path" stroke="#5298F8" marker-end="url(#arr-blue)"
                 d="M315,68 C342,68 322,163 350,163"
                 style="stroke-dasharray:130;stroke-dashoffset:130;animation:drawLine .7s ease 1.05s forwards;"/>
 
@@ -350,7 +359,7 @@ body{display:flex;justify-content:center;align-items:flex-start;background:trans
 
           <!-- COL 2 – File Watcher  x=175 y=44 w=140 h=48 -->
           <g class="svg-node" style="animation:nodePopIn .4s ease .75s both;opacity:0;">
-            <rect x="175" y="44" width="140" height="48" rx="6" fill="#5BA8E5"/>
+            <rect x="175" y="44" width="140" height="48" rx="6" fill="#5298F8"/>
             <text x="245" y="63" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#fff">File Watcher</text>
             <text x="245" y="77" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="rgba(255,255,255,.8)">Monitor HL7 files</text>
           </g>
@@ -415,7 +424,7 @@ body{display:flex;justify-content:center;align-items:flex-start;background:trans
           <div class="adapter-item-desc">HL7 MLLP TCP listener</div>
         </div>
         <div class="adapter-item" style="animation-delay:1.1s">
-          <div class="adapter-item-name"><span class="adapter-icon" style="background:#5BA8E5"></span>HL7 Listener</div>
+          <div class="adapter-item-name"><span class="adapter-icon" style="background:#5298F8"></span>HL7 Listener</div>
           <div class="adapter-item-desc">Over TCP socket listener</div>
         </div>
         <div class="adapter-item" style="animation-delay:1.2s">
