@@ -1,0 +1,6 @@
+# adeahub.co: all crawlers, including search and AI answer engines, are welcome.
+User-agent: *
+Allow: /
+Disallow: /embeds/
+
+Sitemap: https://adeahub.co/sitemap.xml
