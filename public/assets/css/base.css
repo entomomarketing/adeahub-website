@@ -1,0 +1,89 @@
+/*
+ * adeahub — shared design-system rules used across pages. Linked BEFORE each page's own <style>, so page
+ * styles and the Tailwind utilities in site.css still override it. Hand-edited; not processed by Tailwind.
+ *
+ * Type roles (Outfit):  section title .h-section 30→40px · closing CTA title .h-cta 34→48px ·
+ * body 16px/1.65 · card text 15px/1.6 · meta 13–14px · structural label .t-label 13px.
+ * Surfaces: .card (white, hairline border, soft offset shadow) · .feature (editorial grid item, top rule) ·
+ * .stat-row/.stat (figures separated by hairlines, no boxes).
+ */
+:root {
+  --blue: #5298F8; --yellow: #F3D06F; --blue-pale: #EEF4FF; --ink: #186BDC; --heading: #408DF7;
+  --line: #E4EAF3; --line-soft: #EEF2F7;
+  --shadow-sm: 0 1px 2px rgba(15,23,42,.04), 0 8px 24px -14px rgba(15,23,42,.12);
+  --shadow-md: 0 2px 6px rgba(15,23,42,.05), 0 22px 44px -20px rgba(28,72,150,.22);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
+
+/* ── type roles ── */
+.h-section { font-size: clamp(1.875rem, 1.15rem + 1.7vw, 2.5rem); line-height: 1.12; letter-spacing: -0.022em; font-weight: 700; text-wrap: balance; }
+.h-cta { font-size: clamp(2.125rem, 1.25rem + 2.3vw, 3rem); line-height: 1.08; letter-spacing: -0.026em; font-weight: 700; text-wrap: balance; }
+.t-label { display: block; font-size: 0.8125rem; line-height: 1.35rem; font-weight: 600; letter-spacing: 0.005em; color: var(--ink); }
+.tag-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 10px; border-radius: 9999px; font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; background: #EEF4FF; color: var(--ink); box-shadow: inset 0 0 0 1px rgba(82,152,248,.22); }
+.tag-chip::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: .9; }
+.tag-chip.on-blue { background: rgba(255,255,255,.16); color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.32); }
+.tag-chip.on-gold { background: rgba(255,255,255,.55); color: #6B4E00; box-shadow: inset 0 0 0 1px rgba(107,78,0,.18); }
+
+/* ── surfaces ── */
+.card { background: #fff; border-radius: 20px; box-shadow: inset 0 0 0 1px var(--line), var(--shadow-sm); transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out); }
+.card:hover { transform: translateY(-3px); box-shadow: inset 0 0 0 1px #D5E2F5, var(--shadow-md); }
+.feature { position: relative; padding-top: 28px; border-top: 1px solid var(--line); }
+.feature::before { content: ''; position: absolute; top: -1px; left: 0; width: 44px; height: 2px; background: var(--blue); border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease-out); }
+.feature:hover::before { transform: scaleX(1); }
+.feature .feature-ico { width: 44px; height: 44px; border-radius: 12px; background: var(--blue-pale); color: var(--ink); display: flex; align-items: center; justify-content: center; transition: background .25s, color .25s; }
+.feature:hover .feature-ico { background: var(--blue); color: #fff; }
+.stat-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 1024px) { .stat-row { grid-template-columns: repeat(var(--stats, 4), minmax(0, 1fr)); } }
+.stat { padding: 8px 24px 12px; text-align: center; border-left: 1px solid rgba(255,255,255,.28); }
+.stat:nth-child(2n+1) { border-left-color: transparent; }
+@media (max-width: 1023px) { .stat:nth-child(n+3) { margin-top: 28px; } }
+@media (min-width: 1024px) { .stat:nth-child(2n+1) { border-left-color: rgba(255,255,255,.28); } .stat:first-child { border-left-color: transparent; } }
+.stat-row.on-light .stat { border-left-color: var(--line); }
+.stat-row.on-light .stat:nth-child(2n+1) { border-left-color: transparent; }
+@media (min-width: 1024px) { .stat-row.on-light .stat:nth-child(2n+1) { border-left-color: var(--line); } .stat-row.on-light .stat:first-child { border-left-color: transparent; } }
+.stat > :first-child { letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+
+/* ── scroll reveal (hidden states only when JS runs; site.js adds .visible) ── */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js .reveal.visible { opacity: 1; transform: translateY(0); }
+.js .reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js .reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js .reveal-left.visible, .js .reveal-right.visible { opacity: 1; transform: translateX(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+/* ── CTAs ── */
+@keyframes btnGlow { 0%,100% { box-shadow: 0 8px 26px rgba(82,152,248,0.30); } 50% { box-shadow: 0 8px 38px rgba(82,152,248,0.46); } }
+.btn-glow { animation: btnGlow 2.8s ease-in-out infinite; }
+.btn-glow:hover { animation: none; box-shadow: 0 12px 30px -8px rgba(82,152,248,0.55); transform: translateY(-2px); transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+.btn-shimmer { position: relative; overflow: hidden; }
+.btn-shimmer::after { content: ''; position: absolute; top: 0; left: -100%; width: 55%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); }
+.btn-shimmer:hover::after { left: 160%; transition: left 0.6s ease; }
+
+/* ── decoration: blobs, orbs, hero badge pulse, dot grid ── */
+@keyframes floatBlob { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-18px) scale(1.04); } }
+@keyframes floatOrb1 { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(30px,25px) scale(1.06); } 66% { transform: translate(-20px,40px) scale(0.94); } }
+@keyframes floatOrb2 { 0%,100% { transform: translate(0,0) scale(1); } 40% { transform: translate(-35px,-20px) scale(1.08); } 70% { transform: translate(25px,30px) scale(0.92); } }
+@keyframes badgePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(82,152,248,0.30); } 50% { box-shadow: 0 0 0 7px rgba(82,152,248,0); } }
+@keyframes dropIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.blob-float-1 { animation: floatBlob 9s ease-in-out infinite; }
+.blob-float-2 { animation: floatBlob 12s ease-in-out infinite 2.5s; }
+.hero-badge { animation: badgePulse 2.8s ease-in-out infinite; }
+.dot-grid { background-image: radial-gradient(circle, rgba(82,152,248,0.11) 1px, transparent 1px); background-size: 28px 28px; }
+
+/* ── card hovers (component classes used by the pages) ── */
+.solution-card { border-radius: 24px; transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out); }
+.solution-card:hover { transform: translateY(-4px); box-shadow: 0 2px 6px rgba(15,23,42,.06), 0 28px 56px -22px rgba(20,60,140,.35); }
+.solution-card .card-glow-layer { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.3s ease; z-index: 0; }
+.solution-card > *:not(.card-glow-layer) { position: relative; z-index: 1; }
+.outcome-card { position: relative; transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out); }
+.outcome-card:hover { transform: translateY(-3px); }
+.proof-card { transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out); }
+.proof-card:hover { transform: translateY(-3px); box-shadow: 0 2px 6px rgba(15,23,42,.05), 0 20px 40px -18px rgba(28,72,150,.25); }

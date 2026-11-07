@@ -1,0 +1,24 @@
+{
+  // adeahub website: static assets served by the Cloudflare Worker "adeahub". Only ./public is published.
+  // It shares a Cloudflare account with the entomo website (Worker "entomo") but nothing else: separate Worker,
+  // repository, settings and domains. Never change "name" — another name would deploy over a different Worker.
+  //
+  // production: branch main  → https://adeahub.misty-dawn-f588.workers.dev
+  //             adeahub.co still points at WordPress; when it moves here, add it under
+  //             Workers & Pages > adeahub > Settings > Domains & Routes (adeahub.co and www.adeahub.co).
+  // staging:    branch staging → this Worker's branch preview, https://staging-adeahub.misty-dawn-f588.workers.dev
+  //             Preview addresses carry `x-robots-tag: noindex` automatically, so staging never competes in search.
+  // Cloudflare builds on every push (Workers Builds, connected to entomomarketing/adeahub-website):
+  // main runs `npx wrangler deploy`, any other branch `npx wrangler versions upload` (a preview of that branch).
+  // No build step runs there: public/ is committed fully built (python3 tools/build.py before committing).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "adeahub",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}
