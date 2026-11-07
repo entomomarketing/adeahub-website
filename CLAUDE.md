@@ -19,14 +19,15 @@ Links are relative (`../platform/`), so pages need a web server; opening them vi
 | `public/404.html` | not-found page (root-relative links because it is served at any depth) |
 | `public/embeds/ah-*-animated.html` | animated product previews loaded by `<iframe>` (homepage "One platform", AH Connect hero, AH Outbreak hero). `noindex`; don't edit them for a single page |
 | `public/assets/css/site.css` | **generated** by the build from `src/css/site.css` (Tailwind + header/footer + polish). Never edit |
-| `public/assets/css/base.css` | shared design-system rules (reveal, btn-glow/shimmer, blobs, section-label, card hovers). Hand-edited. Linked *before* page `<style>`s |
+| `public/assets/css/base.css` | shared design-system rules: type roles (`.h-section`, `.h-cta`, `.t-label`, `.tag-chip`), surfaces (`.card`, `.feature`, `.stat-row`/`.stat`), reveal, btn-glow/shimmer, blobs, card hovers. Hand-edited. Linked *before* page `<style>`s |
 | `public/assets/js/site.js` | shared behaviour: header scroll state, dropdowns (click/Escape), mobile menu, scroll reveal, count-up, solution-card tilt |
-| `public/assets/images/` | `brand/ home/ hospitals/ logos/clients/ logos/hospitals/ team/ flags/ icons/ blog/ about/ social/` |
+| `public/assets/images/` | `brand/ home/ hospitals/ logos/clients/ logos/hospitals/ team/ flags/ blog/ about/ social/` |
 | `public/assets/fonts/` | self-hosted Outfit (site) and Inter (only inside mock-ups), WOFF2 + OFL licences |
 | `public/assets/downloads/` | company profile PDF, media kit ZIP |
 | `public/robots.txt, sitemap.xml, llms.txt, site.webmanifest` | **generated** by the build |
 | `src/site.json` | site facts + per-page title, description, schema type, social card. The single source of SEO metadata |
 | `src/css/site.css` | stylesheet source: fonts, header/footer CSS, Tailwind directives, polish layer |
+| `wrangler.jsonc` | Cloudflare Worker config (see Staging and production) |
 | `tools/build.py` | the build (see below) |
 | `tools/chrome.py` | header + footer markup |
 | `tools/social_cards.py` | regenerates `assets/images/social/*.jpg` (needs Chrome + Pillow) |
@@ -57,6 +58,18 @@ It rewrites only the marked regions of each page and is idempotent:
 
 **Never hand-edit generated regions, `site.css`, sitemap/robots/llms.txt.** Change `src/`, `tools/chrome.py` or `tailwind.config.js` and rebuild.
 After changing a page `<h1>`, run `python3 tools/social_cards.py` too.
+
+## Staging and production (Cloudflare)
+
+Hosted as the Cloudflare Worker `adeahub` (`wrangler.jsonc`, assets = `public/`, `public/_headers` for cache and
+security headers). Same Cloudflare account as the entomo website, but independent: never touch the `entomo`
+Worker, and never change `name` in `wrangler.jsonc`.
+
+- `staging` branch → https://staging-adeahub.misty-dawn-f588.workers.dev (branch preview, `noindex` automatically)
+- `main` branch → production, https://adeahub.misty-dawn-f588.workers.dev; adeahub.co still points at WordPress
+- Cloudflare Workers Builds deploys on push; no build runs there, so commit `public/` fully built.
+- Work on `staging`. Production changes only through a pull request `staging` → `main` that the owner merges
+  (`main` is protected). Never push or merge to `main` yourself unless the owner asks for that release.
 
 ## Relationship to the live site (adeahub.co)
 
@@ -92,7 +105,10 @@ Text on light backgrounds must meet WCAG AA, which brand blue alone does not (2.
 Each page: managed head → page `<style>`s → `site.css` → (moved body styles) → skip link + `<header id="main-nav" class="snav">` → `<main id="main">` → page sections → `<footer class="sfoot">` → page-specific inline scripts. Shared behaviour lives in `site.js`; do not re-add per-page copies of the menu/reveal/counter scripts.
 
 - Content width 1140px: `max-w-[1188px] mx-auto px-6` (a few sections use 1120/1152px).
-- Design system (keep it): `.section-label` eyebrows, dot-grid texture and floating blobs on blue sections, `btn-glow` / `btn-shimmer` CTAs, card hover lifts, pulsing hero badge dots, scroll reveal, count-up counters, solution-card tilt.
+- Design system (keep it): dot-grid texture and floating blobs on blue sections (plus the soft top-light/deeper-base shading from `site.css`), `btn-glow` / `btn-shimmer` CTAs, card hover lifts, pulsing hero badge dots, scroll reveal, count-up counters, solution-card tilt.
+- No eyebrow labels (owner decision, Nov 2026): no small spaced-out caps or dash labels above section headings, in the mega-menus or the footer; they read as AI-generated. Headings stand on their own. Labels that carry information stay, styled as `.t-label` (role lines such as "CMO · CMIO", placed *under* the card title), `.tag-chip` (product/feature names such as "WorkWise AI", "Powered by adea AI") or plain card meta ("Case Study", blog read time). Small labels never use `uppercase` or wide `tracking-*`.
+- Type scale (checked against entomo.co): nav 16px (15px at 768–1023px), mega-menu titles 16px with 14px descriptions, section titles `.h-section` (30→40px, lh 1.12, −0.022em), closing CTA titles `.h-cta` (34→48px), body 16px/1.6+, card text 15px, meta 13–14px, nothing readable below 13px outside product mock-ups. No `font-light` below 22px and no `italic` (Outfit has no italic face, so browsers fake it).
+- Figures: a set of stats is a `.stat-row` of `.stat` items separated by hairlines (`.on-light` on white), never glass boxes. Repeated capability grids are `.feature` items (top rule, brand-blue `.feature-ico` tile), not same-size shadow cards. Icons are Lucide (`<i data-lucide>`), never emoji or emoji-style images.
 - Scroll reveal: add `reveal` (fade up), `reveal-left`, `reveal-right`, plus `reveal-d1`…`reveal-d5` delays. Hidden states are scoped to `html.js` (set by an inline script in the head) so content is never invisible without JavaScript. Elements on screen at load reveal immediately.
 - Counters: write the final figure in the HTML (`<span class="counter">30,000+</span>`); `site.js` counts up to exactly that text. `data-target` is no longer needed.
 - Hospital carousels (home, customers): one set of `.ah-card`s in `.ah-cards-track`; the page script clones it for the loop and adds auto-scroll, drag/fling and `.ah-nav` arrows. Never duplicate cards by hand.

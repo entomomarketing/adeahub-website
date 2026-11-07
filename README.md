@@ -18,10 +18,10 @@ adeahub-website/
 │   ├── embeds/                 animated product previews loaded in <iframe>s (not indexed)
 │   ├── assets/
 │   │   ├── css/site.css        compiled Tailwind + header/footer + polish (generated, do not edit)
-│   │   ├── css/base.css        shared design-system rules (scroll reveal, CTA glow, section labels …)
+│   │   ├── css/base.css        shared design-system rules (type roles, cards, stat rows, scroll reveal …)
 │   │   ├── js/site.js          shared behaviour (menus, scroll reveal, counters, card tilt)
 │   │   ├── fonts/              self-hosted Outfit + Inter (WOFF2, with OFL licences)
-│   │   ├── images/             brand/ home/ hospitals/ logos/{clients,hospitals}/ team/ flags/ icons/ blog/ about/ social/
+│   │   ├── images/             brand/ home/ hospitals/ logos/{clients,hospitals}/ team/ flags/ blog/ about/ social/
 │   │   └── downloads/          company profile PDF, media kit ZIP
 │   ├── robots.txt, sitemap.xml, llms.txt, site.webmanifest     (generated)
 │   └── favicon.ico, apple-touch-icon.png
@@ -80,24 +80,51 @@ If a page headline changes, also run `python3 tools/social_cards.py` (needs Goog
 - Name files in lowercase-with-dashes after what they show, e.g. `hospitals/siriraj-hospital.webp`.
 - Images below the first screen get `loading="lazy" decoding="async"`; never lazy-load the hero image.
 
-## Deploying
+## Staging and production
 
-Upload the contents of `public/` to any static host (Cloudflare Pages, Netlify, Vercel, S3/CloudFront,
-Nginx, Apache). Configure the host to:
+The site is hosted on Cloudflare as its own Worker, `adeahub`, configured by `wrangler.jsonc`. It shares a
+Cloudflare account with the entomo website but is completely separate from it (its own Worker, settings and
+domains). Two branches, two environments:
 
-1. serve `404.html` for unknown URLs, with status 404;
-2. compress text files (Brotli or gzip — most hosts do this automatically);
-3. send these cache headers:
-   - `*.html`: `Cache-Control: no-cache`
-   - `assets/css/*`, `assets/js/*` (URLs carry a `?v=` content hash): `Cache-Control: public, max-age=31536000, immutable`
-   - `assets/fonts/*`: `public, max-age=31536000, immutable`
-   - `assets/images/*`, `assets/downloads/*`: `public, max-age=2592000` (30 days; rename a file to update it immediately)
-4. send basic security headers: `Strict-Transport-Security: max-age=31536000; includeSubDomains`,
-   `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`,
-   `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`.
+| branch | environment | address |
+|---|---|---|
+| `staging` | staging: every change goes here first, for review | https://staging-adeahub.misty-dawn-f588.workers.dev |
+| `main` | production: only approved changes | https://adeahub.misty-dawn-f588.workers.dev (adeahub.co once the domain moves here) |
 
-The canonical URLs, sitemap and social tags all point at `https://adeahub.co`; change `site.url` in
-`src/site.json` if the site is ever served from another domain.
+Cloudflare builds on every push: a push to `main` deploys production, a push to any other branch publishes
+a preview of that branch, and the `staging` branch's preview is the staging site. Preview addresses carry
+`x-robots-tag: noindex` automatically, so staging never competes with the real site in search.
+
+How a change ships:
+
+1. Commit to `staging` (run `python3 tools/build.py` first; Cloudflare runs no build, it publishes
+   `public/` exactly as committed). Staging updates within a minute.
+2. Review the staging site. When it is approved, open a pull request from `staging` into `main` on GitHub
+   and merge it. Production updates within a minute.
+3. An urgent fix can go to `main` through its own pull request; then merge `main` back into `staging`.
+
+`main` is protected: it only changes through a merged pull request, and it cannot be force-pushed or deleted.
+
+`adeahub.co` itself still points at the WordPress site. To move it here, add `adeahub.co` and
+`www.adeahub.co` under Cloudflare > Workers & Pages > adeahub > Settings > Domains & Routes (the domain's DNS
+must be on Cloudflare).
+
+### What the host is configured to do
+
+`wrangler.jsonc` serves `404.html` for unknown URLs (status 404) and adds the trailing slash to page URLs
+(`/platform` → `/platform/`). `public/_headers` sets the cache and security headers:
+
+- `*.html`: revalidated on every visit (Cloudflare's default), so a release shows up immediately
+- `assets/css/*`, `assets/js/*` (URLs carry a `?v=` content hash) and `assets/fonts/*`: `public, max-age=31536000, immutable`
+- `assets/images/*`, `assets/downloads/*`: `public, max-age=2592000` (30 days; rename a file to update it immediately)
+- on every response: `Strict-Transport-Security: max-age=31536000; includeSubDomains`,
+  `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`,
+  `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`.
+
+On any other static host, upload the contents of `public/` and configure the same behaviour.
+
+The canonical URLs, sitemap and social tags all point at `https://adeahub.co`, on staging too; change
+`site.url` in `src/site.json` if the site is ever served from another domain.
 
 ## Quality bar
 
