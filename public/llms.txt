@@ -1,0 +1,32 @@
+# adeahub
+
+> adeahub is a digital health platform that connects patient apps, hospital information systems, health data exchange and analytics for hospitals, health systems and ministries of health across Asia, the Middle East and Africa.
+
+Key facts: 35M+ users on the platform, 8,500+ health facilities, 200M+ patient records, 17+ locations, 25+ years of healthcare IT heritage. Parent company: entomo.
+
+## Products
+
+- [AH Engage](https://adeahub.co/ah-engage/): AH Engage is patient engagement software that connects patients to their care team before, during and after every visit, with 60,000+ appointments booked daily.
+- [AH Care](https://adeahub.co/ah-care/): AH Care is a fully integrated hospital information system for clinical and administrative workflows, proven in HIMSS EMRAM Stage 7 hospitals across the region.
+- [AH Connect](https://adeahub.co/ah-connect/): AH Connect is a vendor-neutral FHIR R4 interoperability platform with an integration engine, FHIR server and API gateway, powering Egypt's national HIE.
+- [AH Insights](https://adeahub.co/ah-insights/): Real-time healthcare analytics and population health management for hospitals and ministries of health, with 200+ standardised KPIs and AI-powered insights.
+- [AH Outbreak Management](https://adeahub.co/ah-outbreak-management/): Detect, trace, monitor and contain infectious disease outbreaks. AH Outbreak Management is proven in national pandemic response in Malaysia and the UAE.
+- [WorkWise](https://adeahub.co/workwise/): WorkWise by entomo is the healthcare workforce experience platform for performance, smart scheduling, career development and staff wellness in health systems.
+
+## Company
+
+- [Platform](https://adeahub.co/platform/): An open, AI-enabled, FHIR-native digital health platform connecting patient apps, hospital systems, interoperability and analytics for health systems.
+- [About Us](https://adeahub.co/about-us/): adeahub is a digital health platform managing 200M+ patient records across Asia, the Middle East and Africa, built on 25+ years of healthcare IT heritage.
+- [Customers](https://adeahub.co/customers/): Case studies from governments and healthcare providers running adeahub: national digital health programmes, HIMSS Stage 7 hospitals and HIE deployments.
+- [Newsroom](https://adeahub.co/newsroom/): The latest news, press releases and announcements from adeahub, the digital health platform for hospitals, health systems and ministries of health.
+- [Blog](https://adeahub.co/blogs/): Perspectives and guides from adeahub's healthcare technology team on FHIR interoperability, population health, patient engagement and digital health strategy.
+- [Contact Us](https://adeahub.co/contact-us/): Contact adeahub about your digital health needs. We work with hospitals, health systems and ministries of health across Asia, the Middle East and Africa.
+- [Talk To Us](https://adeahub.co/talk-to-us/): Request a personalised adeahub demo. Our solutions team tailors the walkthrough to your clinical workflows, interoperability, patient engagement or operations.
+
+## Contact
+
+- General enquiries: hello@adeahub.co
+- Sales: sales@adeahub.co
+- Customer support: support@adeahub.co
+- Press: press@adeahub.co
+- Partnerships: partnerships@adeahub.co

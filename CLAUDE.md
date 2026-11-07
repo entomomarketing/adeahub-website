@@ -1,113 +1,109 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code when working in this repository. `README.md` covers the same ground for people.
 
-## Project Overview
+## Project overview
 
-This is the **adeahub** marketing website — a static HTML/CSS/JS site for a healthcare platform company. No build tools, no package manager, no framework. Pages open directly in a browser, or serve the folder with `python3 -m http.server 8765` and open http://127.0.0.1:8765/index.html.
+The **adeahub** marketing website: a static site (HTML pages, one compiled Tailwind stylesheet, one small
+shared script, optimised images). No framework and no npm. `public/` is both the source you edit and the
+folder that gets deployed; `python3 tools/build.py` regenerates the shared parts in place and checks the site.
+
+Preview: `python3 -m http.server 8765 --directory public`, then open http://127.0.0.1:8765/.
+Links are relative (`../platform/`), so pages need a web server; opening them via `file://` won't resolve folder URLs.
+
+## Repository layout
+
+| Path | What it is |
+|---|---|
+| `public/<slug>/index.html` | one folder per page; URLs match adeahub.co exactly (table below) |
+| `public/404.html` | not-found page (root-relative links because it is served at any depth) |
+| `public/embeds/ah-*-animated.html` | animated product previews loaded by `<iframe>` (homepage "One platform", AH Connect hero, AH Outbreak hero). `noindex`; don't edit them for a single page |
+| `public/assets/css/site.css` | **generated** by the build from `src/css/site.css` (Tailwind + header/footer + polish). Never edit |
+| `public/assets/css/base.css` | shared design-system rules (reveal, btn-glow/shimmer, blobs, section-label, card hovers). Hand-edited. Linked *before* page `<style>`s |
+| `public/assets/js/site.js` | shared behaviour: header scroll state, dropdowns (click/Escape), mobile menu, scroll reveal, count-up, solution-card tilt |
+| `public/assets/images/` | `brand/ home/ hospitals/ logos/clients/ logos/hospitals/ team/ flags/ icons/ blog/ about/ social/` |
+| `public/assets/fonts/` | self-hosted Outfit (site) and Inter (only inside mock-ups), WOFF2 + OFL licences |
+| `public/assets/downloads/` | company profile PDF, media kit ZIP |
+| `public/robots.txt, sitemap.xml, llms.txt, site.webmanifest` | **generated** by the build |
+| `src/site.json` | site facts + per-page title, description, schema type, social card. The single source of SEO metadata |
+| `src/css/site.css` | stylesheet source: fonts, header/footer CSS, Tailwind directives, polish layer |
+| `tools/build.py` | the build (see below) |
+| `tools/chrome.py` | header + footer markup |
+| `tools/social_cards.py` | regenerates `assets/images/social/*.jpg` (needs Chrome + Pillow) |
+| `tools/icons/` | cached Lucide SVGs used by the build; `tools/.bin/` (gitignored) holds the pinned Tailwind CLI |
+| `docs/` | background notes: `2026-03-repositioning-changelog.md` explains copy/naming decisions — read it before changing them |
+| `design/` | prototypes, not deployed |
+
+Live URL → repo file: `/` → `public/index.html`; every other live URL `/<slug>/` → `public/<slug>/index.html`
+(`platform`, `ah-engage`, `ah-care`, `ah-connect`, `ah-insights`, `ah-outbreak-management`, `workwise`,
+`about-us`, `customers`, `newsroom`, `blogs`, `contact-us`, `talk-to-us`).
+
+## The build
+
+```sh
+python3 tools/build.py          # regenerate + check (exit 1 on any error)
+python3 tools/build.py --check  # check only
+```
+
+It rewrites only the marked regions of each page and is idempotent:
+
+- `<!-- site:head:start/end -->` meta, title, description, canonical, robots, Open Graph/Twitter, icons, font preload, `base.css`, `site.js`, JSON-LD — from `src/site.json`
+- `<!-- site:css:start/end -->` the `site.css` link, deliberately placed **after** the page's own `<style>` blocks so Tailwind utilities override page CSS exactly as the old in-browser Tailwind CDN did. Page styles that used to sit in `<body>` now sit right after this marker
+- `<!-- site:header:start/end -->` and `<!-- site:footer:start/end -->` from `tools/chrome.py`
+- `<i data-lucide="name" class="…"></i>` → inline Lucide SVG (downloaded once into `tools/icons/`)
+- compiles Tailwind 3.4.17 (standalone CLI, checksum-verified) and versions `site.css`/`site.js`/`base.css` URLs with `?v=<hash>`
+- writes sitemap.xml (lastmod from git), robots.txt, llms.txt, site.webmanifest, 404.html (first run)
+- checks: one `<h1>` per page, every local link/asset exists, every `<img>` has `alt`, JSON-LD parses, no CDN leftovers, title ≤ 60 chars, description 120–160 chars, social card present
+
+**Never hand-edit generated regions, `site.css`, sitemap/robots/llms.txt.** Change `src/`, `tools/chrome.py` or `tailwind.config.js` and rebuild.
+After changing a page `<h1>`, run `python3 tools/social_cards.py` too.
 
 ## Relationship to the live site (adeahub.co)
 
-The live site https://adeahub.co is a WordPress/Elementor rebuild of this repo that was then edited by hand on WordPress. On 2026-10-29 this repo was brought back on par with the live site page by page. Rules for keeping it in sync, set by the site owner:
+The live site is a WordPress/Elementor rebuild of this repo, later hand-edited. On 2026-10-29 the repo was brought on par with it. Rules set by the owner:
 
-- **Content comes from live**: text, stats, links, images, sections, new components (e.g. carousel arrows/drag, About team tabs) and brand colours.
-- **Do not copy WordPress downgrades.** Where live's design is worse than this repo's because of WordPress/Elementor/HubSpot limitations, keep the repo design: static screenshots replacing HTML/CSS mock-ups, lost dot-grid/blob/ring decoration, lost glow/shimmer/hover/reveal motion, literal "— " text instead of styled eyebrow labels, icon-font look-alikes, HubSpot-default form styling, system-font fallbacks, copy-paste style inconsistencies.
-- **Do not copy live's errors.** Put the correct version (typos, wrong link targets, stale stats, old product names, @adeahub.com leftovers, duplicated paragraphs, stray elements) and tell the owner so live can be fixed too.
+- **Content comes from live**: text, stats, links, images, sections, new components and brand colours.
+- **Do not copy WordPress downgrades** (static screenshots replacing HTML/CSS mock-ups, lost decoration/motion, literal "— " eyebrows, icon-font look-alikes, HubSpot form styling, system fonts, copy-paste inconsistencies). Keep the repo design.
+- **Do not copy live's errors** (typos, wrong links, stale stats, old product names, @adeahub.com leftovers, duplicated paragraphs, stray elements). Put the correct version and tell the owner.
+- Live errors deliberately not copied: the "About Us" title band above the About hero, the stray "10 February 2026" date on Newsroom, "platfor" and the duplicated AI paragraph on WorkWise, "See how AH Connect…" links pointing to Talk To Us, invisible white-on-white "AH Care" headings.
+- The 3 blog posts and the press release link to WordPress URLs on adeahub.co that do not exist in this repo.
 
-Live URL → repo file:
+## Brand & design rules (set by management)
 
-| Live URL | Repo file |
-|---|---|
-| `/` | `index.html` |
-| `/platform/` | `adeahub_platform.html` |
-| `/ah-engage/` | `adeahub_engage.html` |
-| `/ah-care/` | `adeahub_care.html` |
-| `/ah-connect/` | `adeahub_connect.html` |
-| `/ah-insights/` | `adeahub_insights.html` |
-| `/ah-outbreak-management/` | `adeahub_outbreak.html` |
-| `/workwise/` | `workwise.html` |
-| `/about-us/` | `about_us.html` |
-| `/customers/` | `customers.html` |
-| `/newsroom/` | `newsroom.html` |
-| `/blogs/` | `Blogs.html` (capital B — links must match the case) |
-| `/contact-us/` | `contact_us.html` |
-| `/talk-to-us/` | `request_demo.html` |
+- No `uppercase` CSS on brand taglines, product names or nav subtitles. "Powering modern healthcare" is always lowercase.
+- Product names: AH Engage / AH Care / AH Connect / AH Insights / AH Outbreak Management / WorkWise (blue "Work" + "Wise"). Never "adeahub providers / connect / insight", never "AH Insight".
+- Brand name is lowercase "adeahub" everywhere.
+- CTAs: navbar "Talk To Us" → `talk-to-us/`; mobile-menu "Talk to us" → `contact-us/`; hero and banner "Talk to us" → `talk-to-us/`; "Request a demo" only in the mega-menus and footer.
+- Verified statistics: 35M+ users on platform, 8,500+ health facilities (with the comma), 200M+ patient records, 17+ locations, 25+ years. Don't put unconfirmed figures (country/office/module counts) in metadata.
+- Email domain adeahub.co (hello@, sales@, press@, support@, partnerships@, apac@, mea@, ame@). Malaysia toll-free: "Malaysia (Local): 1800 819 624".
 
-Other files: `ah-engage-animated.html`, `ah-care-animated.html`, `ah-connect-animated.html`, `ah-insights-animated.html`, `ah-outbreak-animated.html` are the animated product previews embedded via `<iframe>` in the homepage "One platform" section (the live site loads the same files). `nav-dropdown-preview.html` and `adeahub-platform-composite.html` are design scratch files, not linked from the site.
+## Colours
 
-## Tech Stack
+Tailwind tokens (`tailwind.config.js`): `adeahub-blue` `#5298F8` and `adeahub-yellow` `#F3D06F` (brand, fills/backgrounds/icons/large shapes), `adeahub-lightbg` (= blue, solid blue sections), `adeahub-gray`. Never reintroduce `#5BA8E5` or `#F4D06F`.
 
-- **Tailwind CSS** — loaded via CDN (`https://cdn.tailwindcss.com`), configured inline per page with a `tailwind.config` script block
-- **Lucide Icons** — loaded via CDN (`https://unpkg.com/lucide@latest`), activated with `lucide.createIcons()` at the bottom of each page
-- **Google Fonts** — Outfit (weights 300–800), loaded via `<link>` in `<head>`
-- No JavaScript framework; all interactivity is vanilla JS
+Text on light backgrounds must meet WCAG AA, which brand blue alone does not (2.9:1):
+- `text-adeahub-ink` `#186BDC` for body-size blue text, labels, links, pills (≥ 4.5:1 on white and the pale-blue tints)
+- `text-adeahub-heading` `#408DF7` for large blue text (≥ 24px, or ≥ 18.66px bold; ≥ 3:1)
+- grey body text `#6B6B6B` (not `#7A7A7A`/`#9E9E9E`), `text-gray-500` (not `gray-400`) for text, `#DC2626` / `#15803D` / `#8A6500` for red/green/gold labels
+- Known exception, owner's call: white or yellow text on the brand-blue sections is 2.9:1
 
-`Images/` holds all assets: `Hospitals/` (case-study photos, prefer the `.webp` versions), `logos/` (hospital logos, `.webp`), `Clients_logos/` (the 14 homepage marquee logos, `.webp`), `Leaders/` (team portraits), plus per-page folders added during the sync.
+## Page architecture
 
-## Brand & Design Rules
+Each page: managed head → page `<style>`s → `site.css` → (moved body styles) → skip link + `<header id="main-nav" class="snav">` → `<main id="main">` → page sections → `<footer class="sfoot">` → page-specific inline scripts. Shared behaviour lives in `site.js`; do not re-add per-page copies of the menu/reveal/counter scripts.
 
-These rules apply across every page — they were set by management and must be preserved:
+- Content width 1140px: `max-w-[1188px] mx-auto px-6` (a few sections use 1120/1152px).
+- Design system (keep it): `.section-label` eyebrows, dot-grid texture and floating blobs on blue sections, `btn-glow` / `btn-shimmer` CTAs, card hover lifts, pulsing hero badge dots, scroll reveal, count-up counters, solution-card tilt.
+- Scroll reveal: add `reveal` (fade up), `reveal-left`, `reveal-right`, plus `reveal-d1`…`reveal-d5` delays. Hidden states are scoped to `html.js` (set by an inline script in the head) so content is never invisible without JavaScript. Elements on screen at load reveal immediately.
+- Counters: write the final figure in the HTML (`<span class="counter">30,000+</span>`); `site.js` counts up to exactly that text. `data-target` is no longer needed.
+- Hospital carousels (home, customers): one set of `.ah-card`s in `.ah-cards-track`; the page script clones it for the loop and adds auto-scroll, drag/fling and `.ah-nav` arrows. Never duplicate cards by hand.
+- Product mock-ups (Care/Engage/Insights heroes, Insights AI chat, Care/WorkWise desktop frames) are pictures: wrapper `role="img"` + `aria-label`, inner `aria-hidden="true" inert`, fake controls `tabindex="-1"`. Keep that when editing them. Vision-section and Outbreak phone mock-ups stay HTML/CSS (live's screenshots of them are a downgrade).
+- Homepage hero photo is a `<picture>` (AVIF/WebP, 720w/1406w, desktop only, preloaded with `fetchpriority="high"` via `src/site.json`).
+- Headings: one `<h1>`, no skipped levels. Hyphenated words in `<h1>`s are wrapped in `whitespace-nowrap` (headings use `text-wrap: balance`).
 
-- **No uppercase CSS** (`text-uppercase`, `uppercase` Tailwind class) on brand taglines, product names, or nav subtitles
-- **"Powering modern healthcare"** is always lowercase — in both the navbar subtitle and footer tagline
-- **Product names**: AH Engage / AH Care / AH Connect / AH Insights / AH Outbreak Management / WorkWise (rendered as a blue "Work" + "Wise"). Never the old names "adeahub providers / connect / insight". Live's mega-menu says "AH Insight" by mistake; the repo uses "AH Insights".
-- **Brand name** is lowercase "adeahub" everywhere, including inside quotes.
-- **CTA language**:
-  - Navbar button: "Talk To Us" → `request_demo.html`; mobile menu button: "Talk to us" → `contact_us.html`
-  - Hero sections and CTA banners: "Talk to us" → `request_demo.html`
-  - "Request a demo" appears only as the small link inside the mega-menus and the footer button
-- **Verified statistics** (from the owner): 35M+ users on platform, 8,500+ health facilities (with the comma), 200M+ patient records, 17+ locations, 25+ years
-- Email domain is adeahub.co (hello@, sales@, press@, support@, partnerships@, apac@, mea@, ame@). Malaysia toll-free: "Malaysia (Local): 1800 819 624".
+## Images
 
-## Brand Colors (CSS variables + Tailwind tokens)
+WebP, ≈ 2× the largest rendered size, lowercase-dash names describing the subject. Every `<img>` needs `alt` (organisation names for logos and hospital photos, `alt=""` only for decorative duplicates such as a flag beside its country name), `width`/`height`, and `loading="lazy" decoding="async"` when below the first screen. Hospital photos have `-sm.webp` (640w) variants used via `srcset`/`sizes`. Flags and small icons get `object-fit: contain` from `site.css`.
 
-```css
---blue: #5298F8        /* primary brand blue (updated 2026-10-29, was #5BA8E5) */
---yellow: #F3D06F      /* accent / CTA yellow (updated 2026-10-29, was #F4D06F) */
---blue-pale: rgba(82,152,248,0.10)
-```
+## Verification before finishing a change
 
-Tailwind custom colors: `adeahub-blue`, `adeahub-yellow`, `adeahub-gray`, `adeahub-lightbg` (= the blue, used for the solid blue sections). Never reintroduce `#5BA8E5` or `#F4D06F`.
-
-## Shared Page Architecture
-
-Every page follows the same structure:
-
-1. `<head>` — Tailwind CDN + config, Lucide CDN, Google Fonts, page `<style>`, then the generated `<!-- live-head -->` block (favicon + canonical/Open Graph tags copied from adeahub.co) and the generated `<style id="site-chrome">`
-2. `<nav id="main-nav" class="snav">` — generated header: Platform · Products ▾ (750px mega panel) · Resources ▾ (500px panel) · About Us · Contact Us · "Talk To Us" button. The current page's item (Platform / About Us / Contact Us) is blue, as on live. `#mobile-menu` order matches live: Products list, Platform, Resources list, About Us, Contact Us, "Talk to us" → contact_us.html.
-3. Page-specific sections
-4. `<footer class="sfoot">` — generated, identical on every page
-5. `<script>lucide.createIcons();</script>` — must be called after body
-6. Mobile menu toggle script (vanilla JS, `#mobile-menu-btn` / `#mobile-menu` / `#hamburger-icon` / `#close-icon`)
-7. Scroll-reveal script using `IntersectionObserver` (classes: `reveal`, `reveal-left`, `reveal-right`, with delay modifiers `reveal-d1` through `reveal-d5`)
-
-**Never hand-edit the header, footer or the generated head blocks in a page.** Change them in `tools/site_chrome.py` and run `python3 tools/site_chrome.py` from the repo root; it rewrites all 14 pages and is safe to re-run. Header/footer layout, sizes and positions were measured on adeahub.co at 1440px; the frosted header, CTA shimmer, mega-menu gradient strip, eyebrow labels, chevrons, 40px icon tiles and footer social icons are the repo's original design (live's versions were WordPress downgrades).
-
-## Layout and design conventions
-
-- Content width is 1140px: section containers use `max-w-[1188px] mx-auto px-6`. A few sections use 1120px or 1152px.
-- The repo's design system stays: `.section-label` eyebrows (22×2px bar, 800 weight, 0.12em letter-spacing; blue on white, yellow on blue), dot-grid texture and floating blobs on blue sections, `btn-glow` / `btn-shimmer` on primary CTAs, hover lifts on cards, pulsing hero badge dots, scroll reveal and count-up counters.
-- Page-specific values (font sizes, card radii, shadows) are Tailwind arbitrary values or small page-scoped `<style>` rules, mostly measured on live.
-- `html, body { overflow-x: clip }` (in site-chrome) stops slide-in animations from causing sideways scroll on phones without breaking the sticky header.
-
-## Homepage and page specifics
-
-- Homepage hero photo is `Images/hero.webp` as a CSS background on the right half (as on live).
-- Hospital carousels (homepage and customers.html): one set of static `.ah-card` blocks inside `.ah-cards-track`; a script at the bottom clones the set once for a seamless loop and adds auto-scroll, pause on hover, click/touch drag with fling, and left/right `.ah-nav` arrows. Edit the cards in the markup, never duplicate them by hand.
-- "Proven at scale" logo marquee uses the 14 `Images/Clients_logos/*.webp` files.
-- The platform diagrams use `Images/adea-AI-default.svg` for the adea AI layer.
-- AH Care, AH Engage and AH Insights inline their hero dashboard/phone mock-ups (scoped CSS under a wrapper id, script at the bottom). The homepage "One platform" section, the AH Connect hero and the AH Outbreak hero load `ah-*-animated.html` via iframes; don't edit those files for a single page.
-- Vision sections (Care, Engage, Connect, WorkWise, Outbreak) and Outbreak's "What it covers" phone are HTML/CSS mock-ups. Live replaced them with static screenshots of these same mock-ups; keep the HTML versions.
-- Live errors deliberately NOT copied (fix them on live too): the "About Us" WordPress title band above the About hero, the stray "10 February 2026" date atop Newsroom's Media Inquiries card, "platfor" and the duplicated AI paragraph on WorkWise, "See how AH Connect…" links pointing to Talk To Us, and the invisible white-on-white "AH Care" headings inside stat cards.
-
-## Scroll Reveal Pattern
-
-Elements animate in on scroll by adding `.visible` via `IntersectionObserver`. Apply these classes to elements that should animate:
-- `reveal` — fade up
-- `reveal-left` — slide from left
-- `reveal-right` — slide from right
-- `reveal-d1` through `reveal-d5` — staggered delays (0.1s–0.5s)
-
-## Changelog
-
-`adeahub_website_changelog.md` documents the strategic changes made during the March 2026 repositioning (infrastructure/core platform narrative). Consult it to understand why specific copy or naming decisions were made before changing them.
+`python3 tools/build.py` must report 0 errors. For visual or behavioural changes also check desktop (1440) and phone (390) widths: no console errors, no horizontal scroll, menus/carousels/tabs/forms work, and axe/Lighthouse show no new issues.

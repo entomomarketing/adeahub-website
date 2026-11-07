@@ -1,2 +1,5 @@
 .DS_Store
 .playwright-mcp/
+tools/.bin/
+__pycache__/
+node_modules/
