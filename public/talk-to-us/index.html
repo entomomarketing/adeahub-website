@@ -4,6 +4,7 @@
 <!-- site:head:start -->
 <meta charset="utf-8">
 <script>document.documentElement.classList.add('js')</script>
+<script>window.dataLayer=window.dataLayer||[];(function(w,d,s,l,i){var q=/[?&]tags=(on|off)\b/.exec(location.search);try{if(q)sessionStorage.setItem('tags',q[1]);}catch(e){}var on=/^(adeahub\.co|www\.adeahub\.co)$/.test(location.hostname);try{var f=sessionStorage.getItem('tags');if(f==='on')on=true;if(f==='off')on=false;}catch(e){}if(!on)return;w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var t=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;t.parentNode.insertBefore(j,t);})(window,document,'script','dataLayer','GTM-KWRK59TQ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>Talk To Us: Request a Personalised Demo | adeahub</title>
@@ -30,8 +31,9 @@
 <meta name="twitter:title" content="Talk To Us: Request a Personalised Demo | adeahub">
 <meta name="twitter:description" content="Request a personalised adeahub demo. Our solutions team tailors the walkthrough to your clinical workflows, interoperability, patient engagement or operations.">
 <meta name="twitter:image" content="https://adeahub.co/assets/images/social/demo.jpg">
-<link rel="stylesheet" href="../assets/css/base.css?v=a82fa7f9e6">
+<link rel="stylesheet" href="../assets/css/base.css?v=0e33a5a42e">
 <script src="../assets/js/site.js?v=747e070bc7" defer></script>
+<script src="../assets/js/forms.js?v=dc6dfd8714" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://adeahub.co/#organization","name":"adeahub","url":"https://adeahub.co/","logo":{"@type":"ImageObject","@id":"https://adeahub.co/#logo","url":"https://adeahub.co/assets/images/brand/adeahub-logo.png","width":511,"height":146,"caption":"adeahub"},"image":{"@id":"https://adeahub.co/#logo"},"description":"adeahub is a digital health platform that connects patient apps, hospital information systems, health data exchange and analytics for hospitals, health systems and ministries of health across Asia, the Middle East and Africa.","slogan":"Powering modern healthcare","email":"hello@adeahub.co","sameAs":["https://www.linkedin.com/company/adeahub/"],"areaServed":["Asia","Middle East","Africa"],"knowsAbout":["Digital health platforms","Hospital information systems","Patient engagement","FHIR interoperability","Health information exchange","Healthcare analytics","Population health management","Disease outbreak management","Healthcare workforce management"],"parentOrganization":{"@type":"Organization","name":"entomo"},"contactPoint":[{"@type":"ContactPoint","availableLanguage":"English","contactType":"sales","email":"sales@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"customer support","email":"support@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"press","email":"press@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"partnerships","email":"partnerships@adeahub.co"}]},{"@type":"WebSite","@id":"https://adeahub.co/#website","url":"https://adeahub.co/","name":"adeahub","description":"Powering modern healthcare","publisher":{"@id":"https://adeahub.co/#organization"},"inLanguage":"en"},{"@type":"ContactPage","@id":"https://adeahub.co/talk-to-us/#webpage","url":"https://adeahub.co/talk-to-us/","name":"Talk To Us: Request a Personalised Demo | adeahub","description":"Request a personalised adeahub demo. Our solutions team tailors the walkthrough to your clinical workflows, interoperability, patient engagement or operations.","isPartOf":{"@id":"https://adeahub.co/#website"},"about":{"@id":"https://adeahub.co/#organization"},"inLanguage":"en","primaryImageOfPage":{"@type":"ImageObject","url":"https://adeahub.co/assets/images/social/demo.jpg","width":1200,"height":630},"breadcrumb":{"@id":"https://adeahub.co/talk-to-us/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://adeahub.co/talk-to-us/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://adeahub.co/"},{"@type":"ListItem","position":2,"name":"Talk To Us","item":"https://adeahub.co/talk-to-us/"}]}]}</script>
 <!-- site:head:end -->
 <style>
@@ -198,55 +200,56 @@
                 <!-- RIGHT COLUMN: The Form Container -->
                 <div class="min-w-0">
                     <div id="demoFormContainer" class="bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-floating border border-blue-50 relative z-20">
-                        <form id="demoForm" class="space-y-6">
+                        <form id="demoForm" class="space-y-6" data-form="demo">
+                            <div class="hp-field" aria-hidden="true"><label>Leave this field empty <input type="text" name="hs_website" tabindex="-1" autocomplete="off"></label></div>
                             <!-- Name Row -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="firstName" class="block text-[15px] font-semibold text-gray-700 mb-2">First Name <span class="text-adeahub-ink">*</span></label>
-                                    <input type="text" id="firstName" name="firstName" required class="form-input" placeholder="e.g. Sarah">
+                                    <input type="text" id="firstName" name="firstname" required autocomplete="given-name" class="form-input" placeholder="e.g. Sarah">
                                 </div>
                                 <div>
                                     <label for="lastName" class="block text-[15px] font-semibold text-gray-700 mb-2">Last Name <span class="text-adeahub-ink">*</span></label>
-                                    <input type="text" id="lastName" name="lastName" required class="form-input" placeholder="e.g. Jenkins">
+                                    <input type="text" id="lastName" name="lastname" required autocomplete="family-name" class="form-input" placeholder="e.g. Jenkins">
                                 </div>
                             </div>
                             <!-- Work Email -->
                             <div>
                                 <label for="workEmail" class="block text-[15px] font-semibold text-gray-700 mb-2">Work Email <span class="text-adeahub-ink">*</span></label>
-                                <input type="email" id="workEmail" name="workEmail" required class="form-input" placeholder="sarah.j@hospital.org">
+                                <input type="email" id="workEmail" name="email" required autocomplete="email" class="form-input" placeholder="sarah.j@hospital.org">
                             </div>
                             <!-- Organisation -->
                             <div>
                                 <label for="organisation" class="block text-[15px] font-semibold text-gray-700 mb-2">Organisation / Hospital Name <span class="text-adeahub-ink">*</span></label>
-                                <input type="text" id="organisation" name="organisation" required class="form-input" placeholder="e.g. General Hospital">
+                                <input type="text" id="organisation" name="company" required autocomplete="organization" class="form-input" placeholder="e.g. General Hospital">
                             </div>
                             <!-- Job Title / Role -->
                             <div>
                                 <label for="jobRole" class="block text-[15px] font-semibold text-gray-700 mb-2">Job Title / Role</label>
-                                <input type="text" id="jobRole" name="jobRole" class="form-input" placeholder="e.g. Medical Care Provider">
+                                <input type="text" id="jobRole" name="jobtitle" autocomplete="organization-title" class="form-input" placeholder="e.g. Medical Care Provider">
                             </div>
                             <!-- Area of Interest (multi-select) -->
                             <div>
                                 <span class="block text-[15px] font-semibold text-gray-700 mb-3">Area of Interest <span class="text-gray-500 font-normal ml-1">(Optional)</span></span>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="adeahub Care">
+                                        <input type="checkbox" class="custom-checkbox" name="area_of_interest" value="adeahub Care">
                                         <span class="text-[15px] font-medium text-gray-700 group-hover:text-adeahub-blue transition">AH Care</span>
                                     </label>
                                     <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="adeahub Connect">
+                                        <input type="checkbox" class="custom-checkbox" name="area_of_interest" value="adeahub Connect">
                                         <span class="text-[15px] font-medium text-gray-700 group-hover:text-adeahub-blue transition">AH Connect</span>
                                     </label>
                                     <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="adeahub Engage">
+                                        <input type="checkbox" class="custom-checkbox" name="area_of_interest" value="adeahub Engage">
                                         <span class="text-[15px] font-medium text-gray-700 group-hover:text-adeahub-blue transition">AH Engage</span>
                                     </label>
                                     <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="adeahub Insights">
+                                        <input type="checkbox" class="custom-checkbox" name="area_of_interest" value="adeahub Insights">
                                         <span class="text-[15px] font-medium text-gray-700 group-hover:text-adeahub-blue transition">AH Insights</span>
                                     </label>
                                     <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-100 bg-gray-50 hover:bg-blue-50 transition cursor-pointer group sm:col-span-2">
-                                        <input type="checkbox" class="custom-checkbox" name="interest" value="adeahub Platform">
+                                        <input type="checkbox" class="custom-checkbox" name="area_of_interest" value="adeahub Platform">
                                         <span class="text-[15px] font-medium text-gray-700 group-hover:text-adeahub-blue transition">Full Platform Overview</span>
                                     </label>
                                 </div>
@@ -254,8 +257,15 @@
                             <!-- Challenges -->
                             <div>
                                 <label for="challenges" class="block text-[15px] font-semibold text-gray-700 mb-2">What challenges are you looking to address? <span class="text-gray-500 font-normal ml-1">(Optional)</span></label>
-                                <textarea id="challenges" name="challenges" rows="3" class="form-input resize-none" placeholder="Share a little context to help us prepare..."></textarea>
+                                <textarea id="challenges" name="message" rows="3" autocomplete="off" class="form-input resize-none" placeholder="Share a little context to help us prepare..."></textarea>
                             </div>
+                            <!-- Consent, security check, errors -->
+                            <label class="form-consent">
+                                <input type="checkbox" name="website_consent_given" value="true" required>
+                                <span>I agree to adeahub processing the details I have entered for the purpose of this request.</span>
+                            </label>
+                            <div class="form-turnstile"></div>
+                            <p class="form-status" role="alert" hidden></p>
                             <!-- Submit -->
                             <div class="pt-2">
                                 <button type="submit" class="w-full bg-adeahub-blue btn-glow btn-shimmer text-white text-center px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#3d89f5] flex justify-center items-center gap-2">
@@ -443,39 +453,24 @@
 
     <!-- Scripts -->
     <script>
-        // Form Submission Logic
-        document.getElementById('demoForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent actual form submission for this demo
-            
-            // Get user's first name
-            const firstNameInput = document.getElementById('firstName').value;
-            const firstName = firstNameInput.trim() !== '' ? firstNameInput : 'there';
-            
-            // Update Thank You text
-            document.getElementById('tyName').textContent = firstName;
-            
-            // Hide form, show thank you state
+        // Demo form: assets/js/forms.js sends it; on success greet the visitor and show the thank-you state
+        document.getElementById('demoForm').addEventListener('form:success', function (e) {
+            const first = (e.detail && e.detail.fields && e.detail.fields.firstname) || '';
+            document.getElementById('tyName').textContent = first || 'there';
             const formContainer = document.getElementById('demoFormContainer');
             const thankYouState = document.getElementById('thankYouState');
-            
-            // Add a simple fade transition
             formContainer.style.opacity = '0';
             setTimeout(() => {
                 formContainer.classList.add('hidden');
                 thankYouState.classList.remove('hidden');
-                // Trigger reflow
                 void thankYouState.offsetWidth;
                 thankYouState.style.opacity = '0';
                 thankYouState.style.transition = 'opacity 0.4s ease';
-                
-                setTimeout(() => {
-                    thankYouState.style.opacity = '1';
-                }, 50);
-                
-                // Scroll to top of the block on mobile to ensure the thank you message is seen
-                if (window.innerWidth < 1024) {
-                    thankYouState.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                setTimeout(() => { thankYouState.style.opacity = '1'; }, 50);
+                const heading = thankYouState.querySelector('h2');
+                heading.setAttribute('tabindex', '-1');
+                heading.focus({ preventScroll: true });
+                if (window.innerWidth < 1024) thankYouState.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 300);
         });
     </script>

@@ -4,6 +4,7 @@
 <!-- site:head:start -->
 <meta charset="utf-8">
 <script>document.documentElement.classList.add('js')</script>
+<script>window.dataLayer=window.dataLayer||[];(function(w,d,s,l,i){var q=/[?&]tags=(on|off)\b/.exec(location.search);try{if(q)sessionStorage.setItem('tags',q[1]);}catch(e){}var on=/^(adeahub\.co|www\.adeahub\.co)$/.test(location.hostname);try{var f=sessionStorage.getItem('tags');if(f==='on')on=true;if(f==='off')on=false;}catch(e){}if(!on)return;w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var t=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;t.parentNode.insertBefore(j,t);})(window,document,'script','dataLayer','GTM-KWRK59TQ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>Healthcare IT Insights &amp; Digital Health Blog | adeahub</title>
@@ -30,8 +31,9 @@
 <meta name="twitter:title" content="Healthcare IT Insights &amp; Digital Health Blog | adeahub">
 <meta name="twitter:description" content="Perspectives and guides from adeahub&#x27;s healthcare technology team on FHIR interoperability, population health, patient engagement and digital health strategy.">
 <meta name="twitter:image" content="https://adeahub.co/assets/images/social/blogs.jpg">
-<link rel="stylesheet" href="../assets/css/base.css?v=a82fa7f9e6">
+<link rel="stylesheet" href="../assets/css/base.css?v=0e33a5a42e">
 <script src="../assets/js/site.js?v=747e070bc7" defer></script>
+<script src="../assets/js/forms.js?v=dc6dfd8714" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://adeahub.co/#organization","name":"adeahub","url":"https://adeahub.co/","logo":{"@type":"ImageObject","@id":"https://adeahub.co/#logo","url":"https://adeahub.co/assets/images/brand/adeahub-logo.png","width":511,"height":146,"caption":"adeahub"},"image":{"@id":"https://adeahub.co/#logo"},"description":"adeahub is a digital health platform that connects patient apps, hospital information systems, health data exchange and analytics for hospitals, health systems and ministries of health across Asia, the Middle East and Africa.","slogan":"Powering modern healthcare","email":"hello@adeahub.co","sameAs":["https://www.linkedin.com/company/adeahub/"],"areaServed":["Asia","Middle East","Africa"],"knowsAbout":["Digital health platforms","Hospital information systems","Patient engagement","FHIR interoperability","Health information exchange","Healthcare analytics","Population health management","Disease outbreak management","Healthcare workforce management"],"parentOrganization":{"@type":"Organization","name":"entomo"},"contactPoint":[{"@type":"ContactPoint","availableLanguage":"English","contactType":"sales","email":"sales@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"customer support","email":"support@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"press","email":"press@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"partnerships","email":"partnerships@adeahub.co"}]},{"@type":"WebSite","@id":"https://adeahub.co/#website","url":"https://adeahub.co/","name":"adeahub","description":"Powering modern healthcare","publisher":{"@id":"https://adeahub.co/#organization"},"inLanguage":"en"},{"@type":"CollectionPage","@id":"https://adeahub.co/blogs/#webpage","url":"https://adeahub.co/blogs/","name":"Healthcare IT Insights & Digital Health Blog | adeahub","description":"Perspectives and guides from adeahub's healthcare technology team on FHIR interoperability, population health, patient engagement and digital health strategy.","isPartOf":{"@id":"https://adeahub.co/#website"},"about":{"@id":"https://adeahub.co/#organization"},"inLanguage":"en","primaryImageOfPage":{"@type":"ImageObject","url":"https://adeahub.co/assets/images/social/blogs.jpg","width":1200,"height":630},"breadcrumb":{"@id":"https://adeahub.co/blogs/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://adeahub.co/blogs/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://adeahub.co/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://adeahub.co/blogs/"}]}]}</script>
 <!-- site:head:end -->
 <style>
@@ -134,7 +136,7 @@
     section.bg-adeahub-blue li,
     section.bg-adeahub-blue .text-gray-500,
     section.bg-adeahub-blue .text-gray-600,
-    section.bg-adeahub-blue .text-gray-700 { color: rgba(255,255,255,0.80) !important; }
+    section.bg-adeahub-blue .text-gray-700:not(input):not(textarea):not(select) { color: rgba(255,255,255,0.80) !important; }
 
     section.bg-adeahub-blue .text-gray-900,
     section.bg-adeahub-blue .text-gray-800 { color: white !important; }
@@ -365,14 +367,22 @@
                 <p class="text-[18px] leading-[27px] text-white/[0.88] max-w-[688px] mb-4">
                     Get the latest insights, case studies, and product news delivered straight to your inbox every month. No spam, just value.
                 </p>
-                <form class="flex flex-col sm:flex-row w-full max-w-[560px] gap-2.5">
-                    <label for="newsletter-email" class="sr-only">Email</label>
-                    <input id="newsletter-email" type="email" placeholder="Your work email address" required class="flex-grow h-[49px] px-5 rounded-full bg-white border border-gray-200 text-[16px] text-gray-700 placeholder:text-gray-400 shadow-sm focus:outline-none focus:border-adeahub-blue focus:ring-2 focus:ring-blue-100">
-                    <button type="submit" class="btn-glow btn-shimmer sm:w-[161px] h-[49px] shrink-0 bg-adeahub-yellow text-black rounded-[32px] text-[16px] font-semibold transition whitespace-nowrap">
-                        Subscribe
-                    </button>
+                <form class="w-full max-w-[560px] flex flex-col gap-4" data-form="subscribe" data-done="Subscribed">
+                    <div class="hp-field" aria-hidden="true"><label>Leave this field empty <input type="text" name="hs_website" tabindex="-1" autocomplete="off"></label></div>
+                    <div class="flex flex-col sm:flex-row gap-2.5">
+                        <label for="newsletter-email" class="sr-only">Email</label>
+                        <input id="newsletter-email" type="email" name="email" autocomplete="email" placeholder="Your work email address" required class="flex-grow h-[49px] px-5 rounded-full bg-white border border-gray-200 text-[16px] text-gray-700 placeholder:text-gray-400 shadow-sm focus:outline-none focus:border-adeahub-blue focus:ring-2 focus:ring-blue-100">
+                        <button type="submit" class="btn-glow btn-shimmer sm:w-[161px] h-[49px] shrink-0 bg-adeahub-yellow text-black rounded-[32px] text-[16px] font-semibold transition whitespace-nowrap">
+                            Subscribe
+                        </button>
+                    </div>
+                    <label class="form-consent on-blue">
+                        <input type="checkbox" name="website_consent_given" value="true" required>
+                        <span>I agree to adeahub processing the details I have entered for the purpose of this request.</span>
+                    </label>
+                    <div class="form-turnstile"></div>
+                    <p class="form-status on-blue" role="alert" hidden></p>
                 </form>
-                <p class="text-[13px] leading-[21px] text-white/[0.88] mb-4">By subscribing, you agree to our <a href="#" class="text-white hover:underline">Privacy Policy</a>.</p>
             </div>
         </div>
     </section>

@@ -20,20 +20,26 @@ adeahub-website/
 │   │   ├── css/site.css        compiled Tailwind + header/footer + polish (generated, do not edit)
 │   │   ├── css/base.css        shared design-system rules (type roles, cards, stat rows, scroll reveal …)
 │   │   ├── js/site.js          shared behaviour (menus, scroll reveal, counters, card tilt)
+│   │   ├── js/forms.js         form sending (Turnstile, consent, errors), on pages with a form
 │   │   ├── fonts/              self-hosted Outfit + Inter (WOFF2, with OFL licences)
 │   │   ├── images/             brand/ home/ hospitals/ logos/{clients,hospitals}/ team/ flags/ blog/ about/ social/
 │   │   └── downloads/          company profile PDF, media kit ZIP
 │   ├── robots.txt, sitemap.xml, llms.txt, site.webmanifest     (generated)
+│   ├── .well-known/security.txt  security contact (generated)
+│   ├── _headers                cache and security headers for Cloudflare
 │   └── favicon.ico, apple-touch-icon.png
 ├── src/
 │   ├── site.json               page titles, descriptions, structured data facts  ← SEO lives here
-│   └── css/site.css            stylesheet source (Tailwind entry)
+│   ├── css/site.css            stylesheet source (Tailwind entry)
+│   ├── forms.json              what each form may send (read by the Worker and the build)
+│   └── worker.js               Cloudflare Worker for /api/* (form proxy to HubSpot, CSP reports)
 ├── tools/
 │   ├── build.py                one command that regenerates everything and checks the site
 │   ├── chrome.py               the shared header and footer markup
 │   ├── social_cards.py         regenerates the 1200×630 social sharing images
 │   └── icons/                  cached Lucide icons (SVG)
 ├── tailwind.config.js          brand colours and fonts for Tailwind
+├── wrangler.jsonc              Cloudflare Worker configuration (staging and production)
 ├── docs/                       background notes (e.g. the March 2026 repositioning changelog)
 └── design/                     design prototypes; not part of the website
 ```
@@ -118,9 +124,17 @@ must be on Cloudflare).
 - `*.html`: revalidated on every visit (Cloudflare's default), so a release shows up immediately
 - `assets/css/*`, `assets/js/*` (URLs carry a `?v=` content hash) and `assets/fonts/*`: `public, max-age=31536000, immutable`
 - `assets/images/*`, `assets/downloads/*`: `public, max-age=2592000` (30 days; rename a file to update it immediately)
-- on every response: `Strict-Transport-Security: max-age=31536000; includeSubDomains`,
-  `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`,
-  `X-Frame-Options: SAMEORIGIN`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`.
+- on every response: HSTS, `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, the two
+  cross-origin policies and a Content-Security-Policy in report-only mode (see below).
+
+## Forms and security
+
+The contact, demo and newsletter forms post to the site's own Worker (`src/worker.js`, `POST /api/forms/<intent>`),
+which checks the origin, rate, honeypot, Cloudflare Turnstile token and every field (against `src/forms.json`)
+before forwarding to adeahub's HubSpot forms. Every form has a required consent checkbox. Staging submissions reach
+HubSpot marked `[TEST: staging]`. Google Tag Manager loads only on adeahub.co itself. The full description, the
+HubSpot steps still to do and the settings for when adeahub.co moves to Cloudflare are in
+[docs/FORMS-AND-SECURITY.md](docs/FORMS-AND-SECURITY.md).
 
 On any other static host, upload the contents of `public/` and configure the same behaviour.
 

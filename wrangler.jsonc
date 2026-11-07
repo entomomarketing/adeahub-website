@@ -1,7 +1,8 @@
 {
   // adeahub website: static assets served by the Cloudflare Worker "adeahub". Only ./public is published.
   // It shares a Cloudflare account with the entomo website (Worker "entomo") but nothing else: separate Worker,
-  // repository, settings and domains. Never change "name" — another name would deploy over a different Worker.
+  // repository, settings, secrets, Turnstile widget, rate-limit counters and domains. Never change "name": another
+  // name would deploy over a different Worker.
   //
   // production: branch main  → https://adeahub.misty-dawn-f588.workers.dev
   //             adeahub.co still points at WordPress; when it moves here, add it under
@@ -11,14 +12,47 @@
   // Cloudflare builds on every push (Workers Builds, connected to entomomarketing/adeahub-website):
   // main runs `npx wrangler deploy`, any other branch `npx wrangler versions upload` (a preview of that branch).
   // No build step runs there: public/ is committed fully built (python3 tools/build.py before committing).
+  //
+  // src/worker.js runs only for /api/* (the form proxy and the CSP report sink); every other request is served
+  // straight from the assets. Forms and security: docs/FORMS-AND-SECURITY.md.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "adeahub",
+  "main": "src/worker.js",
   "compatibility_date": "2026-09-01",
   "workers_dev": true,
   "preview_urls": true,
   "assets": {
     "directory": "./public",
+    "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "html_handling": "auto-trailing-slash"
-  }
+    "html_handling": "auto-trailing-slash",
+    "run_worker_first": ["/api/*"]
+  },
+  // Workers Logs: rejected submissions, Turnstile failures and CSP reports are kept (filter on "hubspot",
+  // "turnstile", "honeypot", "csp-report")
+  "observability": { "enabled": true },
+  "vars": {
+    // HubSpot portal of adeahub.co (data centre na2) and the form behind each intent, as used by the live site
+    "HS_PORTAL": "243938139",
+    "HS_FORM_CONTACT": "d616357e-71b4-4eab-9b98-472148196745",
+    "HS_FORM_DEMO": "7b797e59-5301-476f-8ce0-0429519f1de9",
+    // the newsletter has no HubSpot form yet (adeahub.co's newsletter is a WordPress form); until a GUID is set here
+    // the blog's subscribe form answers "not taking submissions yet" with the hello@ address
+    "HS_FORM_SUBSCRIBE": "",
+    // submissions from any other host (staging, version previews) are marked "[TEST: staging]" in HubSpot
+    "PRODUCTION_HOSTS": "adeahub.co,www.adeahub.co,adeahub.misty-dawn-f588.workers.dev",
+    // the consent line the visitor ticks; HubSpot stores this text with the consent record once CONSENT_FORWARD is on
+    "CONSENT_TEXT": "I agree to adeahub processing the details I have entered for the purpose of this request.",
+    "CONSENT_TEXT_VERSION": "2026-11-07-v1",
+    // set to "hubspot" once the consent properties exist on the HubSpot forms (docs/FORMS-AND-SECURITY.md, consent)
+    "CONSENT_FORWARD": "off"
+  },
+  // TURNSTILE_SECRET is a secret (Workers & Pages > adeahub > Settings > Variables and Secrets), never in a file.
+  // Rate limits (counters per Cloudflare location; period 10 or 60). namespace_id is account-wide, so these must
+  // stay different from the entomo Worker's 1001/1002:
+  // RL_INTENT = 5 posts a minute from one IP to one form, RL_GLOBAL = 120 posts a minute to all forms
+  "ratelimits": [
+    { "name": "RL_INTENT", "namespace_id": "2001", "simple": { "limit": 5, "period": 60 } },
+    { "name": "RL_GLOBAL", "namespace_id": "2002", "simple": { "limit": 120, "period": 60 } }
+  ]
 }

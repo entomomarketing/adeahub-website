@@ -21,12 +21,16 @@ Links are relative (`../platform/`), so pages need a web server; opening them vi
 | `public/assets/css/site.css` | **generated** by the build from `src/css/site.css` (Tailwind + header/footer + polish). Never edit |
 | `public/assets/css/base.css` | shared design-system rules: type roles (`.h-section`, `.h-cta`, `.t-label`, `.tag-chip`), surfaces (`.card`, `.feature`, `.stat-row`/`.stat`), reveal, btn-glow/shimmer, blobs, card hovers. Hand-edited. Linked *before* page `<style>`s |
 | `public/assets/js/site.js` | shared behaviour: header scroll state, dropdowns (click/Escape), mobile menu, scroll reveal, count-up, solution-card tilt |
+| `public/assets/js/forms.js` | form sending: Turnstile, consent, errors, `form:success` event (loaded only on pages with a form) |
+| `public/_headers`, `public/.well-known/security.txt` | security and cache headers (hand-edited, checked by the build); security.txt generated |
 | `public/assets/images/` | `brand/ home/ hospitals/ logos/clients/ logos/hospitals/ team/ flags/ blog/ about/ social/` |
 | `public/assets/fonts/` | self-hosted Outfit (site) and Inter (only inside mock-ups), WOFF2 + OFL licences |
 | `public/assets/downloads/` | company profile PDF, media kit ZIP |
 | `public/robots.txt, sitemap.xml, llms.txt, site.webmanifest` | **generated** by the build |
 | `src/site.json` | site facts + per-page title, description, schema type, social card. The single source of SEO metadata |
 | `src/css/site.css` | stylesheet source: fonts, header/footer CSS, Tailwind directives, polish layer |
+| `src/forms.json` | what each form may send (fields, required, HubSpot dropdown values); read by the Worker and the build |
+| `src/worker.js` | Worker for `/api/*` only: form proxy to HubSpot, CSP report sink |
 | `wrangler.jsonc` | Cloudflare Worker config (see Staging and production) |
 | `tools/build.py` | the build (see below) |
 | `tools/chrome.py` | header + footer markup |
@@ -70,6 +74,18 @@ Worker, and never change `name` in `wrangler.jsonc`.
 - Cloudflare Workers Builds deploys on push; no build runs there, so commit `public/` fully built.
 - Work on `staging`. Production changes only through a pull request `staging` → `main` that the owner merges
   (`main` is protected). Never push or merge to `main` yourself unless the owner asks for that release.
+
+## Forms and security
+
+Read `docs/FORMS-AND-SECURITY.md` before touching a form, `src/worker.js`, `_headers` or the tag loader.
+- Forms are `<form data-form="contact|demo|subscribe">` with HubSpot internal field names, the honeypot `.hp-field`
+  (`hs_website`), the required consent checkbox `website_consent_given`, `<div class="form-turnstile">` and
+  `<p class="form-status" role="alert" hidden>`. `build.py` fails otherwise. Pages react to `form:success`.
+- Change fields or options in `src/forms.json` first; values must equal the HubSpot dropdown values.
+- Never put secrets in files: `TURNSTILE_SECRET` is a Worker secret. Never reuse the entomo Worker's Turnstile
+  widget or rate-limit namespace ids.
+- Never submit real test data to HubSpot without the owner's go-ahead (it creates contacts and may notify sales);
+  test locally with the stand-in described in the doc.
 
 ## Relationship to the live site (adeahub.co)
 

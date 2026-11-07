@@ -15,7 +15,8 @@ rewrites the generated parts of each page:
   <i data-lucide="name" …></i>                           replaced by the inline Lucide SVG (cached in tools/icons/)
 
 and writes public/assets/css/site.css (Tailwind, from src/css/site.css), sitemap.xml, robots.txt,
-llms.txt, site.webmanifest, 404.html and the favicon set. Needs only Python 3; the pinned standalone
+llms.txt, site.webmanifest, .well-known/security.txt, 404.html and the favicon set. The checks also hold every
+<form data-form> to src/forms.json and public/_headers to the security baseline. Needs only Python 3; the pinned standalone
 Tailwind CLI is downloaded (and checksum-verified) into tools/.bin/ on first use.
 """
 import argparse, datetime, hashlib, html, json, os, platform, posixpath, re, stat, subprocess, sys, urllib.request
@@ -177,6 +178,20 @@ def jsonld(site, page, s):
             webpage["mainEntity"] = {"@id": abs_url(site, "#organization")}
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, separators=(",", ":"))
 
+def tags_script(site):
+    """Google Tag Manager, loaded only on the production hosts (site.tagHosts), never on staging or previews.
+    ?tags=on / ?tags=off switches it for the browser session (sessionStorage), for Tag Assistant on a preview.
+    window.dataLayer always exists, so forms.js can push hs_form_success either way."""
+    hosts = "|".join(re.escape(h) for h in site.get("tagHosts", []))
+    gtm = site.get("gtm", "")
+    if not gtm or not hosts: return "<script>window.dataLayer=window.dataLayer||[];</script>"
+    return ("<script>window.dataLayer=window.dataLayer||[];(function(w,d,s,l,i){var q=/[?&]tags=(on|off)\\b/.exec(location.search);"
+            "try{if(q)sessionStorage.setItem('tags',q[1]);}catch(e){}" f"var on=/^({hosts})$/.test(location.hostname);"
+            "try{var f=sessionStorage.getItem('tags');if(f==='on')on=true;if(f==='off')on=false;}catch(e){}if(!on)return;"
+            "w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var t=d.getElementsByTagName(s)[0],j=d.createElement(s);"
+            "j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;t.parentNode.insertBefore(j,t);})"
+            f"(window,document,'script','dataLayer','{gtm}');</script>")
+
 def head_html(site, page, p, s, js_v, base_v):
     url = abs_url(site, page["path"])
     og_img = abs_url(site, f"assets/images/social/{page['key']}.jpg")
@@ -184,6 +199,7 @@ def head_html(site, page, p, s, js_v, base_v):
     robots = "noindex, follow" if page.get("noindex") else "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     L = ['<meta charset="utf-8">',
          "<script>document.documentElement.classList.add('js')</script>",
+         tags_script(site),
          '<meta name="viewport" content="width=device-width, initial-scale=1">',
          '<meta name="color-scheme" content="light">',
          f"<title>{title}</title>",
@@ -214,6 +230,8 @@ def head_html(site, page, p, s, js_v, base_v):
           f'<meta name="twitter:image" content="{og_img}">',
           f'<link rel="stylesheet" href="{p}assets/css/base.css?v={base_v}">',
           f'<script src="{p}assets/js/site.js?v={js_v}" defer></script>']
+    if "data-form=" in s:   # pages with a form load the form script (assets/js/forms.js, see docs/FORMS-AND-SECURITY.md)
+        L.append(f'<script src="{p}assets/js/forms.js?v={digest(os.path.join(PUB, "assets", "js", "forms.js"))}" defer></script>')
     if not page.get("noindex"):
         L.append(f'<script type="application/ld+json">{jsonld(site, page, s)}</script>')
     return "\n".join(L)
@@ -306,6 +324,66 @@ def site_files(site, pages):
                 "icons": [{"src": "/assets/images/brand/icon-192.png", "sizes": "192x192", "type": "image/png"},
                           {"src": "/assets/images/brand/icon-512.png", "sizes": "512x512", "type": "image/png"}]}
     write(os.path.join(PUB, "site.webmanifest"), json.dumps(manifest, indent=2) + "\n")
+    # security.txt (RFC 9116): rewritten only when missing or within 90 days of its expiry, so builds stay idempotent
+    sec = os.path.join(PUB, ".well-known", "security.txt")
+    if security_txt_days_left() < 90:
+        expires = (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=365)).strftime("%Y-%m-%dT00:00:00.000Z")
+        write(sec, f"Contact: mailto:{site['securityContact']}\nExpires: {expires}\nPreferred-Languages: en\n"
+                   f"Canonical: {base}/.well-known/security.txt\n")
+
+def security_txt_days_left():
+    sec = os.path.join(PUB, ".well-known", "security.txt")
+    if not os.path.exists(sec): return -1
+    m = re.search(r"^Expires: (\d{4}-\d{2}-\d{2})", read(sec), re.M)
+    if not m: return -1
+    return (datetime.date.fromisoformat(m.group(1)) - datetime.date.today()).days
+
+# ───────────────────────── forms and headers ─────────────────────────
+def check_forms(rel, s, schema):
+    """Every <form data-form> must match src/forms.json (the Worker rejects anything else) and carry the guards."""
+    for m in re.finditer(r"<form\b([^>]*)>(.*?)</form>", s, re.S):
+        attrs, body = m.group(1), m.group(2)
+        im = re.search(r'data-form="([^"]+)"', attrs)
+        if not im: err(f"{rel}: <form> without data-form (it would not submit anywhere)"); continue
+        intent = im.group(1); spec = schema["intents"].get(intent)
+        if not spec: err(f"{rel}: data-form=\"{intent}\" is not an intent in src/forms.json"); continue
+        allowed = set(spec["required"]) | set(spec["optional"]) | {"hs_website", "website_consent_given"}
+        controls = re.findall(r"<(input|select|textarea)\b([^>]*)>", body)
+        names = {}
+        for tag, a in controls:
+            n = re.search(r'\bname="([^"]+)"', a)
+            if n: names.setdefault(n.group(1), []).append((tag, a))
+        for n in names:
+            if n not in allowed: err(f"{rel}: form \"{intent}\" has field name=\"{n}\" that src/forms.json does not allow")
+        for n in spec["required"]:
+            if n not in names: err(f"{rel}: form \"{intent}\" is missing required field {n}")
+            elif not any(re.search(r"\brequired\b", a) for _, a in names[n]): err(f"{rel}: form \"{intent}\" field {n} must be marked required")
+        for n, opts in schema["options"].items():
+            if n not in names: continue
+            if names[n][0][0] == "select":
+                sm = re.search(rf'<select\b[^>]*name="{n}"[^>]*>(.*?)</select>', body, re.S)
+                vals = [html.unescape(re.search(r'value="([^"]*)"', o).group(1) if 'value="' in o else t).strip()
+                        for o, t in re.findall(r"<option\b([^>]*)>([^<]*)</option>", sm.group(1)) if "disabled" not in o]
+            else:
+                vals = [html.unescape(re.search(r'value="([^"]*)"', a).group(1)) for _, a in names[n]]
+            for v in vals:
+                if v not in opts: err(f"{rel}: form \"{intent}\" offers {n}=\"{v}\", not a value in src/forms.json (HubSpot would reject it)")
+        if "hs_website" not in names or 'class="hp-field"' not in body: err(f"{rel}: form \"{intent}\" lacks the honeypot (.hp-field with name=\"hs_website\")")
+        if spec.get("consent") and not any(re.search(r"\brequired\b", a) and 'value="true"' in a for _, a in names.get("website_consent_given", [])):
+            err(f"{rel}: form \"{intent}\" lacks the required consent checkbox (name=\"website_consent_given\" value=\"true\" required)")
+        if 'class="form-turnstile"' not in body: err(f"{rel}: form \"{intent}\" lacks the Turnstile slot <div class=\"form-turnstile\">")
+        if 'class="form-status' not in body: err(f"{rel}: form \"{intent}\" lacks <p class=\"form-status\" role=\"alert\" hidden>")
+
+def check_headers():
+    path = os.path.join(PUB, "_headers")
+    if not os.path.exists(path): err("public/_headers is missing"); return
+    s = read(path)
+    for i, line in enumerate(s.splitlines(), 1):
+        if len(line) > 2000: err(f"public/_headers line {i} is {len(line)} characters (Cloudflare's limit is 2,000)")
+    for h in ("Content-Security-Policy", "Strict-Transport-Security", "X-Content-Type-Options", "X-Frame-Options", "Referrer-Policy",
+              "Permissions-Policy", "Cross-Origin-Opener-Policy", "Cross-Origin-Resource-Policy"):
+        if h not in s: err(f"public/_headers does not set {h}")
+    if "report-uri /api/csp-report" not in s: err("public/_headers: the CSP must report to /api/csp-report")
 
 # ───────────────────────── checks ─────────────────────────
 def check_page(rel, s):
@@ -356,10 +434,19 @@ def main():
         build_embeds()
         site_files(site, pages)
 
+    schema = json.load(open(os.path.join(ROOT, "src", "forms.json")))
     for pg in pages:
-        check_page(pg["file"], read(os.path.join(PUB, pg["file"])))
+        s = read(os.path.join(PUB, pg["file"]))
+        check_page(pg["file"], s)
+        check_forms(pg["file"], s, schema)
         if not os.path.exists(os.path.join(PUB, "assets", "images", "social", pg["key"] + ".jpg")):
             warn(f"{pg['file']}: no social card (run python3 tools/social_cards.py)")
+    for intent, spec in schema["intents"].items():
+        if 'data-form="' + intent + '"' not in read(os.path.join(PUB, spec["page"])): err(f"src/forms.json: intent {intent} has no form on {spec['page']}")
+    check_headers()
+    days = security_txt_days_left()
+    if days < 0: err("public/.well-known/security.txt is missing or expired (run python3 tools/build.py)")
+    elif days < 60: warn(f"public/.well-known/security.txt expires in {days} days (run python3 tools/build.py)")
     for f in sorted(os.listdir(os.path.join(PUB, "embeds"))):
         if f.endswith(".html") and "fonts.googleapis.com" in read(os.path.join(PUB, "embeds", f)): err(f"embeds/{f}: still loads Google Fonts")
     for w in warnings: print("warning:", w)

@@ -1,0 +1,42 @@
+{
+  "_about": "What each website form may send. Read by src/worker.js (server-side validation) and tools/build.py (checks the page markup against it). Field names are HubSpot internal property names; select values must equal the HubSpot dropdown values exactly. See docs/FORMS-AND-SECURITY.md.",
+  "intents": {
+    "contact": {
+      "page": "contact-us/index.html",
+      "hubspotVar": "HS_FORM_CONTACT",
+      "required": ["firstname", "lastname", "email", "company", "message"],
+      "optional": ["enquiry_type", "region"],
+      "consent": true
+    },
+    "demo": {
+      "page": "talk-to-us/index.html",
+      "hubspotVar": "HS_FORM_DEMO",
+      "required": ["firstname", "lastname", "email", "company"],
+      "optional": ["jobtitle", "area_of_interest", "message"],
+      "consent": true
+    },
+    "subscribe": {
+      "page": "blogs/index.html",
+      "hubspotVar": "HS_FORM_SUBSCRIBE",
+      "required": ["email"],
+      "optional": [],
+      "consent": true
+    }
+  },
+  "fields": {
+    "firstname": { "kind": "name", "max": 100 },
+    "lastname": { "kind": "name", "max": 100 },
+    "email": { "kind": "email", "max": 254 },
+    "company": { "kind": "text", "max": 150 },
+    "jobtitle": { "kind": "text", "max": 150 },
+    "message": { "kind": "multiline", "max": 2000 },
+    "enquiry_type": { "kind": "enum" },
+    "region": { "kind": "enum" },
+    "area_of_interest": { "kind": "enum-multi" }
+  },
+  "options": {
+    "enquiry_type": ["General Question", "Sales / Commercial", "Partnership Opportunity", "Media / Press", "Careers", "Investor Relations", "Others"],
+    "region": ["Southeast & East Asia Pacific", "Middle East, Asia & Africa", "Americas & Europe"],
+    "area_of_interest": ["adeahub Care", "adeahub Connect", "adeahub Engage", "adeahub Insights", "adeahub Platform"]
+  }
+}

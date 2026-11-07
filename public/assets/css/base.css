@@ -45,6 +45,19 @@ body { font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
 @media (min-width: 1024px) { .stat-row.on-light .stat:nth-child(2n+1) { border-left-color: var(--line); } .stat-row.on-light .stat:first-child { border-left-color: transparent; } }
 .stat > :first-child { letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 
+/* ── forms (assets/js/forms.js): honeypot, consent line, security check, status message ── */
+.hp-field { position: absolute !important; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+.form-consent { display: flex; align-items: flex-start; gap: 12px; font-size: 0.875rem; line-height: 1.5; color: #4B5563; cursor: pointer; text-align: left; }
+.form-consent input { width: 1.1rem; height: 1.1rem; margin-top: 0.15rem; flex-shrink: 0; accent-color: var(--blue); cursor: pointer; }
+.form-consent.on-blue { color: rgba(255,255,255,.92); }
+.form-consent.on-blue input { accent-color: var(--yellow); }
+.form-turnstile:empty { display: none; }
+.form-turnstile { min-height: 65px; }
+.form-status { margin: 0; padding: 10px 14px; border-radius: 12px; font-size: 0.875rem; line-height: 1.5; color: #B91C1C; background: #FEF2F2; text-align: left; }
+.form-status.is-info { color: #374151; background: #F3F4F6; }
+.form-status a { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.form-status.on-blue { color: #fff; background: rgba(15,23,42,.28); }
+
 /* ── scroll reveal (hidden states only when JS runs; site.js adds .visible) ── */
 .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .js .reveal.visible { opacity: 1; transform: translateY(0); }

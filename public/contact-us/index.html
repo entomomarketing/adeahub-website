@@ -4,6 +4,7 @@
 <!-- site:head:start -->
 <meta charset="utf-8">
 <script>document.documentElement.classList.add('js')</script>
+<script>window.dataLayer=window.dataLayer||[];(function(w,d,s,l,i){var q=/[?&]tags=(on|off)\b/.exec(location.search);try{if(q)sessionStorage.setItem('tags',q[1]);}catch(e){}var on=/^(adeahub\.co|www\.adeahub\.co)$/.test(location.hostname);try{var f=sessionStorage.getItem('tags');if(f==='on')on=true;if(f==='off')on=false;}catch(e){}if(!on)return;w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var t=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;t.parentNode.insertBefore(j,t);})(window,document,'script','dataLayer','GTM-KWRK59TQ');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>Contact adeahub: Talk to Our Healthcare Team</title>
@@ -30,8 +31,9 @@
 <meta name="twitter:title" content="Contact adeahub: Talk to Our Healthcare Team">
 <meta name="twitter:description" content="Contact adeahub about your digital health needs. We work with hospitals, health systems and ministries of health across Asia, the Middle East and Africa.">
 <meta name="twitter:image" content="https://adeahub.co/assets/images/social/contact.jpg">
-<link rel="stylesheet" href="../assets/css/base.css?v=a82fa7f9e6">
+<link rel="stylesheet" href="../assets/css/base.css?v=0e33a5a42e">
 <script src="../assets/js/site.js?v=747e070bc7" defer></script>
+<script src="../assets/js/forms.js?v=dc6dfd8714" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://adeahub.co/#organization","name":"adeahub","url":"https://adeahub.co/","logo":{"@type":"ImageObject","@id":"https://adeahub.co/#logo","url":"https://adeahub.co/assets/images/brand/adeahub-logo.png","width":511,"height":146,"caption":"adeahub"},"image":{"@id":"https://adeahub.co/#logo"},"description":"adeahub is a digital health platform that connects patient apps, hospital information systems, health data exchange and analytics for hospitals, health systems and ministries of health across Asia, the Middle East and Africa.","slogan":"Powering modern healthcare","email":"hello@adeahub.co","sameAs":["https://www.linkedin.com/company/adeahub/"],"areaServed":["Asia","Middle East","Africa"],"knowsAbout":["Digital health platforms","Hospital information systems","Patient engagement","FHIR interoperability","Health information exchange","Healthcare analytics","Population health management","Disease outbreak management","Healthcare workforce management"],"parentOrganization":{"@type":"Organization","name":"entomo"},"contactPoint":[{"@type":"ContactPoint","availableLanguage":"English","contactType":"sales","email":"sales@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"customer support","email":"support@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"press","email":"press@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"partnerships","email":"partnerships@adeahub.co"}]},{"@type":"WebSite","@id":"https://adeahub.co/#website","url":"https://adeahub.co/","name":"adeahub","description":"Powering modern healthcare","publisher":{"@id":"https://adeahub.co/#organization"},"inLanguage":"en"},{"@type":"ContactPage","@id":"https://adeahub.co/contact-us/#webpage","url":"https://adeahub.co/contact-us/","name":"Contact adeahub: Talk to Our Healthcare Team","description":"Contact adeahub about your digital health needs. We work with hospitals, health systems and ministries of health across Asia, the Middle East and Africa.","isPartOf":{"@id":"https://adeahub.co/#website"},"about":{"@id":"https://adeahub.co/#organization"},"inLanguage":"en","primaryImageOfPage":{"@type":"ImageObject","url":"https://adeahub.co/assets/images/social/contact.jpg","width":1200,"height":630},"breadcrumb":{"@id":"https://adeahub.co/contact-us/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://adeahub.co/contact-us/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://adeahub.co/"},{"@type":"ListItem","position":2,"name":"Contact Us","item":"https://adeahub.co/contact-us/"}]},{"@type":"FAQPage","@id":"https://adeahub.co/contact-us/#faq","url":"https://adeahub.co/contact-us/","mainEntity":[{"@type":"Question","name":"How quickly will someone get back to me?","acceptedAnswer":{"@type":"Answer","text":"We aim to respond to all enquiries within one business day. For urgent matters, please call our regional offices directly or email the relevant regional address listed on this page."}},{"@type":"Question","name":"I'm an existing customer — who should I contact for support?","acceptedAnswer":{"@type":"Answer","text":"Existing customers have a dedicated support portal and a direct line to our 24/7 support team. Please email support@adeahub.co or log in to your support portal. Your account manager can also provide escalation contacts specific to your deployment."}},{"@type":"Question","name":"I want to explore adeahub for my hospital — where do I start?","acceptedAnswer":{"@type":"Answer","text":"The best starting point is a personalised demo — our solutions team will tailor a walkthrough to your organisation’s specific environment and needs. Request a demo here and we’ll be in touch within one business day."}},{"@type":"Question","name":"I'm a journalist writing about adeahub — who should I contact?","acceptedAnswer":{"@type":"Answer","text":"Please reach out to our communications team at press@adeahub.co . We respond to all media enquiries within 24 hours and can provide press materials, executive interviews, and background briefings."}},{"@type":"Question","name":"Are you looking for technology or channel partners?","acceptedAnswer":{"@type":"Answer","text":"Yes — we actively build partnerships with healthcare technology vendors, system integrators, and regional channel partners. Please select “Partnership Opportunity” in the enquiry form above, or email partnerships@adeahub.co directly."}}],"isPartOf":{"@id":"https://adeahub.co/contact-us/#webpage"}}]}</script>
 <!-- site:head:end -->
 <style>
@@ -239,27 +241,28 @@
                     <p class="mt-3 text-[16px] leading-6 text-gray-500">Fill in the form and the right person will get back to you — typically within one business day.</p>
 
                     <div id="contactFormContainer" class="mt-8 bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm border border-gray-100">
-                        <form id="contactForm" class="space-y-6">
+                        <form id="contactForm" class="space-y-6" data-form="contact">
+                            <div class="hp-field" aria-hidden="true"><label>Leave this field empty <input type="text" name="hs_website" tabindex="-1" autocomplete="off"></label></div>
                             <!-- Name Row -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="cfFirstName" class="block text-[15px] font-semibold text-gray-700 mb-2">First Name <span class="text-adeahub-ink">*</span></label>
-                                    <input type="text" id="cfFirstName" name="firstname" required class="form-input" placeholder="e.g. Sarah">
+                                    <input type="text" id="cfFirstName" name="firstname" required autocomplete="given-name" class="form-input" placeholder="e.g. Sarah">
                                 </div>
                                 <div>
                                     <label for="cfLastName" class="block text-[15px] font-semibold text-gray-700 mb-2">Last Name <span class="text-adeahub-ink">*</span></label>
-                                    <input type="text" id="cfLastName" name="lastname" required class="form-input" placeholder="e.g. Jenkins">
+                                    <input type="text" id="cfLastName" name="lastname" required autocomplete="family-name" class="form-input" placeholder="e.g. Jenkins">
                                 </div>
                             </div>
                             <!-- Email -->
                             <div>
                                 <label for="cfEmail" class="block text-[15px] font-semibold text-gray-700 mb-2">Email <span class="text-adeahub-ink">*</span></label>
-                                <input type="email" id="cfEmail" name="email" required class="form-input" placeholder="sarah.j@organisation.com">
+                                <input type="email" id="cfEmail" name="email" required autocomplete="email" class="form-input" placeholder="sarah.j@organisation.com">
                             </div>
                             <!-- Organisation -->
                             <div>
-                                <label for="cfCompany" class="block text-[15px] font-semibold text-gray-700 mb-2">Organisation <span class="text-gray-500 font-normal ml-1">(Optional)</span></label>
-                                <input type="text" id="cfCompany" name="company" class="form-input" placeholder="e.g. Ministry of Health">
+                                <label for="cfCompany" class="block text-[15px] font-semibold text-gray-700 mb-2">Organisation <span class="text-adeahub-ink">*</span></label>
+                                <input type="text" id="cfCompany" name="company" required autocomplete="organization" class="form-input" placeholder="e.g. Ministry of Health">
                             </div>
                             <!-- Enquiry Type -->
                             <div>
@@ -298,8 +301,15 @@
                             <!-- Message -->
                             <div>
                                 <label for="cfMessage" class="block text-[15px] font-semibold text-gray-700 mb-2">Message <span class="text-adeahub-ink">*</span></label>
-                                <textarea id="cfMessage" name="message" required rows="4" class="form-input resize-none" placeholder="Tell us how we can help..."></textarea>
+                                <textarea id="cfMessage" name="message" required rows="4" autocomplete="off" class="form-input resize-none" placeholder="Tell us how we can help..."></textarea>
                             </div>
+                            <!-- Consent, security check, errors -->
+                            <label class="form-consent">
+                                <input type="checkbox" name="website_consent_given" value="true" required>
+                                <span>I agree to adeahub processing the details I have entered for the purpose of this request.</span>
+                            </label>
+                            <div class="form-turnstile"></div>
+                            <p class="form-status" role="alert" hidden></p>
                             <!-- Submit -->
                             <div class="pt-2">
                                 <button type="submit" class="w-full bg-adeahub-blue btn-glow btn-shimmer text-white text-center px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#3d89f5] flex justify-center items-center gap-2">
@@ -686,9 +696,8 @@
 <!-- site:footer:end -->
 
     <script>
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Contact form: assets/js/forms.js sends it; on success show the thank-you state
+        document.getElementById('contactForm').addEventListener('form:success', function () {
             const container = document.getElementById('contactFormContainer');
             const thanks = document.getElementById('contactThankYou');
             container.style.opacity = '0';
@@ -698,6 +707,9 @@
                 thanks.style.opacity = '0';
                 thanks.style.transition = 'opacity 0.4s ease';
                 setTimeout(() => { thanks.style.opacity = '1'; }, 50);
+                const heading = thanks.querySelector('h2');
+                heading.setAttribute('tabindex', '-1');
+                heading.focus({ preventScroll: true });
                 if (window.innerWidth < 1024) thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 300);
         });
