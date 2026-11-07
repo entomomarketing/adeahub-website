@@ -100,7 +100,8 @@ How a change ships:
 1. Commit to `staging` (run `python3 tools/build.py` first; Cloudflare runs no build, it publishes
    `public/` exactly as committed). Staging updates within a minute.
 2. Review the staging site. When it is approved, open a pull request from `staging` into `main` on GitHub
-   and merge it. Production updates within a minute.
+   and merge it with **Create a merge commit** (not squash, so `staging` and `main` keep the same history).
+   Production updates within a minute.
 3. An urgent fix can go to `main` through its own pull request; then merge `main` back into `staging`.
 
 `main` is protected: it only changes through a merged pull request, and it cannot be force-pushed or deleted.
