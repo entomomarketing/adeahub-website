@@ -4,7 +4,7 @@ Edit the header/footer HERE, then run `python3 tools/build.py`. Styles live in s
 (section "Site header / footer"). Every function takes `p`, the relative path from the page to the
 site root ("" for the homepage, "../" for /platform/ and the other one-level pages), so the site works
 from any folder or sub-path. Header/footer layout and sizes were measured on adeahub.co at 1440px;
-the frosted header, CTA shimmer, mega-menu gradient strip, eyebrow labels, chevrons, 40px icon tiles
+the frosted header, CTA shimmer, mega-menu cards, chevrons, icon tiles
 and footer social icons are the repo's own design.
 """
 import datetime
@@ -28,6 +28,11 @@ ICON = {
     "chart": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-9"/></svg>',
     "shield": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
     "user": '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>',
+    "network": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8"/></svg>',
+    "users": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+    "news": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>',
+    "hospital": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v4M14 14h-4M14 18h-4M14 8h-4"/><path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></svg>',
+    "pen": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.85.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z"/></svg>',
 }
 CHEV = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
 CHEVR = '<svg class="snav-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>'
@@ -48,11 +53,11 @@ def header(p, current=None):
         + item(u(p, "engage"), "phone", "<span>AH</span> Engage", "Digital front door for patients", "Appointments, health records &amp; care journeys")
         + item(u(p, "care"), "building", "<span>AH</span> Care", "Health information system", "25+ clinical &amp; admin modules, multi-site")
         + '</div><div class="snav-group snav-grid">'
-        + item(u(p, "connect"), "copy", "<span>AH</span> Connect", "Interoperability &amp; health data exchange", "FHIR server, integration engine &amp; API gateway")
+        + item(u(p, "connect"), "network", "<span>AH</span> Connect", "Interoperability &amp; health data exchange", "FHIR server, integration engine &amp; API gateway")
         + item(u(p, "insights"), "chart", "<span>AH</span> Insights", "Healthcare intelligence &amp; analytics", "Population health, real-time analytics &amp; AI/ML")
         + item(u(p, "outbreak"), "shield", "<span>AH</span> Outbreak Management", "Manage disease outbreaks", "Detection, tracing, monitoring &amp; containment")
         + '</div><div class="snav-group">'
-        + item(u(p, "workwise"), "user", "<span>Work</span>Wise", "Healthcare workforce experience platform", "Performance, learning &amp; workforce intelligence for healthcare teams")
+        + item(u(p, "workwise"), "users", "<span>Work</span>Wise", "Healthcare workforce experience platform", "Performance, learning &amp; workforce intelligence for healthcare teams")
         + '</div></div>'
         '<div class="snav-card-foot"><a href="' + u(p, "demo") + '">Request a demo ' + CHEVR + '</a></div>'
         '</div></div>')
@@ -60,27 +65,27 @@ def header(p, current=None):
         '<div class="snav-panel"><div class="snav-card">'
         '<div class="snav-card-head"><span class="snav-label">Resources</span></div>'
         '<div class="snav-card-body">'
-        '<div class="snav-group">' + item(u(p, "newsroom"), "phone", "Newsroom", "Press releases &amp; company announcements") + '</div>'
-        '<div class="snav-group">' + item(u(p, "customers"), "copy", "Customers", "Case studies &amp; client outcomes") + '</div>'
-        '<div class="snav-group">' + item(u(p, "blogs"), "user", "Blog", "Insights, perspectives &amp; best practices") + '</div>'
+        '<div class="snav-group">' + item(u(p, "newsroom"), "news", "Newsroom", "Press releases &amp; company announcements") + '</div>'
+        '<div class="snav-group">' + item(u(p, "customers"), "hospital", "Customers", "Case studies &amp; client outcomes") + '</div>'
+        '<div class="snav-group">' + item(u(p, "blogs"), "pen", "Blog", "Insights, perspectives &amp; best practices") + '</div>'
         '</div>'
         '<div class="snav-card-foot"><a href="' + u(p, "demo") + '">Request a demo ' + CHEVR + '</a></div>'
         '</div></div>')
-    A = 'class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm"'
+    A = 'class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base"'
     def m(key, t):
         aria = ' aria-current="page"' if current == key else ""
         return f'        <a href="{u(p, key)}" {A}{aria}>{t}</a>\n'
     D = '        <div class="my-2 border-t border-gray-100"></div>\n'
     mobile = ('    <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4" aria-label="Mobile">\n'
-              '        <p class="text-[11px] font-bold uppercase tracking-widest text-gray-500 pb-2">Products</p>\n'
+              '        <p class="px-3 pb-1 text-[13px] font-semibold text-gray-500">Products</p>\n'
               + m("engage", "AH Engage") + m("care", "AH Care") + m("connect", "AH Connect")
               + m("outbreak", "AH Outbreak Management") + m("insights", "AH Insights") + m("workwise", "WorkWise")
               + D + m("platform", "Platform") + D
-              + '        <p class="text-[11px] font-bold uppercase tracking-widest text-gray-500 pt-1 pb-2">Resources</p>\n'
+              + '        <p class="px-3 pt-1 pb-1 text-[13px] font-semibold text-gray-500">Resources</p>\n'
               + m("newsroom", "Newsroom") + m("customers", "Customers") + m("blogs", "Blog")
               + D + m("about", "About Us") + D + m("contact", "Contact Us")
               + '        <div class="pt-3 pb-1">\n'
-              f'            <a href="{u(p, "contact")}" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F3D06F;">Talk to us</a>\n'
+              f'            <a href="{u(p, "contact")}" class="block text-gray-900 text-center px-5 py-3.5 rounded-full hover:opacity-90 transition-colors font-semibold text-base" style="background:#F3D06F;">Talk to us</a>\n'
               '        </div>\n    </nav>\n')
     return (
         '<a class="skip-link" href="#main">Skip to content</a>\n'

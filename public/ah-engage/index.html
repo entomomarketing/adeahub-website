@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="AH Engage: Patient Engagement Software | adeahub">
 <meta name="twitter:description" content="AH Engage is patient engagement software that connects patients to their care team before, during and after every visit, with 60,000+ appointments booked daily.">
 <meta name="twitter:image" content="https://adeahub.co/assets/images/social/engage.jpg">
-<link rel="stylesheet" href="../assets/css/base.css?v=578a7d9988">
+<link rel="stylesheet" href="../assets/css/base.css?v=a82fa7f9e6">
 <script src="../assets/js/site.js?v=747e070bc7" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://adeahub.co/#organization","name":"adeahub","url":"https://adeahub.co/","logo":{"@type":"ImageObject","@id":"https://adeahub.co/#logo","url":"https://adeahub.co/assets/images/brand/adeahub-logo.png","width":511,"height":146,"caption":"adeahub"},"image":{"@id":"https://adeahub.co/#logo"},"description":"adeahub is a digital health platform that connects patient apps, hospital information systems, health data exchange and analytics for hospitals, health systems and ministries of health across Asia, the Middle East and Africa.","slogan":"Powering modern healthcare","email":"hello@adeahub.co","sameAs":["https://www.linkedin.com/company/adeahub/"],"areaServed":["Asia","Middle East","Africa"],"knowsAbout":["Digital health platforms","Hospital information systems","Patient engagement","FHIR interoperability","Health information exchange","Healthcare analytics","Population health management","Disease outbreak management","Healthcare workforce management"],"parentOrganization":{"@type":"Organization","name":"entomo"},"contactPoint":[{"@type":"ContactPoint","availableLanguage":"English","contactType":"sales","email":"sales@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"customer support","email":"support@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"press","email":"press@adeahub.co"},{"@type":"ContactPoint","availableLanguage":"English","contactType":"partnerships","email":"partnerships@adeahub.co"}]},{"@type":"WebSite","@id":"https://adeahub.co/#website","url":"https://adeahub.co/","name":"adeahub","description":"Powering modern healthcare","publisher":{"@id":"https://adeahub.co/#organization"},"inLanguage":"en"},{"@type":"WebPage","@id":"https://adeahub.co/ah-engage/#webpage","url":"https://adeahub.co/ah-engage/","name":"AH Engage: Patient Engagement Software | adeahub","description":"AH Engage is patient engagement software that connects patients to their care team before, during and after every visit, with 60,000+ appointments booked daily.","isPartOf":{"@id":"https://adeahub.co/#website"},"about":{"@id":"https://adeahub.co/#organization"},"inLanguage":"en","primaryImageOfPage":{"@type":"ImageObject","url":"https://adeahub.co/assets/images/social/engage.jpg","width":1200,"height":630},"breadcrumb":{"@id":"https://adeahub.co/ah-engage/#breadcrumb"},"mainEntity":{"@id":"https://adeahub.co/ah-engage/#service"}},{"@type":"BreadcrumbList","@id":"https://adeahub.co/ah-engage/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://adeahub.co/"},{"@type":"ListItem","position":2,"name":"AH Engage","item":"https://adeahub.co/ah-engage/"}]},{"@type":"Service","@id":"https://adeahub.co/ah-engage/#service","name":"AH Engage","serviceType":"Patient engagement platform","category":"Digital front door for patients","description":"AH Engage is patient engagement software that connects patients to their care team before, during and after every visit, with 60,000+ appointments booked daily.","url":"https://adeahub.co/ah-engage/","provider":{"@id":"https://adeahub.co/#organization"},"brand":{"@type":"Brand","name":"adeahub"},"areaServed":["Asia","Middle East","Africa"]}]}</script>
 <!-- site:head:end -->
@@ -58,8 +58,6 @@
     }
 
     /* Section labels → blue on white; yellow on blue bg (overridden below) */
-    .section-label { color: #186BDC !important; }
-    .section-label::before { background: #5298F8 !important; }
 
     /* Solution card hover border */
     .solution-card:hover { border-top-color: #5298F8 !important; }
@@ -67,9 +65,6 @@
     /* Outcome card top bar */
     .outcome-card::before { background: #5298F8 !important; }
 
-        p.section-label, span.section-label { margin-bottom: 0; }
-        .section-label.on-blue { color: #F3D06F !important; }
-        .section-label.on-blue::before { background: #F3D06F !important; }
         /* R2 blue-section decoration: white dot grid + two slow floating orbs */
         .ah-deco { position: relative; overflow: hidden; background-image: radial-gradient(circle, rgba(255,255,255,0.10) 1px, transparent 1px); background-size: 36px 36px; }
         .ah-deco::before, .ah-deco::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; background: rgba(255,255,255,0.9); }
@@ -82,7 +77,7 @@
         .ah-deco .btn-glow:hover { box-shadow: 0 12px 40px rgba(243,208,111,0.55); }
         </style>
 <!-- site:css:start -->
-<link rel="stylesheet" href="../assets/css/site.css?v=0b9b4b30cd">
+<link rel="stylesheet" href="../assets/css/site.css?v=bd938ad08f">
 <!-- site:css:end -->
 <style>
 
@@ -152,7 +147,7 @@
     justify-content: center;
     z-index: 5;
     opacity: 0;
-    animation: ahe-pop-in 0.4s cubic-bezier(.34,1.56,.64,1) 0.3s forwards;
+    animation: ahe-pop-in 0.4s cubic-bezier(.16, 1, .3, 1) 0.3s forwards;
   }
 
   #ahe-phone .yellow-tick {
@@ -164,7 +159,7 @@
     z-index: 4;
     opacity: 0;
     transform: scale(0.5) rotate(-20deg);
-    animation: ahe-tick-bounce 0.6s cubic-bezier(.34,1.56,.64,1) 0.7s forwards;
+    animation: ahe-tick-bounce 0.6s cubic-bezier(.16, 1, .3, 1) 0.7s forwards;
   }
 
   @keyframes ahe-tick-bounce {
@@ -504,8 +499,8 @@
         <nav class="snav-menu" aria-label="Main">
             <ul class="snav-links">
                 <li><a href="../platform/" class="snav-link">Platform</a></li>
-                <li class="snav-dd snav-dd-products"><button type="button" class="snav-link" aria-haspopup="true" aria-expanded="false">Products <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="snav-panel"><div class="snav-card"><div class="snav-card-head"><span class="snav-label">adeahub products</span><a href="../platform/">View platform overview <svg class="snav-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a></div><div class="snav-card-body"><div class="snav-group snav-grid"><a href="../ah-engage/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span><span><span class="snav-title"><span>AH</span> Engage</span><span class="snav-text"><strong>Digital front door for patients</strong>Appointments, health records &amp; care journeys</span></span></a><a href="../ah-care/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span><span><span class="snav-title"><span>AH</span> Care</span><span class="snav-text"><strong>Health information system</strong>25+ clinical &amp; admin modules, multi-site</span></span></a></div><div class="snav-group snav-grid"><a href="../ah-connect/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span><span><span class="snav-title"><span>AH</span> Connect</span><span class="snav-text"><strong>Interoperability &amp; health data exchange</strong>FHIR server, integration engine &amp; API gateway</span></span></a><a href="../ah-insights/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-9"/></svg></span><span><span class="snav-title"><span>AH</span> Insights</span><span class="snav-text"><strong>Healthcare intelligence &amp; analytics</strong>Population health, real-time analytics &amp; AI/ML</span></span></a><a href="../ah-outbreak-management/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><span class="snav-title"><span>AH</span> Outbreak Management</span><span class="snav-text"><strong>Manage disease outbreaks</strong>Detection, tracing, monitoring &amp; containment</span></span></a></div><div class="snav-group"><a href="../workwise/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><span><span class="snav-title"><span>Work</span>Wise</span><span class="snav-text"><strong>Healthcare workforce experience platform</strong>Performance, learning &amp; workforce intelligence for healthcare teams</span></span></a></div></div><div class="snav-card-foot"><a href="../talk-to-us/">Request a demo <svg class="snav-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a></div></div></div></li>
-                <li class="snav-dd snav-dd-resources"><button type="button" class="snav-link" aria-haspopup="true" aria-expanded="false">Resources <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="snav-panel"><div class="snav-card"><div class="snav-card-head"><span class="snav-label">Resources</span></div><div class="snav-card-body"><div class="snav-group"><a href="../newsroom/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span><span><span class="snav-title">Newsroom</span><span class="snav-text"><strong>Press releases &amp; company announcements</strong></span></span></a></div><div class="snav-group"><a href="../customers/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></span><span><span class="snav-title">Customers</span><span class="snav-text"><strong>Case studies &amp; client outcomes</strong></span></span></a></div><div class="snav-group"><a href="../blogs/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span><span><span class="snav-title">Blog</span><span class="snav-text"><strong>Insights, perspectives &amp; best practices</strong></span></span></a></div></div><div class="snav-card-foot"><a href="../talk-to-us/">Request a demo <svg class="snav-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a></div></div></div></li>
+                <li class="snav-dd snav-dd-products"><button type="button" class="snav-link" aria-haspopup="true" aria-expanded="false">Products <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="snav-panel"><div class="snav-card"><div class="snav-card-head"><span class="snav-label">adeahub products</span><a href="../platform/">View platform overview <svg class="snav-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a></div><div class="snav-card-body"><div class="snav-group snav-grid"><a href="../ah-engage/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span><span><span class="snav-title"><span>AH</span> Engage</span><span class="snav-text"><strong>Digital front door for patients</strong>Appointments, health records &amp; care journeys</span></span></a><a href="../ah-care/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span><span><span class="snav-title"><span>AH</span> Care</span><span class="snav-text"><strong>Health information system</strong>25+ clinical &amp; admin modules, multi-site</span></span></a></div><div class="snav-group snav-grid"><a href="../ah-connect/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 12V8"/></svg></span><span><span class="snav-title"><span>AH</span> Connect</span><span class="snav-text"><strong>Interoperability &amp; health data exchange</strong>FHIR server, integration engine &amp; API gateway</span></span></a><a href="../ah-insights/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-9"/></svg></span><span><span class="snav-title"><span>AH</span> Insights</span><span class="snav-text"><strong>Healthcare intelligence &amp; analytics</strong>Population health, real-time analytics &amp; AI/ML</span></span></a><a href="../ah-outbreak-management/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span><span class="snav-title"><span>AH</span> Outbreak Management</span><span class="snav-text"><strong>Manage disease outbreaks</strong>Detection, tracing, monitoring &amp; containment</span></span></a></div><div class="snav-group"><a href="../workwise/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span><span class="snav-title"><span>Work</span>Wise</span><span class="snav-text"><strong>Healthcare workforce experience platform</strong>Performance, learning &amp; workforce intelligence for healthcare teams</span></span></a></div></div><div class="snav-card-foot"><a href="../talk-to-us/">Request a demo <svg class="snav-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a></div></div></div></li>
+                <li class="snav-dd snav-dd-resources"><button type="button" class="snav-link" aria-haspopup="true" aria-expanded="false">Resources <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="snav-panel"><div class="snav-card"><div class="snav-card-head"><span class="snav-label">Resources</span></div><div class="snav-card-body"><div class="snav-group"><a href="../newsroom/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg></span><span><span class="snav-title">Newsroom</span><span class="snav-text"><strong>Press releases &amp; company announcements</strong></span></span></a></div><div class="snav-group"><a href="../customers/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6v4M14 14h-4M14 18h-4M14 8h-4"/><path d="M18 12h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2"/><path d="M18 22V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v18"/></svg></span><span><span class="snav-title">Customers</span><span class="snav-text"><strong>Case studies &amp; client outcomes</strong></span></span></a></div><div class="snav-group"><a href="../blogs/" class="snav-item"><span class="snav-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.85.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.85z"/></svg></span><span><span class="snav-title">Blog</span><span class="snav-text"><strong>Insights, perspectives &amp; best practices</strong></span></span></a></div></div><div class="snav-card-foot"><a href="../talk-to-us/">Request a demo <svg class="snav-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a></div></div></div></li>
                 <li><a href="../about-us/" class="snav-link">About Us</a></li>
                 <li><a href="../contact-us/" class="snav-link">Contact Us</a></li>
             </ul>
@@ -517,26 +512,26 @@
         </button>
     </div>
     <nav id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-5 py-4" aria-label="Mobile">
-        <p class="text-[11px] font-bold uppercase tracking-widest text-gray-500 pb-2">Products</p>
-        <a href="../ah-engage/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Engage</a>
-        <a href="../ah-care/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Care</a>
-        <a href="../ah-connect/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Connect</a>
-        <a href="../ah-outbreak-management/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Outbreak Management</a>
-        <a href="../ah-insights/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">AH Insights</a>
-        <a href="../workwise/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">WorkWise</a>
+        <p class="px-3 pb-1 text-[13px] font-semibold text-gray-500">Products</p>
+        <a href="../ah-engage/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">AH Engage</a>
+        <a href="../ah-care/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">AH Care</a>
+        <a href="../ah-connect/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">AH Connect</a>
+        <a href="../ah-outbreak-management/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">AH Outbreak Management</a>
+        <a href="../ah-insights/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">AH Insights</a>
+        <a href="../workwise/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">WorkWise</a>
         <div class="my-2 border-t border-gray-100"></div>
-        <a href="../platform/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Platform</a>
+        <a href="../platform/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">Platform</a>
         <div class="my-2 border-t border-gray-100"></div>
-        <p class="text-[11px] font-bold uppercase tracking-widest text-gray-500 pt-1 pb-2">Resources</p>
-        <a href="../newsroom/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Newsroom</a>
-        <a href="../customers/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Customers</a>
-        <a href="../blogs/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Blog</a>
+        <p class="px-3 pt-1 pb-1 text-[13px] font-semibold text-gray-500">Resources</p>
+        <a href="../newsroom/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">Newsroom</a>
+        <a href="../customers/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">Customers</a>
+        <a href="../blogs/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">Blog</a>
         <div class="my-2 border-t border-gray-100"></div>
-        <a href="../about-us/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">About Us</a>
+        <a href="../about-us/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">About Us</a>
         <div class="my-2 border-t border-gray-100"></div>
-        <a href="../contact-us/" class="block py-2.5 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors font-medium text-sm">Contact Us</a>
+        <a href="../contact-us/" class="block py-3 px-3 rounded-xl text-gray-800 hover:bg-blue-50 hover:text-adeahub-ink transition-colors font-medium text-base">Contact Us</a>
         <div class="pt-3 pb-1">
-            <a href="../contact-us/" class="block text-gray-900 text-center px-5 py-3 rounded-full hover:opacity-90 transition-colors font-semibold text-sm" style="background:#F3D06F;">Talk to us</a>
+            <a href="../contact-us/" class="block text-gray-900 text-center px-5 py-3.5 rounded-full hover:opacity-90 transition-colors font-semibold text-base" style="background:#F3D06F;">Talk to us</a>
         </div>
     </nav>
 </header>
@@ -863,8 +858,7 @@
     <div class="max-w-[1188px] mx-auto px-6">
 
         <div class="text-center reveal">
-            <p class="section-label">Proven at national scale</p>
-            <h2 class="mt-5 max-w-[700px] mx-auto text-[30px] md:text-[37px] leading-[1] font-bold text-black">The transformation that changed how a nation accesses healthcare</h2>
+            <h2 class="max-w-[700px] mx-auto text-black h-section">The transformation that changed how a nation accesses healthcare</h2>
         </div>
 
         <!-- Case Study Card -->
@@ -874,12 +868,12 @@
             <div class="bg-white rounded-t-[20px] p-[15px] md:min-h-[132px] shadow-[0_0_4px_0_rgba(231,231,231,0.5)] flex flex-col md:flex-row md:items-center gap-4 md:gap-0">
                 <span class="text-[60px] leading-none md:ml-[22px] md:mr-[50px]" aria-hidden="true">🇲🇾</span>
                 <div>
-                    <p class="text-[12px] leading-[18px] font-black tracking-widest text-[#6B6B6B]">Case Study</p>
-                    <h3 class="mt-[10px] text-[20px] leading-[20px] font-bold text-black">Malaysia Ministry of Health</h3>
+                    <p class="text-[13px] leading-[21px] font-black tracking-[0.01em] text-[#6B6B6B]">Case Study</p>
+                    <h3 class="mt-[10px] text-[20px] leading-[26px] font-bold text-black">Malaysia Ministry of Health</h3>
                     <p class="mt-[10px] text-[16px] leading-[24px] font-bold text-adeahub-ink">MySejahtera — National Health Platform</p>
                 </div>
                 <div class="md:ml-auto md:mr-[10px]">
-                    <span class="inline-flex items-center gap-[5px] bg-[#EFF6FF] rounded-[25px] px-5 py-[10px] text-[14px] leading-[21px] font-bold text-adeahub-ink">
+                    <span class="inline-flex items-center gap-[5px] bg-[#EFF6FF] rounded-[25px] px-5 py-[10px] text-[15px] leading-[22.5px] font-bold text-adeahub-ink">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe w-4 h-4 text-[#6CB1E8]" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
                         National-scale deployment
                     </span>
@@ -890,52 +884,52 @@
 
                 <!-- Narrative side -->
                 <div>
-                    <p class="text-[12px] leading-[18px] font-black tracking-widest text-[#DC2626]">The challenge</p>
-                    <p class="mt-5 text-[16px] leading-[28px] font-light text-black">Malaysia’s public health network — spanning 8,000+ facilities and 33 million citizens — had no unified digital front door. Patients navigated separate systems, missed appointments through no fault of their own, and had no direct connection to their care team between visits.</p>
-                    <p class="mt-5 text-[12px] leading-[18px] font-black tracking-widest text-adeahub-ink">What we did</p>
-                    <p class="mt-5 text-[16px] leading-[28px] font-light text-black">adeahub deployed the national patient platform, integrating it across the full network of public health facilities — enabling appointment booking, health records access, vaccination management, and care navigation at a scale no commercial health app had achieved in the region.</p>
-                    <p class="mt-5 text-[12px] leading-[18px] font-black tracking-widest text-[#15803D]">The impact</p>
+                    <p class="text-[13px] leading-[21px] font-black tracking-[0.01em] text-[#DC2626]">The challenge</p>
+                    <p class="mt-5 text-[16px] leading-[28px] font-normal text-black">Malaysia’s public health network — spanning 8,000+ facilities and 33 million citizens — had no unified digital front door. Patients navigated separate systems, missed appointments through no fault of their own, and had no direct connection to their care team between visits.</p>
+                    <p class="mt-5 text-[13px] leading-[21px] font-black tracking-[0.01em] text-adeahub-ink">What we did</p>
+                    <p class="mt-5 text-[16px] leading-[28px] font-normal text-black">adeahub deployed the national patient platform, integrating it across the full network of public health facilities — enabling appointment booking, health records access, vaccination management, and care navigation at a scale no commercial health app had achieved in the region.</p>
+                    <p class="mt-5 text-[13px] leading-[21px] font-black tracking-[0.01em] text-[#15803D]">The impact</p>
                     <!-- Impact metric strip -->
                     <div class="mt-5 grid grid-cols-2 gap-5">
-                        <div class="bg-white rounded-[15px] p-5 min-h-[136px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
-                            <p class="text-[26px] sm:text-[30px] leading-[45px] font-black text-adeahub-heading">60,000<span>+</span></p>
-                            <p class="max-w-[123px] text-[14px] leading-[21px] font-medium text-[#6B6B6B]">Appointments booked daily</p>
+                        <div class="p-5 min-h-[136px] card">
+                            <p class="text-[23px] sm:text-[30px] leading-[45px] font-black tracking-[-0.02em] text-adeahub-heading">60,000<span>+</span></p>
+                            <p class="max-w-[123px] text-[15px] leading-[24px] font-medium text-[#6B6B6B]">Appointments booked daily</p>
                         </div>
-                        <div class="bg-white rounded-[15px] p-5 min-h-[136px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
-                            <p class="text-[26px] sm:text-[30px] leading-[45px] font-black text-adeahub-heading">295</p>
-                            <p class="max-w-[123px] text-[14px] leading-[21px] font-medium text-[#6B6B6B]">Health services available</p>
+                        <div class="p-5 min-h-[136px] card">
+                            <p class="text-[23px] sm:text-[30px] leading-[45px] font-black tracking-[-0.02em] text-adeahub-heading">295</p>
+                            <p class="max-w-[123px] text-[15px] leading-[24px] font-medium text-[#6B6B6B]">Health services available</p>
                         </div>
-                        <div class="bg-white rounded-[15px] p-5 min-h-[136px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
-                            <p class="text-[26px] sm:text-[30px] leading-[45px] font-black text-adeahub-heading">8,000+</p>
-                            <p class="max-w-[123px] text-[14px] leading-[21px] font-medium text-[#6B6B6B]">Facilities connected</p>
+                        <div class="p-5 min-h-[136px] card">
+                            <p class="text-[23px] sm:text-[30px] leading-[45px] font-black tracking-[-0.02em] text-adeahub-heading">8,000+</p>
+                            <p class="max-w-[123px] text-[15px] leading-[24px] font-medium text-[#6B6B6B]">Facilities connected</p>
                         </div>
-                        <div class="bg-white rounded-[15px] p-5 min-h-[136px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
-                            <p class="text-[26px] sm:text-[30px] leading-[45px] font-black text-adeahub-heading">#1</p>
-                            <p class="max-w-[123px] text-[14px] leading-[21px] font-medium text-[#6B6B6B]">Data.ai worldwide ranking</p>
+                        <div class="p-5 min-h-[136px] card">
+                            <p class="text-[23px] sm:text-[30px] leading-[45px] font-black tracking-[-0.02em] text-adeahub-heading">#1</p>
+                            <p class="max-w-[123px] text-[15px] leading-[24px] font-medium text-[#6B6B6B]">Data.ai worldwide ranking</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Recognition / quote side -->
                 <div class="flex flex-col justify-between gap-8">
-                    <div class="bg-white rounded-[15px] p-[30px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
-                        <p class="text-[14px] leading-[21px] font-bold tracking-widest text-[#6B6B6B]">Recognition</p>
+                    <div class="p-[30px] card">
+                        <p class="text-[15px] leading-[24px] font-bold tracking-[0.01em] text-[#6B6B6B]">Recognition</p>
                         <div class="mt-3 flex items-center gap-[25px]">
                             <div class="w-9 h-9 shrink-0 rounded-[10%] bg-[rgba(243,208,111,0.22)] flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award w-[18px] h-[18px] text-[#FDBB02]" aria-hidden="true"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
                             </div>
                             <div>
-                                <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">Data.ai #1 Worldwide Ranking</h3>
-                                <p class="mt-[7px] text-[12px] leading-[18px] text-[#6B6B6B]">Highest install penetration and open rate among all health apps globally, 2021</p>
+                                <h3 class="text-[16px] leading-[20px] font-bold text-[#1A1A1A]">Data.ai #1 Worldwide Ranking</h3>
+                                <p class="mt-[7px] text-[13px] leading-[21px] text-[#6B6B6B]">Highest install penetration and open rate among all health apps globally, 2021</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Customer quote -->
-                    <div class="relative overflow-hidden bg-[#5298F8] rounded-[15px] p-[30px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)]">
+                    <div class="relative overflow-hidden bg-[#5298F8] p-[30px] card">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-quote absolute top-6 left-6 w-20 h-20 text-white opacity-[0.15] pointer-events-none" aria-hidden="true"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg>
-                        <p class="relative max-w-[366px] text-[14px] leading-[21px] font-medium italic text-white">“With adeahub, we were able to support appointment booking, vaccination management, health service navigation, and access to public health services across thousands of facilities. The platform helped make national-scale digital healthcare more accessible to Malaysians.”</p>
-                        <p class="relative mt-5 text-[14px] leading-[21px] font-medium italic text-white">Public Health Operations Representative<br>National Health Authority, Malaysia</p>
+                        <p class="relative max-w-[366px] text-[15px] leading-[24px] font-medium text-white">“With adeahub, we were able to support appointment booking, vaccination management, health service navigation, and access to public health services across thousands of facilities. The platform helped make national-scale digital healthcare more accessible to Malaysians.”</p>
+                        <p class="relative mt-5 text-[15px] leading-[24px] font-medium text-white">Public Health Operations Representative<br>National Health Authority, Malaysia</p>
                     </div>
                 </div>
 
@@ -954,20 +948,19 @@
 
             <!-- Narrative copy -->
             <div class="reveal-left">
-                <p class="section-label on-blue">The vision</p>
-                <h2 class="mt-5 text-[30px] md:text-[36px] leading-[1] font-bold text-white">Your hospital in every patient's pocket.</h2>
+                <h2 class="text-white h-section">Your hospital in every patient's pocket.</h2>
                 <div class="mt-5 space-y-[14px] text-[18px] leading-[32px] text-white">
                     <p>A decade ago, patients called a hospital to book an appointment, visited a counter to collect results, and had no way to reach their care team between visits.</p>
                     <p>AH Engage changes that. It gives every patient a <strong class="font-bold">branded digital front door to their hospital</strong> — available on every smartphone, integrated with every system, always connected.</p>
                     <p>The same way personal banking eliminated the need to visit a branch for routine transactions, AH Engage eliminates the friction between patients and the care they need.</p>
                 </div>
-                <div class="mt-[34px] bg-white rounded-[15px] p-[30px] min-h-[127px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] flex items-center gap-[25px]">
+                <div class="mt-[34px] p-[30px] min-h-[127px] flex items-center gap-[25px] card">
                     <div class="w-9 h-9 shrink-0 rounded-[10%] bg-[#EFF6FF] flex items-center justify-center text-[#6CB1E8]">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smartphone w-[18px] h-[18px]" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">One app. Every service. Always connected.</h3>
-                        <p class="mt-[7px] text-[12px] leading-[18px] text-[#6B6B6B]">Fully white-labelled under your hospital brand — patients never leave your ecosystem.</p>
+                        <h3 class="text-[16px] leading-[20px] font-bold text-[#1A1A1A]">One app. Every service. Always connected.</h3>
+                        <p class="mt-[7px] text-[13px] leading-[21px] text-[#6B6B6B]">Fully white-labelled under your hospital brand — patients never leave your ecosystem.</p>
                     </div>
                 </div>
             </div>
@@ -1039,47 +1032,46 @@
 <section class="bg-white py-16 lg:py-[90px]">
     <div class="max-w-[1168px] mx-auto px-6">
         <div class="text-center reveal">
-            <p class="section-label">What it covers</p>
-            <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-black">Six capability domains. One unified patient experience.</h2>
+            <h2 class="text-black h-section">Six capability domains. One unified patient experience.</h2>
             <p class="mt-5 max-w-[627px] mx-auto text-[18px] leading-[27px] text-[#666666]">AH Engage covers every dimension of patient engagement — fully modular, fully white-labelled under your hospital brand.</p>
         </div>
 
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 mt-14">
 
-            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[300px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d1">
-                <div class="w-11 h-11 rounded-[14px] bg-[#EFF6FF] flex items-center justify-center text-[#6CB1E8]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check w-[22px] h-[22px]" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="m9 15 2 2 4-4"/></svg></div>
+            <div class="feature reveal reveal-d1">
+                <div class="feature-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-check w-[22px] h-[22px]" aria-hidden="true"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="m9 15 2 2 4-4"/></svg></div>
                 <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Appointments, Profiles &amp; Access</h3>
-                <p class="mt-[15px] text-[14px] leading-[24px] text-[#6B6B6B]">Book and reschedule appointments and check real-time wait times, integrated with your HIS. Patients manage profiles and dependents for the whole family, in their own language.</p>
+                <p class="mt-[15px] text-[15px] leading-[25.5px] text-[#6B6B6B]">Book and reschedule appointments and check real-time wait times, integrated with your HIS. Patients manage profiles and dependents for the whole family, in their own language.</p>
             </div>
 
-            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[300px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d2">
-                <div class="w-11 h-11 rounded-[14px] bg-[#E6FFE9] flex items-center justify-center text-[#0E771D]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-[22px] h-[22px]" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+            <div class="feature reveal reveal-d2">
+                <div class="feature-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-[22px] h-[22px]" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
                 <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Health Records &amp; Summaries</h3>
-                <p class="mt-[15px] text-[14px] leading-[24px] text-[#6B6B6B]">Patients access their digital health records and lab results the moment they are verified. A standards-based International Patient Summary travels with them across providers and borders.</p>
+                <p class="mt-[15px] text-[15px] leading-[25.5px] text-[#6B6B6B]">Patients access their digital health records and lab results the moment they are verified. A standards-based International Patient Summary travels with them across providers and borders.</p>
             </div>
 
-            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[300px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d3">
-                <div class="w-11 h-11 rounded-[14px] bg-[#F6F0FC] flex items-center justify-center text-[#9333EA]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list w-[22px] h-[22px]" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
+            <div class="feature reveal reveal-d3">
+                <div class="feature-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list w-[22px] h-[22px]" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
                 <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Care Plans &amp; Immunization</h3>
-                <p class="mt-[15px] text-[14px] leading-[24px] text-[#6B6B6B]">Digital care plans guide each patient after a visit, with medication reminders and task checklists. A national immunization record keeps every vaccination and certificate up to date.</p>
+                <p class="mt-[15px] text-[15px] leading-[25.5px] text-[#6B6B6B]">Digital care plans guide each patient after a visit, with medication reminders and task checklists. A national immunization record keeps every vaccination and certificate up to date.</p>
             </div>
 
-            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[300px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d1">
-                <div class="w-11 h-11 rounded-[14px] bg-[#EFF6FF] flex items-center justify-center text-[#448FCA]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video w-[22px] h-[22px]" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></div>
+            <div class="feature reveal reveal-d1">
+                <div class="feature-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video w-[22px] h-[22px]" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></div>
                 <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Virtual Care &amp; Tele-Consultation</h3>
-                <p class="mt-[15px] text-[14px] leading-[24px] text-[#6B6B6B]">Virtual care and tele-consultations connect patients to their care team from home. Secure in-app messaging is built in, with no third-party app to download.</p>
+                <p class="mt-[15px] text-[15px] leading-[25.5px] text-[#6B6B6B]">Virtual care and tele-consultations connect patients to their care team from home. Secure in-app messaging is built in, with no third-party app to download.</p>
             </div>
 
-            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[300px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d2">
-                <div class="w-11 h-11 rounded-[14px] bg-[#FCEFEF] flex items-center justify-center text-[#EF4444]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-pulse w-[22px] h-[22px]" aria-hidden="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/><path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></div>
+            <div class="feature reveal reveal-d2">
+                <div class="feature-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-pulse w-[22px] h-[22px]" aria-hidden="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/><path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg></div>
                 <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Monitoring &amp; Population Health</h3>
-                <p class="mt-[15px] text-[14px] leading-[24px] text-[#6B6B6B]">Connected wearables like Fitbit feed vitals into structured monitoring pathways for ongoing conditions. Disease outbreak tracking and border surveillance keep patients informed and communities protected.</p>
+                <p class="mt-[15px] text-[15px] leading-[25.5px] text-[#6B6B6B]">Connected wearables like Fitbit feed vitals into structured monitoring pathways for ongoing conditions. Disease outbreak tracking and border surveillance keep patients informed and communities protected.</p>
             </div>
 
-            <div class="cap-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[300px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d3">
-                <div class="w-11 h-11 rounded-[14px] bg-[#FFF2E8] flex items-center justify-center text-[#F97316]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-megaphone w-[22px] h-[22px]" aria-hidden="true"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"/><path d="M8 6v8"/></svg></div>
+            <div class="feature reveal reveal-d3">
+                <div class="feature-ico"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-megaphone w-[22px] h-[22px]" aria-hidden="true"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"/><path d="M8 6v8"/></svg></div>
                 <h3 class="mt-[14px] text-[18px] leading-[21.6px] font-bold text-[#1A1A1A]">Engagement &amp; Marketplace</h3>
-                <p class="mt-[15px] text-[14px] leading-[24px] text-[#6B6B6B]">Timely notifications, alerts, and in-app marketing banners keep patients engaged between visits. Structured feedback and patient queries, on-demand services, in-app payments, and insurance claims create new digital value.</p>
+                <p class="mt-[15px] text-[15px] leading-[25.5px] text-[#6B6B6B]">Timely notifications, alerts, and in-app marketing banners keep patients engaged between visits. Structured feedback and patient queries, on-demand services, in-app payments, and insurance claims create new digital value.</p>
             </div>
 
         </div>
@@ -1092,28 +1084,27 @@
 <section class="bg-[#5298F8] ah-deco py-16 lg:py-[90px]" style="--orb1:-6s;--orb2:-2s">
     <div class="max-w-[1168px] mx-auto px-6">
         <div class="text-center reveal">
-            <p class="text-[12px] leading-[18px] font-bold tracking-widest text-[#F3D06F]">Scale &amp; impact</p>
-            <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-white">The numbers that define AH Engage</h2>
+            <h2 class="text-white h-section">The numbers that define AH Engage</h2>
         </div>
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="text-center rounded-[15px] p-[30px] bg-white/10 border border-[rgba(196,209,226,0.68)] reveal reveal-d1">
-                <p class="text-[40px] md:text-[50px] leading-[50px] font-semibold text-white"><span class="counter" data-target="60000">60,000</span><span>+</span></p>
-                <p class="text-[14px] leading-[21px] font-medium text-white/80">Appointments booked daily</p>
+        <div class="mt-12 stat-row">
+            <div class="stat reveal reveal-d1">
+                <p class="font-semibold text-white text-[36px] sm:text-[44px] md:text-[56px] leading-[1.05]"><span class="counter" data-target="60000">60,000</span><span>+</span></p>
+                <p class="text-[15px] leading-[24px] font-medium text-white/80">Appointments booked daily</p>
             </div>
-            <div class="text-center rounded-[15px] p-[30px] bg-white/10 border border-[rgba(196,209,226,0.68)] reveal reveal-d2">
-                <p class="text-[40px] md:text-[50px] leading-[50px] font-semibold text-white"><span class="counter" data-target="295">295</span></p>
-                <p class="text-[14px] leading-[21px] font-medium text-white/80">Health services available</p>
+            <div class="stat reveal reveal-d2">
+                <p class="font-semibold text-white text-[36px] sm:text-[44px] md:text-[56px] leading-[1.05]"><span class="counter" data-target="295">295</span></p>
+                <p class="text-[15px] leading-[24px] font-medium text-white/80">Health services available</p>
             </div>
-            <div class="text-center rounded-[15px] p-[30px] bg-white/10 border border-[rgba(196,209,226,0.68)] reveal reveal-d3">
-                <p class="text-[40px] md:text-[50px] leading-[50px] font-semibold text-white"><span class="counter" data-target="8000">8,000</span><span>+</span></p>
-                <p class="text-[14px] leading-[21px] font-medium text-white/80">Facilities connected</p>
+            <div class="stat reveal reveal-d3">
+                <p class="font-semibold text-white text-[36px] sm:text-[44px] md:text-[56px] leading-[1.05]"><span class="counter" data-target="8000">8,000</span><span>+</span></p>
+                <p class="text-[15px] leading-[24px] font-medium text-white/80">Facilities connected</p>
             </div>
-            <div class="text-center rounded-[15px] p-[30px] bg-white/10 border border-[rgba(196,209,226,0.68)] reveal reveal-d4">
-                <p class="flex justify-center text-[40px] md:text-[50px] leading-[50px] font-semibold text-white">
+            <div class="stat reveal reveal-d4">
+                <p class="flex justify-center font-semibold text-white text-[36px] sm:text-[44px] md:text-[56px] leading-[1.05]">
                     <span>#</span>
                     <span class="counter" data-target="1">1</span>
                 </p>
-                <p class="text-[14px] leading-[21px] font-medium text-white/80">Data.ai worldwide ranking</p>
+                <p class="text-[15px] leading-[24px] font-medium text-white/80">Data.ai worldwide ranking</p>
             </div>
         </div>
     </div>
@@ -1125,34 +1116,33 @@
 <section class="bg-white py-16 lg:py-[90px]">
     <div class="max-w-[1168px] mx-auto px-6">
         <div class="text-center reveal">
-            <p class="section-label">Who it’s for</p>
-            <h2 class="mt-5 text-[30px] md:text-[37px] leading-[1] font-bold text-black">Every stakeholder. One platform. Clear value.</h2>
+            <h2 class="text-black h-section">Every stakeholder. One platform. Clear value.</h2>
             <p class="mt-5 max-w-[627px] mx-auto text-[18px] leading-[27px] text-[#666666]">AH Engage speaks to clinical, technical, and financial leaders with the outcomes each role cares about most.</p>
         </div>
         <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
 
             <!-- Clinical -->
-            <div class="outcome-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[396px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d1">
+            <div class="outcome-card px-10 py-[30px] lg:min-h-[396px] reveal reveal-d1 card">
                 <div class="w-12 h-12 rounded-[14px] bg-[#EFF6FF] flex items-center justify-center text-[#6CB1E8]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-stethoscope w-6 h-6" aria-hidden="true"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg></div>
-                <p class="mt-4 text-[12px] leading-[18px] font-bold tracking-wider text-adeahub-ink">CMO · CMIO · Clinical Director</p>
-                <h3 class="mt-[10px] text-[18px] leading-[18px] font-bold text-[#020202]">For Clinical Leaders</h3>
-                <p class="mt-[10px] text-[16px] leading-[24px] font-light text-[#080808]">Structured post-discharge care plans and medication management keep patients on protocol between visits — reducing readmission risk without adding to your clinical team’s workload. In-app messaging and telemedicine let your team resolve follow-up queries remotely, before they become readmissions.</p>
+                <h3 class="text-[18px] leading-[23px] font-bold text-[#020202] mt-5">For Clinical Leaders</h3>
+                <p class="t-label mt-1.5">CMO · CMIO · Clinical Director</p>
+                <p class="mt-[10px] text-[16px] leading-[24px] font-normal text-[#080808]">Structured post-discharge care plans and medication management keep patients on protocol between visits — reducing readmission risk without adding to your clinical team’s workload. In-app messaging and telemedicine let your team resolve follow-up queries remotely, before they become readmissions.</p>
             </div>
 
             <!-- IT -->
-            <div class="outcome-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[396px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d2">
+            <div class="outcome-card px-10 py-[30px] lg:min-h-[396px] reveal reveal-d2 card">
                 <div class="w-12 h-12 rounded-[14px] bg-[#F0F2F5] flex items-center justify-center text-[#54595F]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check w-6 h-6" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
-                <p class="mt-4 text-[12px] leading-[18px] font-bold tracking-wider text-adeahub-ink">CIO · CTO · VP Applications</p>
-                <h3 class="mt-[10px] text-[18px] leading-[18px] font-bold text-[#020202]">For IT Leaders</h3>
-                <p class="mt-[10px] text-[16px] leading-[24px] font-light text-[#080808]">Integrates with your existing HIS and EMR through standard HL7 and FHIR R4 interfaces — no rip-and-replace required. Modular architecture, provider-controlled data governance, and Zero Trust security give your IT team confidence from day one. Deploys on cloud or on-premise.</p>
+                <h3 class="text-[18px] leading-[23px] font-bold text-[#020202] mt-5">For IT Leaders</h3>
+                <p class="t-label mt-1.5">CIO · CTO · VP Applications</p>
+                <p class="mt-[10px] text-[16px] leading-[24px] font-normal text-[#080808]">Integrates with your existing HIS and EMR through standard HL7 and FHIR R4 interfaces — no rip-and-replace required. Modular architecture, provider-controlled data governance, and Zero Trust security give your IT team confidence from day one. Deploys on cloud or on-premise.</p>
             </div>
 
             <!-- Finance/Ops -->
-            <div class="outcome-card bg-white rounded-[15px] px-10 py-[30px] lg:min-h-[396px] shadow-[0_0_5px_0_rgba(231,231,231,0.5)] reveal reveal-d3">
+            <div class="outcome-card px-10 py-[30px] lg:min-h-[396px] reveal reveal-d3 card">
                 <div class="w-12 h-12 rounded-[14px] bg-[#FFF8E6] flex items-center justify-center text-[#F3D06F]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bar-chart-3 w-6 h-6" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
-                <p class="mt-4 text-[12px] leading-[18px] font-bold tracking-wider text-adeahub-ink">CFO · VP Operations · Administrator</p>
-                <h3 class="mt-[10px] text-[18px] leading-[18px] font-bold text-[#020202]">For Administrators</h3>
-                <p class="mt-[10px] text-[16px] leading-[24px] font-light text-[#080808]">Fewer no-shows, lower call-centre volume, and reduced per-patient administrative cost. Virtual queuing shortens wait times without adding front-desk headcount. The in-app marketplace and digital billing create new revenue streams while cutting collection cycles.</p>
+                <h3 class="text-[18px] leading-[23px] font-bold text-[#020202] mt-5">For Administrators</h3>
+                <p class="t-label mt-1.5">CFO · VP Operations · Administrator</p>
+                <p class="mt-[10px] text-[16px] leading-[24px] font-normal text-[#080808]">Fewer no-shows, lower call-centre volume, and reduced per-patient administrative cost. Virtual queuing shortens wait times without adding front-desk headcount. The in-app marketplace and digital billing create new revenue streams while cutting collection cycles.</p>
             </div>
 
         </div>
@@ -1165,8 +1155,7 @@
 <section class="bg-[#5298F8] ah-deco py-16 lg:py-[90px]" style="--orb1:-3s;--orb2:-7s">
     <div class="max-w-[1168px] mx-auto px-6">
         <div class="text-center reveal">
-            <p class="section-label on-blue">Breadth of deployment</p>
-            <h2 class="mt-5 max-w-[896px] mx-auto text-[30px] md:text-[37px] leading-[1] font-bold text-white">Deployed worldwide by government and private healthcare organizations</h2>
+            <h2 class="max-w-[896px] mx-auto text-white h-section">Deployed worldwide by government and private healthcare organizations</h2>
             <p class="mt-5 max-w-[627px] mx-auto text-[18px] leading-[27px] text-white/[0.88]">AH Engage has been deployed at national and enterprise scale across multiple markets globally — each deployment a proof point that this product can run your most complex patient engagement requirements.</p>
         </div>
         <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -1175,48 +1164,48 @@
                 <div class="flex items-center gap-[10px]">
                     <div class="w-[61px] shrink-0 flex justify-center"><img src="../assets/images/flags/my.webp" alt="Malaysia flag" width="800" height="400" class="w-12 h-6" loading="lazy" decoding="async"></div>
                     <div>
-                        <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">Malaysia</h3>
-                        <p class="mt-[6px] text-[12px] leading-[18px] text-[#6B6B6B]">Ministry of Health</p>
+                        <h3 class="text-[16px] leading-[20px] font-bold text-[#1A1A1A]">Malaysia</h3>
+                        <p class="mt-[6px] text-[13px] leading-[21px] text-[#6B6B6B]">Ministry of Health</p>
                     </div>
                 </div>
-                <p class="mt-[10px] text-[14px] leading-[21px] font-light text-[#080808]">National health platform serving 8,000+ public facilities. Ranked #1 worldwide by Data.ai for install penetration and open rate.</p>
-                <span class="mt-[10px] inline-block bg-[#EFF6FF] rounded-[25px] px-5 py-[5px] text-[14px] leading-[21px] font-bold text-[#666666]">#1 Data.ai Worldwide</span>
+                <p class="mt-[10px] text-[15px] leading-[24px] font-normal text-[#080808]">National health platform serving 8,000+ public facilities. Ranked #1 worldwide by Data.ai for install penetration and open rate.</p>
+                <span class="mt-[10px] inline-block bg-[#EFF6FF] rounded-[25px] px-5 py-[5px] text-[15px] leading-[22.5px] font-bold text-[#666666]">#1 Data.ai Worldwide</span>
             </div>
 
             <div class="proof-card bg-[rgba(255,255,255,0.99)] rounded-[15px] px-[30px] pt-[37px] pb-[30px] lg:min-h-[305px] reveal reveal-d2">
                 <div class="flex items-center gap-[10px]">
                     <div class="w-[61px] shrink-0 flex justify-center"><img src="../assets/images/flags/ae.webp" alt="UAE flag" width="800" height="400" class="w-[49px] h-auto" loading="lazy" decoding="async"></div>
                     <div>
-                        <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">UAE</h3>
-                        <p class="mt-[6px] text-[12px] leading-[18px] text-[#6B6B6B]">Ministry of Health &amp; Prevention</p>
+                        <h3 class="text-[16px] leading-[20px] font-bold text-[#1A1A1A]">UAE</h3>
+                        <p class="mt-[6px] text-[13px] leading-[21px] text-[#6B6B6B]">Ministry of Health &amp; Prevention</p>
                     </div>
                 </div>
-                <p class="mt-[10px] text-[14px] leading-[21px] font-light text-[#080808]">Reaya patient platform deployed in partnership with MOHAP, Du Telecom, and Emirates Health Services across all UAE governorates.</p>
-                <span class="mt-[10px] inline-block bg-[#FFF5DB] rounded-[25px] px-5 py-[5px] text-[14px] leading-[21px] font-bold text-[#666666]">Stevie Award Gold 2021</span>
+                <p class="mt-[10px] text-[15px] leading-[24px] font-normal text-[#080808]">Reaya patient platform deployed in partnership with MOHAP, Du Telecom, and Emirates Health Services across all UAE governorates.</p>
+                <span class="mt-[10px] inline-block bg-[#FFF5DB] rounded-[25px] px-5 py-[5px] text-[15px] leading-[22.5px] font-bold text-[#666666]">Stevie Award Gold 2021</span>
             </div>
 
             <div class="proof-card bg-[rgba(255,255,255,0.99)] rounded-[15px] px-[30px] pt-[37px] pb-[30px] lg:min-h-[305px] reveal reveal-d3">
                 <div class="flex items-center gap-[10px]">
-                    <div class="w-[61px] shrink-0 flex justify-center"><img src="../assets/images/icons/earth.webp" alt="Asia Pacific" class="w-[33px] h-[33px] object-contain" width="96" height="96" loading="lazy" decoding="async"></div>
+                    <div class="w-[61px] shrink-0 flex justify-center"><span class="inline-flex w-11 h-11 rounded-[12px] bg-[#EEF4FF] text-adeahub-ink items-center justify-center" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe w-[22px] h-[22px]" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span></div>
                     <div>
-                        <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">Asia Pacific</h3>
-                        <p class="mt-[6px] text-[12px] leading-[18px] text-[#6B6B6B]">Multi-market deployments</p>
+                        <h3 class="text-[16px] leading-[20px] font-bold text-[#1A1A1A]">Asia Pacific</h3>
+                        <p class="mt-[6px] text-[13px] leading-[21px] text-[#6B6B6B]">Multi-market deployments</p>
                     </div>
                 </div>
-                <p class="mt-[10px] text-[14px] leading-[21px] font-light text-[#080808]">Platform foundations built across the AMEA region, serving large hospital groups and integrated health networks.</p>
-                <span class="mt-[10px] inline-block bg-[#E7FFF0] rounded-[25px] px-5 py-[5px] text-[14px] leading-[21px] font-bold text-[#666666]">AMEA Regional Scale</span>
+                <p class="mt-[10px] text-[15px] leading-[24px] font-normal text-[#080808]">Platform foundations built across the AMEA region, serving large hospital groups and integrated health networks.</p>
+                <span class="mt-[10px] inline-block bg-[#E7FFF0] rounded-[25px] px-5 py-[5px] text-[15px] leading-[22.5px] font-bold text-[#666666]">AMEA Regional Scale</span>
             </div>
 
             <div class="proof-card bg-[rgba(255,255,255,0.99)] rounded-[15px] px-[30px] pt-[37px] pb-[30px] lg:min-h-[305px] reveal reveal-d4">
                 <div class="flex items-center gap-[10px]">
-                    <div class="w-[61px] shrink-0 flex justify-center"><img src="../assets/images/icons/facilities.webp" alt="Enterprise health groups" class="w-[45px] h-[45px] object-contain" width="96" height="96" loading="lazy" decoding="async"></div>
+                    <div class="w-[61px] shrink-0 flex justify-center"><span class="inline-flex w-11 h-11 rounded-[12px] bg-[#EEF4FF] text-adeahub-ink items-center justify-center" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building-2 w-[22px] h-[22px]" aria-hidden="true"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg></span></div>
                     <div>
-                        <h3 class="text-[14px] leading-[16.8px] font-bold text-[#1A1A1A]">Enterprise Health Groups</h3>
-                        <p class="mt-[6px] text-[12px] leading-[18px] text-[#6B6B6B]">Private hospital networks</p>
+                        <h3 class="text-[16px] leading-[20px] font-bold text-[#1A1A1A]">Enterprise Health Groups</h3>
+                        <p class="mt-[6px] text-[13px] leading-[21px] text-[#6B6B6B]">Private hospital networks</p>
                     </div>
                 </div>
-                <p class="mt-[10px] text-[14px] leading-[21px] font-light text-[#080808]">Deployed for enterprise hospital groups requiring white-labelled patient apps branded to their identity — integrated with existing HIS and EMR infrastructure.</p>
-                <span class="mt-[10px] inline-block bg-[rgba(158,158,158,0.09)] rounded-[25px] px-5 py-[5px] text-[14px] leading-[21px] font-bold text-[#666666]">White-Label Ready</span>
+                <p class="mt-[10px] text-[15px] leading-[24px] font-normal text-[#080808]">Deployed for enterprise hospital groups requiring white-labelled patient apps branded to their identity — integrated with existing HIS and EMR infrastructure.</p>
+                <span class="mt-[10px] inline-block bg-[rgba(158,158,158,0.09)] rounded-[25px] px-5 py-[5px] text-[15px] leading-[22.5px] font-bold text-[#666666]">White-Label Ready</span>
             </div>
 
         </div>
@@ -1228,37 +1217,36 @@
 ═══════════════════════════════════════════════════ -->
 <section class="bg-white pt-16 pb-16 lg:pt-[90px] lg:pb-[80px]">
     <div class="max-w-[1188px] mx-auto px-6 text-center reveal">
-        <p class="section-label">Technical foundation</p>
-        <h2 class="mt-5 max-w-[896px] mx-auto text-[30px] md:text-[37px] leading-[1] font-bold text-black">Built to integrate with what you already have — and scale to where you're going.</h2>
+        <h2 class="max-w-[896px] mx-auto text-black h-section">Built to integrate with what you already have — and scale to where you're going.</h2>
 
         <!-- Badge row -->
         <div class="mt-[30px] flex flex-wrap justify-center gap-6">
             <div class="w-[181px] h-[120px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
-                <p class="text-[14px] leading-[21px] font-bold text-adeahub-ink">HL7</p>
-                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Messaging</p>
+                <p class="text-[15px] leading-[24px] font-bold text-adeahub-ink">HL7</p>
+                <p class="text-[13px] leading-[21px] font-medium tracking-[0.01em] text-[#666666]">Messaging</p>
             </div>
             <div class="w-[181px] h-[120px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
-                <p class="text-[14px] leading-[21px] font-bold text-adeahub-ink">FHIR R4</p>
-                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Interoperability</p>
+                <p class="text-[15px] leading-[24px] font-bold text-adeahub-ink">FHIR R4</p>
+                <p class="text-[13px] leading-[21px] font-medium tracking-[0.01em] text-[#666666]">Interoperability</p>
             </div>
             <div class="w-[181px] h-[120px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
                 <div class="h-[30px]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-braces w-6 h-6 text-[#666666]" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg></div>
-                <p class="text-[14px] leading-[21px] font-bold text-adeahub-ink">REST APIs</p>
-                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Open Integration</p>
+                <p class="text-[15px] leading-[24px] font-bold text-adeahub-ink">REST APIs</p>
+                <p class="text-[13px] leading-[21px] font-medium tracking-[0.01em] text-[#666666]">Open Integration</p>
             </div>
             <div class="w-[181px] h-[120px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
                 <div class="h-[30px]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check w-6 h-6 text-[#16A34A]" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
-                <p class="text-[14px] leading-[21px] font-bold text-adeahub-ink">Zero Trust</p>
-                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Security</p>
+                <p class="text-[15px] leading-[24px] font-bold text-adeahub-ink">Zero Trust</p>
+                <p class="text-[13px] leading-[21px] font-medium tracking-[0.01em] text-[#666666]">Security</p>
             </div>
             <div class="w-[181px] h-[120px] p-2 flex flex-col items-center justify-center gap-[5px] bg-[#F9FAFB] rounded-[15px] border border-[rgba(196,209,226,0.68)]">
                 <div class="h-[30px]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud w-6 h-6 text-[#448FCA]" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
-                <p class="text-[14px] leading-[21px] font-bold text-adeahub-ink">Cloud &amp; On-Premise</p>
-                <p class="text-[11px] leading-[16.5px] font-medium uppercase tracking-wider text-[#666666]">Deployment</p>
+                <p class="text-[15px] leading-[24px] font-bold text-adeahub-ink">Cloud &amp; On-Premise</p>
+                <p class="text-[13px] leading-[21px] font-medium tracking-[0.01em] text-[#666666]">Deployment</p>
             </div>
         </div>
 
-        <p class="mt-5 max-w-[762px] mx-auto text-[18px] leading-[27px] font-light text-[#111111]">
+        <p class="mt-5 max-w-[762px] mx-auto text-[18px] leading-[27px] font-normal text-[#111111]">
             AH Engage connects to your existing hospital systems through open HL7 and FHIR R4 standards, supporting full interoperability with your HIS, EMR, laboratory, and pharmacy platforms. Built on Zero Trust Architecture with provider-controlled data governance — available as a cloud-hosted or on-premise deployment to meet your jurisdiction’s data residency requirements.
         </p>
         <a href="../ah-connect/" class="mt-5 inline-flex items-center gap-[9px] p-[10px] text-[16px] leading-[16px] font-bold text-adeahub-ink hover:text-blue-700 group">
@@ -1276,8 +1264,7 @@
         <div class="absolute w-96 h-96 bg-white rounded-full blur-3xl -bottom-20 -right-20"></div>
     </div>
     <div class="max-w-[1188px] mx-auto px-6 reveal">
-        <p class="text-[12px] leading-[18px] font-bold tracking-widest text-[#EFF6FF]">Start the conversation</p>
-        <h2 class="mt-5 max-w-[915px] mx-auto text-[36px] md:text-[50px] leading-[1.1] font-bold tracking-tight text-white">
+        <h2 class="max-w-[915px] mx-auto text-white h-cta">
             See how AH Engage transforms patient access for health systems worldwide.
         </h2>
         <p class="mt-5 max-w-[627px] mx-auto text-[18px] leading-[27px] text-white/[0.88]">
