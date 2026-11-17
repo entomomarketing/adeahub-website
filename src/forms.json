@@ -21,6 +21,23 @@
       "required": ["email"],
       "optional": [],
       "consent": true
+    },
+    "careers": {
+      "_about": "The careers page's own form. HubSpot has no job-application form, so it is delivered through the Contact form with the enquiry type Careers: only the 'send' fields go to HubSpot as fields, and everything else is written into the Contact form's message.",
+      "page": "careers/index.html",
+      "hubspotVar": "HS_FORM_CONTACT",
+      "required": ["firstname", "lastname", "email", "company", "about"],
+      "optional": ["phone", "region", "job_area", "linkedin_url", "cv_url"],
+      "consent": true,
+      "hubspot": {
+        "send": ["firstname", "lastname", "email", "company", "region"],
+        "fixed": { "enquiry_type": "Careers" },
+        "message": {
+          "title": "Careers application from the website",
+          "lines": [["Area of interest", "job_area"], ["Phone", "phone"], ["LinkedIn", "linkedin_url"], ["CV or portfolio", "cv_url"]],
+          "body": "about"
+        }
+      }
     }
   },
   "fields": {
@@ -30,6 +47,11 @@
     "company": { "kind": "text", "max": 150 },
     "jobtitle": { "kind": "text", "max": 150 },
     "message": { "kind": "multiline", "max": 2000 },
+    "about": { "kind": "multiline", "max": 1500 },
+    "phone": { "kind": "phone", "max": 30 },
+    "linkedin_url": { "kind": "url", "max": 300 },
+    "cv_url": { "kind": "url", "max": 300 },
+    "job_area": { "kind": "enum" },
     "enquiry_type": { "kind": "enum" },
     "region": { "kind": "enum" },
     "area_of_interest": { "kind": "enum-multi" }
@@ -37,6 +59,7 @@
   "options": {
     "enquiry_type": ["General Question", "Sales / Commercial", "Partnership Opportunity", "Media / Press", "Careers", "Investor Relations", "Others"],
     "region": ["Southeast & East Asia Pacific", "Middle East, Asia & Africa", "Americas & Europe"],
-    "area_of_interest": ["adeahub Care", "adeahub Connect", "adeahub Engage", "adeahub Insights", "adeahub Platform"]
+    "area_of_interest": ["adeahub Care", "adeahub Connect", "adeahub Engage", "adeahub Insights", "adeahub Platform"],
+    "job_area": ["Engineering", "Product", "Delivery and implementation", "Support services", "Commercial", "Finance, legal and marketing", "Other"]
   }
 }

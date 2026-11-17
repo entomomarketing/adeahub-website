@@ -14,7 +14,7 @@ adeahub-website/
 │   ├── ah-engage/index.html    /ah-engage/
 │   ├── ah-care/ …              /ah-care/, /ah-connect/, /ah-insights/, /ah-outbreak-management/, /workwise/
 │   ├── about-us/ …             /about-us/, /customers/, /newsroom/, /blogs/, /contact-us/, /talk-to-us/
-│   ├── careers/index.html      /careers/               (open applications; not on the live site yet)
+│   ├── careers/index.html      /careers/               (team page with an "introduce yourself" form; not on the live site yet)
 │   ├── 404.html                "page not found" page (served by the host for unknown URLs)
 │   ├── embeds/                 animated product previews loaded in <iframe>s (not indexed)
 │   ├── assets/
@@ -22,9 +22,8 @@ adeahub-website/
 │   │   ├── css/base.css        shared design-system rules (type roles, cards, stat rows, scroll reveal …)
 │   │   ├── js/site.js          shared behaviour (menus, scroll reveal, counters, card tilt)
 │   │   ├── js/forms.js         form sending (Turnstile, consent, errors), on pages with a form
-│   │   ├── js/job-apply.js     careers page: the embedded HubSpot job application form
 │   │   ├── fonts/              self-hosted Outfit + Inter (WOFF2, with OFL licences)
-│   │   ├── images/             brand/ home/ hospitals/ logos/{clients,hospitals}/ team/ flags/ blog/ about/ social/
+│   │   ├── images/             brand/ home/ hospitals/ logos/{clients,hospitals}/ team/ flags/ blog/ about/ careers/ social/
 │   │   └── downloads/          company profile PDF, media kit ZIP
 │   ├── robots.txt, sitemap.xml, llms.txt, site.webmanifest     (generated)
 │   ├── .well-known/security.txt  security contact (generated)
@@ -131,16 +130,16 @@ must be on Cloudflare).
 
 ## Forms and security
 
-The contact, demo and newsletter forms post to the site's own Worker (`src/worker.js`, `POST /api/forms/<intent>`),
+The contact, demo, newsletter and careers forms post to the site's own Worker (`src/worker.js`, `POST /api/forms/<intent>`),
 which checks the origin, rate, honeypot, Cloudflare Turnstile token and every field (against `src/forms.json`)
 before forwarding to adeahub's HubSpot forms. Every form has a required consent checkbox. Staging submissions reach
 HubSpot marked `[TEST: staging]`. Google Tag Manager loads only on adeahub.co itself. The full description, the
 HubSpot steps still to do and the settings for when adeahub.co moves to Cloudflare are in
 [docs/FORMS-AND-SECURITY.md](docs/FORMS-AND-SECURITY.md).
 
-Job applications on the careers page are the one exception: they carry a CV, which HubSpot's submission API does
-not accept, so the page embeds HubSpot's own "Job application" form and restyles it. The one-time HubSpot setup is
-in [docs/JOB-APPLICATIONS.md](docs/JOB-APPLICATIONS.md); until the form ID is set, the page points to the contact page.
+The careers form arrives in HubSpot through the Contact form with the enquiry type Careers, and asks for links
+instead of a CV upload (HubSpot's submission API does not accept files). Details, photo credits and the route to
+CV uploads are in [docs/JOB-APPLICATIONS.md](docs/JOB-APPLICATIONS.md).
 
 On any other static host, upload the contents of `public/` and configure the same behaviour.
 

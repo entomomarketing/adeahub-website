@@ -3,7 +3,8 @@
 
    POST /api/forms/<intent>  checks the origin, size and rate, drops honeypot hits, verifies Cloudflare Turnstile,
                              validates and cleans every field against src/forms.json, then forwards the submission to
-                             HubSpot's Forms API (portal HS_PORTAL, one HubSpot form per intent).
+                             HubSpot's Forms API (portal HS_PORTAL, one HubSpot form per intent; the careers form goes
+                             through the Contact form with the enquiry type Careers, see hubspotFields).
    POST /api/csp-report      receives Content-Security-Policy reports and logs them (Workers Logs).
 
    Settings (wrangler.jsonc vars; secrets in the dashboard or with `wrangler versions secret put`):
@@ -53,7 +54,7 @@ function validateOne(name, raw) {
   const out = [];
   for (const r of values) {
     if (r !== null && typeof r === "object") return { error: "is not valid" };
-    const v = clean(r, rule.kind === "multiline");
+    let v = clean(r, rule.kind === "multiline");
     if (!v) continue;
     if (rule.max && v.length > rule.max) return { error: "must be " + rule.max + " characters or fewer" };
     switch (rule.kind) {
@@ -69,6 +70,18 @@ function validateOne(name, raw) {
         if ((v.match(/https?:\/\//gi) || []).length > 3) return { error: "contains too many links" };
         if (/[<>]/.test(v)) return { error: "contains characters that are not allowed" };
         break;
+      case "phone":
+        if (!/^\+?[0-9()\-.\s]{6,30}$/.test(v) || (v.match(/[0-9]/g) || []).length < 6) return { error: "is not a valid phone number" };
+        break;
+      case "url": {
+        // people paste "linkedin.com/in/name": complete it, then insist on a plain web address
+        if (/[<>"'\s]/.test(v)) return { error: "is not a valid link" };
+        let u; try { u = new URL(/^[a-z][a-z0-9+.-]*:/i.test(v) ? v : "https://" + v); } catch (e) { return { error: "is not a valid link" }; }
+        if (u.protocol !== "https:" && u.protocol !== "http:") return { error: "is not a valid link" };
+        if (u.username || u.password || !/^[a-z0-9-]+(\.[a-z0-9-]+)+$/i.test(u.hostname)) return { error: "is not a valid link" };
+        v = u.href;
+        break;
+      }
       case "enum":
       case "enum-multi":
         if (!(SCHEMA.options[name] || []).includes(v)) return { error: "is not one of the offered options" };
@@ -106,6 +119,20 @@ async function turnstileOk(env, token, ip) {
     return !!d.success;
   } catch (e) { console.log("turnstile: verify failed", String(e)); return false; }
 }
+// The [name, value] pairs HubSpot receives. Most intents send every cleaned field as it is. An intent with a
+// "hubspot" block (careers) is delivered through another form: it sends only the listed fields, adds the fixed
+// ones, and writes the remaining answers into that form's message, one labelled line each, then the free text.
+function hubspotFields(spec, cleaned) {
+  const map = spec.hubspot;
+  if (!map) return Object.entries(cleaned);
+  const out = map.send.filter(n => cleaned[n]).map(n => [n, cleaned[n]]);
+  for (const [name, value] of Object.entries(map.fixed || {})) out.push([name, value]);
+  const lines = [map.message.title];
+  for (const [label, name] of map.message.lines) if (cleaned[name]) lines.push(label + ": " + cleaned[name]);
+  if (cleaned[map.message.body]) lines.push("", cleaned[map.message.body]);
+  out.push(["message", lines.join("\n")]);
+  return out;
+}
 function cookieValue(request, name) {
   const m = (request.headers.get("Cookie") || "").match("(?:^|; )" + name + "=([^;]*)");
   try { return m ? decodeURIComponent(m[1]) : ""; } catch (e) { return ""; }
@@ -142,7 +169,7 @@ async function handleForm(request, env, url, intent) {
   const page = body.page && typeof body.page === "object" ? body.page : {};
   const pageUri = typeof page.uri === "string" && page.uri.startsWith(origin + "/") ? page.uri.split("#")[0].slice(0, 500) : origin + "/";
   const pageName = (production ? "" : TEST_PREFIX) + clean(page.title || "").slice(0, 200);
-  const hsFields = Object.entries(cleaned).map(([name, value]) => ({ objectTypeId: "0-1", name, value }));
+  const hsFields = hubspotFields(SCHEMA.intents[intent], cleaned).map(([name, value]) => ({ objectTypeId: "0-1", name, value }));
   const payload = { submittedAt: Date.now(), fields: hsFields, context: { pageUri, pageName } };
   const hutk = production ? cookieValue(request, "hubspotutk") : "";
   if (hutk && /^[0-9a-f]{32}$/.test(hutk)) payload.context.hutk = hutk;

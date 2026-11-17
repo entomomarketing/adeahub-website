@@ -1,120 +1,91 @@
-# Job applications on the adeahub website
+# The careers page and its form
 
-The careers page (`/careers/`, added 2026-11-17) invites open applications: there are no role pages yet. The
-page is the site's own; the application form on it is a HubSpot form, embedded and given the site's look by
-`public/assets/js/job-apply.js`. This is the same approach as the entomo website's role pages.
+`/careers/` (added 2026-11-17) invites people to introduce themselves. There are no role pages and the page
+makes no promise that roles will open. It exists only in this repository: adeahub.co has no careers page.
 
-**Why this form is embedded and the other three are not.** The contact, demo and newsletter forms go through the
-site's Worker (`docs/FORMS-AND-SECURITY.md`). An application carries a CV, and HubSpot's form-submission API does
-not accept files; HubSpot's own embedded form does. A side benefit: the form's fields are edited in HubSpot, with
-no change to the site.
+## The form ("Introduce yourself")
 
-**Status: the form is not connected yet.** `FORM_ID` in `job-apply.js` is empty, so the page shows "Online
-applications open shortly" and sends people to the contact page (enquiry type Careers). Nothing from HubSpot loads
-until the ID is set. To connect it, do the one-time setup below and put the form ID in `FORM_ID`.
+The page has its own form, `<form data-form="careers">`, sent the same way as the contact, demo and newsletter
+forms: `public/assets/js/forms.js` posts it to the site's Worker (`POST /api/forms/careers`), which applies every
+check described in `docs/FORMS-AND-SECURITY.md` (origin, rate limit, honeypot, Turnstile, consent, field
+validation) and forwards it to HubSpot. On success the page shows its thank-you panel.
 
-## One-time setup in HubSpot (portal 243938139, the adeahub account)
-
-### 1. Contact properties (Settings > Properties > Contact properties > Create property)
-
-Create them in a group such as "Job applications". Use exactly these **internal names**: the page writes to the
-last four, and the same names are used on the entomo site, so role pages can be added later without new properties.
-
-| label | internal name | field type | notes |
+| field | name | required | checked as |
 |---|---|---|---|
-| CV | `cv_file` | File | one file |
-| Cover letter | `cover_letter_file` | File | one file |
-| Area of interest | `job_area_of_interest` | Dropdown select | options: Engineering; Product; Delivery and implementation; Support services; Commercial; Finance, legal and marketing; Other (the areas the careers page lists) |
-| Note from the applicant | `application_message` | Multi-line text | |
-| Role applied for | `job_applied_for` | Single-line text | filled by the page: "Open application" |
-| Role slug | `job_slug` | Single-line text | filled by the page: `open-application` |
-| Role location | `job_location` | Single-line text | filled by the page (empty for open applications) |
-| Application source | `application_source` | Single-line text | filled by the page; starts with `[TEST: staging]` for tests |
+| First name, Last name | `firstname`, `lastname` | yes | names |
+| Email | `email` | yes | email address |
+| Phone | `phone` | no | digits, spaces, `+ ( ) - .`, at least six digits |
+| Where you work or study now | `company` | yes | text |
+| Area of interest | `job_area` | no | one of the seven areas in `src/forms.json` |
+| Where you are based | `region` | no | one of the Contact form's three regions |
+| LinkedIn profile | `linkedin_url` | no | web address; `https://` is added if it was left out |
+| Link to your CV or portfolio | `cv_url` | no | web address, as above |
+| About you | `about` | yes | up to 1,500 characters, at most three links |
 
-Existing properties reused: First name, Last name, Email, Phone number, City, Country/Region, LinkedIn URL.
+**Where it arrives in HubSpot.** HubSpot has no job-application form, so the Worker delivers this form through the
+existing **Contact** form (`HS_FORM_CONTACT`) with **Enquiry Type = Careers**, an option that form already has. Name,
+email, organisation and region go to HubSpot as fields. Everything else is written into the Contact form's message,
+one labelled line each, followed by what the person wrote:
 
-### 2. The form (Marketing > Forms)
+```
+Careers application from the website
+Area of interest: Delivery and implementation
+Phone: +60 12 345 6789
+LinkedIn: https://linkedin.com/in/…
+CV or portfolio: https://drive.google.com/…
 
-The quickest reliable route is to **clone the existing "Talk To Us" form** and change its fields: a clone is the
-same kind of form as the two the live site already embeds, which is the kind this embed is tested with. Name it
-**Job application**.
+Ten years implementing hospital systems…
+```
 
-| field | required | layout |
+To find them in HubSpot: Contact form submissions (or contacts) where Enquiry Type is Careers. The mapping is the
+`hubspot` block of the `careers` intent in `src/forms.json`; `hubspotFields` in `src/worker.js` applies it. "Where
+you work or study now" is required because the Contact form requires Organisation.
+
+**No file upload.** HubSpot's form-submission API does not accept files, so the form asks for a link to a CV or a
+LinkedIn profile instead of an upload.
+
+## If CV uploads are wanted later
+
+HubSpot's own embedded form is the supported way to take a file without an API key (the entomo website's role
+pages work this way). It needs a "Job application" form created in adeahub's HubSpot account with file-type
+properties, and a script that embeds and restyles it. That script was written and tested on 2026-11-17 and then
+replaced by the form above: it is `public/assets/js/job-apply.js` in commit `28b9f4a`, with the HubSpot setup steps
+in that commit's version of this file. Restoring it also means allowing HubSpot's hosts in the Content-Security-Policy
+again (same commit).
+
+A dedicated HubSpot form would also keep applicants apart from sales enquiries and allow "set contacts as marketing
+contacts" to be switched off for them. With the Contact-form route, applicants are created the same way as any
+contact-form enquiry.
+
+## Copy and people on the page
+
+- The copy states only what the site already says: the verified figures (35M+ users, 8,500+ health facilities,
+  200M+ patient records, 17+ locations, 25+ years), the five core values from the About page, and the team areas
+  visible in the About page's team titles. The "What happens next" steps and the line "We use these details only to
+  consider you for roles at adeahub" were written for this page and should be confirmed by whoever owns hiring.
+- "Meet some of the team" shows eight real colleagues with the portraits, names and titles used on the About page.
+  When someone's title changes or they leave, update both pages.
+- The other five photos are stock photographs, not adeahub staff, and the page does not present them as staff.
+
+## Photo credits
+
+All five are from Unsplash under the [Unsplash License](https://unsplash.com/license) (free for commercial use, no
+attribution required), downloaded 2026-11-17, cropped and converted to WebP in `public/assets/images/careers/`.
+
+| file | photographer | source |
 |---|---|---|
-| First name, Last name | yes | side by side |
-| Email, Phone number | yes | side by side |
-| City, Country/Region | no | side by side |
-| LinkedIn URL | no | |
-| Area of interest (`job_area_of_interest`) | no | |
-| CV (`cv_file`) | **yes** | help text: "PDF or Word, up to 10 MB" |
-| Cover letter (`cover_letter_file`) | no | |
-| Note from the applicant (`application_message`) | no | label: "Anything you would like us to know" |
-| Role applied for, Role slug, Role location, Application source | hidden | toggle "Make this field hidden" |
+| `team-around-laptop.webp` (hero) | Vitaly Gariev | https://unsplash.com/photos/diverse-team-collaborating-around-a-laptop-in-office-yd_RKGH_RH4 |
+| `clinicians-reviewing-tablet.webp` (hero, small) | Vitaly Gariev | https://unsplash.com/photos/2kopEHjST-g |
+| `team-at-conference-table.webp` | Ngital | https://unsplash.com/photos/six-colleagues-collaborating-around-a-conference-table-with-laptops-RdEFWm0N84o |
+| `clinical-team-in-hospital-corridor.webp` | Luis Melendez | https://unsplash.com/photos/Pd4lRfKo16U |
+| `colleagues-at-laptop.webp` | Vitaly Gariev | https://unsplash.com/photos/two-colleagues-collaborating-on-a-laptop-in-office-YDWdxElP3XI |
 
-Options:
-
-- **Consent:** turn on the consent checkbox ("Notice and consent"), required, with the text *"I agree to adeahub
-  processing the details I have entered to consider me for roles."* The other forms on the site ask for the same
-  consent.
-- **Submit button:** "Submit application".
-- **After submit:** an inline thank-you message, for example "Thank you for applying. Our talent team will review
-  your application and contact you if there is a match."
-- **Pre-populate fields with known values:** off (people apply from shared computers).
-- **Spam protection (CAPTCHA):** on. The site's Turnstile check covers only the Worker's forms, not this one. The
-  site's security policy already allows reCAPTCHA's hosts.
-- **Set contacts as marketing contacts:** off, so applicants do not count against the marketing-contact tier.
-- **Notifications:** send submission notifications to the talent team's inbox.
-- **Style:** leave HubSpot's defaults. The page replaces them: Outfit, the site's input and button styles, two
-  columns for side-by-side fields, a dashed upload area (`FORM_CSS` in `job-apply.js`).
-
-Publish, open **Share > Embed code**, and copy the form ID (the `formId` value, a GUID).
-
-### 3. Trusted domains
-
-Settings > Tracking & Analytics > Tracking code > Advanced > Site domains: add
-`staging-adeahub.misty-dawn-f588.workers.dev`, `adeahub.misty-dawn-f588.workers.dev` and `adeahub.co`.
-HubSpot can mark submissions from domains that are not listed as spam.
-
-### 4. Connect it
-
-Put the form ID in `FORM_ID` at the top of `public/assets/js/job-apply.js`, run `python3 tools/build.py` (the
-script link carries a version hash), commit to `staging`, and submit one test application on the staging address
-(with the owner's go-ahead: it creates a contact). Check that the CV arrives, that the four hidden fields are
-filled, and that the thank-you message shows. Delete the test contact afterwards.
-
-## How it works on the page
-
-- The page holds `<div id="job-apply-form" data-job-title="Open application" data-job-slug="open-application"
-  data-job-location="">` with the fallback inside it. `tools/build.py` adds the script tag to any page that has
-  this element.
-- With a `FORM_ID`, the script shows a loading placeholder, loads HubSpot's embed
-  (`https://js-na2.hsforms.net/forms/embed/v2.js`, `hbspt.forms.create`), and HubSpot draws the form in an iframe
-  it writes into the element. The iframe is same-origin, so the script adds the site's styles to it and fills the
-  four hidden fields. If the embed does not arrive within 15 seconds, the fallback comes back.
-- Submissions from anywhere but adeahub.co and the workers.dev production address are marked
-  `[TEST: staging]` in `application_source`.
-- Every accepted application pushes `{ event: "hs_form_success", form_intent: "job_application", job_slug, job_title,
-  job_location }` to the dataLayer for Tag Manager.
-- The Content-Security-Policy (report-only) in `public/_headers` allows `*.hsforms.net` (script), `*.hsforms.com`
-  (form data, submission) and `www.gstatic.com` (reCAPTCHA).
-
-## How applications appear in HubSpot
-
-- Each application is a submission on the contact (Marketing > Forms > Job application > Submissions), with the CV
-  and cover letter as file links.
-- A contact who applies twice keeps both submissions on the timeline; the contact properties show the latest.
-- Test applications: `application_source` starts with `[TEST: staging]`.
-
-## Copy on the careers page
-
-The page states only what the site already says elsewhere: the verified figures (35M+ users, 8,500+ health
-facilities, 200M+ patient records, 17+ locations, 25+ years), the five core values from the About page, and the
-team areas visible in the About page's team titles. The three "What happens next" steps and the line about how
-application details are used were written for this page and should be confirmed by whoever owns hiring.
+The Unsplash License covers the photographs; it does not include a release from the people shown. That is normal
+for stock used as general illustration, and a reason not to caption these people as employees or quote them.
 
 ## Later: posting roles
 
-The entomo website generates one page per role from a JSON file per role (`tools/jobs/` in its repository), each
-embedding this same HubSpot form with the role in the hidden fields, plus job-posting structured data for Google.
-The same model fits here: role pages would set `data-job-title`, `data-job-slug` and `data-job-location` on their
-own `#job-apply-form` element, and the careers page would list them above the open application.
+The entomo website generates one page per role from a JSON file per role (`tools/jobs/` in its repository), plus
+job-posting structured data for Google. The same model fits here: role pages listed on the careers page above the
+"Introduce yourself" form. Roles with applications by CV are the point at which the embedded HubSpot form above is
+worth setting up.

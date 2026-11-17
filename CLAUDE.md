@@ -22,9 +22,8 @@ Links are relative (`../platform/`), so pages need a web server; opening them vi
 | `public/assets/css/base.css` | shared design-system rules: type roles (`.h-section`, `.h-cta`, `.t-label`, `.tag-chip`), surfaces (`.card`, `.feature`, `.stat-row`/`.stat`), reveal, btn-glow/shimmer, blobs, card hovers. Hand-edited. Linked *before* page `<style>`s |
 | `public/assets/js/site.js` | shared behaviour: header scroll state, dropdowns (click/Escape), mobile menu, scroll reveal, count-up, solution-card tilt |
 | `public/assets/js/forms.js` | form sending: Turnstile, consent, errors, `form:success` event (loaded only on pages with a form) |
-| `public/assets/js/job-apply.js` | careers page: embeds and restyles the HubSpot job application form (loaded only where `#job-apply-form` exists) |
 | `public/_headers`, `public/.well-known/security.txt` | security and cache headers (hand-edited, checked by the build); security.txt generated |
-| `public/assets/images/` | `brand/ home/ hospitals/ logos/clients/ logos/hospitals/ team/ flags/ blog/ about/ social/` |
+| `public/assets/images/` | `brand/ home/ hospitals/ logos/clients/ logos/hospitals/ team/ flags/ blog/ about/ careers/ social/` (`careers/` holds stock photos; credits in `docs/JOB-APPLICATIONS.md`) |
 | `public/assets/fonts/` | self-hosted Outfit (site) and Inter (only inside mock-ups), WOFF2 + OFL licences |
 | `public/assets/downloads/` | company profile PDF, media kit ZIP |
 | `public/robots.txt, sitemap.xml, llms.txt, site.webmanifest` | **generated** by the build |
@@ -79,7 +78,7 @@ Worker, and never change `name` in `wrangler.jsonc`.
 ## Forms and security
 
 Read `docs/FORMS-AND-SECURITY.md` before touching a form, `src/worker.js`, `_headers` or the tag loader.
-- Forms are `<form data-form="contact|demo|subscribe">` with HubSpot internal field names, the honeypot `.hp-field`
+- Forms are `<form data-form="contact|demo|subscribe|careers">` with HubSpot internal field names, the honeypot `.hp-field`
   (`hs_website`), the required consent checkbox `website_consent_given`, `<div class="form-turnstile">` and
   `<p class="form-status" role="alert" hidden>`. `build.py` fails otherwise. Pages react to `form:success`.
 - Change fields or options in `src/forms.json` first; values must equal the HubSpot dropdown values.
@@ -87,9 +86,10 @@ Read `docs/FORMS-AND-SECURITY.md` before touching a form, `src/worker.js`, `_hea
   widget or rate-limit namespace ids.
 - Never submit real test data to HubSpot without the owner's go-ahead (it creates contacts and may notify sales);
   test locally with the stand-in described in the doc.
-- Job applications are the exception to the Worker route: they carry a CV, so the careers page embeds HubSpot's own
-  form (`job-apply.js`, `docs/JOB-APPLICATIONS.md`). Until `FORM_ID` is set the page shows its fallback. Careers copy
-  uses only facts already on the site; do not invent perks, process promises or open roles.
+- The careers form has no HubSpot form of its own: the Worker delivers it through the Contact form with Enquiry Type
+  Careers and writes the extra answers into the message (`hubspot` block in `src/forms.json`, `docs/JOB-APPLICATIONS.md`).
+  It takes links, not file uploads. Careers copy uses only facts already on the site; do not invent perks, process
+  promises or open roles, and do not present the stock photos as staff. The team strip mirrors the About page.
 
 ## Relationship to the live site (adeahub.co)
 

@@ -9,6 +9,7 @@ forwards them to HubSpot. Nothing is sent from the browser to HubSpot directly.
 | `contact` | contact-us | `d616357e-71b4-4eab-9b98-472148196745` (the live Contact form) | firstname, lastname, email, company, message (required); enquiry_type, region |
 | `demo` | talk-to-us | `7b797e59-5301-476f-8ce0-0429519f1de9` (the live Talk To Us form) | firstname, lastname, email, company (required); jobtitle, area_of_interest (several, `;`-joined), message |
 | `subscribe` | blogs (newsletter band) | **none yet**: `HS_FORM_SUBSCRIBE` is empty, so the form says it is not taking submissions and gives hello@adeahub.co | email |
+| `careers` | careers ("Introduce yourself") | the Contact form above, with Enquiry Type fixed to Careers | firstname, lastname, email, company (required), region as fields; job_area, phone, linkedin_url, cv_url and about (required) folded into the message |
 
 The GUIDs and field names were read from the HubSpot forms the live adeahub.co pages embed. Field names in the HTML
 **are** the HubSpot internal names. Allowed fields, required fields and dropdown values live in one file,
@@ -16,8 +17,8 @@ The GUIDs and field names were read from the HubSpot forms the live adeahub.co p
 the Worker and HubSpot cannot drift apart. adeahub.co's own newsletter form is a WordPress (Elementor) form, so
 HubSpot has no newsletter form to reuse.
 
-Job applications (careers page) are a fourth form with its own route, because they carry a CV: HubSpot's own form,
-embedded. See `docs/JOB-APPLICATIONS.md`.
+A fourth form, `careers` on the careers page, takes the same route. It has no HubSpot form of its own: the Worker
+delivers it through the Contact form with Enquiry Type Careers. See `docs/JOB-APPLICATIONS.md`.
 
 ## How a submission travels
 
@@ -44,7 +45,8 @@ embedded. See `docs/JOB-APPLICATIONS.md`.
 
 Field rules: names up to 100 characters with at least one letter and no `<`, `>` or `://`; organisation and job
 title up to 150; email up to 254 and shaped like an address; message up to 2,000 with at most three links;
-dropdown and checkbox values must be one of the HubSpot values. Every value is NFC-normalised and stripped of
+dropdown and checkbox values must be one of the HubSpot values; phone numbers need at least six digits; links must be
+plain web addresses (`https://` is added when left out). Every value is NFC-normalised and stripped of
 control characters (C0/C1, zero-width, U+2028/2029, bidi overrides); single-line fields lose line breaks. The
 page applies the same limits as `maxlength`, so most visitors never see a 400.
 
@@ -90,9 +92,8 @@ Same baseline as entomo: HSTS (one year, no `includeSubDomains`, so no other ade
 HTTPS by surprise), `nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`, `Permissions-Policy`,
 `Cross-Origin-Opener-Policy: same-origin-allow-popups`, `Cross-Origin-Resource-Policy: same-site`, and a
 **Content-Security-Policy in Report-Only mode** that reports to `/api/csp-report` (the Worker logs each report).
-`script-src` keeps `'unsafe-inline'` because every page has inline scripts. Allowed outside hosts: Turnstile, the
-Tag Manager container with GA4 and Google Ads, and HubSpot's embedded job application form (`*.hsforms.net`,
-`*.hsforms.com`, `www.gstatic.com` for its reCAPTCHA). After about a week of clean reports on adeahub.co, rename the header
+`script-src` keeps `'unsafe-inline'` because every page has inline scripts. Allowed outside hosts: Turnstile and the
+Tag Manager container with GA4 and Google Ads. After about a week of clean reports on adeahub.co, rename the header
 to `Content-Security-Policy` (enforcing). `build.py` fails if a header is missing or a line passes Cloudflare's
 2,000-character limit.
 

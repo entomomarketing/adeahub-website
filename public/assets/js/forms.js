@@ -1,4 +1,4 @@
-/* adeahub website forms. Binds every <form data-form="<intent>"> (contact, demo, subscribe; the schema is
+/* adeahub website forms. Binds every <form data-form="<intent>"> (contact, demo, subscribe, careers; the schema is
    src/forms.json) and posts it as JSON to this site's own Worker, POST /api/forms/<intent> (src/worker.js), which
    validates it again, checks the Cloudflare Turnstile token and forwards it to HubSpot.
 
@@ -12,9 +12,9 @@
   var API_PATH = "/api/forms/";
   var TURNSTILE_SITEKEY = "0x4AAAAAAF3qGiiQuD1YmC8L";   // public site key of the "adeahub-website-forms" Turnstile widget (2026-11-07); empty = no challenge shown
   var TURNSTILE_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-  var INTENTS = { contact: 1, demo: 1, subscribe: 1 };
+  var INTENTS = { contact: 1, demo: 1, subscribe: 1, careers: 1 };
   // the same limits the Worker enforces, applied as maxlength so the browser stops the visitor first
-  var LIMITS = { firstname: 100, lastname: 100, email: 254, company: 150, jobtitle: 150, message: 2000 };
+  var LIMITS = { firstname: 100, lastname: 100, email: 254, company: 150, jobtitle: 150, message: 2000, about: 1500, phone: 30, linkedin_url: 300, cv_url: 300 };
   var HONEYPOT = "hs_website";
   var FALLBACK = "hello@adeahub.co";
   // C0/C1 controls, zero-width characters, Unicode line separators, bidi overrides (mirrors src/worker.js)
