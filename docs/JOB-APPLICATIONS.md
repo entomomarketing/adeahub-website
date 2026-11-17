@@ -63,8 +63,11 @@ contact-form enquiry.
   200M+ patient records, 17+ locations, 25+ years), the five core values from the About page, and the team areas
   visible in the About page's team titles. The "What happens next" steps and the line "We use these details only to
   consider you for roles at adeahub" were written for this page and should be confirmed by whoever owns hiring.
-- "Meet some of the team" shows eight real colleagues with the portraits, names and titles used on the About page.
-  When someone's title changes or they leave, update both pages.
+- "Meet some of the team" shows eight real colleagues, chosen as a mix of regions and crafts (owner's request,
+  2026-11-17: no founder, people from different regions): two from the MEA team, one each from India, Malaysia &
+  Brunei, Singapore and Thailand, and two from Global Functions. Portraits, names and roles come from the About page;
+  the region line is the About page team group (a title's ", Singapore" moves to that line). When someone's title
+  changes or they leave, update both pages.
 - The other five photos are stock photographs, not adeahub staff, and the page does not present them as staff.
 
 ## Photo credits
