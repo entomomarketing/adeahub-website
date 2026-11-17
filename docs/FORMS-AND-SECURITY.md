@@ -16,6 +16,9 @@ The GUIDs and field names were read from the HubSpot forms the live adeahub.co p
 the Worker and HubSpot cannot drift apart. adeahub.co's own newsletter form is a WordPress (Elementor) form, so
 HubSpot has no newsletter form to reuse.
 
+Job applications (careers page) are a fourth form with its own route, because they carry a CV: HubSpot's own form,
+embedded. See `docs/JOB-APPLICATIONS.md`.
+
 ## How a submission travels
 
 1. `public/assets/js/forms.js` (loaded on pages with a `<form data-form>`; `build.py` adds the tag) collects only the
@@ -87,8 +90,9 @@ Same baseline as entomo: HSTS (one year, no `includeSubDomains`, so no other ade
 HTTPS by surprise), `nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`, `Permissions-Policy`,
 `Cross-Origin-Opener-Policy: same-origin-allow-popups`, `Cross-Origin-Resource-Policy: same-site`, and a
 **Content-Security-Policy in Report-Only mode** that reports to `/api/csp-report` (the Worker logs each report).
-`script-src` keeps `'unsafe-inline'` because every page has inline scripts. Allowed outside hosts: Turnstile and the
-Tag Manager container with GA4 and Google Ads. After about a week of clean reports on adeahub.co, rename the header
+`script-src` keeps `'unsafe-inline'` because every page has inline scripts. Allowed outside hosts: Turnstile, the
+Tag Manager container with GA4 and Google Ads, and HubSpot's embedded job application form (`*.hsforms.net`,
+`*.hsforms.com`, `www.gstatic.com` for its reCAPTCHA). After about a week of clean reports on adeahub.co, rename the header
 to `Content-Security-Policy` (enforcing). `build.py` fails if a header is missing or a line passes Cloudflare's
 2,000-character limit.
 

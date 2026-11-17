@@ -105,6 +105,12 @@
       "type": "CollectionPage", "priority": "0.6"
     },
     {
+      "key": "careers", "file": "careers/index.html", "path": "careers/", "breadcrumb": "Careers",
+      "title": "Careers at adeahub: Build Software for Health Systems",
+      "description": "Join adeahub, the digital health platform behind 8,500+ health facilities across Asia, the Middle East and Africa. Send us your application and CV.",
+      "type": "WebPage", "priority": "0.6"
+    },
+    {
       "key": "contact", "file": "contact-us/index.html", "path": "contact-us/", "breadcrumb": "Contact Us",
       "title": "Contact adeahub: Talk to Our Healthcare Team",
       "description": "Contact adeahub about your digital health needs. We work with hospitals, health systems and ministries of health across Asia, the Middle East and Africa.",

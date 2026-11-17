@@ -232,6 +232,8 @@ def head_html(site, page, p, s, js_v, base_v):
           f'<script src="{p}assets/js/site.js?v={js_v}" defer></script>']
     if "data-form=" in s:   # pages with a form load the form script (assets/js/forms.js, see docs/FORMS-AND-SECURITY.md)
         L.append(f'<script src="{p}assets/js/forms.js?v={digest(os.path.join(PUB, "assets", "js", "forms.js"))}" defer></script>')
+    if 'id="job-apply-form"' in s:   # the careers page embeds the HubSpot job application form (docs/JOB-APPLICATIONS.md)
+        L.append(f'<script src="{p}assets/js/job-apply.js?v={digest(os.path.join(PUB, "assets", "js", "job-apply.js"))}" defer></script>')
     if not page.get("noindex"):
         L.append(f'<script type="application/ld+json">{jsonld(site, page, s)}</script>')
     return "\n".join(L)

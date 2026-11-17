@@ -14,7 +14,7 @@ URL = {
     "home": "", "platform": "platform/", "engage": "ah-engage/", "care": "ah-care/", "connect": "ah-connect/",
     "insights": "ah-insights/", "outbreak": "ah-outbreak-management/", "workwise": "workwise/",
     "about": "about-us/", "customers": "customers/", "newsroom": "newsroom/", "blogs": "blogs/",
-    "contact": "contact-us/", "demo": "talk-to-us/",
+    "contact": "contact-us/", "demo": "talk-to-us/", "careers": "careers/",
 }
 
 def u(p, key):
@@ -137,7 +137,7 @@ def footer(p):
         '            <p class="sfoot-h">Company</p>\n'
         '            <ul class="sfoot-list">\n'
         + li("platform", "Platform") + li("about", "About Us") + li("customers", "Customers")
-        + li("newsroom", "Newsroom") + li("blogs", "Blog") + li("contact", "Contact Us") +
+        + li("newsroom", "Newsroom") + li("blogs", "Blog") + li("careers", "Careers") + li("contact", "Contact Us") +
         '            </ul>\n'
         '        </nav>\n'
         '        <div>\n'

@@ -22,6 +22,7 @@ Links are relative (`../platform/`), so pages need a web server; opening them vi
 | `public/assets/css/base.css` | shared design-system rules: type roles (`.h-section`, `.h-cta`, `.t-label`, `.tag-chip`), surfaces (`.card`, `.feature`, `.stat-row`/`.stat`), reveal, btn-glow/shimmer, blobs, card hovers. Hand-edited. Linked *before* page `<style>`s |
 | `public/assets/js/site.js` | shared behaviour: header scroll state, dropdowns (click/Escape), mobile menu, scroll reveal, count-up, solution-card tilt |
 | `public/assets/js/forms.js` | form sending: Turnstile, consent, errors, `form:success` event (loaded only on pages with a form) |
+| `public/assets/js/job-apply.js` | careers page: embeds and restyles the HubSpot job application form (loaded only where `#job-apply-form` exists) |
 | `public/_headers`, `public/.well-known/security.txt` | security and cache headers (hand-edited, checked by the build); security.txt generated |
 | `public/assets/images/` | `brand/ home/ hospitals/ logos/clients/ logos/hospitals/ team/ flags/ blog/ about/ social/` |
 | `public/assets/fonts/` | self-hosted Outfit (site) and Inter (only inside mock-ups), WOFF2 + OFL licences |
@@ -41,7 +42,7 @@ Links are relative (`../platform/`), so pages need a web server; opening them vi
 
 Live URL → repo file: `/` → `public/index.html`; every other live URL `/<slug>/` → `public/<slug>/index.html`
 (`platform`, `ah-engage`, `ah-care`, `ah-connect`, `ah-insights`, `ah-outbreak-management`, `workwise`,
-`about-us`, `customers`, `newsroom`, `blogs`, `contact-us`, `talk-to-us`).
+`about-us`, `customers`, `newsroom`, `blogs`, `contact-us`, `talk-to-us`). `careers` exists only in this repo: adeahub.co has no careers page.
 
 ## The build
 
@@ -86,6 +87,9 @@ Read `docs/FORMS-AND-SECURITY.md` before touching a form, `src/worker.js`, `_hea
   widget or rate-limit namespace ids.
 - Never submit real test data to HubSpot without the owner's go-ahead (it creates contacts and may notify sales);
   test locally with the stand-in described in the doc.
+- Job applications are the exception to the Worker route: they carry a CV, so the careers page embeds HubSpot's own
+  form (`job-apply.js`, `docs/JOB-APPLICATIONS.md`). Until `FORM_ID` is set the page shows its fallback. Careers copy
+  uses only facts already on the site; do not invent perks, process promises or open roles.
 
 ## Relationship to the live site (adeahub.co)
 

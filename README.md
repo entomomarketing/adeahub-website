@@ -14,6 +14,7 @@ adeahub-website/
 │   ├── ah-engage/index.html    /ah-engage/
 │   ├── ah-care/ …              /ah-care/, /ah-connect/, /ah-insights/, /ah-outbreak-management/, /workwise/
 │   ├── about-us/ …             /about-us/, /customers/, /newsroom/, /blogs/, /contact-us/, /talk-to-us/
+│   ├── careers/index.html      /careers/               (open applications; not on the live site yet)
 │   ├── 404.html                "page not found" page (served by the host for unknown URLs)
 │   ├── embeds/                 animated product previews loaded in <iframe>s (not indexed)
 │   ├── assets/
@@ -21,6 +22,7 @@ adeahub-website/
 │   │   ├── css/base.css        shared design-system rules (type roles, cards, stat rows, scroll reveal …)
 │   │   ├── js/site.js          shared behaviour (menus, scroll reveal, counters, card tilt)
 │   │   ├── js/forms.js         form sending (Turnstile, consent, errors), on pages with a form
+│   │   ├── js/job-apply.js     careers page: the embedded HubSpot job application form
 │   │   ├── fonts/              self-hosted Outfit + Inter (WOFF2, with OFL licences)
 │   │   ├── images/             brand/ home/ hospitals/ logos/{clients,hospitals}/ team/ flags/ blog/ about/ social/
 │   │   └── downloads/          company profile PDF, media kit ZIP
@@ -135,6 +137,10 @@ before forwarding to adeahub's HubSpot forms. Every form has a required consent 
 HubSpot marked `[TEST: staging]`. Google Tag Manager loads only on adeahub.co itself. The full description, the
 HubSpot steps still to do and the settings for when adeahub.co moves to Cloudflare are in
 [docs/FORMS-AND-SECURITY.md](docs/FORMS-AND-SECURITY.md).
+
+Job applications on the careers page are the one exception: they carry a CV, which HubSpot's submission API does
+not accept, so the page embeds HubSpot's own "Job application" form and restyles it. The one-time HubSpot setup is
+in [docs/JOB-APPLICATIONS.md](docs/JOB-APPLICATIONS.md); until the form ID is set, the page points to the contact page.
 
 On any other static host, upload the contents of `public/` and configure the same behaviour.
 

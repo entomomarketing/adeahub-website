@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Generate the 1200x630 social sharing cards (Open Graph / LinkedIn / X) for every page.
 
-    python3 tools/social_cards.py
+    python3 tools/social_cards.py            # every page
+    python3 tools/social_cards.py careers    # only the named page keys (e.g. after adding a page)
 
 Writes public/assets/images/social/<page key>.jpg, which tools/build.py references in each page's
 og:image / twitter:image tags. Each card uses the page's own <h1> as its headline, in the site's
@@ -51,7 +52,11 @@ def main():
     pages = cfg["pages"] + [{"key": "notfound", "file": "404.html", "breadcrumb": "adeahub"}]
     os.makedirs(OUT, exist_ok=True)
     tmp = tempfile.mkdtemp()
+    only = set(sys.argv[1:])
+    unknown = only - {pg["key"] for pg in pages}
+    if unknown: sys.exit("unknown page key(s): " + ", ".join(sorted(unknown)))
     for pg in pages:
+        if only and pg["key"] not in only: continue
         title = h1_text(os.path.join(PUB, pg["file"]))
         name = pg.get("service", {}).get("name") or pg.get("breadcrumb") or "adeahub"
         if pg["key"] == "home": name = "adeahub"
