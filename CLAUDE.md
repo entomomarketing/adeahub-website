@@ -121,6 +121,10 @@ Text on light backgrounds must meet WCAG AA, which brand blue alone does not (2.
 Each page: managed head → page `<style>`s → `site.css` → (moved body styles) → skip link + `<header id="main-nav" class="snav">` → `<main id="main">` → page sections → `<footer class="sfoot">` → page-specific inline scripts. Shared behaviour lives in `site.js`; do not re-add per-page copies of the menu/reveal/counter scripts.
 
 - Content width 1140px: `max-w-[1188px] mx-auto px-6` (a few sections use 1120/1152px).
+  Sections that adeahub.co widens with the window use the `max-w-fluid-*` tokens in `tailwind.config.js`: the
+  Platform, AH Connect, AH Insights and WorkWise heroes, the homepage "One platform" stage and hospital strip, the
+  AH Care and AH Insights adea AI bands and the AH Outbreak "From preparedness to response" steps. They keep the
+  fixed width up to ~1440px and take live's share of the window (80%, 90%, 55%) above it. Keep them fluid.
 - Design system (keep it): dot-grid texture and floating blobs on blue sections (plus the soft top-light/deeper-base shading from `site.css`), `btn-glow` / `btn-shimmer` CTAs, card hover lifts, pulsing hero badge dots, scroll reveal, count-up counters, solution-card tilt.
 - No eyebrow labels (owner decision, Nov 2026): no small spaced-out caps or dash labels above section headings, in the mega-menus or the footer; they read as AI-generated. Headings stand on their own. Labels that carry information stay, styled as `.t-label` (role lines such as "CMO · CMIO", placed *under* the card title), `.tag-chip` (product/feature names such as "WorkWise AI", "Powered by adea AI") or plain card meta ("Case Study", blog read time). Small labels never use `uppercase` or wide `tracking-*`.
 - Type scale (checked against entomo.co): nav 16px (15px at 768–1023px), mega-menu titles 16px with 14px descriptions, section titles `.h-section` (30→40px, lh 1.12, −0.022em), closing CTA titles `.h-cta` (34→48px), body 16px/1.6+, card text 15px, meta 13–14px, nothing readable below 13px outside product mock-ups. No `font-light` below 22px and no `italic` (Outfit has no italic face, so browsers fake it).
